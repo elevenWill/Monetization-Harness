@@ -1,0 +1,4 @@
+interface:
+  display_name: "Assumption Challenger"
+  short_description: "Challenge hidden assumptions before building"
+  default_prompt: "Use $assumption-challenger to challenge the hidden assumptions in my current monetization decision."

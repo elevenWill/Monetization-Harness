@@ -1,0 +1,4 @@
+interface:
+  display_name: "Opportunity Finder"
+  short_description: "Find real problems worth monetization testing"
+  default_prompt: "Use $opportunity-finder to find evidence-backed monetization opportunities in my current project."

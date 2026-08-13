@@ -1,0 +1,4 @@
+interface:
+  display_name: "Experiment Designer"
+  short_description: "Design cheap, safe, evidence-producing tests"
+  default_prompt: "Use $experiment-designer to design the cheapest safe experiment for the biggest unknown."

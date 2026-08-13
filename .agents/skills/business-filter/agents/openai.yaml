@@ -1,0 +1,4 @@
+interface:
+  display_name: "Business Filter"
+  short_description: "Test whether an opportunity is a real business"
+  default_prompt: "Use $business-filter to decide whether this opportunity is a real, durable business."
