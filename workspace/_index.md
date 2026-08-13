@@ -1,6 +1,6 @@
 # Monetization Workspace
 
-This index is navigation, not project history. Update the row when a project's stage, status, next gate, or last-updated date changes.
+Runtime-maintained Project Registry. It is navigation, not project history and not a user-managed checklist. Codex adds or updates a row when a Project is bootstrapped or when its stage, status, next gate, or last-updated date changes.
 
 | Project | Goal | Stage | Status | Next Gate | Last Updated |
 | --- | --- | --- | --- | --- | --- |

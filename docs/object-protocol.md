@@ -67,4 +67,6 @@ Redact personal/payment secrets. Record enough evidence to distinguish paid, ref
 
 ## Updating state
 
-Store detailed objects in the relevant stage directory. Keep only active or decision-critical summaries and links in `STATE.md`. When an assumption changes status or a decision is reversed, preserve the original record and add the new evidence and date.
+Store detailed objects in the relevant stage directory. Create that directory only in the same write that creates the real object; never pre-create empty stage or category directories. Stage directories may be non-contiguous because `STATE.md`, not the filesystem shape, is authoritative for the current Stage.
+
+Keep only active or decision-critical summaries and links in `STATE.md`. When an assumption changes status or a decision is reversed, preserve the original record and add the new evidence and date.

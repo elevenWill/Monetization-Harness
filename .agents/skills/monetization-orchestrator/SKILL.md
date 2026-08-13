@@ -1,25 +1,29 @@
 ---
 name: monetization-orchestrator
-description: Route and synthesize monetization decisions from the active workspace project's goal, evidence, assumptions, stage, transactions, risks, and next gate. Use for every material opportunity, validation, first-sale, productization, leverage, scaling, or project-resumption conversation in this repository; especially when deciding whether to answer the user's requested solution, selecting one or two Thinking Skills, correcting a stage mismatch, or persisting durable state.
+description: Discover, match, bootstrap, resume, route, and synthesize monetization work from the conversation and workspace evidence. Use for every material opportunity, validation, first-sale, productization, leverage, scaling, or project-resumption conversation in this repository; especially when deciding whether a conversation needs a project, matching it to an existing project, creating minimal IDEA.md and STATE.md state, correcting a stage mismatch, selecting one or two Thinking Skills, or persisting durable change.
 ---
 
 # Monetization Orchestrator
 
-Produce one evidence-grounded decision and next action. Do not run a persona meeting.
+Make the conversation primary and the workspace its durable memory. Produce one evidence-grounded judgment and next action. Do not run a persona meeting or ask the user to manage project mechanics.
 
-## Restore context
+## Run the project lifecycle
 
-1. Identify the active `workspace/<project>/` from the request or `workspace/_index.md`.
-2. Read `IDEA.md` and `STATE.md` completely before routing.
-3. Follow links only for evidence needed by the current gate; do not load the entire project history.
-4. Read [references/routing-rules.md](references/routing-rules.md) and [references/state-assessment.md](references/state-assessment.md).
-5. If no project is active, run a provisional review without writes. Ask for a project only when persistence or project-specific facts are necessary.
+Read [references/routing-rules.md](references/routing-rules.md) and [references/state-assessment.md](references/state-assessment.md), then classify the message before selecting Thinking Skills:
+
+1. **No Project:** For general knowledge, Harness usage, one-off generic discussion, or a passing brainstorm that is not a concrete resumable monetization thread, answer normally without workspace writes.
+2. **Project Matching:** Read `workspace/_index.md`, enumerate actual project roots under `workspace/*/`, then inspect `IDEA.md` and `STATE.md` for plausible candidates. Match semantic continuity in the idea, customer, problem, goal, evidence, and recent conversational context—not keywords alone. Do not assume the registry is complete.
+3. **Project Resume:** When one project clearly matches, read its `IDEA.md` and `STATE.md` completely. Follow only links needed for the current gate; do not load all history.
+4. **Project Bootstrap:** When no project matches and the user has established a concrete direction worth continuing, generate a stable short kebab-case slug and create only `workspace/<slug>/IDEA.md` and `STATE.md`. Record only user-grounded content, mark missing fields `unknown`, update `workspace/_index.md`, and continue the current answer. Do not request a name, slug, command, template, or manual Stage choice.
+5. **Project Conflict:** If multiple projects remain plausible and a mistaken write would matter, give a provisional analysis without writing. Ask for ownership only when persistence or project-specific evidence requires it.
+
+The bootstrap operation never pre-creates stage directories. A stage directory may appear later in the same turn only if that turn contains a separate durable artifact that genuinely belongs there.
 
 ## Assess before routing
 
 1. Extract evidence-backed transaction count, repeat-customer count, customer/problem clarity, active experiment, proposed commitment, dependencies, and current stage.
 2. Classify every decision-relevant new claim as FACT, ASSUMPTION, DECISION, or EXPERIMENT under `docs/object-protocol.md`.
-3. Recompute the stage from `docs/stage-model.md`. Treat the stored stage as a claim to verify.
+3. Recompute the stage from `docs/stage-model.md`. Treat the stored stage as a claim to verify and `STATE.md` as the authoritative current-stage location; never infer stage from directories.
 4. Find the earliest unsupported gate and name one largest unknown.
 5. Decide whether the user's explicit question resolves that unknown. If not, challenge the framing before offering downstream implementation.
 
@@ -45,14 +49,15 @@ Never choose all five. Use three only when three independently material conditio
 
 ## Persist only durable change
 
-Follow `docs/workspace-protocol.md`. Before writing, distinguish an accepted decision from a suggestion. When a trigger occurs:
+Follow `docs/workspace-protocol.md`. Before writing, distinguish an accepted decision from a suggestion. A new project is a mutation trigger; casual discussion is not. When another trigger occurs:
 
-1. write detailed evidence/object records in the owning stage directory;
-2. update the current snapshot in `STATE.md`;
-3. update `workspace/_index.md` when stage/status/next gate/date changes;
-4. verify stable IDs, evidence links, project-root invariants, and link resolution.
+1. decide whether the change needs a standalone artifact or only a snapshot update;
+2. if an artifact is needed, create its owning stage directory and the artifact in the same write—never create an empty directory;
+3. update the current snapshot in `STATE.md`, then reconcile older active assumption and decision summaries against the new evidence; time-qualify historical bases and remove contradictory present-tense claims;
+4. update `workspace/_index.md` when project/stage/status/next gate/date changes;
+5. verify stable IDs, evidence names or links, transaction counters, assumption statuses, decision bases, largest unknown, project-root invariants, empty-directory absence, and link resolution.
 
-Do not silently rewrite `IDEA.md`; record major direction changes and their reasons in stage history.
+Do not silently rewrite `IDEA.md`; record major direction changes and their reasons in stage history. Do not materialize directories merely because `STATE.md` names a stage.
 
 ## Final response shape
 
@@ -69,7 +74,7 @@ Use compact prose, normally:
 <one bounded action and review condition>
 
 Workspace 更新：
-<files/objects changed, only when writes occurred>
+<project created or files/objects changed, only when writes occurred>
 ```
 
 The final answer must remain understandable if internal Skill reviews are hidden.

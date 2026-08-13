@@ -1,6 +1,6 @@
 # Stage model
 
-Stage describes the next uncertainty to resolve, not how polished the artifact looks. It is evidence-driven and reversible.
+Stage describes the next uncertainty to resolve, not how polished the artifact looks. It is evidence-driven and reversible. The `stage` field in `STATE.md` is the authoritative current value; directory presence is only historical evidence that material was once recorded there.
 
 | Stage | Entry evidence | Primary question | Typical next gate | Regression signal |
 | --- | --- | --- | --- | --- |
@@ -20,9 +20,11 @@ Stage describes the next uncertainty to resolve, not how polished the artifact l
 3. Record a transition only when the entry evidence changes.
 4. When evidence invalidates an earlier gate, move backward to the earliest invalidated stage and record why.
 
+Do not infer Stage from directory names and do not create a directory merely because a Project enters that Stage. Stage directories materialize only when a real artifact is written, may be non-contiguous, and may remain after the current Stage moves forward or backward.
+
 ## Stage transition record
 
-Write a durable transition in the relevant stage `analysis/` directory, then summarize it in `STATE.md`:
+When the transition needs a durable history artifact, write it in the relevant stage directory (creating only the directory that will immediately contain that artifact), then summarize it in `STATE.md`:
 
 ```yaml
 from: productization

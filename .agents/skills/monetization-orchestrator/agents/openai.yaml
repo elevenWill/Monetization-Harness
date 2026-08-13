@@ -1,4 +1,4 @@
 interface:
   display_name: "Monetization Orchestrator"
-  short_description: "Route decisions from evidence, stage, and risk"
-  default_prompt: "Use $monetization-orchestrator to resume my project, route the decision, and give one next action."
+  short_description: "Discover, bootstrap, and route monetization work"
+  default_prompt: "Use $monetization-orchestrator to discover or resume the right project and give one evidence-based next action."

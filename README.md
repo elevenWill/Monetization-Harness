@@ -1,107 +1,139 @@
 # Monetization Decision Harness V0
 
-一句话：这是一个让 Codex 根据真实证据和项目阶段，纠正变现决策并把长期状态保存在仓库里的个人 Harness。
+这是一个 Conversation-First 的个人变现决策 Harness：你只需要和 Codex 对话，Harness 会判断是否需要建立或恢复项目、当前应该解决哪个未知量，并在真正发生持久变化时维护 Workspace。
 
-它不是聊天机器人、名人圆桌或新的 Agent Runtime。Codex 本身负责推理和工具调用；本仓库只提供变现领域的规则、Thinking Skills、项目记忆和验收用例。
+它不是名人 Agent 圆桌，也不实现第二套 Agent Runtime。Codex 负责推理、工具调用和文件维护；本仓库提供变现领域的规则、Thinking Skills、长期记忆和行为验收场景。
 
-## 它怎么工作
+## 开始使用
 
-```text
-你提出一个变现问题
-→ Codex 读取项目 IDEA.md + STATE.md
-→ 判断 Stage、FACT / ASSUMPTION / DECISION / EXPERIMENT
-→ 找到当前最大未知量
-→ 只选择 1～2 个必要 Thinking Skill
-→ 综合成一个判断和下一步
-→ 只有持久状态变化时才写回 Workspace
-```
+1. 在这个仓库根目录启动 Codex。
+2. 直接说你的赚钱想法。
 
-总原则是：Stage Before Solution、Evidence Before Confidence、Transaction Before Automation、Value Before Product、Leverage After Repetition。
-
-## 最快开始
-
-在仓库根目录运行：
-
-```bash
-python3 scripts/new_project.py lawyer-case-organizing \
-  --goal "验证律师是否愿意为案件资料整理持续付费"
-```
-
-脚本会：
-
-- 从 `workspace/_templates/project/` 创建完整阶段目录；
-- 初始化 `IDEA.md` 和 `STATE.md`；
-- 写入当天日期、项目名和目标；
-- 更新 `workspace/_index.md`；
-- 拒绝覆盖已有项目。
-
-然后在这个仓库中启动 Codex，并输入：
+例如：
 
 ```text
-继续 workspace/lawyer-case-organizing。
-先完整读取 IDEA.md 和 STATE.md，告诉我当前 Stage、最大未知量和一个下一步。
+我最近在研究 AI 带货短视频，
+感觉这里可能有变现机会，但我还没想清楚怎么做。
 ```
 
-继续已有项目时只需把项目名换掉。找不到项目名时先看 [`workspace/_index.md`](workspace/_index.md)。不依赖原来的聊天 Thread。
+就这些。你不需要创建项目、填写 slug、选择 Stage、建立目录、更新索引或手工调用 Persona。
 
-## Workspace
+Harness 会自动判断当前对话属于哪种情况：
 
-每个真实项目根目录只保留两个内容入口：
+- 普通知识问题或一次性泛讨论：正常回答，不创建 Project。
+- 明确且值得持续推进的新变现方向：创建一个最小 Project，并继续当前回答。
+- 明显属于已有方向的新进展：恢复对应 Project，读取状态后继续。
+- 同时可能属于多个 Project：先避免写错；能安全分析时继续分析，只有归属会影响持久化时才请你确认。
+
+## 三个 Conversation-First 示例
+
+### 1. 新方向
 
 ```text
-workspace/<project>/
-├── IDEA.md                  # 项目为何存在
-├── STATE.md                 # 唯一当前状态快照
+用户：
+我最近发现很多律师处理案件材料特别乱，
+我想看看这里有没有变现机会。
+```
+
+Runtime 会检查现有 Workspace；没有匹配项目时自动建立最小 Project，初始 Stage 为 `opportunity_discovery`，优先使用 `opportunity-finder`，必要时使用 `assumption-challenger`，然后继续讨论你应该观察什么。不会要求你先起名或运行命令。
+
+### 2. 继续旧 Project
+
+```text
+用户：
+昨天我又问了两个律师，
+其中一个说愿意给 500 元让我先做一次。
+```
+
+Runtime 会根据索引、`IDEA.md` 和 `STATE.md` 匹配已有律师项目，区分“口头愿意”与“真实付款”，登记应该持久化的新信息，按需创建对应阶段材料，并继续判断下一步。不会再建立一个重复项目。
+
+### 3. 普通问题
+
+```text
+用户：
+Naval 和 Taleb 最大区别是什么？
+```
+
+正常回答，不创建 Project，不修改 Workspace。
+
+## Conversation First，Workspace Second
+
+Workspace 是 Runtime 为了以后继续理解你而维护的长期记忆，不是你为了使用 Runtime 必须维护的项目管理工具。
+
+新 Project 自动创建时只有：
+
+```text
+workspace/ai-commerce-short-video/
+├── IDEA.md
+└── STATE.md
+```
+
+内部目录名由 Runtime 自动生成短而稳定的 kebab-case slug。它只是内部 ID；用户不需要参与，创建后也不会因为项目展示名称变化而轻易重命名。
+
+`IDEA.md` 只记录用户已经表达的初始方向、目标、目前认为的用户和关键假设。缺失内容标记为 `unknown`，不会由模型擅自补全。
+
+`STATE.md` 是当前 Stage 的唯一权威入口，包含当前目标、FACT、ASSUMPTION、DECISION、EXPERIMENT、交易计数、最大未知量、Next Gate 和 Next Action。
+
+## Workspace 按真实经历生长
+
+Stage 是状态，不是目录。目录存在只表示历史上确实产生过相关材料；Stage 目录不要求连续，也不允许为了结构完整而预建空目录。
+
+```text
+无 Project
+↓ 对话形成值得持续追踪的方向
+IDEA.md + STATE.md
+↓ 真正记录 O001
+01-opportunity/O001.md
+↓ 用户确认一个真实实验
+04-experiments/E001.md
+↓ 收到第一笔真实付款
+05-transactions/T001.md
+```
+
+因此下面完全合法：
+
+```text
+workspace/project-a/
+├── IDEA.md
+├── STATE.md
 ├── 01-opportunity/
-├── 02-problem-validation/
-├── 03-business-validation/
+│   └── O001.md
 ├── 04-experiments/
-├── 05-transactions/
-├── 06-leverage/
-├── 07-productization/
-├── 08-scaling/
-└── 99-archive/
+│   └── E001.md
+└── 05-transactions/
+    └── T001.md
 ```
 
-不要在项目根目录创建 `notes.md`、`report-final.md` 或临时分析。详细材料进入所属阶段；不知道更具体的位置时，进入当前阶段的 `analysis/`。
+没有独立 Business Artifact 时，即使 `STATE.md` 的 Stage 是 `business_validation`，也不需要创建 `03-business-validation/`。详细规则见 [`docs/workspace-protocol.md`](docs/workspace-protocol.md)。
 
-`STATE.md` 只保存当前 Snapshot 和关键链接。历史事实、实验记录、付款证据、阶段回退原因都留在对应阶段目录，因此文件不会无限膨胀。
+`workspace/_index.md` 是 Runtime 自动维护的 Project Registry。它只用于发现、匹配和导航，不要求用户手工编辑。
 
-完整写入与恢复规则见 [`docs/workspace-protocol.md`](docs/workspace-protocol.md)。
+## 什么信息会写入 Workspace
 
-## 如何记录事实
+Conversation First 不等于记录每句话。只有以下持久变化才写入：
 
-直接告诉 Codex 发生了什么，并提供可引用的证据位置。例如：
+- 新 Project 被明确确立；
+- durable FACT 或真实 Transaction；
+- Assumption 状态变化；
+- 用户明确接受的 Decision；
+- 有边界和停止条件的 Experiment；
+- Stage、Next Gate 或 Material Risk 变化。
+
+随口 brainstorm、普通解释、尚未接受的建议和 Thinking Skill 的判断不写入磁盘。
+
+你只需要自然地报告进展，例如：
 
 ```text
-今天客户 A 已支付 500 元，付款凭证已脱敏放在这个文件里。
-请按 Harness 协议登记事实和交易，并更新当前状态。
+今天真的有人给了我 300 元，让我帮他做一条商品视频。
 ```
 
-Codex 应分别登记：
+Runtime 负责匹配项目、登记 `F001` / `T001`、按需创建交易目录、更新 State，并避免把第一笔付款误判成可重复生意。
 
-- `T001`：交易本身；
-- `F001`：带证据链接的事实；
-- `STATE.md`：当前交易计数、Stage、最大未知量和下一步；
-- `workspace/_index.md`：如果 Stage、Status 或 Next Gate 改变。
+对象与 stable ID 规则见 [`docs/object-protocol.md`](docs/object-protocol.md)。
 
-“客户应该喜欢”“市场很大”“某个 Skill 认为可行”都不是 FACT。对象格式和 ID 规则见 [`docs/object-protocol.md`](docs/object-protocol.md)。
+## Stage
 
-## 如何记录实验
-
-告诉 Codex要验证的假设和你能承受的上限：
-
-```text
-我决定用 7 天向 10 名独立律师出售 500 元的人工整理服务，
-最多投入 300 元；2 笔付款算成功，10 次合格报价且 0 付款算失败。
-请登记实验并更新 STATE。
-```
-
-一个有效 `E001` 必须包含：被测试的 Assumption、真实行为/付款信号、最大下行、成功/失败条件、期限和停止条件。实验建议只有在你明确接受后才成为 DECISION 并写入 Workspace。
-
-## 如何判断 Stage
-
-Stage 表示“下一个必须解决的未知量”，不是产品看起来多完整。
+Stage 表示“当前最早且最重要的未解决 gate”，不是产品完成度，也不由目录是否存在决定。
 
 | Stage | 当前主要问题 |
 | --- | --- |
@@ -114,104 +146,48 @@ Stage 表示“下一个必须解决的未知量”，不是产品看起来多�
 | `productization` | 什么最小产品能保留已验证价值？ |
 | `scaling` | 获客和交付能否在经济上持续扩大？ |
 
-Stage 可以回退。产品上线后无人复购，应回到 `business_validation`，而不是默认继续加功能。详细 gate 和回退信号见 [`docs/stage-model.md`](docs/stage-model.md)。
+Stage 可以回退。产品上线后无人复购，应回到 `business_validation`，而不是默认继续加功能。完整 gate 见 [`docs/stage-model.md`](docs/stage-model.md)。
 
 ## 五个 Thinking Skill
 
-| Skill | 什么时候用 | 不负责什么 |
+| Skill | 什么时候使用 | 不负责什么 |
 | --- | --- | --- |
-| `opportunity-finder` | 没有明确客户/问题、只有模糊方向 | 凭空列 AI 产品、证明市场成立 |
+| `opportunity-finder` | 没有明确客户/问题，只有模糊方向 | 凭空列 AI 产品、证明市场成立 |
 | `assumption-challenger` | 把假设当事实、问题问错、开发/研究在逃避验证 | 人格诊断、只拆不建 |
 | `business-filter` | 判断客户、付款结果、替代方案、价格和重复逻辑 | 用热度或赞美证明商业模式 |
-| `experiment-designer` | 设计小实验；重大下注、零付款大开发时强制考虑 | 无下行上限的“试试看” |
-| `leverage-designer` | 重复付款或重复有效交付后做 SOP、自动化、代码/媒体资产 | 在价值未重复前推动产品化 |
+| `experiment-designer` | 设计小实验；重大下注或零付款大开发时强制考虑 | 无下行上限的“试试看” |
+| `leverage-designer` | 重复付款或重复有效交付后建立 SOP、自动化和资产 | 在价值未重复前推动产品化 |
 
-`monetization-orchestrator` 是领域路由器，不是第六个人格。它按 State 选择最少必要 Skill，再给出一个综合结论。来源 Persona、保留内容和边界见 [`docs/source-mapping.md`](docs/source-mapping.md)。
+`monetization-orchestrator` 是 Project lifecycle、路由和综合协调器，不是第六个人格。它通常选择 1～2 个必要 Skill，再输出一个综合判断。Persona 来源与保留内容见 [`docs/source-mapping.md`](docs/source-mapping.md)。
 
-## Harness 什么时候会主动打断你
+## Harness 什么时候会打断你
 
-以下情况不应直接顺着做：
-
-- 付款为 0，却准备设计完整 SaaS、数据库、UI 或复杂 Agent；
+- 付款为 0，却准备开发完整 SaaS、数据库、UI 或复杂 Agent；
 - 因为 AI 能实现，就断言市场存在；
 - 因为一个人付款，就立刻产品化；
-- 用继续研究、继续写代码代替报价或销售；
+- 用继续研究或写代码代替真实报价；
 - 准备辞职、All-in、投入数月或大量资金；
 - 依赖单一客户、平台或 API，失败会让项目出局；
-- 产品已上线但没有复购，仍想靠加功能解决。
+- 产品已上线但没有复购，仍想默认靠加功能解决。
 
-这时输出应该先说明当前最大未知量、哪些是 ASSUMPTION，再给一个更小的现实行动。
+这时 Runtime 会先指出当前最大未知量和未经验证的 Assumption，再给更小的现实行动。
 
-## 一个项目的真实生命周期
+## Behavior Acceptance Scenarios
 
-以“律师案件资料整理”为例：
+[`evals/cases/`](evals/cases/) 保存约六个核心 Harness Behavior Acceptance Scenarios，用于修改 `AGENTS.md`、Skills、Router 或 Stage 规则时做人工行为回归。
 
-1. `opportunity_discovery`：记录律师如何用文件夹和人工命名处理零散资料。
-2. `problem_validation`：观察问题是否在新案件到来时重复，并记录耗时与风险。
-3. `business_validation`：确认承办律师还是律所付钱、购买的是整理结果而不是软件。
-4. `experiment_validation`：用 7 天 Concierge 报价测试 `A001`，而不是先做后台。
-5. `transaction_validation`：出现一笔 500 元付款，只能登记“一个人付过一次”；继续测试独立复购。
-6. `leverage_discovery`：多个客户重复购买后，把分类、命名、质检步骤测量成 SOP。
-7. `productization`：只把稳定步骤做成窄工具，并保持人工判断与回滚路径。
-8. `scaling`：在复购、交付质量和单位经济成立后测试获客。
+它们不是自动启动 Codex 的 LLM Evaluation Framework，也不把手工编写的理想答案伪装成真实 Runtime 测试。核心覆盖：自动 Bootstrap、过早开发、第一笔付款、重复付款与 leverage、重大下注、Stage 回退，以及 Workspace lazy growth。
 
-如果第 7 步后没人复购，记录证据并回到第 3 步，不删除历史。
+## 开发校验
 
-## 如何查看历史
-
-先读 `workspace/_index.md`，再读项目的 `IDEA.md` 与 `STATE.md`。根据 `STATE.md` 的链接打开当前实验、付款证据或最近一次阶段变化。归档材料进入 `99-archive/`，但稳定 ID 不因移动而改变。
-
-## 如何增加新的 Thinking Skill
-
-未来可以增加 `product-designer`、`execution-simplifier` 或 `decision-auditor`，V0 不实现它们。新增时：
-
-1. 在 `.agents/skills/<skill-name>/` 创建符合 Codex Skill 规范的 `SKILL.md` 和 `agents/openai.yaml`。
-2. 把长模型、来源和 few-shot 放入 `references/`、`examples/source/`、`examples/local/`，记录 License 与 commit。
-3. 让 Skill 读取 Workspace、遵守 [`docs/review-protocol.md`](docs/review-protocol.md)，并明确使用/禁用边界。
-4. 在 orchestrator 的 evidence-based routing rule 中增加状态条件，不按关键词或人物名路由。
-5. 增加至少一个应触发、一个不应触发、一个与既有 Skill 冲突的 Eval。
-6. 运行完整校验，确保常规路由仍只有 1～2 个 lens。
-
-Orchestrator 只依赖领域 Skill 名，不依赖 Persona 名，因此可以扩展而无需改变 Workspace 协议。
-
-## 验证
-
-运行完整 V0 验收：
+维护本仓库本身时，可选运行：
 
 ```bash
 python3 scripts/validate_repo.py
 ```
 
-它会检查：
+这是开发工具，不是使用 Harness 的前置步骤。它只检查可确定验证的内容，例如 Skill 结构、source provenance、链接、STATE 基本字段、Workspace lazy invariant 和 Eval case 结构；不声称验证真实 Codex 推理质量。
 
-- 六个 Skill、触发描述、UI metadata 和来源快照；
-- 原 examples/references/LICENSE 与本地只读源的哈希一致性（原目录存在时）；
-- Workspace 模板和项目根目录不膨胀；
-- 在临时目录真实创建项目并验证拒绝覆盖；
-- 本项目 authored Markdown 链接；
-- 10 个路由、纠偏、Stage、Evidence、Action、Persistence 与 Resumption 场景。
+## V0 边界
 
-也可以只运行 Evals：
-
-```bash
-python3 evals/run_evals.py
-```
-
-## V0 明确不做
-
-V0 没有 Web UI、API Server、数据库、RAG、MCP Server、自定义 Agent Loop、Agent 投票/辩论、用户/权限系统、自动定时任务或 SaaS 化。Evals 是可审计的场景与 golden traces，不是确定性 LLM 行为保证；模型输出仍需要靠仓库规则、真实使用和新增失败用例持续校正。
-
-## 关键目录
-
-```text
-AGENTS.md                         Runtime Constitution
-.agents/skills/                   六个 repo-level Skills
-docs/                             Stage、对象、审查、来源与写入协议
-workspace/_templates/project/     项目模板
-workspace/_index.md               个人商业知识库入口
-scripts/new_project.py            项目初始化
-scripts/validate_repo.py          完整验收
-evals/cases/                      场景规范
-evals/results/                    手工模拟 golden traces
-evals/fixtures/                   Repo-only 恢复测试材料
-```
+V0 没有 Web UI、API Server、数据库、RAG、MCP Server、自定义 Agent Loop、Agent 投票/辩论、用户/权限系统或自动定时任务。Project discovery、bootstrap、resume、Stage 路由和文件维护直接由 Codex Runtime 按仓库协议执行。

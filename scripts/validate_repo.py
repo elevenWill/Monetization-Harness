@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
-"""Validate the V0 repository, source snapshots, workspace, and evals."""
+"""Deterministically validate the Conversation-First V0 repository.
+
+This development tool checks file contracts and provenance. It does not run
+Codex or claim to evaluate LLM behavior.
+"""
 
 from __future__ import annotations
 
 import hashlib
 import re
-import shutil
-import subprocess
 import sys
-import tempfile
 from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_ROOT = REPO_ROOT / ".agents" / "skills"
+WORKSPACE = REPO_ROOT / "workspace"
+EVALS = REPO_ROOT / "evals"
 THINKING_SKILLS = {
     "opportunity-finder": Path("/Users/lei/Downloads/0813/paul-graham-skill"),
     "assumption-challenger": Path("/Users/lei/Downloads/0813/zizek-skill"),
@@ -39,6 +42,26 @@ REQUIRED_DOCS = {
     "review-protocol.md",
     "workspace-protocol.md",
     "source-mapping.md",
+}
+EXPECTED_EVALS = {
+    "01-new-project-auto-bootstrap.md",
+    "02-premature-build.md",
+    "03-first-payment.md",
+    "04-repeat-payment-and-leverage.md",
+    "05-large-bet.md",
+    "06-stage-regression.md",
+}
+REQUIRED_STATE_HEADINGS = {
+    "## 当前目标",
+    "## 已确认事实 FACTS",
+    "## 当前假设 ASSUMPTIONS",
+    "## 最大未知量",
+    "## 当前最大风险",
+    "## 当前实验",
+    "## 当前下一步",
+    "## 为什么这是下一步",
+    "## 最近一次状态变化",
+    "## 相关材料",
 }
 
 
@@ -74,7 +97,8 @@ def compare_tree(source: Path, snapshot: Path) -> None:
             if source_files[path] != snapshot_files[path]
         )
         raise ValidationFailure(
-            f"source snapshot mismatch at {snapshot}; missing={missing}, extra={extra}, changed={changed}"
+            f"source snapshot mismatch at {snapshot}; "
+            f"missing={missing}, extra={extra}, changed={changed}"
         )
 
 
@@ -85,10 +109,9 @@ def parse_skill_frontmatter(path: Path) -> dict[str, str]:
     match = re.match(r"\A---\n(.*?)\n---\n", text, flags=re.DOTALL)
     if not match:
         raise ValidationFailure(f"invalid Skill front matter in {path}")
-    lines = match.group(1).splitlines()
     data: dict[str, str] = {}
     active_key: str | None = None
-    for line in lines:
+    for line in match.group(1).splitlines():
         if line.startswith("  ") and active_key:
             data[active_key] += " " + line.strip()
             continue
@@ -105,7 +128,9 @@ def parse_skill_frontmatter(path: Path) -> dict[str, str]:
 def validate_skills() -> None:
     found = {path.name for path in SKILLS_ROOT.iterdir() if path.is_dir()}
     if found != ALL_SKILLS:
-        raise ValidationFailure(f"skill set mismatch: expected={sorted(ALL_SKILLS)}, found={sorted(found)}")
+        raise ValidationFailure(
+            f"skill set mismatch: expected={sorted(ALL_SKILLS)}, found={sorted(found)}"
+        )
 
     for name in sorted(ALL_SKILLS):
         skill = SKILLS_ROOT / name
@@ -136,78 +161,110 @@ def validate_skills() -> None:
             raise ValidationFailure(f"{name}: source references missing")
 
         if original.is_dir():
-            pairs = [
+            file_pairs = [
                 (original / "LICENSE", skill / "references" / "source" / "LICENSE"),
                 (original / "README.md", skill / "references" / "source" / "original-README.md"),
                 (original / "SKILL.md", skill / "references" / "source" / "original-SKILL.md"),
             ]
-            for source, snapshot in pairs:
-                if sha256(source) != sha256(snapshot):
-                    raise ValidationFailure(f"{name}: modified source snapshot {snapshot}")
+            if name == "business-filter":
+                file_pairs.append(
+                    (
+                        original / "README_EN.md",
+                        skill / "references" / "source" / "original-README_EN.md",
+                    )
+                )
+            for source, snapshot in file_pairs:
+                if not snapshot.is_file() or sha256(source) != sha256(snapshot):
+                    raise ValidationFailure(f"{name}: modified or missing source snapshot {snapshot}")
             compare_tree(original / "references", skill / "references" / "source" / "references")
             compare_tree(original / "examples", skill / "examples" / "source")
 
 
-def validate_workspace_template() -> None:
-    workspace = REPO_ROOT / "workspace"
-    template = workspace / "_templates" / "project"
-    if not (workspace / "_index.md").is_file():
-        raise ValidationFailure("workspace/_index.md missing")
-    root_files = {path.name for path in template.iterdir() if path.is_file()}
-    root_dirs = {path.name for path in template.iterdir() if path.is_dir()}
-    if root_files != {"IDEA.md", "STATE.md"} or root_dirs != STAGE_DIRS:
-        raise ValidationFailure(
-            f"template root invariant failed: files={sorted(root_files)}, dirs={sorted(root_dirs)}"
-        )
-    template_text = (template / "IDEA.md").read_text(encoding="utf-8") + (
-        template / "STATE.md"
-    ).read_text(encoding="utf-8")
-    for token in ("{{PROJECT}}", "{{CREATED_AT}}", "{{GOAL}}"):
-        if token not in template_text:
-            raise ValidationFailure(f"workspace template missing token {token}")
+def parse_frontmatter_keys(path: Path) -> set[str]:
+    text = path.read_text(encoding="utf-8")
+    match = re.match(r"\A---\n(.*?)\n---\n", text, flags=re.DOTALL)
+    if not match:
+        raise ValidationFailure(f"missing YAML front matter in {path}")
+    return {
+        line.split(":", 1)[0].strip()
+        for line in match.group(1).splitlines()
+        if line and not line.startswith((" ", "\t")) and ":" in line
+    }
 
-    for project in workspace.iterdir():
+
+def validate_state(path: Path) -> None:
+    keys = parse_frontmatter_keys(path)
+    required_keys = {"project", "stage", "status", "updated_at", "transactions", "next_gate"}
+    if not required_keys <= keys:
+        raise ValidationFailure(f"{path}: missing STATE front matter keys {sorted(required_keys - keys)}")
+    text = path.read_text(encoding="utf-8")
+    missing_headings = sorted(heading for heading in REQUIRED_STATE_HEADINGS if heading not in text)
+    if missing_headings:
+        raise ValidationFailure(f"{path}: missing STATE headings {missing_headings}")
+
+
+def validate_workspace() -> None:
+    if not (WORKSPACE / "_index.md").is_file():
+        raise ValidationFailure("workspace/_index.md missing")
+    if (WORKSPACE / "_templates").exists():
+        raise ValidationFailure("workspace/_templates must not exist in Conversation-First V0")
+
+    unexpected_root_files = {
+        path.name for path in WORKSPACE.iterdir() if path.is_file() and path.name != "_index.md"
+    }
+    if unexpected_root_files:
+        raise ValidationFailure(f"unexpected workspace root files: {sorted(unexpected_root_files)}")
+
+    for project in WORKSPACE.iterdir():
         if not project.is_dir() or project.name.startswith("_"):
             continue
         files = {path.name for path in project.iterdir() if path.is_file()}
-        dirs = {path.name for path in project.iterdir() if path.is_dir()}
-        if files != {"IDEA.md", "STATE.md"} or dirs != STAGE_DIRS:
-            raise ValidationFailure(f"workspace project root invariant failed: {project}")
+        directories = {path.name for path in project.iterdir() if path.is_dir()}
+        if files != {"IDEA.md", "STATE.md"}:
+            raise ValidationFailure(
+                f"{project}: root files must be exactly IDEA.md and STATE.md, found {sorted(files)}"
+            )
+        if not directories <= STAGE_DIRS:
+            raise ValidationFailure(
+                f"{project}: unknown Stage directories {sorted(directories - STAGE_DIRS)}"
+            )
+        validate_state(project / "STATE.md")
+        parse_frontmatter_keys(project / "IDEA.md")
+        for directory in (path for path in project.rglob("*") if path.is_dir()):
+            if not any(path.is_file() for path in directory.rglob("*")):
+                raise ValidationFailure(f"empty workspace directory is forbidden: {directory}")
 
 
-def validate_project_script() -> None:
-    with tempfile.TemporaryDirectory(prefix="monetization-harness-eval-") as temp:
-        isolated = Path(temp)
-        shutil.copytree(REPO_ROOT / "workspace", isolated / "workspace")
-        (isolated / "scripts").mkdir()
-        shutil.copy2(REPO_ROOT / "scripts" / "new_project.py", isolated / "scripts" / "new_project.py")
-        command = [
-            sys.executable,
-            str(isolated / "scripts" / "new_project.py"),
-            "eval-project",
-            "--goal",
-            "Validate a repeatable paid outcome",
-        ]
-        completed = subprocess.run(command, cwd=isolated, text=True, capture_output=True, check=False)
-        if completed.returncode != 0:
-            raise ValidationFailure(f"new_project.py failed: {completed.stderr.strip()}")
-        project = isolated / "workspace" / "eval-project"
-        files = {path.name for path in project.iterdir() if path.is_file()}
-        dirs = {path.name for path in project.iterdir() if path.is_dir()}
-        if files != {"IDEA.md", "STATE.md"} or dirs != STAGE_DIRS:
-            raise ValidationFailure("new_project.py produced an invalid project root")
-        generated = (project / "IDEA.md").read_text(encoding="utf-8") + (
-            project / "STATE.md"
-        ).read_text(encoding="utf-8")
-        if "{{" in generated or "eval-project" not in generated:
-            raise ValidationFailure("new_project.py did not replace template tokens")
-        index = (isolated / "workspace" / "_index.md").read_text(encoding="utf-8")
-        if "[eval-project](eval-project/STATE.md)" not in index:
-            raise ValidationFailure("new_project.py did not update the workspace index")
+def validate_evals() -> None:
+    if not (EVALS / "README.md").is_file():
+        raise ValidationFailure("evals/README.md missing")
+    cases_dir = EVALS / "cases"
+    found = {path.name for path in cases_dir.glob("*.md")}
+    if found != EXPECTED_EVALS:
+        raise ValidationFailure(
+            f"behavior scenario set mismatch: expected={sorted(EXPECTED_EVALS)}, found={sorted(found)}"
+        )
+    forbidden = [EVALS / "results", EVALS / "fixtures", EVALS / "run_evals.py"]
+    existing = [str(path.relative_to(REPO_ROOT)) for path in forbidden if path.exists()]
+    if existing:
+        raise ValidationFailure(f"obsolete pseudo-eval artifacts still exist: {existing}")
 
-        duplicate = subprocess.run(command, cwd=isolated, text=True, capture_output=True, check=False)
-        if duplicate.returncode == 0 or "refusing to overwrite" not in duplicate.stderr:
-            raise ValidationFailure("new_project.py failed to reject overwrite")
+    required_headings = {
+        "## Preconditions",
+        "## User message",
+        "## Expected observable behavior",
+        "## Failure conditions",
+    }
+    for path in cases_dir.glob("*.md"):
+        text = path.read_text(encoding="utf-8")
+        missing = sorted(heading for heading in required_headings if heading not in text)
+        if missing:
+            raise ValidationFailure(f"{path}: missing behavior scenario headings {missing}")
+
+    bootstrap = (cases_dir / "01-new-project-auto-bootstrap.md").read_text(encoding="utf-8")
+    for phrase in ("exactly `IDEA.md` and `STATE.md`", "no empty stage directory", "04-experiments"):
+        if phrase not in bootstrap:
+            raise ValidationFailure(f"auto-bootstrap scenario missing lazy-growth assertion: {phrase}")
 
 
 def validate_authored_links() -> None:
@@ -228,17 +285,14 @@ def validate_authored_links() -> None:
                 raise ValidationFailure(f"broken link in {relative}: {raw_link}")
 
 
-def run_evals() -> None:
-    completed = subprocess.run(
-        [sys.executable, str(REPO_ROOT / "evals" / "run_evals.py")],
-        cwd=REPO_ROOT,
-        text=True,
-        capture_output=True,
-        check=False,
-    )
-    if completed.returncode != 0:
-        raise ValidationFailure(completed.stderr.strip() or completed.stdout.strip())
-    print(completed.stdout.rstrip())
+def validate_removed_cli() -> None:
+    forbidden = [REPO_ROOT / "scripts" / "new_project.py", WORKSPACE / "_templates"]
+    existing = [str(path.relative_to(REPO_ROOT)) for path in forbidden if path.exists()]
+    if existing:
+        raise ValidationFailure(f"manual project-initialization artifacts still exist: {existing}")
+    user_docs = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+    if "scripts/new_project.py" in user_docs or "--goal" in user_docs:
+        raise ValidationFailure("README still requires manual project initialization")
 
 
 def main() -> int:
@@ -249,18 +303,19 @@ def main() -> int:
         if not REQUIRED_DOCS <= docs:
             raise ValidationFailure(f"required docs missing: {sorted(REQUIRED_DOCS - docs)}")
         validate_skills()
-        print("[PASS] six repo-level Skills and source snapshots")
-        validate_workspace_template()
-        print("[PASS] workspace template and root invariants")
-        validate_project_script()
-        print("[PASS] isolated new-project creation and overwrite protection")
+        print("[PASS] six repo-level Skills and unmodified Persona source snapshots")
+        validate_removed_cli()
+        print("[PASS] manual project initializer and template tree are absent")
+        validate_workspace()
+        print("[PASS] Conversation-First workspace and lazy materialization invariants")
+        validate_evals()
+        print("[PASS] six human-auditable behavior acceptance scenarios")
         validate_authored_links()
         print("[PASS] authored Markdown links")
-        run_evals()
     except (ValidationFailure, OSError) as exc:
         print(f"[FAIL] {exc}", file=sys.stderr)
         return 1
-    print("PASS: Monetization Decision Harness V0 repository validation")
+    print("PASS: deterministic V0 development validation (no Codex runtime was executed)")
     return 0
 
 
