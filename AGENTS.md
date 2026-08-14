@@ -26,13 +26,18 @@ For every material monetization decision:
 1. Invoke `.agents/skills/monetization-orchestrator/SKILL.md` and run its project lifecycle. Stop project handling for a No Project conversation.
 2. For a matched project, read `IDEA.md` and `STATE.md` completely. For a new project, bootstrap the minimum recoverable state from only what the user actually said; mark missing information `unknown`.
 3. Determine the current stage from evidence, not aspiration or directory presence. Stage may move backward, and `STATE.md` is its sole authority.
-4. Classify new claims as FACT, ASSUMPTION, DECISION, or EXPERIMENT. Never promote a Skill opinion or model inference to FACT.
+4. Classify decision-relevant records under `docs/object-protocol.md`, including FACT, ASSUMPTION, DECISION, EXPERIMENT, TRANSACTION, RESEARCH, CASE, and BUYING SITUATION. Never promote a Skill opinion or model inference to FACT.
 5. Identify the single biggest unknown or constraint between the project and its next gate.
 6. Decide whether the user's stated question should be answered now. Interrupt premature building, automation, productization, scaling, or large commitments.
-7. Select the minimum necessary Thinking Skills: normally one or two, exceptionally three with a stated reason. Never invoke all five by default.
-8. Synthesize one judgment and one concrete next action. Do not expose a five-person panel or imitate a named person's voice.
-9. Update the workspace only when a new project is established or a durable fact, assumption status, experiment, decision, transaction, stage, next gate, or material risk changed.
-10. Keep `STATE.md` a coherent current snapshot. After new evidence, reconcile transaction counters, active assumption statuses, decision bases, largest unknown, risk, and next action; rewrite stale present-tense summaries as dated historical context rather than leaving contradictions. Put detailed history and evidence in a matching stage directory only when that artifact is actually written, and link to it.
+7. Run the **Market Reality Gate** before selecting Thinking Skills. Invoke `.agents/skills/market-reality-researcher/SKILL.md` when the judgment depends on current external market, platform, policy, price, competition, case, purchase-trigger, or deadline evidence; do a bounded quick scan for a newly bootstrapped public-market project; or explicitly take a no-search route when the question is internal, already evidenced by fresh scope-matched research, or does not depend on current external facts. Record access and coverage limits instead of guessing.
+8. If research ran, classify and persist its decision-relevant results before further judgment. Research is an evidence-producing capability, not a Thinking Skill, and does not count against the normal one-or-two-lens limit.
+9. Run the **Why-Now Gate** for every material opportunity. Compare concrete Buying Situations rather than an abstract product idea. Determine the trigger event, deadline reality and source, consequence and consequence owner, buyer/payer/budget path, workaround, purchase window, reachability, trust requirement, low-trust entry, frequency, and delivery liability. Treat urgency without evidence as `unknown`; anxiety, popularity, or seller-created scarcity does not prove willingness to pay or high commercial value. A genuine business may still rely on recurrence, convenience, identity, entertainment, persistent cost, or long-term risk rather than a deadline.
+10. Run `business-filter` for each leading concrete Opportunity after the Why-Now Gate, including when the outcome is `no_clear_why_now`. It is the first Thinking Skill and consumes one lens slot; it must assess the active `BSxxx` or explicit Buying-Situation hypothesis before any other lens.
+11. Select only the minimum additional Thinking Skill needed to produce the action. Normally use `business-filter` alone or with one additional lens; use a third total lens only exceptionally with a stated reason. Never invoke all five by default.
+12. Prefer a **Deadline Replication Experiment** when a real trigger and purchase window can be tested: contact buyers while the trigger is actually present, offer a bounded on-time result, cap delivery liability, and prohibit fabricated deadlines or deceptive scarcity.
+13. Synthesize one judgment and one concrete next action. Do not expose a five-person panel or imitate a named person's voice.
+14. Update the workspace only when a new project is established or a durable fact, assumption status, experiment, decision, transaction, research result, case, Buying Situation, stage, next gate, or material risk changed.
+15. Keep `STATE.md` a coherent current snapshot. After new evidence, reconcile transaction counters, active assumption statuses, decision bases, largest unknown, market-evidence freshness and coverage, purchase-trigger status when present, risk, and next action; rewrite stale present-tense summaries as dated historical context rather than leaving contradictions. Put detailed history and evidence in a matching stage directory only when that artifact is actually written, and link to it.
 
 ## Decision order
 
@@ -55,23 +60,24 @@ Apply these rules in order:
 
 ## Evidence rules
 
-Use the stable per-project IDs `O001`, `F001`, `A001`, `D001`, `E001`, and `T001`; never renumber because a file moved. Evidence strength is approximately:
+Use the stable per-project IDs `O001`, `F001`, `A001`, `D001`, `E001`, `T001`, `R001`, `C001`, and `BS001`; never renumber because a file moved. Evaluate evidence by the claim-specific rules in `docs/object-protocol.md`, not one universal ranking. Stage and next-gate judgments still prioritize the project's own transactions, observed behavior, and usage. External cases can establish market existence or constraints but cannot by themselves prove transferability, willingness to pay, a real purchase trigger, or repeatability for this project; time-sensitive platform or policy claims require current first-party evidence when available.
 
-`real payment > observed behavior > real usage > direct user statement > observation > public market material > model inference > Skill judgment`
-
-Every FACT must link to or name its evidence. Keep model judgments in analysis or review records, never in FACTS. Record contradictions instead of silently rewriting `IDEA.md` history.
+Every FACT must link to or name its evidence, every RESEARCH or CASE artifact must state scope, checked date, source links, and material coverage gaps, and every BUYING SITUATION must preserve unknown links rather than inventing a complete trigger chain. Keep model judgments in analysis or review records, never in FACTS. Record contradictions instead of silently rewriting `IDEA.md` history.
 
 ## Workspace rules
 
 - A real project root must contain `IDEA.md` and `STATE.md`. Beyond them, it may contain only standard stage directories that already hold real persisted work; stage directories need not be present or continuous.
 - Never create empty stage directories or subdirectories. Create a directory in the same write that creates its first real artifact.
 - Directory presence records historical material; it does not determine the current stage. `STATE.md` does.
-- Store new detailed material in its owning numbered stage directory. If uncertain but durable, use that stage's `analysis/` directory and create it together with the artifact.
+- Store new detailed material in its owning numbered stage directory. Persist RESEARCH under that stage's `research/` directory and reusable CASE records under its `cases/` directory. If uncertain but durable, use that stage's `analysis/` directory and create it together with the artifact. Do not create project-root research, case, source, or market-report files.
+- Use the canonical Stage directory names exactly: `opportunity_discovery` -> `01-opportunity`, `problem_validation` -> `02-problem-validation`, `business_validation` -> `03-business-validation`, `experiment_validation` -> `04-experiments`, `transaction_validation` -> `05-transactions`, `leverage_discovery` -> `06-leverage`, `productization` -> `07-productization`, and `scaling` -> `08-scaling`. Never abbreviate or invent variants such as `02-problem`.
 - Use repository-relative links so the project remains portable.
 - Maintain `workspace/_index.md` automatically when a project is created or its stage, status, next gate, or last-updated date changes.
 - Do not write on ordinary conversation. Follow the mutation triggers in `docs/workspace-protocol.md`.
 - Never invent interviews, payments, users, metrics, or validation to fill a snapshot or make a directory exist.
-- New evidence must not leave stale claims in `STATE.md`. For example, after a first payment, change “current transactions are 0” inside an older decision basis to “when D001 was made, transactions were 0,” and state which assumptions the payment supports only partially.
+- Add optional `market_evidence` state or market-evidence headings only after real research exists; omit empty placeholders. A bootstrap operation still creates only `IDEA.md` and `STATE.md`. If the Market Reality Gate then causes research in the same turn, persist it as a separate subsequent write that creates its non-empty stage `research/` directory and artifact together.
+- Add optional `purchase_trigger` state only after a real Buying Situation is being analyzed. Persist the first `BSxxx` under the owning canonical Stage's `buying-situations/` directory, creating the directory and artifact together. Never add project-root `DEADLINE.md`, `HUMAN-NATURE.md`, `URGENCY.md`, or `BUYING-SITUATIONS.md`.
+- New evidence must not leave stale claims in `STATE.md`. For example, after a first payment, change “current transactions are 0” inside an older decision basis to “when D001 was made, transactions were 0,” and state which assumptions the payment supports only partially. Likewise, mark superseded or stale market research explicitly and do not leave its conclusions presented as current.
 
 ## Canonical references
 
@@ -80,6 +86,8 @@ Every FACT must link to or name its evidence. Keep model judgments in analysis o
 - Project lifecycle, workspace mutation, and resumption: `docs/workspace-protocol.md`
 - Skill output contract: `docs/review-protocol.md`
 - Persona-to-domain provenance: `docs/source-mapping.md`
+- Market Reality research and Agent Reach integration: `docs/integrations/agent-reach.md`
+- Purchase Trigger, Cost of Delay, Buying Situation, and Why-Now rules: `docs/purchase-trigger-protocol.md`
 
 ## V0 boundaries
 

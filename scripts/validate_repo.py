@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Deterministically validate the Conversation-First V0 repository.
+"""Deterministically validate the Conversation-First Market Reality and Why-Now V0.
 
-This development tool checks file contracts and provenance. It does not run
-Codex or claim to evaluate LLM behavior.
+This optional development tool checks repository contracts, provenance, and
+workspace shape. It does not access the web, run Codex, or claim to evaluate
+LLM behavior or market-research quality.
 """
 
 from __future__ import annotations
@@ -17,6 +18,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_ROOT = REPO_ROOT / ".agents" / "skills"
 WORKSPACE = REPO_ROOT / "workspace"
 EVALS = REPO_ROOT / "evals"
+
 THINKING_SKILLS = {
     "opportunity-finder": Path("/Users/lei/Downloads/0813/paul-graham-skill"),
     "assumption-challenger": Path("/Users/lei/Downloads/0813/zizek-skill"),
@@ -24,7 +26,10 @@ THINKING_SKILLS = {
     "experiment-designer": Path("/Users/lei/Downloads/0813/taleb-skill"),
     "leverage-designer": Path("/Users/lei/Downloads/0813/naval-skill"),
 }
-ALL_SKILLS = set(THINKING_SKILLS) | {"monetization-orchestrator"}
+EVIDENCE_SKILLS = {"market-reality-researcher"}
+ORCHESTRATOR_SKILLS = {"monetization-orchestrator"}
+ALL_SKILLS = set(THINKING_SKILLS) | EVIDENCE_SKILLS | ORCHESTRATOR_SKILLS
+
 STAGE_DIRS = {
     "01-opportunity",
     "02-problem-validation",
@@ -37,11 +42,33 @@ STAGE_DIRS = {
     "99-archive",
 }
 REQUIRED_DOCS = {
-    "stage-model.md",
-    "object-protocol.md",
-    "review-protocol.md",
-    "workspace-protocol.md",
-    "source-mapping.md",
+    Path("stage-model.md"),
+    Path("object-protocol.md"),
+    Path("review-protocol.md"),
+    Path("workspace-protocol.md"),
+    Path("source-mapping.md"),
+    Path("integrations/agent-reach.md"),
+    Path("purchase-trigger-protocol.md"),
+}
+RESEARCHER_FILES = {
+    Path("SKILL.md"),
+    Path("agents/openai.yaml"),
+    Path("references/research-workflow.md"),
+    Path("references/source-strategy.md"),
+    Path("references/query-playbook.md"),
+    Path("references/case-reconstruction.md"),
+    Path("references/transferability-check.md"),
+    Path("references/trigger-event-search.md"),
+    Path("references/deadline-signal-search.md"),
+    Path("examples/local/digital-human-commerce.md"),
+    Path("examples/local/adjacent-case-trap.md"),
+    Path("examples/local/vendor-claim-trap.md"),
+    Path("examples/local/policy-conflict.md"),
+    Path("examples/local/no-exact-precedent.md"),
+    Path("examples/local/deadline-opportunity.md"),
+    Path("examples/local/fake-urgency.md"),
+    Path("examples/local/urgent-but-unbuyable.md"),
+    Path("examples/local/digital-human-deadline.md"),
 }
 EXPECTED_EVALS = {
     "01-new-project-auto-bootstrap.md",
@@ -50,6 +77,22 @@ EXPECTED_EVALS = {
     "04-repeat-payment-and-leverage.md",
     "05-large-bet.md",
     "06-stage-regression.md",
+    "07-market-research-required.md",
+    "08-exact-vs-adjacent.md",
+    "09-vendor-claim.md",
+    "10-policy-freshness.md",
+    "11-success-case-non-transferable.md",
+    "12-agent-reach-unavailable.md",
+    "13-no-search-needed.md",
+    "14-successful-pattern-first.md",
+    "15-real-deadline.md",
+    "16-deadline-without-consequence.md",
+    "17-urgent-but-low-trust.md",
+    "18-recurring-deadline.md",
+    "19-one-off-deadline.md",
+    "20-manufactured-urgency.md",
+    "21-valid-business-without-deadline.md",
+    "22-high-urgency-high-liability.md",
 }
 REQUIRED_STATE_HEADINGS = {
     "## 当前目标",
@@ -62,6 +105,203 @@ REQUIRED_STATE_HEADINGS = {
     "## 为什么这是下一步",
     "## 最近一次状态变化",
     "## 相关材料",
+}
+MARKET_STATE_HEADINGS = {
+    "## 当前外部市场证据",
+    "## 最近一次市场调查",
+    "## 最接近的已验证模式",
+    "## 当前政策状态",
+    "## 研究覆盖缺口",
+}
+RESEARCH_FIELDS = {
+    "Research question",
+    "Scope",
+    "Market / geography",
+    "Target platforms",
+    "Content type",
+    "Started / checked date",
+    "Research depth",
+    "Queries used",
+    "Channels actually accessed",
+    "Coverage gaps",
+    "Sources",
+    "Supporting evidence",
+    "Contradicting evidence",
+    "Exact cases",
+    "Adjacent cases",
+    "Negative cases",
+    "Policy findings",
+    "User acceptance signals",
+    "Competitor and pricing signals",
+    "Verdict",
+    "Remaining unknowns",
+    "Recheck condition",
+}
+CASE_FIELDS = {
+    "Actor",
+    "Date range",
+    "Market",
+    "Platform",
+    "Content format",
+    "Scope match",
+    "Target customer",
+    "Payer",
+    "Offer",
+    "Bought result",
+    "Acquisition channel",
+    "Delivery model",
+    "Price or revenue evidence",
+    "Repeatability evidence",
+    "Reported outcome",
+    "Verification status",
+    "Source IDs",
+    "Required resources",
+    "Platform dependency",
+    "What appears to work",
+    "Failure or risk signals",
+    "Copyable components",
+    "Context-dependent components",
+    "Non-transferable advantages",
+    "Relevance to current project",
+}
+SOURCE_FIELDS = {
+    "id",
+    "title",
+    "url",
+    "publisher",
+    "platform",
+    "source_type",
+    "published_at",
+    "accessed_at",
+    "market",
+    "claim",
+    "supports",
+    "contradicts",
+    "authority",
+    "verification",
+    "freshness",
+    "scope_match",
+    "direction",
+    "notes",
+}
+MARKET_EVIDENCE_FIELDS = {
+    "status",
+    "scope",
+    "primary_market",
+    "platforms",
+    "content_type",
+    "last_checked_at",
+    "latest_research",
+    "exact_precedent",
+    "policy_status",
+    "coverage_gaps",
+}
+MARKET_EVIDENCE_STATUSES = {"not_started", "partial", "current", "stale", "blocked"}
+RESEARCH_VERDICTS = {
+    "exact_precedent_verified",
+    "exact_precedent_reported",
+    "adjacent_precedent_only",
+    "market_signal_exists",
+    "insufficient_evidence",
+    "contradicted_by_evidence",
+    "policy_conditional",
+    "policy_blocked",
+    "research_blocked",
+    "stale_research",
+}
+RESEARCH_DEPTHS = {"quick", "standard", "deep"}
+CASE_STATUSES = {
+    "exact_verified",
+    "exact_corroborated",
+    "exact_reported",
+    "adjacent_verified",
+    "adjacent_reported",
+    "vendor_claim_only",
+    "stale_case",
+    "contradicted",
+    "insufficient_evidence",
+}
+BUYING_SITUATION_FIELDS = {
+    "Status",
+    "Trigger event",
+    "Deadline type",
+    "Deadline source",
+    "Deadline date/window",
+    "Buyer",
+    "Payer",
+    "Beneficiary",
+    "Required result",
+    "Cost of delay",
+    "Consequence owner",
+    "Current workaround",
+    "Purchase window",
+    "Trust requirement",
+    "Low-trust entry",
+    "Frequency",
+    "Observability",
+    "Reachability",
+    "Budget path",
+    "Delivery risk",
+    "Linked facts",
+    "Linked assumptions",
+    "Linked research",
+    "Linked cases",
+    "Linked experiments",
+    "Linked transactions",
+}
+BUYING_SITUATION_STATUSES = {
+    "hypothesis",
+    "observed",
+    "supported",
+    "paid",
+    "repeated",
+    "weakened",
+    "invalidated",
+}
+DEADLINE_TYPES = {
+    "hard_external",
+    "hard_internal",
+    "rolling_operational",
+    "opportunity_window",
+    "soft_social",
+    "seller_created",
+    "fabricated",
+    "none",
+    "unknown",
+}
+PURCHASE_TRIGGER_FIELDS = {
+    "status",
+    "active_buying_situation",
+    "trigger_event",
+    "deadline_type",
+    "deadline_window",
+    "cost_of_delay",
+    "consequence_owner",
+    "purchase_window",
+    "trust_barrier",
+    "low_trust_entry",
+    "latest_evidence",
+}
+PURCHASE_TRIGGER_STATUSES = {
+    "not_started",
+    "hypothesis",
+    "partial",
+    "evidenced",
+    "paid",
+    "repeated",
+    "invalidated",
+}
+TRANSACTION_STATUSES = {"completed", "refunded", "discounted", "barter", "promised"}
+TRANSACTION_FIELDS = {
+    "Status",
+    "Amount",
+    "Currency",
+    "Paid at",
+    "Payer",
+    "Customer",
+    "Payment evidence",
+    "Linked fact",
+    "Linked buying situation",
 }
 
 
@@ -179,6 +419,25 @@ def validate_skills() -> None:
             compare_tree(original / "references", skill / "references" / "source" / "references")
             compare_tree(original / "examples", skill / "examples" / "source")
 
+    researcher = SKILLS_ROOT / "market-reality-researcher"
+    missing_researcher = [
+        str(path) for path in sorted(RESEARCHER_FILES) if not (researcher / path).is_file()
+    ]
+    if missing_researcher:
+        raise ValidationFailure(f"market researcher files missing: {missing_researcher}")
+    forbidden = [researcher / "SOURCE.md", researcher / "references" / "source"]
+    if any(path.exists() for path in forbidden):
+        raise ValidationFailure("market-reality-researcher must not claim Persona provenance")
+    researcher_text = (researcher / "SKILL.md").read_text(encoding="utf-8")
+    for phrase in (
+        "Evidence-Producing",
+        "Closest Proven Playbook",
+        "vendor_claim_only",
+        "02-problem-validation",
+    ):
+        if phrase not in researcher_text:
+            raise ValidationFailure(f"market researcher missing core contract: {phrase}")
+
 
 def parse_frontmatter_keys(path: Path) -> set[str]:
     text = path.read_text(encoding="utf-8")
@@ -201,6 +460,126 @@ def validate_state(path: Path) -> None:
     missing_headings = sorted(heading for heading in REQUIRED_STATE_HEADINGS if heading not in text)
     if missing_headings:
         raise ValidationFailure(f"{path}: missing STATE headings {missing_headings}")
+
+
+def missing_labels(text: str, labels: set[str]) -> list[str]:
+    return sorted(label for label in labels if label not in text)
+
+
+def field_value(text: str, field: str) -> str | None:
+    match = re.search(
+        rf"(?mi)^\s*(?:[-*]\s*)?(?:#+\s*)?{re.escape(field)}\s*:\s*[`\"']?([^\n`\"']+)",
+        text,
+    )
+    if match:
+        return match.group(1).strip()
+    heading_match = re.search(
+        rf"(?mi)^\s*#+\s*{re.escape(field)}\s*\n+\s*[`\"']?([^\n`\"']+)",
+        text,
+    )
+    return heading_match.group(1).strip() if heading_match else None
+
+
+def validate_research(path: Path) -> None:
+    text = path.read_text(encoding="utf-8")
+    missing = missing_labels(text, RESEARCH_FIELDS)
+    if missing:
+        raise ValidationFailure(f"{path}: missing Research fields {missing}")
+    verdict = field_value(text, "Verdict")
+    if verdict not in RESEARCH_VERDICTS:
+        raise ValidationFailure(f"{path}: invalid Research verdict {verdict!r}")
+    depth = (
+        field_value(text, "Research depth")
+        or field_value(text, "research_depth")
+        or field_value(text, "depth")
+    )
+    if depth not in RESEARCH_DEPTHS:
+        raise ValidationFailure(f"{path}: invalid Research depth {depth!r}")
+    missing_source_fields = missing_labels(text, SOURCE_FIELDS)
+    if missing_source_fields:
+        raise ValidationFailure(f"{path}: Source records missing fields {missing_source_fields}")
+    research_id = path.name[:4]
+    if not re.search(rf"\b{re.escape(research_id)}-S\d{{2}}\b", text):
+        raise ValidationFailure(f"{path}: no local Source ID for {research_id}")
+
+
+def validate_case(path: Path, known_source_ids: set[str]) -> None:
+    text = path.read_text(encoding="utf-8")
+    missing = missing_labels(text, CASE_FIELDS)
+    if missing:
+        raise ValidationFailure(f"{path}: missing Case fields {missing}")
+    status = field_value(text, "Verification status")
+    if status not in CASE_STATUSES:
+        raise ValidationFailure(f"{path}: invalid Case verification status {status!r}")
+    source_ids = set(re.findall(r"\bR\d{3}-S\d{2}\b", text))
+    if not source_ids:
+        raise ValidationFailure(f"{path}: Case has no Research Source ID")
+    unknown_source_ids = sorted(source_ids - known_source_ids)
+    if unknown_source_ids:
+        raise ValidationFailure(f"{path}: unknown Research Source IDs {unknown_source_ids}")
+
+
+def validate_transaction(path: Path) -> str:
+    text = path.read_text(encoding="utf-8")
+    missing = missing_labels(text, TRANSACTION_FIELDS)
+    if missing:
+        raise ValidationFailure(f"{path}: missing Transaction fields {missing}")
+    transaction_id = path.name[:4]
+    if not re.search(rf"(?m)^#{{1,6}}\s+{re.escape(transaction_id)}\b", text):
+        raise ValidationFailure(f"{path}: Transaction heading must contain {transaction_id}")
+    status = field_value(text, "Status")
+    if status not in TRANSACTION_STATUSES:
+        raise ValidationFailure(f"{path}: invalid Transaction status {status!r}")
+    if status == "completed":
+        amount = field_value(text, "Amount")
+        if not amount or not re.fullmatch(r"\d+(?:\.\d+)?", amount):
+            raise ValidationFailure(f"{path}: invalid Transaction amount {amount!r}")
+        currency = field_value(text, "Currency")
+        if not currency or currency == "unknown":
+            raise ValidationFailure(f"{path}: Transaction currency must be known")
+        paid_at = field_value(text, "Paid at")
+        if not paid_at or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", paid_at):
+            raise ValidationFailure(f"{path}: invalid Transaction paid date {paid_at!r}")
+        for field in ("Payer", "Customer", "Payment evidence", "Linked fact"):
+            value = field_value(text, field)
+            if not value or value == "unknown":
+                raise ValidationFailure(f"{path}: completed Transaction {field} must be known")
+        if not re.search(r"\bF\d{3}\b", field_value(text, "Linked fact") or ""):
+            raise ValidationFailure(f"{path}: completed Transaction must link a Fact ID")
+    return status
+
+
+def validate_buying_situation(path: Path, known_transaction_ids: set[str]) -> str:
+    text = path.read_text(encoding="utf-8")
+    missing = missing_labels(text, BUYING_SITUATION_FIELDS)
+    if missing:
+        raise ValidationFailure(f"{path}: missing Buying Situation fields {missing}")
+    situation_id = path.name[:5]
+    if not re.search(rf"(?m)^#{{1,6}}\s+{re.escape(situation_id)}\b", text):
+        raise ValidationFailure(f"{path}: Buying Situation heading must contain {situation_id}")
+    status = field_value(text, "Status")
+    if status not in BUYING_SITUATION_STATUSES:
+        raise ValidationFailure(f"{path}: invalid Buying Situation status {status!r}")
+    deadline_type = field_value(text, "Deadline type")
+    if deadline_type not in DEADLINE_TYPES:
+        raise ValidationFailure(f"{path}: invalid Deadline type {deadline_type!r}")
+    if status in {"paid", "repeated"}:
+        transactions = field_value(text, "Linked transactions") or ""
+        linked_transaction_ids = set(re.findall(r"\bT\d{3}\b", transactions))
+        if not linked_transaction_ids:
+            raise ValidationFailure(
+                f"{path}: {status} Buying Situation must link a Transaction ID"
+            )
+        unknown_transaction_ids = sorted(linked_transaction_ids - known_transaction_ids)
+        if unknown_transaction_ids:
+            raise ValidationFailure(
+                f"{path}: unknown linked Transaction IDs {unknown_transaction_ids}"
+            )
+        if status == "repeated" and len(linked_transaction_ids) < 2:
+            raise ValidationFailure(
+                f"{path}: repeated Buying Situation requires at least two Transaction IDs"
+            )
+    return status
 
 
 def validate_workspace() -> None:
@@ -228,15 +607,153 @@ def validate_workspace() -> None:
             raise ValidationFailure(
                 f"{project}: unknown Stage directories {sorted(directories - STAGE_DIRS)}"
             )
-        validate_state(project / "STATE.md")
+        for forbidden_name in (
+            "MARKET.md",
+            "RESEARCH.md",
+            "CASES.md",
+            "SOURCES.md",
+            "DEADLINE.md",
+            "HUMAN-NATURE.md",
+            "URGENCY.md",
+            "BUYING-SITUATIONS.md",
+        ):
+            if (project / forbidden_name).exists():
+                raise ValidationFailure(f"forbidden project-root market file: {project / forbidden_name}")
+
+        state_path = project / "STATE.md"
+        validate_state(state_path)
         parse_frontmatter_keys(project / "IDEA.md")
+
         for directory in (path for path in project.rglob("*") if path.is_dir()):
             if not any(path.is_file() for path in directory.rglob("*")):
                 raise ValidationFailure(f"empty workspace directory is forbidden: {directory}")
 
+        research_files = sorted(project.glob("**/research/R[0-9][0-9][0-9]-*.md"))
+        case_files = sorted(project.glob("**/cases/C[0-9][0-9][0-9]-*.md"))
+        buying_situation_files = sorted(
+            project.glob("**/buying-situations/BS[0-9][0-9][0-9]-*.md")
+        )
+        all_research_like = sorted(project.glob("**/R[0-9][0-9][0-9]-*.md"))
+        all_case_like = sorted(project.glob("**/C[0-9][0-9][0-9]-*.md"))
+        all_buying_situation_like = sorted(project.glob("**/BS[0-9][0-9][0-9]-*.md"))
+        transaction_files = sorted(
+            project.glob("05-transactions/**/T[0-9][0-9][0-9]-*.md")
+        ) + sorted(project.glob("05-transactions/T[0-9][0-9][0-9].md"))
+        all_transaction_like = sorted(
+            path for path in project.rglob("*.md") if re.match(r"^T\d{3}(?:-|\.md$)", path.name)
+        )
+        if research_files != all_research_like:
+            raise ValidationFailure(f"{project}: Research objects must live in a research directory")
+        if case_files != all_case_like:
+            raise ValidationFailure(f"{project}: Case objects must live in a cases directory")
+        if buying_situation_files != all_buying_situation_like:
+            raise ValidationFailure(
+                f"{project}: Buying Situation objects must live in a buying-situations directory"
+            )
+        if sorted(transaction_files) != all_transaction_like:
+            raise ValidationFailure(
+                f"{project}: Transaction objects must live under 05-transactions"
+            )
+
+        research_ids = [path.name[:4] for path in research_files]
+        case_ids = [path.name[:4] for path in case_files]
+        buying_situation_ids = [path.name[:5] for path in buying_situation_files]
+        if (
+            len(research_ids) != len(set(research_ids))
+            or len(case_ids) != len(set(case_ids))
+            or len(buying_situation_ids) != len(set(buying_situation_ids))
+        ):
+            raise ValidationFailure(f"{project}: duplicate Research, Case, or Buying Situation ID")
+        for research in research_files:
+            validate_research(research)
+        known_source_ids = {
+            source_id
+            for research in research_files
+            for source_id in re.findall(r"\bR\d{3}-S\d{2}\b", research.read_text(encoding="utf-8"))
+        }
+        for case in case_files:
+            validate_case(case, known_source_ids)
+        transaction_statuses = {
+            path.name[:4]: validate_transaction(path) for path in transaction_files
+        }
+        known_transaction_ids = {
+            transaction_id
+            for transaction_id, status in transaction_statuses.items()
+            if status == "completed"
+        }
+        buying_situation_statuses = {
+            path.name[:5]: validate_buying_situation(path, known_transaction_ids)
+            for path in buying_situation_files
+        }
+
+        state_text = state_path.read_text(encoding="utf-8")
+        has_market_state = "market_evidence:" in state_text
+        if has_market_state and not research_files:
+            raise ValidationFailure(f"{state_path}: market_evidence exists without a Research object")
+        if has_market_state:
+            market_block = state_text.split("market_evidence:", 1)[1].split("---", 1)[0]
+            missing_market_fields = missing_labels(market_block, MARKET_EVIDENCE_FIELDS)
+            if missing_market_fields:
+                raise ValidationFailure(
+                    f"{state_path}: market_evidence missing fields {missing_market_fields}"
+                )
+            status = field_value(market_block, "status")
+            if status not in MARKET_EVIDENCE_STATUSES:
+                raise ValidationFailure(f"{state_path}: invalid market_evidence status {status!r}")
+            latest_research = field_value(market_block, "latest_research")
+            if not latest_research:
+                raise ValidationFailure(f"{state_path}: market_evidence latest_research is empty")
+            research_target = (project / latest_research).resolve()
+            if research_target not in {path.resolve() for path in research_files}:
+                raise ValidationFailure(
+                    f"{state_path}: latest_research does not identify a project Research artifact"
+                )
+            missing = missing_labels(state_text, MARKET_STATE_HEADINGS)
+            if missing:
+                raise ValidationFailure(f"{state_path}: missing market evidence headings {missing}")
+
+        has_purchase_trigger_state = "purchase_trigger:" in state_text
+        if has_purchase_trigger_state and not buying_situation_files:
+            raise ValidationFailure(
+                f"{state_path}: purchase_trigger exists without a Buying Situation object"
+            )
+        if has_purchase_trigger_state:
+            trigger_block = state_text.split("purchase_trigger:", 1)[1].split("---", 1)[0]
+            missing_trigger_fields = missing_labels(trigger_block, PURCHASE_TRIGGER_FIELDS)
+            if missing_trigger_fields:
+                raise ValidationFailure(
+                    f"{state_path}: purchase_trigger missing fields {missing_trigger_fields}"
+                )
+            trigger_status = field_value(trigger_block, "status")
+            if trigger_status not in PURCHASE_TRIGGER_STATUSES:
+                raise ValidationFailure(
+                    f"{state_path}: invalid purchase_trigger status {trigger_status!r}"
+                )
+            trigger_deadline_type = field_value(trigger_block, "deadline_type")
+            if trigger_deadline_type not in DEADLINE_TYPES:
+                raise ValidationFailure(
+                    f"{state_path}: invalid purchase_trigger deadline_type "
+                    f"{trigger_deadline_type!r}"
+                )
+            active_id = field_value(trigger_block, "active_buying_situation")
+            if active_id not in set(buying_situation_ids):
+                raise ValidationFailure(
+                    f"{state_path}: active_buying_situation does not identify a project BS artifact"
+                )
+            active_status = buying_situation_statuses[active_id]
+            if trigger_status == "paid" and active_status not in {"paid", "repeated"}:
+                raise ValidationFailure(
+                    f"{state_path}: paid purchase_trigger requires a paid or repeated active BS"
+                )
+            if trigger_status == "repeated" and active_status != "repeated":
+                raise ValidationFailure(
+                    f"{state_path}: repeated purchase_trigger requires a repeated active BS"
+                )
+
 
 def validate_evals() -> None:
-    if not (EVALS / "README.md").is_file():
+    readme = EVALS / "README.md"
+    if not readme.is_file():
         raise ValidationFailure("evals/README.md missing")
     cases_dir = EVALS / "cases"
     found = {path.name for path in cases_dir.glob("*.md")}
@@ -262,9 +779,118 @@ def validate_evals() -> None:
             raise ValidationFailure(f"{path}: missing behavior scenario headings {missing}")
 
     bootstrap = (cases_dir / "01-new-project-auto-bootstrap.md").read_text(encoding="utf-8")
-    for phrase in ("exactly `IDEA.md` and `STATE.md`", "no empty stage directory", "04-experiments"):
+    for phrase in (
+        "creates exactly `IDEA.md` and `STATE.md`",
+        "separate durable mutation",
+        "no empty stage directory",
+    ):
         if phrase not in bootstrap:
             raise ValidationFailure(f"auto-bootstrap scenario missing lazy-growth assertion: {phrase}")
+
+    required_market_contracts = {
+        "07-market-research-required.md": ("market-reality-researcher", "R001", "15."),
+        "08-exact-vs-adjacent.md": ("adjacent_precedent_only", "livestream"),
+        "09-vendor-claim.md": ("vendor_claim_only", "verified market FACT"),
+        "10-policy-freshness.md": ("official", "checked_at"),
+        "11-success-case-non-transferable.md": ("market exists", "copyable"),
+        "12-agent-reach-unavailable.md": ("coverage_gap", "Web"),
+        "13-no-search-needed.md": ("fresh", "E001"),
+        "14-successful-pattern-first.md": ("proven", "SaaS"),
+        "15-real-deadline.md": (
+            "recurring_deadline_opportunity",
+            "BS001",
+            "Deadline Replication Experiment",
+        ),
+        "16-deadline-without-consequence.md": (
+            "deadline_without_consequence",
+            "commercial value",
+        ),
+        "17-urgent-but-low-trust.md": ("urgent_but_low_trust", "low-trust entry"),
+        "18-recurring-deadline.md": ("rolling_operational", "leverage-designer"),
+        "19-one-off-deadline.md": ("one_off_rush_service", "sustainable product"),
+        "20-manufactured-urgency.md": ("fabricated", "seller_created"),
+        "21-valid-business-without-deadline.md": ("deadline_type", "none"),
+        "22-high-urgency-high-liability.md": (
+            "high_liability_opportunity",
+            "human expert review",
+        ),
+    }
+    for name, phrases in required_market_contracts.items():
+        text = (cases_dir / name).read_text(encoding="utf-8")
+        for phrase in phrases:
+            if phrase not in text:
+                raise ValidationFailure(f"{name}: missing Market Reality assertion {phrase}")
+
+    eval_readme = readme.read_text(encoding="utf-8")
+    describes_non_runtime = (
+        "does not run Codex" in eval_readme
+        or "not an automated LLM evaluation framework" in eval_readme
+    )
+    describes_count = "22" in eval_readme or "twenty-two" in eval_readme
+    if not describes_non_runtime or not describes_count:
+        raise ValidationFailure("evals README must describe 22 human-auditable, non-runtime scenarios")
+
+
+def validate_purchase_trigger_contracts() -> None:
+    required_phrases = {
+        REPO_ROOT / "AGENTS.md": (
+            "Why-Now Gate",
+            "BS001",
+            "Deadline Replication Experiment",
+            "purchase-trigger-protocol.md",
+            "Run `business-filter` for each leading concrete Opportunity",
+        ),
+        SKILLS_ROOT / "monetization-orchestrator" / "SKILL.md": (
+            "Run the Why-Now Gate",
+            "why_now_status: unknown",
+            "buying-situations/",
+            "mandatory first lens",
+        ),
+        SKILLS_ROOT / "monetization-orchestrator" / "references" / "routing-rules.md": (
+            "## Why-Now Gate",
+            "recurring_deadline_opportunity",
+            "manufactured_urgency",
+        ),
+        SKILLS_ROOT / "opportunity-finder" / "SKILL.md": (
+            "repeatable trigger",
+            "low-trust deliverable",
+        ),
+        SKILLS_ROOT / "assumption-challenger" / "SKILL.md": (
+            "seller-created urgency",
+            "fabricated scarcity",
+        ),
+        SKILLS_ROOT / "business-filter" / "SKILL.md": (
+            "real_urgent_buying_situation",
+            "no_clear_why_now",
+        ),
+        SKILLS_ROOT / "experiment-designer" / "SKILL.md": (
+            "Deadline Replication Experiment",
+            "reference_buying_situation: BSxxx",
+        ),
+        SKILLS_ROOT / "leverage-designer" / "SKILL.md": (
+            "tiered SLA",
+            "capacity and liability trap",
+        ),
+        REPO_ROOT / "docs" / "purchase-trigger-protocol.md": (
+            "hard_external",
+            "fabricated",
+            "why_now_status: unknown",
+        ),
+        REPO_ROOT / "docs" / "object-protocol.md": (
+            "### BS001",
+            "Linked transactions",
+        ),
+        REPO_ROOT / "docs" / "workspace-protocol.md": (
+            "purchase_trigger:",
+            "buying-situations/",
+            "BUYING-SITUATIONS.md",
+        ),
+    }
+    for path, phrases in required_phrases.items():
+        text = path.read_text(encoding="utf-8")
+        missing = [phrase for phrase in phrases if phrase not in text]
+        if missing:
+            raise ValidationFailure(f"{path}: missing Purchase Trigger contract {missing}")
 
 
 def validate_authored_links() -> None:
@@ -285,11 +911,15 @@ def validate_authored_links() -> None:
                 raise ValidationFailure(f"broken link in {relative}: {raw_link}")
 
 
-def validate_removed_cli() -> None:
-    forbidden = [REPO_ROOT / "scripts" / "new_project.py", WORKSPACE / "_templates"]
+def validate_removed_cli_and_infrastructure() -> None:
+    forbidden = [
+        REPO_ROOT / "scripts" / "new_project.py",
+        WORKSPACE / "_templates",
+        REPO_ROOT / "evals" / "run_evals.py",
+    ]
     existing = [str(path.relative_to(REPO_ROOT)) for path in forbidden if path.exists()]
     if existing:
-        raise ValidationFailure(f"manual project-initialization artifacts still exist: {existing}")
+        raise ValidationFailure(f"forbidden Conversation-First artifacts still exist: {existing}")
     user_docs = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
     if "scripts/new_project.py" in user_docs or "--goal" in user_docs:
         raise ValidationFailure("README still requires manual project initialization")
@@ -299,23 +929,26 @@ def main() -> int:
     try:
         if not (REPO_ROOT / "AGENTS.md").is_file():
             raise ValidationFailure("AGENTS.md missing")
-        docs = {path.name for path in (REPO_ROOT / "docs").glob("*.md")}
-        if not REQUIRED_DOCS <= docs:
-            raise ValidationFailure(f"required docs missing: {sorted(REQUIRED_DOCS - docs)}")
+        docs_root = REPO_ROOT / "docs"
+        missing_docs = sorted(str(path) for path in REQUIRED_DOCS if not (docs_root / path).is_file())
+        if missing_docs:
+            raise ValidationFailure(f"required docs missing: {missing_docs}")
         validate_skills()
-        print("[PASS] six repo-level Skills and unmodified Persona source snapshots")
-        validate_removed_cli()
-        print("[PASS] manual project initializer and template tree are absent")
+        print("[PASS] five Thinking Skills, one evidence Skill, orchestrator, and Persona snapshots")
+        validate_removed_cli_and_infrastructure()
+        print("[PASS] Conversation-First V0 boundaries and removed manual initializer")
         validate_workspace()
-        print("[PASS] Conversation-First workspace and lazy materialization invariants")
+        print("[PASS] lazy Workspace plus conditional Research/Case/Buying-Situation invariants")
+        validate_purchase_trigger_contracts()
+        print("[PASS] Purchase Trigger, Cost-of-Delay, and Why-Now contracts")
         validate_evals()
-        print("[PASS] six human-auditable behavior acceptance scenarios")
+        print("[PASS] 22 human-auditable behavior acceptance scenarios")
         validate_authored_links()
         print("[PASS] authored Markdown links")
     except (ValidationFailure, OSError) as exc:
         print(f"[FAIL] {exc}", file=sys.stderr)
         return 1
-    print("PASS: deterministic V0 development validation (no Codex runtime was executed)")
+    print("PASS: deterministic development validation (no web or Codex runtime was executed)")
     return 0
 
 

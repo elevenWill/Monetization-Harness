@@ -2,6 +2,10 @@
 
 Thinking Skills return a compact review to the orchestrator. They do not present a persona panel to the user and do not expose hidden chain-of-thought.
 
+The Market Reality Gate runs before this protocol. `market-reality-researcher` is an evidence-producing capability, not a Thinking Skill: it does not emit a lens review and does not consume one of the normal one-or-two lens slots. When it runs, the orchestrator must classify and persist the material evidence first, then hand the selected Thinking Skills a compact market-evidence packet containing the relevant `Rxxx`/`Cxxx` links, scope, checked date, exact-versus-adjacent status, supporting and contradicting findings, policy status, and coverage gaps.
+
+The Why-Now Gate also runs before lens synthesis. When purchase timing matters, the orchestrator gives the selected Skills the active `BSxxx` or an explicit hypothesis packet: trigger, deadline source/type, Cost of Delay, consequence owner, buyer/payer, workaround, purchase window, reachability, trust barrier, low-trust entry, frequency, evidence status, and delivery liability. Missing fields remain `unknown`; a review must not convert urgency language into FACT.
+
 ```yaml
 lens: assumption-challenger
 severity: high
@@ -20,7 +24,7 @@ stop_condition: "Stop after five qualified offers or the first payment, then rev
 - `lens`: Skill directory name.
 - `severity`: `low`, `medium`, `high`, or `critical`. Critical means plausible ruin, unlawful/harmful action, or irreversible loss; high means the current direction targets the wrong gate.
 - `finding`: One decision-relevant conclusion.
-- `facts`: Only evidence-backed facts, preferably stable IDs. Use `[]` when none exist.
+- `facts`: Only evidence-backed facts, preferably stable IDs. An external FACT must cite its `Rxxx`, `Cxxx`, or local source ID and stay within that evidence's scope. Use `[]` when none exist.
 - `assumptions`: Named unsupported claims, preferably stable IDs or `PROVISIONAL-A...` when not yet persisted.
 - `reasoning_summary`: One to three auditable sentences; never hidden chain-of-thought.
 - `recommended_action`: One bounded action that addresses the finding.
@@ -28,7 +32,9 @@ stop_condition: "Stop after five qualified offers or the first payment, then rev
 
 ## Synthesis contract
 
-The orchestrator resolves conflicts by evidence strength, stage relevance, and downside—not by voting. The final user response normally contains:
+The orchestrator resolves conflicts using the claim-specific evidence rules in `docs/object-protocol.md`, Stage relevance, the active Buying Situation, and downside—not by voting or by treating all source types as one ladder. The project's own payment, behavior, and usage evidence controls Stage and transferability judgments; external research establishes only the market facts, precedents, constraints, purchase-trigger signals, or analogies its recorded scope supports.
+
+The final user response normally contains:
 
 1. `当前判断` — one conclusion.
 2. `依据` — the few decisive facts and assumptions.
@@ -36,3 +42,7 @@ The orchestrator resolves conflicts by evidence strength, stage relevance, and d
 4. `Workspace 更新` — only if durable state changed.
 
 Mention lens names only when the user asks for provenance or it materially improves auditability.
+
+When market evidence materially affects the decision, the synthesis must also distinguish verified exact precedent from reported or adjacent precedent, state what was not verified, and disclose the principal freshness or coverage limit. Research that is blocked, stale, or scope-mismatched supports an `unknown` or recheck action, not a confident market conclusion.
+
+When the Why-Now Gate materially affects the decision, name the Buying Situation outcome, the verified trigger/consequence links, what remains `unknown`, and the feasible low-trust next action or liability stop. Do not emit a numeric urgency score or equate high anxiety with high conversion.

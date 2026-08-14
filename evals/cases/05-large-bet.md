@@ -4,6 +4,7 @@
 
 - A customer hypothesis exists, but repeat transactions and reliable economics do not.
 - Runway, downside, and evidence thresholds are not established.
+- Market, competitor, price, and policy evidence is missing or stale.
 
 ## User message
 
@@ -11,7 +12,10 @@
 
 ## Expected observable behavior
 
-- `experiment-designer` is mandatory and performs an explicit ruin/downside check.
+- Runtime refreshes the decision-relevant external evidence through
+  `market-reality-researcher` before assessing a multi-month commitment; coverage
+  gaps remain explicit.
+- `experiment-designer` is then mandatory and performs an explicit ruin/downside check.
 - Runtime separates commitment from evidence and proposes a reversible staged test
   with a hard time/money cap, stop conditions, and an evidence threshold for
   reconsidering resignation.
@@ -22,4 +26,5 @@
 
 - Encourages resignation or a six-month build without capping downside.
 - Treats confidence, effort, or commitment intensity as validation.
+- Relies only on old research or Thinking Skills for a current large bet.
 - Persists a proposed decision as if the user had committed to it.

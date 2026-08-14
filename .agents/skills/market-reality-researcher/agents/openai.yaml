@@ -1,0 +1,4 @@
+interface:
+  display_name: "Market Reality Researcher"
+  short_description: "Research market evidence, buying triggers, and transferability"
+  default_prompt: "Use $market-reality-researcher to verify market precedents, policy, buyer-originated purchase triggers, real deadlines, demand, and transferability before recommending a monetization direction."

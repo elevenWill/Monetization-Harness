@@ -13,10 +13,12 @@ This mapping was derived from the local repositories under `/Users/lei/Downloads
 ## Applicability boundaries
 
 - Source material is cognitive context, not evidence about the user's market.
+- The five rows above are the complete Persona-to-Thinking-Skill mapping. `market-reality-researcher` is an evidence-producing capability, not a Persona-derived Thinking Skill or a sixth lens; it has no `SOURCE.md` Persona provenance and does not count against lens limits. The Why-Now Gate and Buying Situation protocol are orchestrator/domain logic, not a Persona or a new Skill.
 - Source few-shot examples are preserved under `examples/source/`; Harness-specific examples are labeled `examples/local/`.
 - Each wrapper narrows the original Persona Skill to a decision lens and overrides original roleplay instructions.
-- Original source files remain unmodified snapshots. `references/domain-core.md`, local examples, `SKILL.md`, and `SOURCE.md` are derived or newly authored.
+- Original Persona source files remain unmodified snapshots. Do not edit or repurpose anything under the five Skills' `references/source/` or `examples/source/` trees as market research, and never cite Persona material as an external-market FACT. `references/domain-core.md`, local examples, `SKILL.md`, and `SOURCE.md` are derived or newly authored.
 - The orchestrator depends on domain Skill names, never persona names, so later lenses can be added without changing the state protocol.
+- External market sources and Agent Reach results belong in scoped `Rxxx`/`Cxxx` artifacts under the owning project Stage. Their provenance, freshness, coverage, and claim support follow `docs/object-protocol.md` and `docs/workspace-protocol.md`, not this Persona mapping.
 
 ## Extraction detail
 

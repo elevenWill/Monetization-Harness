@@ -1,6 +1,6 @@
 # Monetization Decision Harness V0
 
-这是一个 Conversation-First 的个人变现决策 Harness：你只需要和 Codex 对话，Harness 会判断是否需要建立或恢复项目、当前应该解决哪个未知量，并在真正发生持久变化时维护 Workspace。
+这是一个 Conversation-First 的个人变现决策 Harness：你只需要和 Codex 对话，Harness 会判断是否需要建立或恢复项目、当前应该解决哪个未知量；当结论依赖现实市场时，它会先调查外部证据，再调用 Thinking Skills，并在真正发生持久变化时维护 Workspace。
 
 它不是名人 Agent 圆桌，也不实现第二套 Agent Runtime。Codex 负责推理、工具调用和文件维护；本仓库提供变现领域的规则、Thinking Skills、长期记忆和行为验收场景。
 
@@ -35,7 +35,7 @@ Harness 会自动判断当前对话属于哪种情况：
 我想看看这里有没有变现机会。
 ```
 
-Runtime 会检查现有 Workspace；没有匹配项目时自动建立最小 Project，初始 Stage 为 `opportunity_discovery`，优先使用 `opportunity-finder`，必要时使用 `assumption-challenger`，然后继续讨论你应该观察什么。不会要求你先起名或运行命令。
+Runtime 会检查现有 Workspace；没有匹配项目时自动建立最小 Project，初始 Stage 为 `opportunity_discovery`。如果结论依赖公开市场，它先做轻量现实扫描，再把取得的事实交给 `opportunity-finder`，必要时使用 `assumption-challenger`。不会要求你先起名、运行命令或手工触发研究。
 
 ### 2. 继续旧 Project
 
@@ -60,7 +60,7 @@ Naval 和 Taleb 最大区别是什么？
 
 Workspace 是 Runtime 为了以后继续理解你而维护的长期记忆，不是你为了使用 Runtime 必须维护的项目管理工具。
 
-新 Project 自动创建时只有：
+Project bootstrap 本身只创建：
 
 ```text
 workspace/ai-commerce-short-video/
@@ -72,7 +72,67 @@ workspace/ai-commerce-short-video/
 
 `IDEA.md` 只记录用户已经表达的初始方向、目标、目前认为的用户和关键假设。缺失内容标记为 `unknown`，不会由模型擅自补全。
 
-`STATE.md` 是当前 Stage 的唯一权威入口，包含当前目标、FACT、ASSUMPTION、DECISION、EXPERIMENT、交易计数、最大未知量、Next Gate 和 Next Action。
+`STATE.md` 是当前 Stage 的唯一权威入口，包含当前目标、FACT、ASSUMPTION、DECISION、EXPERIMENT、交易计数、最大未知量、Next Gate 和 Next Action。只有真正开始分析一个购买情境后，它才会增加可选的 `purchase_trigger` 摘要；新项目不会预填一屏空字段。
+
+如果同一轮随后真的完成了市场研究，那是 bootstrap 之后的独立持久化动作：Runtime 可以懒创建一个非空的 `01-opportunity/research/R001-….md`，但不会预建研究目录，也不会在项目根增加 `MARKET.md` 或 `RESEARCH.md`。
+
+## Harness 会主动调查真实市场
+
+Harness 不再只依赖用户描述和思维模型。当判断涉及“是否有人做成、平台是否允许、当前价格、用户是否接受、竞品和失败案例、是否值得大额投入”等现实事实时，Runtime 必须先经过 Market Reality Gate：
+
+你不需要说“请使用 Agent Reach”。当你问“这个想法是否可行”“有没有人做成”“平台是否允许”“用户是否接受”或“应该参考谁”时，Harness 会判断是否需要联网，并自动选择 Agent Reach 或当前可用的 Web 工具。
+
+```text
+对话与 Project 状态
+↓
+识别当前最大未知量
+↓
+Market Reality Gate
+↓ 需要外部事实
+market-reality-researcher
+↓ 产生可审计的 R/C/Source 证据
+Purchase Trigger Research
+↓
+Why-Now Gate
+↓ 形成或比较具体 BSxxx
+business-filter（计入总共 1～2 个 Lens）+ 可选的最少额外 Thinking Skill
+↓
+Closest Proven Playbook + Deadline/普通最小复现实验
+↓
+Transaction Evidence
+```
+
+原则是 `Case First → Pattern First → Replication First`：优先重建已经发生过的交易结构，区分精确案例与相邻案例，再测试当前用户能否复制；不是看到一个趋势就凭空发明复杂产品。
+
+市场研究能证明别人是否在已知条件下做成过，不能单独证明你一定能做成。最终仍需要一个低成本、有停止条件的复现实验。
+
+Market Reality Gate 不会为了展示能力反复搜索。只恢复项目、处理已有实验结果、确认执行细节，或已有研究仍新鲜且范围一致时，可以直接复用证据。新公开市场项目通常只做 quick reconnaissance，不自动生成几十条查询或一份行业报告。
+
+### Agent Reach 与覆盖缺口
+
+联网时优先检查 Agent Reach，并用 `agent-reach doctor --json` 的当次结果选择可用 backend；不可用的平台回退到 Codex 的 Web Search、网页读取或 Browser 能力。Agent Reach 是可选的获取层，不是研究方法，也不是结论来源；报告引用打开并核验的原始网页。
+
+登录态平台只使用用户已经授权的会话。Harness 不自动安装、登录、读取或导出 Cookie，也不把 Cookie、Token 或凭据写入仓库。访问不到的平台会记录为 `coverage_gap`，不会声称做过“全网调查”。详细规则见 [`docs/integrations/agent-reach.md`](docs/integrations/agent-reach.md)。
+
+原始网页和批量工具输出只临时放在 `/tmp`。Workspace 保存结构化的研究问题、来源 URL、日期、支持与反对证据、案例验证状态、结论和覆盖缺口，不保存整页 HTML、整篇文章或评论墙。
+
+## Harness 会寻找“为什么现在买”
+
+Harness 不只问“用户有没有痛点”，还会继续问：
+
+- 什么具体事件会让用户现在开始找解决方案？
+- 什么时候必须拿到结果，时间是谁定的？
+- 不处理或晚处理会损失什么，谁承担损失？
+- 承担后果的人是不是 Buyer、Payer 或预算影响者？
+- 购买窗口有多长，你能不能在窗口内找到他？
+- 紧急任务为什么敢交给你，有没有样片或小单这样的低信任入口？
+- 这种情境会不会重复，交付失败的责任是否可承受？
+
+这条完整链路叫 Buying Situation，会按 `BS001`、`BS002` 等稳定 ID 记录。比如同样是“做商品短视频”，618 前 7 天补 50 个 SKU、每批新品的多语言上线、素材衰退后 48 小时补片，是三个不同的购买情境，不能用一个抽象“商家有需求”代替。
+
+高焦虑不等于高成交。Deadline 只有和真实后果、购买能力、可触达性、信任与交付能力结合时，才可能提高商业价值；虚假倒计时、假库存和假稀缺不会被当成需求证据，也不会被建议。反过来，没有 Deadline 的业务也不必被否定：高频使用、持续成本、便利、娱乐或稳定复购同样可能形成真实生意。
+
+详细的 Purchase Trigger、Cost of Delay、Deadline 类型和 Why-Now Gate 见 [`docs/purchase-trigger-protocol.md`](docs/purchase-trigger-protocol.md)。
 
 ## Workspace 按真实经历生长
 
@@ -84,6 +144,8 @@ Stage 是状态，不是目录。目录存在只表示历史上确实产生过�
 IDEA.md + STATE.md
 ↓ 真正记录 O001
 01-opportunity/O001.md
+↓ 真正形成 BS001（示例属于 business validation）
+03-business-validation/buying-situations/BS001-….md
 ↓ 用户确认一个真实实验
 04-experiments/E001.md
 ↓ 收到第一笔真实付款
@@ -114,6 +176,9 @@ Conversation First 不等于记录每句话。只有以下持久变化才写入�
 
 - 新 Project 被明确确立；
 - durable FACT 或真实 Transaction；
+- 完成了一次有明确范围和来源的 Research，或重要外部证据变旧；
+- 创建了对当前决策可复用的 Case；
+- 形成了真实、决策相关的 Buying Situation，或它的 Trigger、Cost of Delay、信任、可触达性、状态发生实质变化；
 - Assumption 状态变化；
 - 用户明确接受的 Decision；
 - 有边界和停止条件的 Experiment；
@@ -130,6 +195,25 @@ Conversation First 不等于记录每句话。只有以下持久变化才写入�
 Runtime 负责匹配项目、登记 `F001` / `T001`、按需创建交易目录、更新 State，并避免把第一笔付款误判成可重复生意。
 
 对象与 stable ID 规则见 [`docs/object-protocol.md`](docs/object-protocol.md)。
+
+Buying Situation 也按真实经历懒创建，不会给每个项目预建目录。详细记录放在所属 Stage 的 `buying-situations/BS001-….md`，项目根不会出现 `DEADLINE.md`、`URGENCY.md`、`HUMAN-NATURE.md` 或 `BUYING-SITUATIONS.md`。
+
+第一次真实研究可能形成：
+
+```text
+workspace/project-a/
+├── IDEA.md
+├── STATE.md
+└── 01-opportunity/
+    ├── research/
+    │   └── R001-market-reality-scan.md
+    └── cases/
+        └── C001-closest-precedent.md
+```
+
+`R001` 记录调查范围、实际访问渠道、Sources、支持和反面证据、政策、价格、判定、剩余未知量与重查条件。`C001` 只用于值得复用的案例重建，不为每个网页创建。存在真实研究时，`STATE.md` 才增加可选的 `market_evidence` 快照和最近研究链接。
+
+不同问题使用不同证据：平台政策优先当前官方规则；市场存在优先可核验交易和持续运营；用户接受度优先购买、复购、退款或投诉行为；当前用户能否做成，最终优先其自己的付费复现实验。外部案例证明“某种模式曾存在”，不能替代真实交易。
 
 ## Stage
 
@@ -160,6 +244,18 @@ Stage 可以回退。产品上线后无人复购，应回到 `business_validatio
 
 `monetization-orchestrator` 是 Project lifecycle、路由和综合协调器，不是第六个人格。它通常选择 1～2 个必要 Skill，再输出一个综合判断。Persona 来源与保留内容见 [`docs/source-mapping.md`](docs/source-mapping.md)。
 
+`market-reality-researcher` 也不是 Persona 或 Thinking Lens，而是一个 Evidence-Producing Skill。它发生在 Thinking 之前，负责拆解决策问题、寻找精确和相邻案例、负面证据、官方政策、用户行为、竞品价格，重建交易结构并检查可迁移性；它不占 1～2 个 Thinking Skill 配额。
+
+研究型回答会把结论拆开表达，而不是只说“凭感觉可行”：
+
+- 当前判断；
+- 已被验证与尚未验证的部分；
+- 最接近的成功模式及不能照抄的部分；
+- 平台与合规约束；
+- 反面证据；
+- 当前最小复现实验；
+- 已访问、未访问渠道和最新检查时间。
+
 ## Harness 什么时候会打断你
 
 - 付款为 0，却准备开发完整 SaaS、数据库、UI 或复杂 Agent；
@@ -174,9 +270,9 @@ Stage 可以回退。产品上线后无人复购，应回到 `business_validatio
 
 ## Behavior Acceptance Scenarios
 
-[`evals/cases/`](evals/cases/) 保存约六个核心 Harness Behavior Acceptance Scenarios，用于修改 `AGENTS.md`、Skills、Router 或 Stage 规则时做人工行为回归。
+[`evals/cases/`](evals/cases/) 保存 22 个核心 Harness Behavior Acceptance Scenarios，用于修改 `AGENTS.md`、Skills、Router、Stage、Market Reality 或 Why-Now 规则时做人工行为回归。
 
-它们不是自动启动 Codex 的 LLM Evaluation Framework，也不把手工编写的理想答案伪装成真实 Runtime 测试。核心覆盖：自动 Bootstrap、过早开发、第一笔付款、重复付款与 leverage、重大下注、Stage 回退，以及 Workspace lazy growth。
+它们不是自动启动 Codex 的 LLM Evaluation Framework，也不把手工编写的理想答案伪装成真实 Runtime 测试。核心覆盖：自动 Bootstrap、过早开发、交易与 leverage、重大下注、Stage 回退、Workspace lazy growth，以及强制研究路由、精确与相邻案例、vendor claim、政策新鲜度、迁移限制、Agent Reach 回退、无需重复搜索和成功模式优先。
 
 ## 开发校验
 
@@ -186,8 +282,8 @@ Stage 可以回退。产品上线后无人复购，应回到 `business_validatio
 python3 scripts/validate_repo.py
 ```
 
-这是开发工具，不是使用 Harness 的前置步骤。它只检查可确定验证的内容，例如 Skill 结构、source provenance、链接、STATE 基本字段、Workspace lazy invariant 和 Eval case 结构；不声称验证真实 Codex 推理质量。
+这是开发工具，不是使用 Harness 的前置步骤。它只检查可确定验证的内容，例如 Skill 结构、source provenance、链接、STATE 基本字段、Workspace lazy invariant、Market Reality 对象协议和 Eval case 结构；不执行网页研究，也不声称验证真实 Codex 推理质量。
 
 ## V0 边界
 
-V0 没有 Web UI、API Server、数据库、RAG、MCP Server、自定义 Agent Loop、Agent 投票/辩论、用户/权限系统或自动定时任务。Project discovery、bootstrap、resume、Stage 路由和文件维护直接由 Codex Runtime 按仓库协议执行。
+V0 没有 Web UI、API Server、数据库、向量数据库、RAG、自定义 Agent Loop、Agent 投票/辩论、自动登录/Cookie 管理、通用爬虫平台、消息队列或定时市场监控。Project discovery、bootstrap、resume、Market Reality Gate、Why-Now Gate、Stage 路由和文件维护直接由 Codex Runtime 按仓库协议执行。

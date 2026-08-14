@@ -22,6 +22,20 @@ Stage describes the next uncertainty to resolve, not how polished the artifact l
 
 Do not infer Stage from directory names and do not create a directory merely because a Project enters that Stage. Stage directories materialize only when a real artifact is written, may be non-contiguous, and may remain after the current Stage moves forward or backward.
 
+## Market Reality Gate is not a Stage
+
+The Market Reality Gate is a pre-lens routing and evidence-freshness check. It decides whether the immediate judgment needs current external research; it is not a ninth Stage, a Stage transition, or a replacement for `next_gate`.
+
+Store a resulting `Rxxx` under the `research/` directory of the Stage whose question it informs, and a reusable `Cxxx` under that Stage's `cases/` directory. Those directories remain historical material and do not determine the current Stage. Completing research or finding an exact/adjacent precedent does not advance the project by itself.
+
+External research can establish scoped facts such as market existence, current platform policy, competitors, price signals, or a precedent's reported outcome. It cannot establish that the same result transfers to this project. Stage determination therefore continues to prioritize the project's own transactions, observed behavior, usage, repeat customers, and other linked entry evidence. Advance only when the table's entry evidence is actually met; otherwise use the research to refine an ASSUMPTION, risk, experiment, or next action.
+
+## Why-Now Gate is not a Stage
+
+The Why-Now Gate is a cross-stage purchase-timing and Buying-Situation check. It asks what real event moves a buyer to seek and pay for a result inside a concrete window, what delay costs, who bears the consequence, whether the payer is reachable, what trust is required, and whether delivery liability is bounded. It is not a tenth Stage, a Stage transition, a Persona, or a replacement for `next_gate`.
+
+Store a decision-relevant `BSxxx` under the `buying-situations/` directory of the Stage whose decision it informs. One Project can have multiple Buying Situations in different Stages. Creating or evidencing a `BSxxx` does not advance the Project by itself; payment, repeatability, and the other Stage entry evidence in the table still control transitions. A business without a deadline may advance when its actual recurrence, behavior, transaction, and economics evidence meets those gates.
+
 ## Stage transition record
 
 When the transition needs a durable history artifact, write it in the relevant stage directory (creating only the directory that will immediately contain that artifact), then summarize it in `STATE.md`:

@@ -1,4 +1,4 @@
 interface:
   display_name: "Leverage Designer"
-  short_description: "Turn repeated value into compounding assets"
-  default_prompt: "Use $leverage-designer to turn repeated validated delivery into scalable leverage."
+  short_description: "Productize repeated value without deadline traps"
+  default_prompt: "Use $leverage-designer to turn repeated delivery into leverage while checking deadline capacity and liability."

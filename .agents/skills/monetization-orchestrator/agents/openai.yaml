@@ -1,4 +1,4 @@
 interface:
   display_name: "Monetization Orchestrator"
-  short_description: "Discover, bootstrap, and route monetization work"
-  default_prompt: "Use $monetization-orchestrator to discover or resume the right project and give one evidence-based next action."
+  short_description: "Discover, run gates, and route monetization work"
+  default_prompt: "Use $monetization-orchestrator to discover or resume the right project, run Market Reality and Why-Now gates, and give one evidence-based next action."
