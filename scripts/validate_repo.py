@@ -93,6 +93,9 @@ EXPECTED_EVALS = {
     "20-manufactured-urgency.md",
     "21-valid-business-without-deadline.md",
     "22-high-urgency-high-liability.md",
+    "23-no-project-no-write.md",
+    "24-existing-project-resume.md",
+    "25-project-conflict-no-wrong-write.md",
 }
 REQUIRED_STATE_HEADINGS = {
     "## 当前目标",
@@ -821,14 +824,86 @@ def validate_evals() -> None:
             if phrase not in text:
                 raise ValidationFailure(f"{name}: missing Market Reality assertion {phrase}")
 
+    required_lifecycle_contracts = {
+        "23-no-project-no-write.md": (
+            "Naval 和 Taleb",
+            "SaaS",
+            "Deadline",
+            "No Project",
+            "workspace/_index.md",
+            "long-term project memory",
+            "chat log",
+            "workspace/naval-taleb/",
+            "workspace/saas-pricing/",
+            "workspace/deadline-business/",
+        ),
+        "24-existing-project-resume.md": (
+            "workspace/ai-commerce-short-video/",
+            "IDEA.md",
+            "STATE.md",
+            "resumes that stable project",
+            "semantic",
+            "BS001",
+            "workspace/sku-video/",
+            "workspace/batch-video/",
+            "workspace/commerce-video-2/",
+            "workspace/ai-video-new/",
+        ),
+        "25-project-conflict-no-wrong-write.md": (
+            "workspace/ai-commerce-short-video/",
+            "workspace/ai-ad-creative/",
+            "Project Conflict",
+            "temporary no-write",
+            "FACT",
+            "ASSUMPTION",
+            "BSxxx",
+            "RESEARCH",
+            "STATE",
+            "stage artifact",
+            "workspace/deadline-material/",
+        ),
+    }
+    for name, phrases in required_lifecycle_contracts.items():
+        text = (cases_dir / name).read_text(encoding="utf-8")
+        for phrase in phrases:
+            if phrase not in text:
+                raise ValidationFailure(
+                    f"{name}: missing Project Lifecycle assertion {phrase}"
+                )
+
+    conflict = (cases_dir / "25-project-conflict-no-wrong-write.md").read_text(
+        encoding="utf-8"
+    )
+    conflict_follow_ups = {
+        "商品带货短视频": "ai-commerce-short-video",
+        "广告投放素材": "ai-ad-creative",
+    }
+    for clarification, target in conflict_follow_ups.items():
+        if clarification not in conflict or target not in conflict:
+            raise ValidationFailure(
+                "25-project-conflict-no-wrong-write.md: missing deterministic "
+                f"clarification mapping {clarification!r} -> {target!r}"
+            )
+
     eval_readme = readme.read_text(encoding="utf-8")
     describes_non_runtime = (
         "does not run Codex" in eval_readme
         or "not an automated LLM evaluation framework" in eval_readme
     )
-    describes_count = "22" in eval_readme or "twenty-two" in eval_readme
+    describes_count = "25" in eval_readme or "twenty-five" in eval_readme
     if not describes_non_runtime or not describes_count:
-        raise ValidationFailure("evals README must describe 22 human-auditable, non-runtime scenarios")
+        raise ValidationFailure("evals README must describe 25 human-auditable, non-runtime scenarios")
+    for phrase in (
+        "Project Lifecycle",
+        "New Project Bootstrap",
+        "No Project / No Write",
+        "Existing Project Resume",
+        "Project Conflict / No Wrong Write",
+    ):
+        if phrase.casefold() not in eval_readme.casefold():
+            raise ValidationFailure(
+                f"evals README missing Project Lifecycle classification: {phrase}"
+            )
 
 
 def validate_purchase_trigger_contracts() -> None:
@@ -942,7 +1017,7 @@ def main() -> int:
         validate_purchase_trigger_contracts()
         print("[PASS] Purchase Trigger, Cost-of-Delay, and Why-Now contracts")
         validate_evals()
-        print("[PASS] 22 human-auditable behavior acceptance scenarios")
+        print("[PASS] 25 human-auditable behavior acceptance scenarios")
         validate_authored_links()
         print("[PASS] authored Markdown links")
     except (ValidationFailure, OSError) as exc:

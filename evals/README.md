@@ -13,9 +13,10 @@ workspace persistence:
 3. Inspect both the reply and any workspace changes.
 4. Compare only observable behavior with the expectations and failure conditions.
 
-The twenty-two cases cover the V0 regression surface:
+The twenty-five cases cover the V0 regression surface:
 
-- automatic project discovery, minimal bootstrap, and lazy workspace growth;
+- complete project-lifecycle routing: no project/no write, semantic resume,
+  minimal bootstrap with lazy growth, and conflict/no wrong write;
 - interruption of premature product building;
 - first-payment recording without premature productization;
 - repeated payment and leverage routing;
@@ -31,6 +32,40 @@ The twenty-two cases cover the V0 regression surface:
 - cost-of-delay ownership, buying windows, reachability, and trust barriers;
 - valid recurring businesses without deadlines and urgent work with high
   delivery liability.
+
+## Project Lifecycle
+
+Four scenarios jointly verify whether Runtime manages Workspace lifecycle rather
+than merely creating projects:
+
+- `01-new-project-auto-bootstrap.md` — **New Project Bootstrap** for a concrete,
+  durable direction with no existing semantic match.
+- `23-no-project-no-write.md` — **No Project / No Write** for ordinary knowledge
+  discussion or a passing idea that is not a durable thread.
+- `24-existing-project-resume.md` — **Existing Project Resume** when one existing
+  project clearly matches the goal, problem, customer, transaction context, and
+  current state despite changed wording.
+- `25-project-conflict-no-wrong-write.md` — **Project Conflict / No Wrong Write**
+  when multiple projects plausibly match and a wrong choice would contaminate
+  durable state.
+
+The routing model is:
+
+```text
+Conversation
+└── Is this a durable monetization thread?
+    ├── No  → No Project / No Write
+    └── Yes → Does one existing project clearly match?
+              ├── Yes      → Existing Project Resume
+              ├── No       → New Project Bootstrap
+              └── Multiple → Project Conflict → No Write Until Resolved
+```
+
+Avoiding incorrect persistence takes priority over automation convenience. A
+clear match should resume automatically, a clearly new durable direction should
+bootstrap automatically, ordinary discussion should not create a project, and a
+material conflict should remain unwritten until a minimal clarification resolves
+ownership. Workspace is long-term project memory, not a chat log.
 
 The Purchase Trigger cases ask why a buyer would act now: what event occurred,
 when the result is needed, what delay actually costs, who bears that consequence,
