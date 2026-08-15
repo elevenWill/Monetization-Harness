@@ -75,12 +75,32 @@ its decision value, acquisition cost, safety, and freshness. Use this order:
 | Whether a qualified buyer will pay this price for this result | A real offer, real price, and usable payment path |
 | Whether the result can be delivered safely and acceptably | One bounded manual or assisted delivery |
 | Whether payment and delivery repeat | Comparable offers, payments, and deliveries with independent or repeat buyers |
+| Whether a content theme has repeated audience pull | Bounded observation of qualified audience behavior on relevant platforms or direct usage contexts |
 
 Web evidence can establish external conditions and precedents. It cannot by
 itself establish transferability, this project's willingness to pay, delivery
 quality, or repeatability. Direct contact likewise cannot replace a current
 policy or legal check when violating it would invalidate the test or create
 material harm.
+
+## Evidence fit before contact
+
+Before choosing a sample, check five items: the exact Decision Claim; the
+Evidence Population qualified to answer it; the Sample Source; what observations
+from that source can prove; and what they cannot prove given material selection
+or proxy bias. Reachability is an evidence-acquisition advantage. It is not
+representativeness, market importance, commercial value, or willingness to pay.
+
+For example, nearby technical creators may reveal their own recurring production
+problems and workarounds. They cannot by themselves establish platform-wide
+content pull, the best audience, a payer, or the best business direction. A small
+sample remains valid for the narrower claim it can answer. Make this boundary
+user-visible only when it changes interpretation or prevents a misleading action.
+
+Candidate provenance also remains visible internally. User acceptance means the
+Candidate was accepted for testing, not that its Market Evidence improved. A
+more concrete Packet improves execution and later attribution; it does not upgrade Candidate credibility, evidence status, business archetype, or Market
+Priority.
 
 ## Minimum Execution Packet
 
@@ -95,6 +115,9 @@ Default to a seven-part **Micro Packet** for a low-risk first contact or observa
 objective:
 decision_claim:
 stage:
+candidate_basis_and_evidence_status:
+evidence_population:
+inference_scope:
 
 action:
 operator:
@@ -141,7 +164,10 @@ claim_evidence_budget:
 ### Always required
 
 - `objective` and `decision_claim`: one decision-changing assumption or claim;
-  do not combine discovery, pricing, delivery, and repeatability into one action.
+  do not combine discovery, audience pull, pricing, delivery, and repeatability
+  into one action. Internally retain the Candidate basis/evidence status,
+  claim-qualified Evidence Population, and maximum inference scope; show them
+  when selection or proxy bias is material.
 - `action`, `operator`, and `timebox`: the next physical or communicative step,
   who will perform or supervise it, and an executable count or time boundary.
 - `target` and `qualification`: who or what is eligible, the observable inclusion
@@ -190,9 +216,11 @@ minimum level relevant to the action:
 2. **What to search:** concrete query strings, categories, filters, dates,
    geography, company attributes, role titles, problem signals, or workaround
    signals. A broad market label alone is not a sourcing query.
-3. **How to qualify:** observable inclusion and exclusion rules, including the
-   problem/situation signal and any independence requirement. Interest in a
-   topic, likes, or job title alone is not qualification.
+3. **How to qualify:** observable inclusion and exclusion rules matched to the
+   claim, including a problem/situation, audience-behavior, or independence
+   signal. Interest, likes, or job title alone do not qualify a buyer/payment
+   claim. Repeated qualified consumption may support a scoped audience-pull
+   claim, but it does not prove payment or profit.
 4. **Whom to reach:** distinguish the organization or workflow to find from the
    operator, user, buyer, payer, approver, or consequence owner to contact.
 5. **Which channel first:** name the authorized channel and why it is reachable
@@ -274,10 +302,12 @@ underexposed action as demand failure.
 Stop immediately at the first applicable cap or safety boundary. Otherwise stop
 at the planned count, timebox, decisive threshold, or point where further actions
 cannot change the decision. Review after the smallest diagnostic batch and again
-at the final stop. The review must compare planned versus actual exposure, inspect
-the first broken selected funnel step, contradicting evidence, and deviations,
-then update a named assumption or decision; it must not predeclare a Stage
-transition.
+at the final stop. The review must compare planned versus actual exposure,
+inspect the first broken selected funnel step, contradicting evidence, and
+deviations, then update only the named claim within the predeclared inference
+scope. It must also state which adjacent market, audience, payer, or
+business-archetype claims the evidence did not update, and must not predeclare a
+Stage transition.
 
 ## Persistence boundary
 

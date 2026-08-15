@@ -30,6 +30,17 @@ stop_condition: "Stop after five qualified offers or the first payment, then rev
 - `recommended_action`: One bounded action that addresses the finding.
 - `stop_condition`: Observable point at which to stop or re-evaluate.
 
+For an `opportunity-finder` review, keep the common fields above rather than
+adding a score or a new schema. Its `finding` and `reasoning_summary` must expose
+the Candidate origin, business archetype, evidence status, commercial bridge,
+and inference scope; separate Opportunity Evidence from Investigation Advantage.
+Founder fit, reachability, test cost, user agreement, and Packet specificity may
+change learning order but cannot raise Market Priority.
+When comparison evidence is weak, asymmetric, or incomparable, the review must
+say `Market Priority: unknown`, omit an ordinal business ranking, and label any
+chosen probe only the `first exploratory test`. A single star account, viral item,
+vendor story, or isolated success is a lead rather than a comparison winner.
+
 ## Synthesis contract
 
 The orchestrator resolves conflicts using the claim-specific evidence rules in `docs/object-protocol.md`, Stage relevance, the active Buying Situation, and downside—not by voting or by treating all source types as one ladder. The project's own payment, behavior, and usage evidence controls Stage and transferability judgments; external research establishes only the market facts, precedents, constraints, purchase-trigger signals, or analogies its recorded scope supports.

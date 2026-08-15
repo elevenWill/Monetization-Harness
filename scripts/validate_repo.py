@@ -112,6 +112,8 @@ EXPECTED_EVALS = {
     "37-content-audience-is-not-automatically-payer.md",
     "38-content-platform-can-be-market-evidence.md",
     "39-execution-does-not-validate-candidate.md",
+    "40-founder-fit-is-not-market-priority.md",
+    "41-content-direction-is-not-a-service-offer.md",
 }
 REQUIRED_STATE_HEADINGS = {
     "## 当前目标",
@@ -557,6 +559,10 @@ def validate_case(path: Path, known_source_ids: set[str]) -> None:
 
 def validate_transaction(path: Path) -> str:
     text = path.read_text(encoding="utf-8")
+    if not re.fullmatch(r"T\d{3}(?:-[a-z0-9]+(?:-[a-z0-9]+)*)?\.md", path.name):
+        raise ValidationFailure(
+            f"{path}: Transaction filename must contain exactly one stable Txxx ID"
+        )
     missing = missing_labels(text, TRANSACTION_FIELDS)
     if missing:
         raise ValidationFailure(f"{path}: missing Transaction fields {missing}")
@@ -580,6 +586,13 @@ def validate_transaction(path: Path) -> str:
             value = field_value(text, field)
             if not value or value == "unknown":
                 raise ValidationFailure(f"{path}: completed Transaction {field} must be known")
+        payment_evidence = field_value(text, "Payment evidence") or ""
+        if re.search(r"(?i)\b(?:user|oral|chat)\s+(?:report|statement)\b", payment_evidence) or re.search(
+            r"用户(?:报告|陈述)|口述", payment_evidence
+        ):
+            raise ValidationFailure(
+                f"{path}: user report is Fact provenance, not completed payment evidence"
+            )
         if not re.search(r"\bF\d{3}\b", field_value(text, "Linked fact") or ""):
             raise ValidationFailure(f"{path}: completed Transaction must link a Fact ID")
     return status
@@ -917,6 +930,22 @@ def validate_evals() -> None:
             "`market validated: false`",
             "exploratory test",
         ),
+        "40-founder-fit-is-not-market-priority.md": (
+            "Opportunity Evidence",
+            "Investigation Advantage",
+            "Market Priority #1",
+            "Market Priority: unknown",
+            "first exploratory test",
+            "decision-capped Reality Scan",
+            "universal Web First",
+        ),
+        "41-content-direction-is-not-a-service-offer.md": (
+            "content/media archetype",
+            "Candidate Monetization Mechanism",
+            "service payment",
+            "Market Observation Environment",
+            "silent conversion",
+        ),
     }
     for name, phrases in required_evidence_fit_contracts.items():
         text = (cases_dir / name).read_text(encoding="utf-8")
@@ -992,9 +1021,9 @@ def validate_evals() -> None:
         "does not run Codex" in eval_readme
         or "not an automated LLM evaluation framework" in eval_readme
     )
-    describes_count = "39" in eval_readme or "thirty-nine" in eval_readme
+    describes_count = "41" in eval_readme or "forty-one" in eval_readme
     if not describes_non_runtime or not describes_count:
-        raise ValidationFailure("evals README must describe 39 human-auditable, non-runtime scenarios")
+        raise ValidationFailure("evals README must describe 41 human-auditable, non-runtime scenarios")
     for phrase in (
         "Project Lifecycle",
         "New Project Bootstrap",
@@ -1024,13 +1053,17 @@ def validate_vnext_contracts() -> None:
             "Evidence-derived Stage → earliest unresolved uncertainty",
             "Reality Evidence First 不等于 Web First",
             "docs/human-execution-protocol.md",
-            "保存 39 个核心 Harness Behavior Acceptance Scenarios",
+            "保存 41 个核心 Harness Behavior Acceptance Scenarios",
+            "Investigation Advantage",
+            "Market Observation Environment",
         ),
         REPO_ROOT / "AGENTS.md": (
             "Why-Now Gate",
             "Stage-applicable primary Thinking Skill",
             "human-execution-protocol.md",
             "implementation_revisit_trigger",
+            "Market Priority",
+            "business archetype",
         ),
         SKILLS_ROOT / "monetization-orchestrator" / "SKILL.md": (
             "The full gate is conditional",
@@ -1038,24 +1071,53 @@ def validate_vnext_contracts() -> None:
             "human-execution-protocol.md",
             "claim-level evidence budget",
             "buying-situations/",
+            "Opportunity Candidate comparison",
+            "Market Observation Environment",
         ),
         SKILLS_ROOT / "monetization-orchestrator" / "references" / "routing-rules.md": (
             "## Canonical Stage routes",
             "opportunity_discovery",
             "scaling",
             "person-supervised Reality Contact",
+            "Investigation Advantage",
+            "Reachability is",
+            "Market Priority: unknown",
+            "first exploratory test",
+        ),
+        SKILLS_ROOT / "monetization-orchestrator" / "references" / "state-assessment.md": (
+            "participant/audience",
+            "reality-grounded repeated problem, value, consumption, or transaction pattern",
+            "Reachability affects evidence acquisition",
         ),
         SKILLS_ROOT / "opportunity-finder" / "SKILL.md": (
             "light trigger",
             "observable pull",
+            "Opportunity Evidence",
+            "Investigation Advantage",
+            "model-derived",
+            "content/media Candidate",
+            "Market Priority: unknown",
+            "first exploratory test",
+        ),
+        SKILLS_ROOT / "market-reality-researcher" / "SKILL.md": (
+            "Case First -> Pattern First -> Replication First",
+            "Market Observation Environment",
+            "Distribution Channel or dependency",
+            "mainly on model synthesis",
+            "insufficient_evidence",
+            "Market Priority: unknown",
         ),
         SKILLS_ROOT / "assumption-challenger" / "SKILL.md": (
             "seller-created urgency",
             "purchase timing is material",
+            "reachable sample",
+            "Execution Packet",
         ),
         SKILLS_ROOT / "business-filter" / "SKILL.md": (
             "recurring_non_deadline_purchase",
             "observed repeat payment/usage",
+            "audience value/attention flow",
+            "silently convert",
         ),
         SKILLS_ROOT / "experiment-designer" / "SKILL.md": (
             "Evidence Ledger",
@@ -1072,6 +1134,15 @@ def validate_vnext_contracts() -> None:
             "success | demand_failure | invalid | inconclusive",
             "### Evidence Ledger",
             "Portfolio stop",
+            "## OPPORTUNITY",
+            "Investigation Advantage",
+            "incomplete oral or chat report",
+            "exactly one stable `Txxx`",
+        ),
+        REPO_ROOT / "docs" / "stage-model.md": (
+            "repeated value pattern",
+            "stable compatibility",
+            "Do not force the pattern into a service problem",
         ),
         REPO_ROOT / "docs" / "workspace-protocol.md": (
             "completed result",
@@ -1084,6 +1155,16 @@ def validate_vnext_contracts() -> None:
             "implementation_revisit_trigger",
             "max_repair_reviews",
             "EPxxx",
+            "## Evidence fit before contact",
+            "candidate_basis_and_evidence_status",
+            "does not upgrade Candidate credibility",
+        ),
+        REPO_ROOT / "docs" / "review-protocol.md": (
+            "Candidate origin",
+            "Opportunity Evidence",
+            "Investigation Advantage",
+            "cannot raise Market Priority",
+            "first exploratory test",
         ),
         REPO_ROOT / "docs" / "evaluation-strategy.md": (
             "Arm A — Baseline",
@@ -1091,6 +1172,14 @@ def validate_vnext_contracts() -> None:
             "Outcome-first decision rule",
             "Over-constraint penalty",
             "Baseline wins",
+        ),
+        SKILLS_ROOT / "market-reality-researcher" / "references" / "query-playbook.md": (
+            "## Content and creator observation",
+            "Market Observation Environments",
+        ),
+        SKILLS_ROOT / "market-reality-researcher" / "references" / "source-strategy.md": (
+            "Market Observation Environment",
+            "audience/value claim",
         ),
     }
     for path, phrases in required_phrases.items():
@@ -1104,6 +1193,7 @@ def validate_vnext_contracts() -> None:
             "business-filter（计入总共 1～2 个 Lens）+",
             "保存 22 个核心 Harness Behavior Acceptance Scenarios",
             "保存 35 个核心 Harness Behavior Acceptance Scenarios",
+            "保存 39 个核心 Harness Behavior Acceptance Scenarios",
         ),
         REPO_ROOT / "AGENTS.md": (
             "Run `business-filter` for each leading concrete Opportunity",
@@ -1172,9 +1262,9 @@ def main() -> int:
         validate_workspace()
         print("[PASS] lazy Workspace plus conditional Research/Case/Buying-Situation invariants")
         validate_vnext_contracts()
-        print("[PASS] Stage-first, conditional Why-Now, Human Execution, and Experiment contracts")
+        print("[PASS] Stage-first, Reality-first Opportunity, Human Execution, and Experiment contracts")
         validate_evals()
-        print("[PASS] 39 human-auditable behavior acceptance scenarios")
+        print("[PASS] 41 human-auditable behavior acceptance scenarios")
         validate_authored_links()
         print("[PASS] authored Markdown links")
     except (ValidationFailure, OSError) as exc:

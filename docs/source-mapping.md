@@ -4,7 +4,7 @@ This mapping was derived from the local repositories under `/Users/lei/Downloads
 
 | Source persona | Domain Skill | Retained core models | Use in this Harness | Explicitly removed |
 | --- | --- | --- | --- | --- |
-| Paul Graham | `opportunity-finder` | Look for problems, make something people want, iterative discovery, do things that do not scale, founder/domain familiarity | Find observed pain, tolerated manual work, existing spend, and service-first opportunity candidates | Persona voice, founder worship, assumption that venture-scale software is required |
+| Paul Graham | `opportunity-finder` | Look for problems, make something people want, iterative discovery, do things that do not scale, founder/domain familiarity | Find reality-grounded problem, transaction, repeated-value, or consumption Candidates; keep founder/access advantages separate | Persona voice, founder worship, assumption that venture-scale software is required |
 | Slavoj Žižek | `assumption-challenger` | Expose presuppositions, desire versus stated goal, contradiction, fantasy/function, rebuild after critique | Detect FACT/ASSUMPTION collapse, wrong questions, research/building as avoidance, and means becoming ends | Roleplay, jargon-heavy performance, critique without a next action |
 | Duan Yongping | `business-filter` | Business model as first filter, right thing before execution, return to origin, circle of competence, validated followership, long horizon | Identify payer, bought result, alternatives, timing, durable revenue logic, repeatability, and reasons not to proceed | Stock-picking advice, persona voice, treating long-term intuition as evidence |
 | Nassim Nicholas Taleb | `experiment-designer` | Ruin/ergodicity, asymmetric and convex exposure, barbell, via negativa, skin in the game, turkey problem | Cap downside, avoid irreversible bets, prefer manual/pre-sale/concierge tests, require behavioral or cash evidence | Aggressive persona voice, unsupported certainty, risk critique without an executable test |
@@ -24,8 +24,8 @@ This mapping was derived from the local repositories under `/Users/lei/Downloads
 
 ### Paul Graham → opportunity-finder
 
-- Source workflow retained: classify whether current facts are needed, investigate users/product/organic pull when needed, then reframe toward a more fundamental problem. The wrapper narrows this to direct-access inventory → observed workaround → candidate → ranked investigation → one reality-contact action.
-- Apply when there is no credible customer/problem pair. Avoid after a payer and repeated problem are already evidenced unless deliberately discovering a separate opportunity.
+- Source workflow retained: classify whether current facts are needed, investigate users/product/organic pull when needed, then reframe toward a more fundamental value pattern. The wrapper uses traceable Reality inputs → archetype-appropriate Candidate → separate Opportunity Evidence and Investigation Advantage → one claim-matched evidence action.
+- Apply when there is no credible participant/audience plus problem or repeated-value pattern. Avoid after a payer and repeated value are already evidenced unless deliberately discovering a separate opportunity.
 - Source few-shot: `.agents/skills/opportunity-finder/examples/source/demo-conversation-2026-04-07.md`.
 - Source references: six research files under `.agents/skills/opportunity-finder/references/source/references/research/`, including writings, conversations, expression DNA, external critique, decisions, and timeline.
 

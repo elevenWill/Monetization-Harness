@@ -2,7 +2,9 @@
 
 ## Preconditions
 
-- The first and only 300 CNY payment is real and delivery occurred.
+- The first and only 300 CNY payment is real and delivery occurred; a redacted
+  provider record supplies the amount, currency, paid date, payer/customer
+  labels, completion status, and payment evidence required for one `Txxx`.
 - The payer is a close friend who wants to support the user; the experiment did
   not exclude relationship-biased buyers or establish ordinary purchase intent.
 - No independent buyer has paid, and repeatability is unproven.

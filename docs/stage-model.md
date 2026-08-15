@@ -4,14 +4,21 @@ Stage describes the next uncertainty to resolve, not how polished the artifact l
 
 | Stage | Entry evidence | Primary question | Typical next gate | Regression signal |
 | --- | --- | --- | --- | --- |
-| `opportunity_discovery` | No clear customer/problem pair | Where is a painful, repeated, already-tolerated problem? | `defined_problem_and_customer` | Candidate remains trend- or technology-led |
-| `problem_validation` | A customer/problem hypothesis exists | Does this problem occur and matter in observed reality? | `problem_evidence` | Interviews/behavior contradict the problem definition |
+| `opportunity_discovery` | No clear participant/audience and repeated value pattern | Which reality-grounded problem, transaction, consumption, identity, entertainment, information, convenience, or risk pattern is worth investigating? | `defined_problem_and_customer` | Candidate remains model-, trend-, technology-, or vanity-metric-led |
+| `problem_validation` | A participant/audience plus problem or desired-value hypothesis exists | Does the claimed problem, desired value, or consumption pattern occur and matter in observed reality? | `problem_evidence` | Observation or behavior contradicts the participant/value definition |
 | `business_validation` | Problem evidence exists | Who pays, for what result, why now, and versus what alternative? | `credible_offer` | Buyer, value, or payment logic becomes unclear |
 | `experiment_validation` | A falsifiable offer or assumption exists | What is the cheapest safe test using real behavior? | `transaction_attempt` | Experiment tests interest, not the key assumption |
 | `transaction_validation` | At least one real payment exists | Can the payment and delivery be repeated? | `repeat_payment` | First transaction proves exceptional or non-repeatable |
 | `leverage_discovery` | Repeated purchase or repeated valued delivery exists | Which repeated work can become an SOP or reusable asset? | `repeatable_delivery_system` | Automation reduces the value or repeatability disappears |
 | `productization` | Repeatable delivery and a bounded scope exist | What minimum product preserves the proven result? | `repeatable_product_value` | Product users do not repeat or pay; return to business validation |
 | `scaling` | Repeatable value, delivery, and plausible economics exist | Which acquisition and operating system can grow without hidden ruin? | `sustainable_growth` | Economics, retention, quality, or dependency breaks |
+
+`defined_problem_and_customer` and `problem_evidence` remain stable compatibility
+gate IDs. For content/media, entertainment, education, identity, information, or
+other non-pain businesses, read them as a defined audience plus repeated value or
+consumption hypothesis, followed by observed evidence that the pattern occurs.
+Do not force the pattern into a service problem, and keep its payer and
+monetization bridge `unknown` until evidence supports them.
 
 ## Stage determination
 

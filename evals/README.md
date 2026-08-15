@@ -13,7 +13,7 @@ workspace persistence:
 3. Inspect both the reply and any workspace changes.
 4. Compare only observable behavior with the expectations and failure conditions.
 
-The thirty-nine cases cover the V0 and VNext regression surface:
+The forty-one cases cover the V0 and VNext regression surface:
 
 - complete project-lifecycle routing: no project/no write, semantic resume,
   minimal bootstrap with lazy growth, and conflict/no wrong write;
@@ -43,7 +43,10 @@ The thirty-nine cases cover the V0 and VNext regression surface:
   the original hypothesis;
 - evidence-fit checks that separate reachability from decision relevance,
   content audience from payer, content platforms from distribution-only framing,
-  and execution quality from hypothesis quality.
+  and execution quality from hypothesis quality;
+- Reality-first Candidate ranking that separates market signals from founder/test
+  advantages and preserves content/media rather than silently replacing it with
+  a service offer.
 
 ## Human Execution and Experiment Diagnosis
 
@@ -76,7 +79,7 @@ workspace effects. Named Skill invocation is not itself a pass condition.
 
 ## Evidence Fit and Content-Market Roles
 
-Cases 36–39 freeze four distinct failures observed in a real creator-business
+Cases 36–41 freeze six distinct failures observed in real creator-business
 dogfooding session:
 
 - `36-reachable-sample-is-not-representative.md` — a nearby sample may answer a
@@ -91,11 +94,18 @@ dogfooding session:
 - `39-execution-does-not-validate-candidate.md` — founder fit, user agreement, and
   a concrete Execution Packet do not upgrade a model-derived candidate from
   hypothesis to market evidence, while cheap exploration remains allowed.
+- `40-founder-fit-is-not-market-priority.md` — founder familiarity, access, and
+  cheap testing affect investigation order but cannot compensate for weak
+  Opportunity Evidence or establish Market Priority.
+- `41-content-direction-is-not-a-service-offer.md` — content/media remains the
+  user-stated archetype; a service or tool is a separate monetization hypothesis
+  whose payment evidence cannot silently validate content pull.
 
 Together they ask whether a real evidence source is qualified to answer the
 current decision claim. They do not require representative population research,
 force platform search, prohibit small exploratory samples, or assume that an
-audience and payer must be different actors.
+audience and payer must be different actors. They also do not make founder fit
+irrelevant, reject novel Candidates, or prohibit an explicitly chosen service.
 
 ## Project Lifecycle
 

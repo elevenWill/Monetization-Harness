@@ -28,6 +28,15 @@ Prefer purchase, repeat purchase, retention, refund, complaint, and abandonment 
 
 Segment by customer, product category, disclosure state, platform, market, and content format. A single negative comment is a risk signal, not a population estimate. Stated liking is not payment evidence.
 
+For content/media, a platform can be a Market Observation Environment as well as
+a Distribution Channel. Repeated qualified consumption, return/search/save/share
+behavior, persistent substantive comments, and sustained creator operation can
+support a scoped audience/value claim. Visible sponsor, affiliate, subscription,
+product, or service paths show that a mechanism is offered; use operator or
+transaction evidence to establish whether money actually changed hands or the
+operation was profitable. Keep platform-policy and distribution-dependency
+findings separate from audience-behavior findings.
+
 ## Transferability to the current user
 
 Prefer the user's paid replication, then the user's behavioral test, an exact case with closely matched resources, a general exact case, an adjacent case, and theory. Record mismatches in audience, account history, brand, capital, supply chain, platform access, content production, sales, and delivery.

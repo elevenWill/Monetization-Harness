@@ -8,6 +8,7 @@ Build queries around decision subquestions and scope discriminators. Replace `<i
 - [Failure and counterevidence](#failure-and-counterevidence)
 - [Current platform policy](#current-platform-policy)
 - [User behavior and acceptance](#user-behavior-and-acceptance)
+- [Content and creator observation](#content-and-creator-observation)
 - [Competitors, prices, and buying signals](#competitors-prices-and-buying-signals)
 - [Purchase triggers and deadlines](#purchase-triggers-and-deadlines)
 - [Adjacent case control](#adjacent-case-control)
@@ -79,6 +80,27 @@ refund, complaint, retention, repeat purchase, abandonment
 ```
 
 Do not infer population acceptance from a few vivid comments. Record access boundaries and sampling limitations.
+
+## Content and creator observation
+
+When the Decision Claim concerns content pull, creator patterns, or observable
+monetization structures, treat relevant content platforms as bounded Market Observation Environments. Search exact audience, format, topic, geography, and
+time period; sample sustained and stopped/low-response operators rather than only
+stars. Inspect recurring publishing, repeat audience behavior, search/save/share
+or substantive comment patterns, visible sponsor/affiliate/subscription/product
+paths, and operator disclosures. Example query families:
+
+```text
+"<topic/format>" creator revenue OR sponsorship OR affiliate OR subscription
+"<topic/format>" stopped OR abandoned OR low views OR no revenue
+"<audience>" recurring questions OR saved OR searched OR returning viewers
+site:<platform> "<topic>" "付费" OR "会员" OR "赞助" OR "停更"
+```
+
+Keep platform observation separate from distribution feasibility and policy.
+Views, likes, followers, comments, visible offers, and sponsored labels support
+only the behavior or claim actually observed; none alone proves profit, accepted
+payment, repeat business, or transferability.
 
 ## Competitors, prices, and buying signals
 

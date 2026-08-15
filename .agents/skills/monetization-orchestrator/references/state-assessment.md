@@ -17,8 +17,8 @@ No Project is a valid result. A provisional analysis under conflict must not mut
 Read `workspace/_index.md`, enumerate actual `workspace/*/` project roots, then inspect the full `IDEA.md` and `STATE.md` of plausible candidates. A missing or stale registry row must not cause duplicate bootstrap. Compare:
 
 - explicit project or stable-slug references;
-- customer and payer;
-- problem and purchased result;
+- participant/audience/customer and payer;
+- problem or repeated-value pattern and any purchased result;
 - direction, offer, and current goal;
 - distinctive facts, transactions, experiments, or next action;
 - current-conversation continuity and registry recency.
@@ -33,7 +33,7 @@ Create `IDEA.md` with only:
 - creation date and active status;
 - the user's initial idea;
 - current goal;
-- currently believed customer;
+- currently believed participant, audience, or customer;
 - decision-relevant initial assumptions.
 
 Create `STATE.md` with discoverable:
@@ -61,7 +61,7 @@ On resume, the same fields must be discoverable from `STATE.md`. If an older pro
 Run this assessment only after the Reality Evidence selector identifies a decision-critical current external claim, and before selecting Thinking Skills:
 
 1. Does the immediate judgment depend materially on current external market, platform, policy, price, competitor, content, acceptance, or precedent evidence?
-2. If an `Rxxx` exists, does its scope match the current primary market, geography, platforms, content type, customer, and decision?
+2. If an `Rxxx` exists, does its scope match the current primary market, geography, platforms, content type, participant/audience/customer, and decision?
 3. Is it fresh enough for the claim? Volatile platform, policy, price, availability, and competition claims age faster than durable historical cases; there is no universal freshness interval.
 4. Does the artifact name the actual channels and source types checked, including first-party sources where a rule or policy is claimed?
 5. Are material coverage gaps, inaccessible channels, negative findings, and contradictions explicit?
@@ -140,7 +140,7 @@ An external source does not automatically create a FACT. Persist only decision-r
 
 The largest unknown is the earliest unanswered question whose answer could stop or substantially redirect the current plan. Common ordering:
 
-1. Is there a concrete costly problem for a reachable user?
+1. Is there a traceable participant/audience plus a reality-grounded repeated problem, value, consumption, or transaction pattern? Reachability affects evidence acquisition, not market importance.
 2. Will a buyer make a costly commitment or pay for the result?
 3. Can the decisive assumption be exposed to a valid real behavior, offer, or payment test?
 4. Can payment and delivery repeat independently?

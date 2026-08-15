@@ -4,7 +4,7 @@
 
 | Type | ID | Meaning | Required evidence/status |
 | --- | --- | --- | --- |
-| Opportunity | `O001` | A candidate worth investigating | Origin and reason to inspect |
+| Opportunity | `O001` | A candidate worth investigating | Origin, business archetype, Reality signal, investigation advantage, evidence status, commercial bridge, and inference scope |
 | Fact | `F001` | Something that happened or was directly observed | Source/evidence and observed date |
 | Assumption | `A001` | A belief not yet supported strongly enough | Status and validation plan |
 | Decision | `D001` | A chosen action or constraint | Basis, owner/date, revisit condition |
@@ -19,6 +19,31 @@ IDs are unique and permanent inside one project. Allocate the next unused intege
 Sources are local to one Research object and use its ID as a namespace: `R001-S01`, `R001-S02`, and so on. A Source is a cited record inside `R001`, not a project-wide object. Never allocate a Case for every search result; create one only when the reconstructed precedent remains useful to the current decision or future project memory.
 
 A Buying Situation uses its own `BSxxx` namespace. One Project may contain multiple Buying Situations; allocate the next unused number by searching the whole project, and do not overwrite or renumber an earlier situation when the trigger, payer, or purchase window changes.
+
+## OPPORTUNITY
+
+An Opportunity is a Candidate for investigation, not a validated market or a
+commitment. When an `Oxxx` is persisted, retain:
+
+- **Origin:** direct observation, user-reported concrete behavior, existing
+  transaction/spend/workaround, current external market evidence, or an explicit
+  model-derived synthesis;
+- **Business archetype:** product/SaaS, service/consulting,
+  marketplace/transaction, content/media/creator, commerce/affiliate, or another
+  clearly named structure;
+- **Opportunity Evidence:** the observed recurrence, spend, transaction,
+  workaround, audience behavior, precedent, or other Reality signal;
+- **Investigation Advantage:** founder familiarity, reachability, speed, cost,
+  manual-test ability, or existing assets, kept separate from Opportunity Evidence;
+- **Evidence status and inference scope:** what is observed, what remains an
+  ASSUMPTION, and what the source can and cannot establish; and
+- **Commercial bridge:** the current payer and monetization mechanism evidence,
+  or `unknown` when only audience/value behavior is observed.
+
+A model-derived Candidate may receive a capped exploratory test, but founder fit,
+user agreement, reachability, or a detailed Execution Packet does not increase
+its Market Evidence. Do not silently change the business archetype; record a
+service, product, affiliate, or other monetization route as a separate hypothesis.
 
 ## FACT
 
@@ -253,6 +278,18 @@ Persist each completed monetary transaction under `05-transactions/` with this m
 - Linked fact: F001
 - Linked buying situation: BS001 | unknown
 ```
+
+An incomplete oral or chat report of payment is still useful evidence, but it
+remains a FACT until the minimum auditable fields above are known. Keep
+transaction counters provisional or `unknown`; do not create a `completed`
+`Txxx` whose amount, currency, paid date, payer/customer, or payment evidence is
+unknown. A user report is provenance for the FACT, not payment evidence for a
+completed Transaction unless it includes an auditable redacted receipt or
+provider record.
+
+Allocate exactly one stable `Txxx` per auditable monetary transaction. Never use
+a range or rollup filename such as `T001-T036-...md`; summarize cohorts from
+their individual Transaction records without replacing them.
 
 `Status` must distinguish `completed`, `refunded`, `discounted`, `barter`, or `promised`. Only `completed` counts toward `transactions.total` or a `paid`/`repeated` Buying Situation. A `repeated` Buying Situation requires at least two linked completed `Txxx` records that demonstrate materially comparable occurrences; one transaction or two mentions of the same record is insufficient.
 

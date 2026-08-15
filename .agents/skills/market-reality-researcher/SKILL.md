@@ -26,13 +26,31 @@ For the end-to-end method and stopping rules, read [references/research-workflow
 
 Turn the idea into falsifiable subquestions before issuing queries. Specify:
 
-- market/geography, platform, content type, customer, payer, offer, and bought result;
+- market/geography, business archetype, platform, content type, participant or
+  audience, payer, offer or content value, monetization mechanism, and bought result;
 - exact behavior or transaction that would prove the mode exists;
 - current policy and disclosure requirements;
 - user acceptance, failures, alternatives, prices, and dependencies;
 - the difference between the proposed mode and likely adjacent evidence.
 
 For query families and platform selection, read [references/query-playbook.md](references/query-playbook.md) and [references/source-strategy.md](references/source-strategy.md). Never use broad result counts, popularity, likes, followers, GMV, or hiring volume alone as demand, profit, or repeatability evidence.
+
+For content/media decisions, keep the platform's two roles separate. As a
+**Market Observation Environment**, public platform behavior may support scoped
+claims about repeated consumption, return/search/save/share behavior, audience
+language, sustained creator operation, visible monetization paths, and failure
+or abandonment. As a **Distribution Channel or dependency**, the relevant claims
+are reach, policy, account history, algorithm exposure, and concentration risk.
+The same source may inform both, but record the findings separately. Engagement
+does not by itself prove payer intent, profit, a transaction, repeat purchase, or
+transferability to this project.
+
+When research compares Opportunity Candidates, use roughly comparable claim
+dimensions, search depth, geography, time window, and negative-evidence effort.
+A single star account, viral item, vendor story, or isolated success is a lead,
+not a ranking basis. If coverage is asymmetric or the evidence cannot support a
+cross-Candidate ordering, return `insufficient_evidence` for that comparison and
+preserve `Market Priority: unknown`; do not use founder fit to fill the gap.
 
 When the claim depends on why someone buys now, also define the proposed `trigger event -> deadline/time window -> cost of delay -> consequence owner -> buyer/payer -> workaround -> purchase window -> trust requirement -> bought result` chain. Read [references/trigger-event-search.md](references/trigger-event-search.md) to build event-first queries and [references/deadline-signal-search.md](references/deadline-signal-search.md) to classify deadline sources. Treat anxiety, urgency language, a provider rush listing, or a calendar date as separate leads—not as proof of payment.
 
@@ -94,7 +112,7 @@ When why-now is decision-critical, additionally seek the event source, buyer-ori
 
 ## Select research depth
 
-- **quick:** Default for a decision-capped go/no-go check or experiment preparation when one current external fact must be resolved. Predeclare the decision, query/time cap, and stop rule. Target only the minimum authoritative constraint, closest case/negative signal, price or substitute evidence, and explicit gaps needed for that decision.
+- **quick:** Default for a decision-capped go/no-go check or experiment preparation when one current external fact must be resolved. Also use it to compare a small Candidate pool when direction choice otherwise rests mainly on model synthesis: seek only the closest operating or transaction structures, negative/stopped patterns, audience/value evidence, monetization mechanisms, non-transferable resources, and explicit gaps needed to decide which Candidate enters a cheap test. Predeclare the decision, query/time cap, and stop rule; do not turn it into a general market landscape.
 - **standard:** For an explicit viability landscape, case request, or material direction whose named decision cannot be resolved by a quick check or direct field evidence. Target at least three independent case candidates, ideally one or two exact cases; at least two negative sources; one current official policy source per target platform; acceptance signals from at least two independent channel types; and real price/transaction signals. These are coverage targets, not a license to fill quotas with weak analogies. Stop conclusion escalation when no exact case is found.
 - **deep:** For an explicit deep study, major commitment, or multi-platform entry. Add multilingual and multi-period searches, major competitors, business models, unit economics, acquisition, delivery, policy history, positive and negative feedback, failure modes, transfer conditions, and a minimal replication design. Do not implement scheduled monitoring in V0.
 

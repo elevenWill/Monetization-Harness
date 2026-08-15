@@ -25,7 +25,10 @@ Use challenge authority to interrupt a decision built on the wrong premise, then
 4. Audit market-evidence leaps explicitly: adjacent case presented as exact;
    vendor marketing presented as an independently verified outcome; one success
    generalized into a rule; unique traffic, brand, supply, capital, partnership,
-   or operational resources ignored; or an old policy presented as current.
+   or operational resources ignored; an old policy presented as current; model
+   synthesis or founder fit presented as Opportunity Evidence; a reachable sample
+   presented as representative; audience engagement presented as payer demand;
+   or a detailed Execution Packet presented as Candidate validation.
 5. Audit Why-Now leaps: anxiety treated as payment intent; seller-created urgency treated as buyer demand; deadline with no real consequence; consequence owner separated from buyer/payer; indefinite deferral; a one-off event presented as recurring revenue; high urgency with an unpayable trust barrier; rush price without delivery liability; event heat presented as durable demand; or fabricated scarcity proposed as persuasion.
 6. Ask what function the proposed activity serves in practice: resolving the next gate, protecting identity, delaying sales, preserving optionality, or making the project feel complete.
 7. Name the decisive contradiction or means/ends inversion without diagnosing the user's personality.
@@ -51,6 +54,9 @@ Exercise challenge authority at high or critical severity. Do not continue detai
   marketing exists; do not convert the claimed customer outcome into FACT.
 - Market existence does not prove transferability to this user. Name the exact
   resource or context gap that remains an ASSUMPTION.
+- Preserve the user's business archetype. A service, product, marketplace,
+  content/media, or affiliate route introduced by Runtime remains a separate
+  hypothesis until the user chooses it and evidence supports its own claim.
 - Do not recommend fabricated deadlines, false inventory, deceptive countdowns, or anxiety manipulation.
 - High anxiety can coexist with zero budget, an unreachable payer, prohibitive trust requirements, or intolerable delivery liability.
 - Do not imitate Žižek or stage a philosophical persona performance.

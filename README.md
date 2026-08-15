@@ -103,6 +103,10 @@ Diagnosis → Next Action / Stage rollback or promotion
 
 原则是 `Case First → Pattern First → Replication First`：优先重建已经发生过的交易结构，区分精确案例与相邻案例，再测试当前用户能否复制；不是看到一个趋势就凭空发明复杂产品。
 
+Opportunity Discovery 先区分两件事：Reality/Opportunity Evidence 回答“现实里为什么值得调查”，Investigation Advantage 回答“为什么你能更快、更便宜地学到答案”。Founder Fit、熟悉度和可达性仍然重要，但不会被加进同一个分数来替代交易、持续消费、现有支出、workaround 或其他市场信号。模型提出的新方向可以做有上限的探索，但会保持 `model-derived`、`unvalidated`，不会因为行动计划具体就变成第一市场方向。
+
+Harness 也会保留业务原型。Content/Media 不会因为服务更容易报价就自动变成咨询或工具业务；Audience Value、Distribution 和 Money Flow 分开验证。小红书、B站、抖音、YouTube 等平台按当前问题既可能是 Distribution Channel，也可能是 Market Observation Environment，但互动量本身不证明利润或付款。
+
 市场研究能证明别人是否在已知条件下做成过，不能单独证明你一定能做成。最终仍需要一个低成本、有停止条件的复现实验。
 
 Market Reality Gate 不会为了展示能力反复搜索。只恢复项目、处理已有实验结果、确认执行细节，或已有研究仍新鲜且范围一致时，可以直接复用证据。新公开市场项目不会仅因“新”或“公开市场”就自动搜索；只有当前市场、政策、价格、案例等外部事实会改变下一步时，才做有决策、时间和停止条件的 bounded check。
@@ -228,8 +232,8 @@ Stage 表示“当前最早且最重要的未解决 gate”，不是产品完成
 
 | Stage | 当前主要问题 |
 | --- | --- |
-| `opportunity_discovery` | 哪个真实问题值得调查？ |
-| `problem_validation` | 问题是否真实、重复且重要？ |
+| `opportunity_discovery` | 哪个真实问题、交易、消费或重复价值模式值得调查？ |
+| `problem_validation` | 该问题、期望价值或消费行为是否真实、重复且重要？ |
 | `business_validation` | 谁为哪个结果付钱，为什么现在付？ |
 | `experiment_validation` | 怎样用最小安全实验获得行为证据？ |
 | `transaction_validation` | 第一笔钱能否独立重复？ |
@@ -277,7 +281,7 @@ Stage 可以回退。产品上线后无人复购，应回到 `business_validatio
 
 ## Behavior Acceptance Scenarios
 
-[`evals/cases/`](evals/cases/) 保存 39 个核心 Harness Behavior Acceptance Scenarios，用于修改 `AGENTS.md`、Skills、Router、Stage、Market Reality、Human Execution 或 Experiment Diagnosis 规则时做人工行为回归。
+[`evals/cases/`](evals/cases/) 保存 41 个核心 Harness Behavior Acceptance Scenarios，用于修改 `AGENTS.md`、Skills、Router、Stage、Market Reality、Human Execution 或 Experiment Diagnosis 规则时做人工行为回归。
 
 它们不是自动启动 Codex 的 LLM Evaluation Framework，也不把手工编写的理想答案伪装成真实 Runtime 测试。核心覆盖：Project lifecycle、Stage-first、Reality Evidence 路由、过早开发、交易与 leverage、重大下注、Stage 回退、Workspace lazy growth、市场证据，以及无人看见、错误 Buyer、赞美无付款、友情付款、可执行 sourcing、研究/开发逃避、交付亏损、现实反馈改写方向、样本与 Decision Claim 的匹配、内容 Audience/Payer 分离、内容平台的条件式证据用途，以及执行具体性不抬升假设。
 

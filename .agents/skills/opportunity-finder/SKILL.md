@@ -1,11 +1,12 @@
 ---
 name: opportunity-finder
-description: Find evidence-worthy monetization opportunities in observed problems, repeated manual work, trigger or recurrence clues, existing workarounds, current spend, and domains the user understands. Use for opportunity discovery when the user does not know what to sell, has no clear customer/problem pair, is starting from a technology or trend, or needs to rank problems before validation. Use only a light trigger-mechanism scan unless a concrete Buying Situation is already decision-critical. Do not invent feature-first AI products or productize an already validated repeated transaction.
+description: Find and compare evidence-worthy monetization opportunities from observed problems, repeated value or consumption, transactions, workarounds, current spend, market patterns, and explicitly labeled exploratory hypotheses. Use for opportunity discovery when the user has no clear participant/audience and value pattern, is starting from a technology or trend, is comparing business directions, or needs to separate Opportunity Evidence from founder familiarity, reachability, and test cost. Preserve content/media and other non-problem archetypes; use only a light trigger scan unless a concrete Buying Situation is decision-critical.
 ---
 
 # Opportunity Finder
 
-Find places worth investigating; do not declare a market proven.
+Find reality-grounded places worth investigating; do not let an easy experiment
+or founder fit masquerade as Market Evidence.
 
 ## Load context
 
@@ -20,7 +21,10 @@ Find places worth investigating; do not declare a market proven.
 
 ## Preconditions
 
-Use this lens while the current gate is a credible customer/problem pair. If real payments and a defined buyer already exist, tell the orchestrator this lens is probably stage-misaligned unless the project is deliberately seeking a second opportunity.
+Use this lens while the current gate is a credible participant/audience plus
+problem or repeated-value pattern. If real payments and a defined buyer already
+exist, tell the orchestrator this lens is probably stage-misaligned unless the
+project is deliberately seeking a second opportunity.
 
 Treat trends, market sizes, and the user's enthusiasm as leads, not facts about demand. Never turn a source Persona judgment into evidence.
 
@@ -31,32 +35,65 @@ research itself.
 
 ## Workflow
 
-1. Inspect current exact precedents and paid transaction structures in the latest
-   market research before inventing a new offer.
-2. Inspect negative cases, failed attempts, policy constraints, and incumbent
-   alternatives; identify a specific unmet or poorly served gap rather than
-   treating category activity as opportunity.
-3. Inventory direct access: work the user has done, people they can observe or contact, workflows they understand, and buyers they can reach.
-4. Look for behavior: repeated complaints plus continued use, spreadsheets, WeChat/manual coordination, copy-paste, rework, waiting, compliance burden, services already purchased, and tasks someone cannot simply stop doing.
-5. Separate observations from interpretations. Label unverified statements provisional assumptions. Never upgrade an adjacent case into an exact precedent.
-6. Form small candidates as `narrow customer + concrete situation + costly problem + current workaround + reachable evidence source`.
-7. Perform a light trigger-mechanism scan: note whether an event, recurrence,
+1. Preserve the user's stated goal and business archetype. Treat product/SaaS,
+   service/consulting, marketplace/transaction, content/media/creator, and
+   commerce/affiliate as different hypotheses; never silently convert one into
+   another because another is easier to test or monetize.
+2. Build Candidate inputs from Reality: direct observations; user-reported
+   concrete behavior; transactions, spend, workarounds, or repeated effort;
+   current external behavior and precedents; and negative or failed patterns.
+   A model may synthesize another Candidate, but label its origin `model-derived`,
+   evidence status `unvalidated`, and inference scope explicitly.
+3. Preserve a minimum provenance record for each Candidate: `candidate_origin`,
+   `business_archetype`, `observed_signal`, `evidence_status`,
+   `commercial_bridge`, `largest_unknown`, and `inference_scope`. User agreement
+   accepts a Candidate for testing; it does not improve its evidence status.
+4. Form the Candidate in the shape appropriate to its archetype. A workflow or
+   service Candidate may use `narrow actor + situation + costly repeated problem
+   + workaround`. A content/media Candidate instead uses `narrow audience +
+   recurring context/value + observable consumption behavior + current media or
+   substitute + observable evidence surface`; payer and monetization may remain
+   `unknown`. Do not infer a service or tool from audience problems.
+5. Treat a content platform according to the Decision Claim. It can be both a
+   Distribution Channel and a Market Observation Environment for repeated
+   consumption, return/search/save/share behavior, comment themes, persistent
+   creator operation, visible monetization paths, and failure or abandonment.
+   Engagement alone does not prove profit, payment, repeat purchase, or this
+   user's transferability.
+6. Assess two axes separately—never add them into one Opportunity score:
+   - **Opportunity Evidence:** observed recurrence, costly action, spend,
+     transaction, persistent workaround, audience pull, sustained operation,
+     or transferable precedent.
+   - **Investigation Advantage:** founder familiarity, reachability, learning
+     speed, test cost, manual-test ability, and existing assets.
+   First require a Reality basis worth investigating; then use Investigation
+   Advantage to choose the cheapest discriminating test. Strong access or fit
+   with weak Reality evidence creates only a capped exploratory Candidate, not
+   “the best market” or Market Priority #1.
+7. When the user asks which direction is worth pursuing, direct Reality evidence
+   is weak, Candidates are mainly model-derived, and current external patterns
+   could change the comparison, return a decision-capped Reality Scan to the
+   orchestrator before ranking. Ask for only the closest operating/transaction
+   patterns, failures, monetization structures, required resources, and explicit
+   gaps needed by that decision. Reality-first is not Research-first or Web-first.
+8. Perform a light trigger-mechanism scan: note whether an event, recurrence,
    persistent cost, convenience, identity/status, entertainment, or long-term
    risk could make the problem more likely to produce buying behavior. Treat each
    as a clue to investigate, not a verified trigger, and do not require the full
    deadline/consequence/payer/purchase-window chain at this Stage.
-8. Rank candidates by observed problem cost and repetition, current
-   spend/effort, workaround persistence, reachable evidence source, speed to a
-   behavioral test, founder/domain fit, and—when current evidence exists—the
-   transferability of a paid pattern. A real trigger, reachable payer, or
-   low-trust deliverable can strengthen a candidate without becoming a universal
-   prerequisite. Do not rank by technical novelty or popularity.
-9. Keep non-deadline businesses in consideration when high-frequency repetition,
+9. Keep non-deadline and non-problem businesses in consideration when
+   high-frequency repetition,
    persistent cost, convenience, identity/status, entertainment, long-term risk,
-   or stable repeat purchase supplies the buying mechanism.
-10. Return at most three candidates. Prefer the closest proven, transferable
-   transaction structure and one observation/interview/service action over a
-   product specification.
+   repeated consumption, or stable repeat purchase supplies the value mechanism.
+10. Return at most three Candidates. For each, show the Reality basis separately
+    from investigation advantages and do not force a single winner when comparable
+    Opportunity Evidence is absent. Prefer one bounded observation, Reality Scan,
+    or behavior/payment probe that can change the ranking over a product spec.
+11. Compare Candidates on the same decision-relevant claim dimensions with roughly
+    comparable coverage. A single star account, viral item, vendor story, or isolated
+    success is a lead, not an ordinal ranking basis. When evidence is weak,
+    asymmetric, or incomparable, write `Market Priority: unknown`, do not call one
+    the best or first business direction, and select only the `first exploratory test`.
 
 ## Guardrails
 
@@ -66,6 +103,13 @@ research itself.
 - Do not treat search volume, a vendor case, a stale case, or adjacent success as
   proof of the exact opportunity.
 - Do not infer willingness to pay from complaints alone.
+- Do not infer Market Priority, representativeness, or commercial value from
+  familiarity, reachability, cheap testing, or user agreement.
+- Do not turn an easier experiment into an ordinal business ranking. Learning order
+  and Market Priority are separate outputs.
+- Do not convert content audience interest into a service, tool, sponsor, or
+  audience-paid model without keeping that monetization route as a separate
+  hypothesis and its payer evidence `unknown`.
 - Do not infer a real deadline, high commercial value, or purchase intent from urgency language alone.
 - Do not reject an opportunity only because `deadline_type` is `none` or `unknown`.
 - Do not reject observable pull solely because no exact precedent or stable workaround exists. Lower confidence, keep `market validated: false`, and prefer one capped exploratory behavior or paid probe when direct access and downside permit it.
@@ -75,6 +119,13 @@ research itself.
 
 ## Output
 
-Return one review using `docs/review-protocol.md`. In `finding`, name the best investigation area or explain why no candidate is evidence-worthy. In `recommended_action`, specify whom to observe/contact, what to learn, a small count or timebox, and what evidence would justify business validation.
+Return one review using `docs/review-protocol.md`. In `finding`, name the strongest
+Reality-grounded investigation area, a bounded exploratory Candidate, or why no
+Market Priority is supportable yet. In `reasoning_summary`, keep Opportunity
+Evidence separate from Investigation Advantage and state the inference boundary.
+In `recommended_action`, specify the cheapest claim-matched observation, bounded
+Reality Scan, contact, or probe and the evidence that would change the ranking.
+If comparison evidence is not comparable, label it the `first exploratory test`,
+not the selected or best direction, and state `Market Priority: unknown`.
 
 Coordinate normally with `assumption-challenger` when a technology, trend, identity, or preferred solution is constraining the search.
