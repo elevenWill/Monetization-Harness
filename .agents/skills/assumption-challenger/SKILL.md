@@ -30,7 +30,7 @@ Use challenge authority to interrupt a decision built on the wrong premise, then
 6. Ask what function the proposed activity serves in practice: resolving the next gate, protecting identity, delaying sales, preserving optionality, or making the project feel complete.
 7. Name the decisive contradiction or means/ends inversion without diagnosing the user's personality.
 8. Rebuild the question around the current stage's largest unknown and a concrete `BSxxx` when purchase timing matters.
-9. Recommend one reality-contact action, usually via `opportunity-finder`, `business-filter`, or `experiment-designer`. If the conclusion first requires missing or stale external facts, return that gap to the orchestrator for fresh market and Purchase Trigger research before prescribing action.
+9. Recommend one reality-contact action, usually via `opportunity-finder`, `business-filter`, or `experiment-designer`. If the conclusion first requires missing or stale current external facts, return that gap to the orchestrator for market research. Request full Purchase Trigger research only when purchase timing is material to the earliest uncertainty; otherwise preserve trigger claims as clues or `unknown` rather than delaying direct evidence.
 
 ## Challenge threshold
 

@@ -126,7 +126,7 @@ Write project files only when at least one durable item changes:
 - new evidence-backed fact or transaction;
 - completed decision-relevant market research, a reusable external case, or a material change in research freshness or coverage;
 - a decision-relevant Buying Situation is first persisted, materially changes status, or gains trigger, Cost-of-Delay, trust, reachability, or transaction evidence;
-- new or materially changed experiment;
+- a new accepted experiment, a materially changed experiment plan, or a completed experiment result;
 - explicit decision;
 - assumption status becomes supported, weakened, or invalidated;
 - stage, status, next gate, largest unknown, or material risk changes.
@@ -204,13 +204,20 @@ STATE.md
 
 Never create `01-opportunity/` merely because `stage: opportunity_discovery`, and never backfill missing directories for visual completeness.
 
+An Experiment plan, its completed result, and its aggregate Evidence Ledger stay
+in the same `Exxx` artifact under `04-experiments/`. Completion does not create a
+new object ID, project-root result file, lead table, or funnel directory. Existing
+plan-only experiments require no migration; apply the completion contract in
+[`object-protocol.md`](object-protocol.md) only when a completed/result section is
+recorded.
+
 ## Write sequence
 
 1. Confirm a mutation trigger and project ownership.
 2. Classify the durable change and determine its owning Stage. The Market Reality Gate and Why-Now Gate are not Stages; research and Buying Situations belong to the Stage whose decision they inform.
 3. Decide whether it needs a standalone artifact. A compact snapshot change may update only `STATE.md`; a transaction, experiment, completed decision-relevant RESEARCH record, or real decision-relevant Buying Situation normally needs an artifact. Create a standalone CASE only when it is reusable beyond one research summary.
 4. Allocate stable IDs by searching the whole project. For a standalone artifact, create the owning directory and file atomically in the same change.
-5. Update the current snapshot and links in `STATE.md`. Reconcile all active assumption statuses, decision bases, counters, risks, next actions, and—when present—market scope, checked date, latest-research link, freshness, policy status, exact-precedent status, coverage gaps, and the optional Purchase Trigger snapshot with the new evidence. Time-qualify older statements whose original context must be preserved; mark superseded or stale research explicitly rather than leaving its conclusion current.
+5. Update the current snapshot and links in `STATE.md`. Reconcile the active experiment's status/result, all active assumption statuses, evidence-backed facts, user-committed decision bases, transaction counters, Stage entry evidence, largest unknown, risks, and next actions. When present, also reconcile market scope, checked date, latest-research link, freshness, policy status, exact-precedent status, coverage gaps, and the optional Purchase Trigger snapshot. Time-qualify older statements whose original context must be preserved; mark superseded or stale research explicitly rather than leaving its conclusion current. An Experiment result code alone does not promote or roll back the Stage.
 6. Update `workspace/_index.md` when a project is created or stage, status, next gate, or date changes. Reconcile a missing or stale row discovered during an otherwise-triggered write; do not create a duplicate project.
 7. Re-read changed files. Verify every FACT names or links evidence; every RESEARCH and CASE has scope, checked date, supporting source IDs or links, contradictory evidence, and coverage limits; every `BSxxx` uses an allowed status and Deadline type and marks missing fields `unknown`; links resolve; counters and present-tense summaries agree; the root invariant holds; and no empty directories were introduced.
 

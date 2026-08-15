@@ -36,7 +36,7 @@ the orchestrator for the Market Reality Gate. Do not fill it with model knowledg
 7. Compare positive precedent with failure cases, complaints, policy limits, and
    the resources the apparent winner uniquely possesses.
 8. Apply a competence check: separate what is understood from what requires domain or market evidence.
-9. Classify the Buying Situation as exactly one primary outcome: `real_urgent_buying_situation`, `urgent_but_low_trust`, `deadline_without_consequence`, `high_value_but_unreachable`, `one_off_rush_service`, `recurring_deadline_opportunity`, `manufactured_urgency`, `high_liability_opportunity`, or `no_clear_why_now`. Do not combine these into a numeric score.
+9. Classify the purchase mechanism as exactly one primary outcome: `real_urgent_buying_situation`, `urgent_but_low_trust`, `deadline_without_consequence`, `high_value_but_unreachable`, `one_off_rush_service`, `recurring_deadline_opportunity`, `recurring_non_deadline_purchase`, `manufactured_urgency`, `high_liability_opportunity`, or `no_clear_why_now`. Use `recurring_non_deadline_purchase` only when observed repeat payment/usage, a persistent value mechanism, reachable payer, and plausible economics support purchase without a deadline. Do not combine outcomes into a numeric score or manufacture urgency to avoid `no_clear_why_now`.
 10. Choose `continue`, `continue_with_conditions`, `pause`, or `reject_for_now`; name the missing evidence that would change the result.
 
 ## Transaction interpretation

@@ -1,6 +1,6 @@
 ---
 name: opportunity-finder
-description: Find evidence-worthy monetization opportunities and concrete Buying Situations in observed problems, repeated manual work, real purchase triggers, existing workarounds, current spend, and domains the user understands. Use for opportunity discovery when the user does not know what to sell, has no clear customer/problem pair, is starting from a technology or trend, or needs to rank problems and why-now conditions before validation. Do not use to invent feature-first AI products or to productize an already validated repeated transaction.
+description: Find evidence-worthy monetization opportunities in observed problems, repeated manual work, trigger or recurrence clues, existing workarounds, current spend, and domains the user understands. Use for opportunity discovery when the user does not know what to sell, has no clear customer/problem pair, is starting from a technology or trend, or needs to rank problems before validation. Use only a light trigger-mechanism scan unless a concrete Buying Situation is already decision-critical. Do not invent feature-first AI products or productize an already validated repeated transaction.
 ---
 
 # Opportunity Finder
@@ -40,11 +40,17 @@ research itself.
 4. Look for behavior: repeated complaints plus continued use, spreadsheets, WeChat/manual coordination, copy-paste, rework, waiting, compliance burden, services already purchased, and tasks someone cannot simply stop doing.
 5. Separate observations from interpretations. Label unverified statements provisional assumptions. Never upgrade an adjacent case into an exact precedent.
 6. Form small candidates as `narrow customer + concrete situation + costly problem + current workaround + reachable evidence source`.
-7. When comparing candidates, prioritize investigation of `narrow customer + repeatable trigger + real deadline + explicit cost of delay + observable leading signal + reachable payer + low-trust deliverable`. Verify every term; a seller promotion or reported anxiety is not a trigger fact.
-8. Rank candidates by strength and transferability of the existing paid pattern,
-   trigger frequency, observable cost, current spend/effort, reachability inside
-   the purchase window, trust feasibility, speed to first behavioral test, and
-   founder/domain fit. Do not rank by technical novelty or popularity.
+7. Perform a light trigger-mechanism scan: note whether an event, recurrence,
+   persistent cost, convenience, identity/status, entertainment, or long-term
+   risk could make the problem more likely to produce buying behavior. Treat each
+   as a clue to investigate, not a verified trigger, and do not require the full
+   deadline/consequence/payer/purchase-window chain at this Stage.
+8. Rank candidates by observed problem cost and repetition, current
+   spend/effort, workaround persistence, reachable evidence source, speed to a
+   behavioral test, founder/domain fit, and—when current evidence exists—the
+   transferability of a paid pattern. A real trigger, reachable payer, or
+   low-trust deliverable can strengthen a candidate without becoming a universal
+   prerequisite. Do not rank by technical novelty or popularity.
 9. Keep non-deadline businesses in consideration when high-frequency repetition,
    persistent cost, convenience, identity/status, entertainment, long-term risk,
    or stable repeat purchase supplies the buying mechanism.
@@ -62,6 +68,7 @@ research itself.
 - Do not infer willingness to pay from complaints alone.
 - Do not infer a real deadline, high commercial value, or purchase intent from urgency language alone.
 - Do not reject an opportunity only because `deadline_type` is `none` or `unknown`.
+- Do not reject observable pull solely because no exact precedent or stable workaround exists. Lower confidence, keep `market validated: false`, and prefer one capped exploratory behavior or paid probe when direct access and downside permit it.
 - Do not recommend quitting, large builds, or automation.
 - Do not require a venture-scale outcome; a manual paid service may be the correct discovery vehicle.
 - Do not mimic Paul Graham or name him in the user-facing answer.

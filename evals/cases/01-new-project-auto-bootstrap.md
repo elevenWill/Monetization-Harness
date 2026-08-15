@@ -18,14 +18,18 @@
   updates `_index.md`; it creates no empty stage directory.
 - `STATE.md` starts at `opportunity_discovery`, distinguishes observations from
   assumptions, and names the largest unknown and next gate.
-- Because the question depends on a public market and the project has no market
-  evidence, Runtime runs a bounded quick market reconnaissance before the
-  Thinking Skills. If that real research completes in the same turn, it is a
+- Runtime performs a light scan of the possible purchase mechanism without
+  forcing a complete Buying Situation or business audit at this Stage. Here a
+  bounded market reconnaissance is warranted only because current public-market
+  existence, buyer behavior, platform constraints, and available precedents can
+  change which problem is worth observing next; a new project by itself would
+  not require search. If that real research completes in the same turn, it is a
   separate durable mutation: create a non-empty
   `01-opportunity/research/R001-*.md`, link it from `STATE.md`, and do not create
   any unrelated stage directory.
-- `opportunity-finder` is the primary lens; `assumption-challenger` is added only
-  if needed to challenge trend-implies-demand reasoning.
+- The response surfaces observed problems, affected people, and the cheapest
+  decision-changing Reality Evidence. It treats “AI video is trending” as a
+  hypothesis about demand rather than forcing a full business evaluation.
 - Runtime continues answering the monetization question in the same turn.
 
 ### Lazy-growth follow-up
@@ -41,7 +45,10 @@ merely to make the tree look complete.
 - Asks the user to run Python, choose a slug, create directories, or select a stage.
 - Treats minimal bootstrap and same-turn research persistence as one reason to
   pre-create the full stage skeleton, any empty directory, or a template copy.
-- Gives a market-feasibility direction without the required quick scan or writes
-  a research artifact without actually completing research.
+- Treats project novelty alone as a reason to search, skips decision-critical
+  current evidence in this scenario, or writes a research artifact without
+  actually completing research.
+- Forces a complete Why-Now/Buying Situation/business audit before identifying a
+  concrete problem and the cheapest Reality Evidence.
 - Creates a second project despite one clearly matching the topic.
 - Stops after persistence instead of continuing the conversation.

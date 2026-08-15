@@ -1,6 +1,6 @@
 # Monetization Decision Harness V0
 
-这是一个 Conversation-First 的个人变现决策 Harness：你只需要和 Codex 对话，Harness 会判断是否需要建立或恢复项目、当前应该解决哪个未知量；当结论依赖现实市场时，它会先调查外部证据，再调用 Thinking Skills，并在真正发生持久变化时维护 Workspace。
+这是一个 Conversation-First 的个人变现决策 Harness：你只需要和 Codex 对话，Harness 会判断是否需要建立或恢复项目、当前 Stage 最早还缺什么证据，再选择网页研究、直接观察、真实报价、付款或交付中最能改变决定的现实证据，调用最少的 Thinking Skills，并在真正发生持久变化时维护 Workspace。
 
 它不是名人 Agent 圆桌，也不实现第二套 Agent Runtime。Codex 负责推理、工具调用和文件维护；本仓库提供变现领域的规则、Thinking Skills、长期记忆和行为验收场景。
 
@@ -78,35 +78,34 @@ workspace/ai-commerce-short-video/
 
 ## Harness 会主动调查真实市场
 
-Harness 不再只依赖用户描述和思维模型。当判断涉及“是否有人做成、平台是否允许、当前价格、用户是否接受、竞品和失败案例、是否值得大额投入”等现实事实时，Runtime 必须先经过 Market Reality Gate：
+Harness 不再只依赖用户描述和思维模型。当判断涉及“是否有人做成、平台是否允许、当前价格、用户是否接受、竞品和失败案例、是否值得大额投入”等当前外部事实时，Runtime 才进入 Market Reality Gate。Reality Evidence First 不等于 Web First：能由真实工作流、报价、付款、交付或复购直接回答的问题，不用网页研究代替。
 
 你不需要说“请使用 Agent Reach”。当你问“这个想法是否可行”“有没有人做成”“平台是否允许”“用户是否接受”或“应该参考谁”时，Harness 会判断是否需要联网，并自动选择 Agent Reach 或当前可用的 Web 工具。
 
 ```text
-对话与 Project 状态
+Conversation → Resolve Project
 ↓
-识别当前最大未知量
+Evidence-derived Stage → earliest unresolved uncertainty
 ↓
-Market Reality Gate
-↓ 需要外部事实
-market-reality-researcher
-↓ 产生可审计的 R/C/Source 证据
-Purchase Trigger Research
+选择最便宜且能改变决定的 Reality Evidence
+├─ 复用新鲜且范围匹配的证据
+├─ 直接观察 / 联系 / 报价 / 付款 / 交付
+└─ 当前外部事实关键时才用 market-reality-researcher
 ↓
-Why-Now Gate
-↓ 形成或比较具体 BSxxx
-business-filter（计入总共 1～2 个 Lens）+ 可选的最少额外 Thinking Skill
+Opportunity 只做轻量 Trigger Scan；购买时机关键时才运行完整 Why-Now
 ↓
-Closest Proven Playbook + Deadline/普通最小复现实验
+Stage-primary Thinking Lens + 最多一个必要的 Optional Lens
 ↓
-Transaction Evidence
+Decision → Human Action / Artifact → Reality Feedback
+↓
+Diagnosis → Next Action / Stage rollback or promotion
 ```
 
 原则是 `Case First → Pattern First → Replication First`：优先重建已经发生过的交易结构，区分精确案例与相邻案例，再测试当前用户能否复制；不是看到一个趋势就凭空发明复杂产品。
 
 市场研究能证明别人是否在已知条件下做成过，不能单独证明你一定能做成。最终仍需要一个低成本、有停止条件的复现实验。
 
-Market Reality Gate 不会为了展示能力反复搜索。只恢复项目、处理已有实验结果、确认执行细节，或已有研究仍新鲜且范围一致时，可以直接复用证据。新公开市场项目通常只做 quick reconnaissance，不自动生成几十条查询或一份行业报告。
+Market Reality Gate 不会为了展示能力反复搜索。只恢复项目、处理已有实验结果、确认执行细节，或已有研究仍新鲜且范围一致时，可以直接复用证据。新公开市场项目不会仅因“新”或“公开市场”就自动搜索；只有当前市场、政策、价格、案例等外部事实会改变下一步时，才做有决策、时间和停止条件的 bounded check。
 
 ### Agent Reach 与覆盖缺口
 
@@ -133,6 +132,14 @@ Harness 不只问“用户有没有痛点”，还会继续问：
 高焦虑不等于高成交。Deadline 只有和真实后果、购买能力、可触达性、信任与交付能力结合时，才可能提高商业价值；虚假倒计时、假库存和假稀缺不会被当成需求证据，也不会被建议。反过来，没有 Deadline 的业务也不必被否定：高频使用、持续成本、便利、娱乐或稳定复购同样可能形成真实生意。
 
 详细的 Purchase Trigger、Cost of Delay、Deadline 类型和 Why-Now Gate 见 [`docs/purchase-trigger-protocol.md`](docs/purchase-trigger-protocol.md)。
+
+## 从判断到真人明天能执行
+
+当下一条证据必须由真人观察、找人、联系、报价、收款、交付或运行一个小测试获得时，Runtime 会按 [`docs/human-execution-protocol.md`](docs/human-execution-protocol.md) 给出最小 Execution Packet。它不是 CRM 或固定销售漏斗，而是把“去验证”展开成：去哪找、搜什么、谁算合格、联系哪个角色、做多少、说什么或卖什么、真实价格、记录什么、何时停止和复盘。
+
+低风险首次接触默认使用七项 Micro Packet，不展示一张空表。未知的来源、渠道、决策人或价格会保留为 `unknown`，先给一个有上限的获取步骤，不由模型猜。若暂缓开发，回答必须说明什么现实证据会解锁哪一小段技术工作；连续 `invalid` / `inconclusive` 的修复共享总时间、成本和复盘次数上限，达到上限就暂停、降级或换方向，而不是无限“再试一个渠道”。
+
+实验完成后，Evidence Ledger 只记录当前测试用到的证据路径，并区分 `success`、严格的 `demand_failure`、`invalid` 和 `inconclusive`。无人看见、找错 Buyer 或价格未真正展示都不能证明需求失败；reason code 不能替代原始证据。详细对象协议见 [`docs/object-protocol.md`](docs/object-protocol.md#experiment)。
 
 ## Workspace 按真实经历生长
 
@@ -270,9 +277,11 @@ Stage 可以回退。产品上线后无人复购，应回到 `business_validatio
 
 ## Behavior Acceptance Scenarios
 
-[`evals/cases/`](evals/cases/) 保存 22 个核心 Harness Behavior Acceptance Scenarios，用于修改 `AGENTS.md`、Skills、Router、Stage、Market Reality 或 Why-Now 规则时做人工行为回归。
+[`evals/cases/`](evals/cases/) 保存 35 个核心 Harness Behavior Acceptance Scenarios，用于修改 `AGENTS.md`、Skills、Router、Stage、Market Reality、Human Execution 或 Experiment Diagnosis 规则时做人工行为回归。
 
-它们不是自动启动 Codex 的 LLM Evaluation Framework，也不把手工编写的理想答案伪装成真实 Runtime 测试。核心覆盖：自动 Bootstrap、过早开发、交易与 leverage、重大下注、Stage 回退、Workspace lazy growth，以及强制研究路由、精确与相邻案例、vendor claim、政策新鲜度、迁移限制、Agent Reach 回退、无需重复搜索和成功模式优先。
+它们不是自动启动 Codex 的 LLM Evaluation Framework，也不把手工编写的理想答案伪装成真实 Runtime 测试。核心覆盖：Project lifecycle、Stage-first、Reality Evidence 路由、过早开发、交易与 leverage、重大下注、Stage 回退、Workspace lazy growth、市场证据，以及无人看见、错误 Buyer、赞美无付款、友情付款、可执行 sourcing、研究/开发逃避、交付亏损和现实反馈改写方向。
+
+[`docs/evaluation-strategy.md`](docs/evaluation-strategy.md) 另定义同模型 `Baseline + Web` 与 `Harness + Web` 的人工 A/B 协议，用 outcome-first 的决策质量、次日可执行性、time-to-evidence/伤害作为主指标，并允许更简单、更聪明的 Baseline 合法获胜。仓库没有伪造任何 A/B 运行结果。
 
 ## 开发校验
 
@@ -286,4 +295,4 @@ python3 scripts/validate_repo.py
 
 ## V0 边界
 
-V0 没有 Web UI、API Server、数据库、向量数据库、RAG、自定义 Agent Loop、Agent 投票/辩论、自动登录/Cookie 管理、通用爬虫平台、消息队列或定时市场监控。Project discovery、bootstrap、resume、Market Reality Gate、Why-Now Gate、Stage 路由和文件维护直接由 Codex Runtime 按仓库协议执行。
+V0 没有 Web UI、API Server、数据库、向量数据库、RAG、自定义 Agent Loop、Agent 投票/辩论、自动登录/Cookie 管理、通用爬虫平台、消息队列或定时市场监控。Project discovery、bootstrap、resume、Stage/Reality Evidence 路由、条件式 Market Reality/Why-Now、Human Execution 和文件维护直接由 Codex Runtime 按仓库协议执行。

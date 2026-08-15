@@ -24,7 +24,7 @@ Do not infer Stage from directory names and do not create a directory merely bec
 
 ## Market Reality Gate is not a Stage
 
-The Market Reality Gate is a pre-lens routing and evidence-freshness check. It decides whether the immediate judgment needs current external research; it is not a ninth Stage, a Stage transition, or a replacement for `next_gate`.
+The Runtime first selects the cheapest safe Reality Evidence capable of changing the immediate decision: reuse fresh evidence, seek the project's own observation/behavior/payment/delivery evidence, or use the Market Reality Gate when current external facts are decision-critical. The Gate checks whether external research is needed and fresh enough; it is not the whole reality loop, a ninth Stage, a Stage transition, or a replacement for `next_gate`. A newly bootstrapped public-market project does not require research by status alone.
 
 Store a resulting `Rxxx` under the `research/` directory of the Stage whose question it informs, and a reusable `Cxxx` under that Stage's `cases/` directory. Those directories remain historical material and do not determine the current Stage. Completing research or finding an exact/adjacent precedent does not advance the project by itself.
 
@@ -32,7 +32,7 @@ External research can establish scoped facts such as market existence, current p
 
 ## Why-Now Gate is not a Stage
 
-The Why-Now Gate is a cross-stage purchase-timing and Buying-Situation check. It asks what real event moves a buyer to seek and pay for a result inside a concrete window, what delay costs, who bears the consequence, whether the payer is reachable, what trust is required, and whether delivery liability is bounded. It is not a tenth Stage, a Stage transition, a Persona, or a replacement for `next_gate`.
+The Why-Now Gate is a conditional purchase-timing and Buying-Situation check available across Stages. Run it fully when purchase timing is material to the earliest uncertainty: normally in `business_validation`, or when a concrete Buying Situation, trigger/deadline claim, purchase-window qualification, Deadline Replication Experiment, or deadline-shaped SLA/liability decision controls the action. `opportunity_discovery` otherwise uses only a light trigger-mechanism scan. The full Gate asks what real event moves a buyer to seek and pay for a result inside a concrete window, what delay costs, who bears the consequence, whether the payer is reachable, what trust is required, and whether delivery liability is bounded. It is not a tenth Stage, a universal step, a Stage transition, a Persona, or a replacement for `next_gate`.
 
 Store a decision-relevant `BSxxx` under the `buying-situations/` directory of the Stage whose decision it informs. One Project can have multiple Buying Situations in different Stages. Creating or evidencing a `BSxxx` does not advance the Project by itself; payment, repeatability, and the other Stage entry evidence in the table still control transitions. A business without a deadline may advance when its actual recurrence, behavior, transaction, and economics evidence meets those gates.
 

@@ -33,14 +33,20 @@ Protect the ability to keep trying while obtaining stronger evidence quickly.
 6. Remove unnecessary components via subtraction. Consider direct offer, pre-sale, paid discovery, concierge, Wizard of Oz, manual delivery, narrow prototype, or reversible smoke test.
 7. Prefer a **Deadline Replication Experiment** when a real Buying Situation can be observed. Record the referenced `BSxxx`, real Trigger Event, real Deadline, Purchase Window, copied transaction structure, maximum input, maximum delivery liability, and Low-Trust Entry. Make the offer while the trigger is actually present; do not ask only whether the buyer would hypothetically pay.
 8. Preserve upside: choose a test that can reveal unexpected demand or learning while the loss remains capped.
-9. Write success, failure, invalid-result, deadline, budget, and stop criteria. Stop when quality cannot be assured, protected/core access is required, or liability exceeds the cap. A result must update a named assumption, Buying Situation status, or decision.
-10. Specify evidence capture and the next review point. Do not declare a stage transition in advance.
+9. Predeclare `success`, `demand_failure`, and `invalid` thresholds, plus the deadline, experiment cap, claim-level total evidence budget, maximum repair reviews, and stop criteria. `inconclusive` is the fallback when a validly interpretable result crosses neither success nor demand-failure thresholds. Repeated invalid/inconclusive repairs consume the shared claim budget rather than resetting it. Stop when that budget is exhausted, quality cannot be assured, protected/core access is required, or liability exceeds the cap.
+10. Select only the observable evidence-path steps needed for this scenario and set the minimum exposure at decision-critical steps. A demand test must separate qualified buyer, offer exposure, price exposure, and the target behavior; it must not treat message count as offer exposure.
+11. Specify privacy-safe raw evidence capture and the next review point. Reason codes may summarize linked raw words or behavior but may not replace them. Do not declare a Stage transition in advance.
+12. After completion, apply the classification precedence and Evidence Ledger in `docs/object-protocol.md`: rule out `invalid`, then test `success`, then the strict `demand_failure` gate, otherwise use `inconclusive`. Diagnose the first broken selected step and the first evidence-supported layer; use `unknown` when causes remain confounded.
+13. When the experiment defers implementation, state `implementation_revisit_trigger`: the evidence that would make the smallest technical artifact necessary for valid exposure or a measured repeated-delivery bottleneck. Do not use “after validation” as an unspecified unlock.
+14. Feed the result back into the named ASSUMPTION, evidence-backed FACTS, any user-committed DECISION, the active Buying Situation when trigger timing was tested, and the next experiment. Recompute Stage from its entry evidence rather than from the result code.
 
 ## Hard rules
 
 - Any resignation, all-in bet, multi-month build, major spend, long contract, large procurement, or single dependency requires an explicit smaller-alternative comparison.
 - If `transactions.total == 0`, prefer a real offer before a full product unless a small technical artifact is strictly necessary for the buyer to evaluate the result.
 - A survey asking “would you pay?” does not validate payment willingness.
+- Never classify `demand_failure` unless the predeclared qualified intended-buyer minimum actually received and understood the real offer and real price, the decision window elapsed, and no material protocol defect explains the result.
+- Silence is not a reason code. Preserve linked raw evidence and state competing explanations instead of inferring price, urgency, trust, or problem absence from a count alone.
 - Never expose users to deceptive, unlawful, unsafe, privacy-violating, or financially harmful tests.
 - Never create a false deadline, false inventory, deceptive countdown, or fabricated urgency as an experiment mechanism.
 - Refresh time-sensitive policy evidence before a platform-facing test when the
@@ -48,7 +54,9 @@ Protect the ability to keep trying while obtaining stronger evidence quickly.
 
 ## Experiment record
 
-Use the `E001` schema in `docs/object-protocol.md`. The downside cap and stop condition are required. For a Replication Experiment, also record `reference_case: Cxxx`, `copied_mechanism`, `resources_not_copied`, and `transfer_assumption`. For a Deadline Replication Experiment, also record `reference_buying_situation: BSxxx`, `real_trigger`, `real_deadline`, `purchase_window`, `copied_transaction_structure`, `maximum_delivery_liability`, and `low_trust_entry`. Link evidence after completion and update the tested assumption and Buying Situation status.
+Use the `E001` schema in `docs/object-protocol.md`. The downside cap, selected evidence path, predeclared outcome thresholds, deadline, and stop condition are required. For a Replication Experiment, also record `reference_case: Cxxx`, `copied_mechanism`, `resources_not_copied`, and `transfer_assumption`. For a Deadline Replication Experiment, also record `reference_buying_situation: BSxxx`, `real_trigger`, `real_deadline`, `purchase_window`, `copied_transaction_structure`, `maximum_delivery_liability`, and `low_trust_entry`.
+
+After completion, append the result and aggregate Evidence Ledger to the same `Exxx`; do not create a result ID, lead table, or CRM artifact. Use exactly one of `success`, `demand_failure`, `invalid`, or `inconclusive`, link raw evidence, record supported reason codes, diagnose the first broken step/layer, and state the feedback to assumptions, facts, decisions, Stage review, and next test. Plan-only historical artifacts remain valid until a completed/result section is added.
 
 ## Output
 

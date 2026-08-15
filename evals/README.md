@@ -13,7 +13,7 @@ workspace persistence:
 3. Inspect both the reply and any workspace changes.
 4. Compare only observable behavior with the expectations and failure conditions.
 
-The twenty-five cases cover the V0 regression surface:
+The thirty-five cases cover the V0 and VNext regression surface:
 
 - complete project-lifecycle routing: no project/no write, semantic resume,
   minimal bootstrap with lazy growth, and conflict/no wrong write;
@@ -31,7 +31,45 @@ The twenty-five cases cover the V0 regression surface:
 - real versus weak, one-off, recurring, seller-created, or fabricated deadlines;
 - cost-of-delay ownership, buying windows, reachability, and trust barriers;
 - valid recurring businesses without deadlines and urgent work with high
-  delivery liability.
+  delivery liability;
+- Human Execution packets that make sourcing, qualification, exposure, offer,
+  price, evidence, downside, stop, and review executable rather than saying only
+  “find users”;
+- Experiment diagnosis that distinguishes invalid or inconclusive execution from
+  strict demand failure, keeps transactions separate from result codes, and uses
+  the first broken selected step to shape the next test;
+- reality-feedback corrections for relationship-biased payment, negative delivery
+  economics, research or development avoidance, and buyer evidence that changes
+  the original hypothesis.
+
+## Human Execution and Experiment Diagnosis
+
+Cases 26–35 extend the corpus from advice quality into the full reality-feedback
+loop:
+
+- `26-unseen-outreach-is-not-demand-failure.md` — insufficient receipt and
+  comprehension is a reachability break, not demand failure.
+- `27-wrong-buyer-is-not-market-failure.md` — exposure to non-decision-makers
+  invalidates a buyer test without rejecting the market.
+- `28-compliments-without-payment.md` — praise is not an offer, payment, or
+  transaction.
+- `29-problem-evidence-is-not-business-evidence.md` — repeated pain can support a
+  problem gate while buyer, result, price, and payment remain unresolved.
+- `30-friend-payment-has-limited-transfer.md` — a real friendship payment is
+  recorded while independent-market transfer remains confounded.
+- `31-executable-customer-sourcing.md` — the next-day action specifies where,
+  whom, how, qualification, funnel counts, evidence, limits, and review.
+- `32-more-research-will-not-test-payment.md` — fresh sufficient research gives
+  way to bounded reality contact when payment is the unknown.
+- `33-building-will-not-test-payment.md` — an executable manual offer replaces
+  architecture work that cannot observe willingness to pay.
+- `34-payment-with-negative-delivery-economics.md` — a transaction can coexist
+  with unvalidated or negative delivery economics.
+- `35-buyer-feedback-reroutes-the-hypothesis.md` — contradictory field evidence
+  can update assumptions and reroute or roll back Stage.
+
+These cases score observable replies, evidence classification, next actions, and
+workspace effects. Named Skill invocation is not itself a pass condition.
 
 ## Project Lifecycle
 
@@ -86,3 +124,7 @@ answer is not a pass.
 `scripts/validate_repo.py` is an optional development-only static validator. It
 checks that this scenario corpus is present and structurally valid; it does not
 run Codex, access markets, score responses, or replace the manual behavior review above.
+
+For comparative outcome evaluation beyond this acceptance corpus, use the manual
+[Harness-vs-Baseline A/B protocol](../docs/evaluation-strategy.md). It defines a
+matched, blinded comparison and does not claim that any run has occurred.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministically validate the Conversation-First Market Reality and Why-Now V0.
+"""Deterministically validate the Stage-first Reality and Human Execution V0.
 
 This optional development tool checks repository contracts, provenance, and
 workspace shape. It does not access the web, run Codex, or claim to evaluate
@@ -49,6 +49,8 @@ REQUIRED_DOCS = {
     Path("source-mapping.md"),
     Path("integrations/agent-reach.md"),
     Path("purchase-trigger-protocol.md"),
+    Path("human-execution-protocol.md"),
+    Path("evaluation-strategy.md"),
 }
 RESEARCHER_FILES = {
     Path("SKILL.md"),
@@ -96,6 +98,16 @@ EXPECTED_EVALS = {
     "23-no-project-no-write.md",
     "24-existing-project-resume.md",
     "25-project-conflict-no-wrong-write.md",
+    "26-unseen-outreach-is-not-demand-failure.md",
+    "27-wrong-buyer-is-not-market-failure.md",
+    "28-compliments-without-payment.md",
+    "29-problem-evidence-is-not-business-evidence.md",
+    "30-friend-payment-has-limited-transfer.md",
+    "31-executable-customer-sourcing.md",
+    "32-more-research-will-not-test-payment.md",
+    "33-building-will-not-test-payment.md",
+    "34-payment-with-negative-delivery-economics.md",
+    "35-buyer-feedback-reroutes-the-hypothesis.md",
 }
 REQUIRED_STATE_HEADINGS = {
     "## 当前目标",
@@ -305,6 +317,23 @@ TRANSACTION_FIELDS = {
     "Payment evidence",
     "Linked fact",
     "Linked buying situation",
+}
+EXPERIMENT_RESULT_STATUSES = {"success", "demand_failure", "invalid", "inconclusive"}
+EXPERIMENT_COMPLETION_FIELDS = {
+    "Result",
+    "Result basis",
+    "Raw evidence",
+    "Observed events",
+    "First broken selected step",
+    "First broken layer",
+    "Diagnosis basis",
+    "Competing explanations",
+    "Material protocol deviations",
+    "Assumption updates",
+    "Facts created or updated",
+    "Decision updates",
+    "Stage after evidence review",
+    "Next experiment or action",
 }
 
 
@@ -585,6 +614,25 @@ def validate_buying_situation(path: Path, known_transaction_ids: set[str]) -> st
     return status
 
 
+def validate_experiment(path: Path) -> None:
+    """Validate only completed/result sections; legacy plan-only Exxx stays valid."""
+    text = path.read_text(encoding="utf-8")
+    if not re.search(r"(?m)^#{2,6}\s+Completed result\s*$", text):
+        return
+    completed = re.split(r"(?m)^#{2,6}\s+Completed result\s*$", text, maxsplit=1)[1]
+    missing = missing_labels(completed, EXPERIMENT_COMPLETION_FIELDS)
+    if missing:
+        raise ValidationFailure(f"{path}: completed Experiment missing fields {missing}")
+    result = field_value(completed, "Result")
+    if result not in EXPERIMENT_RESULT_STATUSES:
+        raise ValidationFailure(f"{path}: invalid Experiment result {result!r}")
+    if not re.search(r"(?m)^#{3,6}\s+Evidence Ledger\s*$", completed):
+        raise ValidationFailure(f"{path}: completed Experiment missing Evidence Ledger")
+    raw_evidence = field_value(completed, "Raw evidence")
+    if not raw_evidence or raw_evidence.casefold() in {"none", "unknown", "n/a"}:
+        raise ValidationFailure(f"{path}: completed Experiment must link or name raw evidence")
+
+
 def validate_workspace() -> None:
     if not (WORKSPACE / "_index.md").is_file():
         raise ValidationFailure("workspace/_index.md missing")
@@ -636,9 +684,15 @@ def validate_workspace() -> None:
         buying_situation_files = sorted(
             project.glob("**/buying-situations/BS[0-9][0-9][0-9]-*.md")
         )
+        experiment_files = sorted(project.glob("04-experiments/**/E[0-9][0-9][0-9]-*.md")) + sorted(
+            project.glob("04-experiments/E[0-9][0-9][0-9].md")
+        )
         all_research_like = sorted(project.glob("**/R[0-9][0-9][0-9]-*.md"))
         all_case_like = sorted(project.glob("**/C[0-9][0-9][0-9]-*.md"))
         all_buying_situation_like = sorted(project.glob("**/BS[0-9][0-9][0-9]-*.md"))
+        all_experiment_like = sorted(
+            path for path in project.rglob("*.md") if re.match(r"^E\d{3}(?:-|\.md$)", path.name)
+        )
         transaction_files = sorted(
             project.glob("05-transactions/**/T[0-9][0-9][0-9]-*.md")
         ) + sorted(project.glob("05-transactions/T[0-9][0-9][0-9].md"))
@@ -653,6 +707,8 @@ def validate_workspace() -> None:
             raise ValidationFailure(
                 f"{project}: Buying Situation objects must live in a buying-situations directory"
             )
+        if sorted(experiment_files) != all_experiment_like:
+            raise ValidationFailure(f"{project}: Experiment objects must live under 04-experiments")
         if sorted(transaction_files) != all_transaction_like:
             raise ValidationFailure(
                 f"{project}: Transaction objects must live under 05-transactions"
@@ -661,12 +717,16 @@ def validate_workspace() -> None:
         research_ids = [path.name[:4] for path in research_files]
         case_ids = [path.name[:4] for path in case_files]
         buying_situation_ids = [path.name[:5] for path in buying_situation_files]
+        experiment_ids = [path.name[:4] for path in experiment_files]
         if (
             len(research_ids) != len(set(research_ids))
             or len(case_ids) != len(set(case_ids))
             or len(buying_situation_ids) != len(set(buying_situation_ids))
+            or len(experiment_ids) != len(set(experiment_ids))
         ):
-            raise ValidationFailure(f"{project}: duplicate Research, Case, or Buying Situation ID")
+            raise ValidationFailure(
+                f"{project}: duplicate Research, Case, Buying Situation, or Experiment ID"
+            )
         for research in research_files:
             validate_research(research)
         known_source_ids = {
@@ -676,6 +736,8 @@ def validate_workspace() -> None:
         }
         for case in case_files:
             validate_case(case, known_source_ids)
+        for experiment in experiment_files:
+            validate_experiment(experiment)
         transaction_statuses = {
             path.name[:4]: validate_transaction(path) for path in transaction_files
         }
@@ -769,17 +831,19 @@ def validate_evals() -> None:
     if existing:
         raise ValidationFailure(f"obsolete pseudo-eval artifacts still exist: {existing}")
 
-    required_headings = {
+    required_headings = [
         "## Preconditions",
         "## User message",
         "## Expected observable behavior",
         "## Failure conditions",
-    }
+    ]
     for path in cases_dir.glob("*.md"):
         text = path.read_text(encoding="utf-8")
-        missing = sorted(heading for heading in required_headings if heading not in text)
-        if missing:
-            raise ValidationFailure(f"{path}: missing behavior scenario headings {missing}")
+        headings = [line for line in text.splitlines() if line.startswith("## ")]
+        if headings != required_headings:
+            raise ValidationFailure(
+                f"{path}: behavior scenario headings must be exactly {required_headings}, found {headings}"
+            )
 
     bootstrap = (cases_dir / "01-new-project-auto-bootstrap.md").read_text(encoding="utf-8")
     for phrase in (
@@ -890,9 +954,9 @@ def validate_evals() -> None:
         "does not run Codex" in eval_readme
         or "not an automated LLM evaluation framework" in eval_readme
     )
-    describes_count = "25" in eval_readme or "twenty-five" in eval_readme
+    describes_count = "35" in eval_readme or "thirty-five" in eval_readme
     if not describes_non_runtime or not describes_count:
-        raise ValidationFailure("evals README must describe 25 human-auditable, non-runtime scenarios")
+        raise ValidationFailure("evals README must describe 35 human-auditable, non-runtime scenarios")
     for phrase in (
         "Project Lifecycle",
         "New Project Bootstrap",
@@ -904,68 +968,121 @@ def validate_evals() -> None:
             raise ValidationFailure(
                 f"evals README missing Project Lifecycle classification: {phrase}"
             )
+    for phrase in (
+        "Human Execution and Experiment Diagnosis",
+        "invalid",
+        "inconclusive",
+        "demand failure",
+        "evaluation-strategy.md",
+    ):
+        if phrase.casefold() not in eval_readme.casefold():
+            raise ValidationFailure(f"evals README missing VNext behavior category: {phrase}")
 
 
-def validate_purchase_trigger_contracts() -> None:
+def validate_vnext_contracts() -> None:
     required_phrases = {
+        REPO_ROOT / "README.md": (
+            "Evidence-derived Stage → earliest unresolved uncertainty",
+            "Reality Evidence First 不等于 Web First",
+            "docs/human-execution-protocol.md",
+            "保存 35 个核心 Harness Behavior Acceptance Scenarios",
+        ),
         REPO_ROOT / "AGENTS.md": (
             "Why-Now Gate",
-            "BS001",
-            "Deadline Replication Experiment",
-            "purchase-trigger-protocol.md",
-            "Run `business-filter` for each leading concrete Opportunity",
+            "Stage-applicable primary Thinking Skill",
+            "human-execution-protocol.md",
+            "implementation_revisit_trigger",
         ),
         SKILLS_ROOT / "monetization-orchestrator" / "SKILL.md": (
-            "Run the Why-Now Gate",
-            "why_now_status: unknown",
+            "The full gate is conditional",
+            "not a universal first lens",
+            "human-execution-protocol.md",
+            "claim-level evidence budget",
             "buying-situations/",
-            "mandatory first lens",
         ),
         SKILLS_ROOT / "monetization-orchestrator" / "references" / "routing-rules.md": (
-            "## Why-Now Gate",
-            "recurring_deadline_opportunity",
-            "manufactured_urgency",
+            "## Canonical Stage routes",
+            "opportunity_discovery",
+            "scaling",
+            "person-supervised Reality Contact",
         ),
         SKILLS_ROOT / "opportunity-finder" / "SKILL.md": (
-            "repeatable trigger",
-            "low-trust deliverable",
+            "light trigger",
+            "observable pull",
         ),
         SKILLS_ROOT / "assumption-challenger" / "SKILL.md": (
             "seller-created urgency",
-            "fabricated scarcity",
+            "purchase timing is material",
         ),
         SKILLS_ROOT / "business-filter" / "SKILL.md": (
-            "real_urgent_buying_situation",
-            "no_clear_why_now",
+            "recurring_non_deadline_purchase",
+            "observed repeat payment/usage",
         ),
         SKILLS_ROOT / "experiment-designer" / "SKILL.md": (
-            "Deadline Replication Experiment",
-            "reference_buying_situation: BSxxx",
-        ),
-        SKILLS_ROOT / "leverage-designer" / "SKILL.md": (
-            "tiered SLA",
-            "capacity and liability trap",
+            "Evidence Ledger",
+            "demand_failure",
+            "implementation_revisit_trigger",
+            "claim-level total evidence budget",
         ),
         REPO_ROOT / "docs" / "purchase-trigger-protocol.md": (
             "hard_external",
             "fabricated",
-            "why_now_status: unknown",
+            "recurring_non_deadline_purchase",
         ),
         REPO_ROOT / "docs" / "object-protocol.md": (
-            "### BS001",
-            "Linked transactions",
+            "success | demand_failure | invalid | inconclusive",
+            "### Evidence Ledger",
+            "Portfolio stop",
         ),
         REPO_ROOT / "docs" / "workspace-protocol.md": (
-            "purchase_trigger:",
-            "buying-situations/",
-            "BUYING-SITUATIONS.md",
+            "completed result",
+            "aggregate Evidence Ledger",
+            "plan-only experiments require no migration",
+        ),
+        REPO_ROOT / "docs" / "human-execution-protocol.md": (
+            "Reality Evidence First is not Web First",
+            "Micro Packet",
+            "implementation_revisit_trigger",
+            "max_repair_reviews",
+            "EPxxx",
+        ),
+        REPO_ROOT / "docs" / "evaluation-strategy.md": (
+            "Arm A — Baseline",
+            "Arm B — Harness",
+            "Outcome-first decision rule",
+            "Over-constraint penalty",
+            "Baseline wins",
         ),
     }
     for path, phrases in required_phrases.items():
         text = path.read_text(encoding="utf-8")
         missing = [phrase for phrase in phrases if phrase not in text]
         if missing:
-            raise ValidationFailure(f"{path}: missing Purchase Trigger contract {missing}")
+            raise ValidationFailure(f"{path}: missing VNext contract {missing}")
+
+    obsolete_phrases = {
+        REPO_ROOT / "README.md": (
+            "business-filter（计入总共 1～2 个 Lens）+",
+            "保存 22 个核心 Harness Behavior Acceptance Scenarios",
+        ),
+        REPO_ROOT / "AGENTS.md": (
+            "Run `business-filter` for each leading concrete Opportunity",
+            "business-filter` is the mandatory first",
+        ),
+        SKILLS_ROOT / "monetization-orchestrator" / "SKILL.md": (
+            "mandatory first lens",
+            "For each leading concrete Opportunity, run `business-filter` immediately",
+        ),
+        SKILLS_ROOT / "monetization-orchestrator" / "references" / "routing-rules.md": (
+            "business-filter + assumption-challenger + experiment-designer",
+            "business-filter` is the mandatory first lens",
+        ),
+    }
+    for path, phrases in obsolete_phrases.items():
+        text = path.read_text(encoding="utf-8")
+        found = [phrase for phrase in phrases if phrase in text]
+        if found:
+            raise ValidationFailure(f"{path}: obsolete universal routing contract {found}")
 
 
 def validate_authored_links() -> None:
@@ -1014,10 +1131,10 @@ def main() -> int:
         print("[PASS] Conversation-First V0 boundaries and removed manual initializer")
         validate_workspace()
         print("[PASS] lazy Workspace plus conditional Research/Case/Buying-Situation invariants")
-        validate_purchase_trigger_contracts()
-        print("[PASS] Purchase Trigger, Cost-of-Delay, and Why-Now contracts")
+        validate_vnext_contracts()
+        print("[PASS] Stage-first, conditional Why-Now, Human Execution, and Experiment contracts")
         validate_evals()
-        print("[PASS] 25 human-auditable behavior acceptance scenarios")
+        print("[PASS] 35 human-auditable behavior acceptance scenarios")
         validate_authored_links()
         print("[PASS] authored Markdown links")
     except (ValidationFailure, OSError) as exc:

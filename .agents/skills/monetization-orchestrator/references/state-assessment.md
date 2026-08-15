@@ -50,7 +50,7 @@ Create `STATE.md` with discoverable:
 
 Use `unknown` instead of filling gaps. Preserve the user's wording or a faithful paraphrase. Do not manufacture validation. During bootstrap, decision-relevant claims may be summarized with stable IDs directly in `STATE.md` without creating a Stage directory solely to make the project skeleton look complete.
 
-Do not add empty market-research headings or `market_evidence` fields during bootstrap. For a public-market project, finish this minimum bootstrap first; a Market Reality quick scan is a separate same-turn operation and may create a stage `research/` directory only together with a completed `Rxxx` artifact.
+Do not add empty market-research headings or `market_evidence` fields during bootstrap. If the immediate decision for a public-market project depends on current external facts, finish the minimum bootstrap first; the resulting bounded research is a separate same-turn operation and may create a stage `research/` directory only together with a completed `Rxxx` artifact. Public-market status alone does not require a scan.
 
 ## Minimum recoverable resumed state
 
@@ -58,7 +58,7 @@ On resume, the same fields must be discoverable from `STATE.md`. If an older pro
 
 ## Market evidence assessment
 
-Run this assessment at the Market Reality Gate before selecting Thinking Skills:
+Run this assessment only after the Reality Evidence selector identifies a decision-critical current external claim, and before selecting Thinking Skills:
 
 1. Does the immediate judgment depend materially on current external market, platform, policy, price, competitor, content, acceptance, or precedent evidence?
 2. If an `Rxxx` exists, does its scope match the current primary market, geography, platforms, content type, customer, and decision?
@@ -90,7 +90,7 @@ When the `market_evidence:` block is present, also maintain the five current Mar
 
 ## Purchase Trigger assessment
 
-After the Market Reality Gate, run the Why-Now Gate against each material opportunity and any active `BSxxx`. Read `docs/purchase-trigger-protocol.md`; do not infer a trigger from the abstract project name.
+During `opportunity_discovery`, use only a light scan for an event, recurrence, persistent cost, convenience, identity, entertainment, or risk mechanism. Run the full Why-Now Gate only when purchase timing is material to the earliest uncertainty: normally during `business_validation`, or in any Stage when a concrete Buying Situation, trigger/deadline claim, purchase-window qualification, Deadline Replication Experiment, or deadline-shaped SLA/liability decision is active. Then read `docs/purchase-trigger-protocol.md` and any relevant `BSxxx`; do not infer a trigger from the abstract project name or create a generic BS for routing.
 
 1. What real event starts active solution-seeking?
 2. When must the bought result exist, who or what controls that date, and can it move?
@@ -142,10 +142,11 @@ The largest unknown is the earliest unanswered question whose answer could stop 
 
 1. Is there a concrete costly problem for a reachable user?
 2. Will a buyer make a costly commitment or pay for the result?
-3. Can payment and delivery repeat independently?
-4. Which delivery work is stable enough to systematize?
-5. Does the product preserve repeat value and economics?
-6. Can acquisition and operations scale without ruin or quality collapse?
+3. Can the decisive assumption be exposed to a valid real behavior, offer, or payment test?
+4. Can payment and delivery repeat independently?
+5. Which delivery work is stable enough to systematize?
+6. Does the product preserve repeat value and economics?
+7. Can acquisition and operations scale without ruin or quality collapse?
 
 ## Stage correction
 
@@ -156,4 +157,4 @@ Determine Stage from evidence, never from directory existence. When computed sta
 - do not change files until the new evidence or user decision is durable;
 - if changed, record `from`, `to`, trigger Fact IDs, invalidated Assumption IDs, date, and Decision ID.
 
-The Market Reality Gate is a routing and evidence-freshness check, and the Why-Now Gate is a Buying-Situation check; neither is a Stage or next gate. Completing research, creating `Rxxx`/`Cxxx`/`BSxxx`, finding a precedent, or classifying a deadline does not advance the project unless the project's Stage criteria are independently met by the required evidence.
+The Market Reality Gate is one conditional external-evidence route, and the Why-Now Gate is a conditional Buying-Situation check; neither is a Stage or next gate. Completing research, creating `Rxxx`/`Cxxx`/`BSxxx`, finding a precedent, or classifying a deadline does not advance the project unless the project's Stage criteria are independently met by the required evidence.

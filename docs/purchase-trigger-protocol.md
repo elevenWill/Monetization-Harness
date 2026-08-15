@@ -1,10 +1,20 @@
 # Purchase Trigger and Cost-of-Delay protocol
 
-This protocol makes “why would the buyer act now?” a first-class gate. It does not treat urgency, anxiety, popularity, or a seller's countdown as proof of demand. It identifies a concrete Buying Situation, records the evidence and uncertainty, and then tests whether that situation can produce a safe, reachable, repeatable transaction.
+This protocol handles the decision-critical question “why would this buyer act in this situation?” It does not treat urgency, anxiety, popularity, or a seller's countdown as proof of demand. When its entry conditions are met, it identifies a concrete Buying Situation, records the evidence and uncertainty, and tests whether that situation can produce a safe, reachable, repeatable transaction.
 
 ## Runtime position
 
-For a material opportunity whose judgment depends on external reality, use this order:
+Do not run the full protocol for every Opportunity. During `opportunity_discovery`, perform only a light scan for an event, recurrence, persistent cost, convenience, identity, entertainment, or risk mechanism unless a concrete purchase situation already controls the decision.
+
+Run the full Why-Now Gate when purchase timing is material to the earliest unresolved uncertainty:
+
+- normally during `business_validation`, where buyer, payer, result, alternative, budget, timing, trust, reachability, recurrence, and liability are being resolved;
+- when a concrete Buying Situation or trigger/deadline claim controls a decision in any Stage;
+- when purchase-window qualification is necessary for a valid offer or transaction test;
+- for a Deadline Replication Experiment; or
+- for deadline-shaped capacity, SLA, trust, or delivery-liability work.
+
+When entered, use this order:
 
 ```text
 Conversation
@@ -13,26 +23,22 @@ Project discovery / resume / bootstrap
 ↓
 Read IDEA.md + STATE.md
 ↓
-Market Reality Gate
+Select decision-changing Reality Evidence
 ↓
-External market facts and cases
-↓
-Purchase Trigger research
+Current external facts / Purchase Trigger research when required
 ↓
 Why-Now Gate
 ↓
-Business Filter (counts as one Thinking Skill)
-↓
-Optional additional Thinking Skill (normally 1–2 total)
+Stage-applicable Thinking Skill(s), normally 1–2 total
 ↓
 Replication experiment
 ↓
 Transaction evidence
 ```
 
-The Market Reality Gate asks what is actually happening in the market. The Why-Now Gate asks what event, if any, causes a buyer to seek and pay for a result within a specific window. Neither gate may promote a model inference or Skill judgment to FACT.
+The Reality Evidence selector first decides whether the claim needs fresh external research, direct project evidence, or reuse of existing evidence. The Why-Now Gate then asks what event or recurring mechanism, if any, causes a buyer to seek and pay for a result within a specific window. Neither external research nor the gate may promote a model inference or Skill judgment to FACT.
 
-`business-filter` remains one of the five Thinking Skills and consumes one lens slot. It always runs first for each leading concrete Opportunity after the Why-Now Gate, including when the evidence-bound outcome is `no_clear_why_now`. “Thinking Skills” after it means only the minimum optional additional lens, with the normal total still one or two.
+`business-filter` remains one of the five Thinking Skills and consumes one lens slot when selected. Use it when buyer, payer, bought result, alternative, price, recurrence, or the concrete Buying Situation is the current Stage uncertainty; entering this protocol does not make it a universal first lens. Lens selection remains Stage-first under the orchestrator's routing matrix.
 
 ## Core concepts
 
@@ -110,7 +116,7 @@ A deadline is a strong signal, not a requirement for every valid business. High-
 
 ## Why-Now Gate
 
-For every leading opportunity, answer with evidence or `unknown`:
+When the full Gate is entered, answer with evidence or `unknown`:
 
 1. What event starts active search or purchase?
 2. When must the buyer receive the result?
@@ -145,10 +151,13 @@ deadline_without_consequence
 high_value_but_unreachable
 one_off_rush_service
 recurring_deadline_opportunity
+recurring_non_deadline_purchase
 manufactured_urgency
 high_liability_opportunity
 no_clear_why_now
 ```
+
+`recurring_non_deadline_purchase` is the neutral positive outcome for evidenced repeat purchase driven by convenience, persistent cost reduction, entertainment, identity/status, ongoing experience, or long-term risk rather than a deadline. It must not be inferred from stated interest or a subscription label alone. `no_clear_why_now` means the timing/purchase mechanism is still unclear; it must not overwrite otherwise evidenced repeat purchase.
 
 The label summarizes a bounded judgment; it does not replace the linked evidence or the `BSxxx` status.
 

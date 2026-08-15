@@ -8,7 +8,7 @@
 | Fact | `F001` | Something that happened or was directly observed | Source/evidence and observed date |
 | Assumption | `A001` | A belief not yet supported strongly enough | Status and validation plan |
 | Decision | `D001` | A chosen action or constraint | Basis, owner/date, revisit condition |
-| Experiment | `E001` | A bounded test of named assumptions | Cost cap, success/failure criteria, deadline |
+| Experiment | `E001` | A bounded test of named assumptions | Cost cap and predeclared outcome criteria; after completion, result code and linked raw evidence |
 | Transaction | `T001` | Actual exchange of money | Amount/currency/date/payer evidence; link from a Fact |
 | Research | `R001` | A scoped investigation of an external decision question | Scope, checked date, sources, contrary evidence, verdict, recheck condition |
 | Case | `C001` | A reusable reconstruction of a market precedent or failure | Transaction structure, verification status, transferability, source IDs |
@@ -59,20 +59,180 @@ Draft choices use `DRAFT-D001` only in `STATE.md`; allocate `D001` when the user
 
 ## EXPERIMENT
 
+An Experiment keeps its plan and completed result in the same `Exxx` object. It is
+not a lead record, CRM pipeline, or a new result-object namespace.
+
+Before execution, record one decision-changing assumption, explicit downside,
+and mutually distinguishable thresholds. Use a scenario-specific **selected
+evidence path**: include only the observable steps needed to interpret this test.
+For example, a paid-offer test might select `qualified -> offer_presented ->
+price_presented -> paid`; an observation test might select `eligible_event ->
+observed_event -> problem_confirmed`; and a delivery test might select `accepted
+-> delivered -> repeated`. Reuse the common step names below when they fit, or
+define a plain observable step when they do not:
+
+```text
+sourced | contacted | seen_or_delivered | qualified | problem_confirmed
+conversation | offer_presented | price_presented | committed | paid
+delivered | repeated
+```
+
+This vocabulary is diagnostic, not a mandatory full funnel. Do not add irrelevant
+steps or maintain prospect-level rows.
+
 ```markdown
 ### E001 — Replicate paid case-file organization
 
+- Status: planned
 - Tests: A001
 - Offer: Deliver the same result manually for CNY 500
 - Audience: 10 qualified lawyers not connected to Customer A
 - Maximum downside: 7 days and CNY 300
-- Success: at least 2 independent real payments
-- Failure: 10 qualified offers and 0 payments
+- Claim evidence budget: 14 total days, CNY 600, and at most 2 repair reviews across E001-series tests of A001
+- Implementation revisit trigger: a qualified buyer cannot evaluate the bounded result without a minimal technical artifact, or repeated paid delivery shows one measured stable bottleneck
+- Selected evidence path: qualified -> offer_presented -> price_presented -> paid
+- Planned exposure: 10 qualified lawyers receive and understand the offer and real price
+- Success threshold: at least 2 independent real payments
+- Demand-failure threshold: 10 qualified intended buyers receive and understand the offer and real price, the decision window closes, and 0 pay
+- Invalid if: fewer than 10 qualified intended buyers receive the offer and price, buyer qualification cannot be established, or a material protocol deviation prevents the named assumption from being tested
 - Deadline: 2026-08-20
 - Stop conditions: cost cap, deadline, or any legal/privacy breach risk
 ```
 
 Do not use likes, compliments, surveys, or model opinions as substitutes for the behavior named in the success criterion.
+
+### Completed result and Evidence Ledger
+
+When the experiment is completed, append a `Completed result` section to the same
+artifact. Use exactly one result code:
+
+```text
+success | demand_failure | invalid | inconclusive
+```
+
+Classify in this order so an apparent positive outcome does not hide a broken
+test:
+
+1. `invalid`: a known targeting, reachability, exposure, safety, protocol, or
+   measurement defect means the experiment did not test the named assumption.
+2. `success`: no material invalidating defect exists and the predeclared success
+   threshold was met.
+3. `demand_failure`: no material invalidating defect exists, the strict demand
+   exposure gate below was met, and the predeclared demand behavior remained at
+   or below its failure threshold.
+4. `inconclusive`: no result above applies; the evidence is too sparse, mixed,
+   censored, or uncertain to cross a predeclared threshold or establish a known
+   invalidating defect.
+
+`demand_failure` is allowed only when all of these are evidenced:
+
+- the predeclared minimum number of qualified intended buyers or payers was met;
+- qualification and decision relevance were actually checked;
+- each counted buyer received and understood the real offer and real price;
+- the relevant decision or purchase window elapsed; and
+- channel failure, missing exposure, relationship bias, or another protocol
+  defect does not plausibly explain the result.
+
+If these conditions are not met, use `invalid` for a known test defect or
+`inconclusive` for insufficient or uncertain evidence. Ten messages with only two
+views and one wrong decision-maker cannot establish demand failure.
+
+The Evidence Ledger is one aggregate table over the selected path. Planned counts
+and actual counts stay separate, and every decision-relevant actual count links to
+redacted raw evidence or a dated observation. Omit inapplicable steps.
+
+```markdown
+## Completed result
+
+- Completed at: 2026-08-20
+- Result: demand_failure
+- Result basis: the success threshold was missed after the demand-failure exposure gate was met
+- Raw evidence: [redacted outreach and response log](evidence/E001-outreach-log.md), [payment-provider check](evidence/E001-payment-check.md)
+- Observed events: 0 payments; 10 qualified offer-and-price exposures; 6 explicit price refusals
+
+### Evidence Ledger
+
+| Selected step | Planned threshold | Actual | Evidence or deviation |
+| --- | ---: | ---: | --- |
+| qualified | 10 | 10 | qualification fields in outreach log |
+| offer_presented | 10 | 10 | delivered offer records |
+| price_presented | 10 | 10 | CNY 500 shown and comprehension recorded |
+| paid | 2 success / 0 demand failure | 0 | payment-provider check after decision window |
+
+### Reasons and diagnosis
+
+- Reason evidence: `too_expensive` — 6 linked buyer replies explicitly rejected the CNY 500 price
+- First broken selected step: paid
+- First broken layer: price_value_buyer_economics
+- Diagnosis basis: linked replies, not the zero-payment count alone
+- Competing explanations: trust remains possible for 4 buyers without a stated reason
+- Material protocol deviations: none
+
+### Feedback
+
+- Assumption updates: A001 weakened
+- Facts created or updated: F006 records the observed exposure and payment count
+- Decision updates: D003 records the user's choice to narrow the next test to price/value structure
+- Stage after evidence review: business_validation (unchanged)
+- Next experiment or action: compare one value-framed CNY 500 offer against the current offer with a new capped qualified sample
+```
+
+Use these standard reason codes when supported, while preserving a link to the
+raw words, behavior, or operating evidence that justified each code:
+
+```text
+cannot_reach | wrong_person | not_qualified | no_problem | low_frequency
+no_urgency | already_solved | no_budget | too_expensive | no_trust
+bad_timing | offer_unclear | delivery_risk | policy_risk | switching_cost
+decision_process_unknown | other
+```
+
+A reason code is a searchable summary, not evidence and not a FACT. Do not infer
+`too_expensive`, `no_urgency`, or another reason from silence alone. With `other`,
+record a short neutral label plus its evidence.
+
+Diagnose both the first broken selected step and the first evidence-supported
+layer. The step is the earliest selected-path threshold or evidence requirement
+that broke; the layer is the current explanation for it. Use one of these common
+layers when applicable: `reachability_channel`, `targeting_qualification`,
+`problem`, `trigger_frequency_timing`, `offer`,
+`price_value_buyer_economics`, `trust`, `decision_process`, `delivery`,
+`recurrence`, or `delivery_economics`. Use `none` for success and `unknown` when
+the evidence cannot distinguish competing explanations. A conversion count alone
+does not prove a causal layer.
+
+Apply completed feedback conservatively:
+
+- **ASSUMPTION:** `success` may support only the named claim; `demand_failure`
+  weakens or invalidates only the precisely exposed demand claim; `invalid`
+  neither supports nor refutes it; `inconclusive` normally leaves it testing or
+  refines what remains unknown. Do not generalize one result to “the market.”
+- **FACT:** persist falsifiable observations such as who was qualified, what was
+  actually exposed, payments, refunds, delivery, and repeat behavior with dates
+  and evidence. Diagnoses and reason codes remain analysis unless directly
+  observed as a statement or behavior.
+- **TRANSACTION:** each qualifying payment still requires its own `Txxx` plus a
+  linked FACT; reconcile `transactions.total` and `repeat_customers`. A `success`
+  code is not a transaction.
+- **DECISION:** record the chosen continue, change, stop, or retest action and its
+  evidence basis only when the user commits; do not manufacture a `Dxxx` from the
+  model's diagnosis.
+- **Stage:** recompute the earliest unresolved gate from the updated evidence.
+  No result code automatically promotes a Stage. Roll back only when evidence
+  invalidates earlier entry evidence; `invalid` or `inconclusive` alone normally
+  changes the next test, not the Stage.
+- **Next experiment:** after `invalid`, repair the first broken validity layer;
+  after `inconclusive`, acquire the cheapest missing evidence or sharpen the
+  threshold; after `demand_failure`, stop, pivot the exposed claim, or isolate one
+  evidence-supported competing explanation; after `success`, replicate
+  independently or test the next earliest gate. Change one material uncertainty
+  at a time and keep the downside capped.
+- **Portfolio stop:** repeated repairs of the same claim consume its predeclared total time, cost, and repair-review budget. Exhaustion requires pause, deprioritization, or pivot review even when no single run qualifies as `demand_failure`; record the access limitation rather than claiming the market has no demand.
+
+These completion requirements apply only when an `Exxx` records a completed or
+result section. Existing plan-only artifacts remain valid and need no migration.
+When a historical plan-only experiment is completed or materially re-reviewed,
+append the canonical completion section then; do not allocate a new object ID.
 
 ## TRANSACTION
 

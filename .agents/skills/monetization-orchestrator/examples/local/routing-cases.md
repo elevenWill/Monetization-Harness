@@ -6,7 +6,13 @@ These examples are authored for this Harness. Broader human-auditable behavior s
 
 Workspace contains only `_index.md`. Input: “I keep seeing small merchants struggle to make 10–15 second commerce videos and want to investigate whether this can make money.”
 
-Classify it as a concrete resumable monetization thread, not a generic question. Generate an internal stable slug, bootstrap only `IDEA.md` and `STATE.md` from what the user actually said, and update `_index.md`. Because it is a new public-market direction, next run the bounded Market Reality quick scan. Only after real research completes, persist `01-opportunity/research/R001-<short-name>.md` as a separate same-turn operation that creates its directory with the file. Give that evidence to `opportunity-finder` (and `assumption-challenger` if trend still implies demand), then continue the substantive answer. Do not create a Stage directory during bootstrap or leave an empty one after research.
+Classify it as a concrete resumable monetization thread, not a generic question. Generate an internal stable slug, bootstrap only `IDEA.md` and `STATE.md` from what the user actually said, and update `_index.md`. This question depends on current public-market precedent, platform constraints, visible supply, and negative evidence, so next run a bounded Market Reality quick scan; the reason is the decision-critical external claim, not bootstrap status alone. Only after real research completes, persist `01-opportunity/research/R001-<short-name>.md` as a separate same-turn operation that creates its directory with the file. Give that evidence to `opportunity-finder` (and `assumption-challenger` if trend still implies demand), perform only a light trigger-mechanism scan, and continue the substantive answer. Do not force a full Buying Situation or `business-filter`, create a Stage directory during bootstrap, or leave an empty one after research.
+
+## Opportunity direct-observation route
+
+Input: “I can shadow three shop operators this week; they say the same inventory handoff is manual, but I do not yet know whether it is a real problem.”
+
+The earliest uncertainty is observed problem evidence, not a current external market claim. Take the no-search route, use `opportunity-finder` to narrow the customer/workflow and `assumption-challenger` only if the proposed solution is being treated as the goal. Ask the user to observe the repeated handoff, workaround, effort, and consequence. A light recurrence/trigger clue may guide observation; do not instantiate a full `BSxxx` or run a full Why-Now checklist.
 
 ## Ordinary question
 
@@ -20,7 +26,7 @@ This is also a no-search route: the answer concerns Harness/Skill provenance and
 
 Input: “数字人短视频带货是否已经被市场验证？我准备根据答案投入三个月。”
 
-Run `market-reality-researcher` before any Thinking Skill. Persist the scoped `Rxxx` and any genuinely reusable `Cxxx`, including current official platform policy, actual channels reached, negative evidence, and coverage gaps. Then give the evidence to `assumption-challenger` and `experiment-designer`. The researcher does not consume either lens slot, and an inaccessible target platform must remain a coverage gap rather than an implied full-market result.
+Run `market-reality-researcher` before any Thinking Skill because current market validation and a three-month commitment depend on external evidence. Persist the scoped `Rxxx` and any genuinely reusable `Cxxx`, including current official platform policy, actual channels reached, negative evidence, and coverage gaps. Then give the evidence to `assumption-challenger` and `experiment-designer`. The researcher does not consume either lens slot, and an inaccessible target platform must remain a coverage gap rather than an implied full-market result.
 
 ## Exact versus adjacent precedent
 

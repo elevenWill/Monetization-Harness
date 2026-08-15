@@ -16,8 +16,10 @@
 
 - Runtime records deadline_type as none and does not invent a penalty, event, or
   urgency to make the business fit the Why-Now Gate.
-- business-filter recognizes a legitimate non-deadline trigger: repeated usage,
-  ongoing convenience, avoided recurring effort, and observed renewal/payment.
+- Runtime classifies the supported mechanism as
+  `recurring_non_deadline_purchase`: repeated usage, ongoing convenience,
+  avoided recurring effort, and observed renewal/payment—not a failed urgency
+  case.
 - The business is not rejected because no deadline exists; recurrence, retention,
   delivery economics, alternatives, and the evidence behind the purchased result
   control the judgment.
