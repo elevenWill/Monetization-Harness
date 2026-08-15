@@ -26,7 +26,12 @@ the orchestrator for the Market Reality Gate. Do not fill it with model knowledg
 ## Workflow
 
 1. Use a concrete Buying Situation as the unit of analysis, not the abstract Project. Identify only archetype-relevant roles and do not assume they are the same: normally user, beneficiary, buyer, budget owner, payer, and consequence owner; for content/media, consider audience/consumer/subscriber, operator/creator, advertiser/sponsor/merchant/platform when relevant.
-2. Preserve the proposed business archetype and describe the value or result without product features. For content/media, trace the audience value/attention flow separately from the money flow and allow entertainment, identity, information, education, or decision support without rewriting it as a service problem.
+2. Preserve an explicit current business-archetype commitment; treat a tentative
+   preference as an ASSUMPTION that may be compared with alternatives. Describe
+   the value or result without product features. For content/media, trace the
+   audience value/attention flow separately from the payer, paid result, and money
+   flow, and allow entertainment, identity, information, education, or decision
+   support without rewriting it as a service problem.
 3. Audit Trigger Event, Deadline Reality and source, Cost of Delay and certainty, Purchase Window, Budget Path, Trust Barrier, Low-Trust Entry, Reachability, Frequency, and Delivery Liability. A preferred date, anxiety, or a seller countdown is insufficient.
 4. Compare current alternatives using project and external evidence: internal
    labor, spreadsheet, agency, incumbent software, delay, or no action. Include

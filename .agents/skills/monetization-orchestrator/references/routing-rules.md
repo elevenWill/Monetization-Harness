@@ -15,12 +15,20 @@ Match by semantic continuity, not isolated words. Bootstrap creates no Stage dir
 
 ## Reality Evidence selector
 
-After Stage assessment, name the exact claim that could change the immediate decision, then choose the cheapest safe evidence capable of resolving it:
+After Stage assessment, name the exact claim that could change the immediate
+decision, choose evidence capable of resolving it, then minimize total downside:
 
 1. Reuse fresh, scope-matched project or external evidence when it already supports that claim.
 2. Prefer direct observation, workflow artifacts, qualified offers, behavior, payments, usage, delivery, and repeat-customer evidence for claims about this project's problem, willingness to pay, transferability, repeatability, or economics.
 3. Invoke `market-reality-researcher` before judgment when the claim depends materially on current market existence, exact/adjacent precedent, platform or policy feasibility, price, competition, supply, acceptance, external trigger behavior, legal constraint, or a major commitment's external downside.
-4. In Opportunity Discovery, preserve Candidate origin and business archetype; compare Reality/Opportunity signals separately from founder fit, reachability, speed, cost, and assets. If a direction comparison otherwise rests mainly on model synthesis and current external patterns could change it, use a decision-capped Reality Scan before assigning Market Priority.
+4. In Opportunity Discovery, first normalize Candidates to one decision level.
+   Tools, topics, formats, channels, audiences, monetization mechanisms, business
+   structures, and offers are not peer directions. Preserve the canonical
+   Decision Frame; compare Reality/Opportunity signals separately from founder
+   fit, reachability, speed, cost, and assets. If an income-direction comparison
+   otherwise rests mainly on model synthesis and current external patterns could
+   change it, use a decision-capped scan of observed monetization structures
+   before assigning Market Priority.
 5. Use a bounded Opportunity quick scan only when one of those current external claims is decision-relevant. A new public-market project does not require search by status alone, and strong direct evidence does not require a ceremonial market scan.
 6. Take the no-search route for internal state interpretation, user-reported behavior/transaction results, direct execution that does not depend on current external facts, or fresh scope-matched research with no change signal.
 
@@ -49,7 +57,7 @@ The primary and optional lenses are defaults. Select the minimum set that resolv
 | `opportunity_discovery` | Is there a narrow participant/audience plus reality-grounded problem or repeated-value pattern worth investigating? | Observed work, transactions, spend, workarounds, repeated behavior or consumption, sustained operation, audience pull, and transferable precedent; Investigation Advantage remains separate; bounded external scan only when current patterns control comparison | `opportunity-finder` | `assumption-challenger` for model/trend/technology/solution-implies-demand framing | Observe a qualified workflow or audience behavior, contact a claim-relevant sample, or run a bounded platform/market-pattern observation | `Oxxx` with origin, archetype, Reality signal, evidence status, commercial bridge, and inference scope; optional `Rxxx`/`Cxxx` only if research ran; `BSxxx` only if already decision-critical | `defined_problem_and_customer` supported by a traceable participant/audience and problem/value signal; reachability proves testability only | Candidate remains model-/trend-/technology-/vanity-metric-led, changes archetype silently, or conflates audience behavior with payer evidence |
 | `problem_validation` | Does the claimed problem occur and matter in observed behavior? | Direct observation, workflow artifacts, workaround use, existing effort/spend, falsifying interviews | `assumption-challenger` | `experiment-designer` for a bounded behavior/falsification test | Observe the workflow or run one test against the named problem assumption | Updated `Fxxx`/`Axxx`; accepted `E001`-series record only for a real experiment | `problem_evidence` from observed project-specific behavior | Evidence contradicts the problem or customer; return to Opportunity or redefine |
 | `business_validation` | Who buys and pays, for what result, versus what alternative, through what budget and purchase mechanism? | Real buyer/payer evidence, alternatives/spend, concrete offer/price response; current external price/policy/competition facts when gating; full Why-Now normally applies | `business-filter` | `experiment-designer` for an offer test, or `assumption-challenger` for an independent framing error; never both routinely | Put a bounded result and real price before qualified buyer/payer candidates | Concrete `BSxxx` when analyzed; relevant `Axxx`/`Dxxx`; accepted `E001`-series offer test | `credible_offer` with identifiable payer/result/alternative and falsifiable transaction mechanism | Buyer, value, result, or payment logic becomes unclear; regress to earliest invalid gate |
-| `experiment_validation` | What cheapest safe test can discriminate the single decision-changing assumption? | Qualified exposure, costly commitment, observed use, real offer/payment attempt, validity evidence; current constraints only when test safety/validity depends on them | `experiment-designer` | `business-filter` if payer/price blocks validity, or `assumption-challenger` if the experiment tests the wrong question | Run the accepted bounded experiment with downside cap and review/stop condition | `E001`-series record and linked evidence | `transaction_attempt`: a real interpretable offer/behavior/payment attempt | Test measures interest instead of the key assumption or is otherwise invalid/uninterpretable |
+| `experiment_validation` | What bounded safe test yields enough information to discriminate the single decision-changing assumption? | Qualified exposure, costly commitment, observed use, real offer/payment attempt, validity evidence; current constraints only when test safety/validity depends on them | `experiment-designer` | `business-filter` if payer/price blocks validity, or `assumption-challenger` if the experiment tests the wrong question | Run the accepted bounded experiment with downside cap and review/stop condition | `E001`-series record and linked evidence | `transaction_attempt`: a real interpretable offer/behavior/payment attempt | Test measures interest or an easy proxy instead of the key assumption, or is otherwise invalid/uninterpretable |
 | `transaction_validation` | Can real payment and delivery repeat independently under comparable conditions? | Payments, qualified refusals, prices shown, delivery quality/cost, refunds, repeat use and relationship/discount checks | `business-filter` | `experiment-designer` for a replication offer/test | Repeat the bounded offer and delivery with an independent qualified buyer or genuine repeat customer | `Txxx`/`Fxxx`; replication `E001`-series record when accepted; update `BSxxx` only if changed | `repeat_payment` plus materially similar valued delivery | First payment is friendly, subsidized, exceptional, refunded, or undeliverable; return to Business or Experiment Validation |
 | `leverage_discovery` | Which repeated delivery step is stable enough to standardize without erasing value or hiding bad economics? | Process timing, judgment, defects, quality, marginal cost, capacity, SLA/liability across repeated paid delivery | `leverage-designer` | `business-filter` for gating recurrence/economics, or `experiment-designer` for a material automation/dependency test | Baseline one bottleneck and test one SOP, template, assisted step, or reusable asset | Non-empty leverage analysis/SOP/asset; optional accepted experiment | `repeatable_delivery_system` preserves result/quality with measured improvement | Repeatability disappears or automation harms value, quality, economics, or survivability |
 | `productization` | What minimum product boundary preserves the proven paid result and delivery? | Paid pilots, product-mediated repeat use/purchase, support, quality, retention, cost versus manual baseline | `leverage-designer` | `experiment-designer` for the smallest paid product test; if repeat value already failed, roll back first | Productize one proven step/result and compare it with the manual baseline | Bounded productization analysis plus accepted experiment; no roadmap as evidence | `repeatable_product_value` with plausible economics | Product users do not repeat, pay, or obtain the result; return to `business_validation` or earlier |
@@ -81,6 +89,19 @@ For Candidate comparison, require roughly comparable dimensions and coverage. A
 single star account, viral item, vendor story, or isolated success is a lead. If
 evidence is weak, asymmetric, or incomparable, use `Market Priority: unknown`,
 omit an ordinal business ranking, and name only the `first exploratory test`.
+Before this comparison, normalize mixed-level inputs. For an income goal, compare
+observed money structures and map lower-level tools, topics, formats, and channels
+into them; do not rank the components themselves as businesses.
+
+For an explicit income goal, an action that consumes several hours or days,
+repeated production/publication, meaningful delivery, or material reputation or
+opportunity cost must reduce a named commercial-bridge unknown. Require the
+success/failure decision change and compare its information value with a smaller
+alternative. A single reversible micro probe may still explore audience or value
+with monetization unknown. Direct payment/delivery evidence follows its current
+Stage without a generic monetization-model scan.
+Incomplete reports of several payments also skip that scan, but route first to
+bounded transaction verification; do not infer Leverage from unverified counts.
 
 ## Lens-count rules
 
@@ -92,7 +113,12 @@ omit an ordinal business ranking, and name only the `first exploratory test`.
 ## Derived examples
 
 - New digital-human commerce direction asking whether the market and platform permit it: bootstrap minimally, run bounded external research because current market/policy claims control the judgment, then use `opportunity-finder` and only a light trigger scan. Do not force a full BS or `business-filter`.
-- Creator goal with several model-derived directions and no differentiating direct evidence: preserve the content/media archetype, compare a bounded set of operating and failed monetization patterns, then use founder fit and access to select the cheapest test among reality-grounded Candidates. Do not silently turn the project into a creator service.
+- Creator goal with H3, serial drama, and commerce video as mixed-level inputs:
+  treat an uncommitted content preference as a hypothesis, normalize to a bounded
+  set of operating and failed monetization structures, map those inputs as tools,
+  topics, or formats, then select a decision-informative test. Do not silently
+  turn the project into a creator service or fund a material audience-only test
+  merely because it is easiest.
 - Accessible operators report a recurring manual workflow and the next question is whether the problem is real: take the observation route without ceremonial web research; use `assumption-challenger` and optionally a bounded behavior test.
 - Zero customers plus “design the database”: use `assumption-challenger + experiment-designer`, not a global business-first three-lens route.
 - One genuine payment: record it and enter transaction validation; `business-filter + experiment-designer` may test independent repetition.

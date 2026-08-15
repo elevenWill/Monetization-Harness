@@ -21,7 +21,12 @@ eventually earns money.”
 
 Review direction: Treat technical familiarity and peer access as Investigation
 Advantages, not evidence that technical peers are the best audience or payer.
-Preserve the content/media archetype. If no direct Reality signal distinguishes
-the candidate directions, request a bounded comparison of real audience,
-creator, monetization, and failure patterns; keep any service or tool route as a
-separate hypothesis.
+Treat “content may suit me” as a hypothesis unless explicitly committed. Do not
+rank H3, AI serial drama, and commerce video directly: H3 may be a topic or tool,
+serial drama a format, and commerce a monetization structure or service
+hypothesis. Normalize to observed monetization structures, then map those
+components. If no direct Reality signal distinguishes the structures, request a
+bounded comparison of value, payer, money-flow, resource, and failure patterns.
+A single reversible content probe may explore audience interest with an unknown
+bridge; a multi-day content series must explain which money-path unknown it will
+reduce.

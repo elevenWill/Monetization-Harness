@@ -4,10 +4,10 @@ Stage describes the next uncertainty to resolve, not how polished the artifact l
 
 | Stage | Entry evidence | Primary question | Typical next gate | Regression signal |
 | --- | --- | --- | --- | --- |
-| `opportunity_discovery` | No clear participant/audience and repeated value pattern | Which reality-grounded problem, transaction, consumption, identity, entertainment, information, convenience, or risk pattern is worth investigating? | `defined_problem_and_customer` | Candidate remains model-, trend-, technology-, or vanity-metric-led |
+| `opportunity_discovery` | No clear participant/audience and repeated value pattern | Which same-level reality-grounded value or monetization pattern is worth investigating, and which tools/topics/formats/channels are only components of it? | `defined_problem_and_customer` | Candidate remains model-, trend-, technology-, or vanity-metric-led, or mixed-level components are ranked as business directions |
 | `problem_validation` | A participant/audience plus problem or desired-value hypothesis exists | Does the claimed problem, desired value, or consumption pattern occur and matter in observed reality? | `problem_evidence` | Observation or behavior contradicts the participant/value definition |
 | `business_validation` | Problem evidence exists | Who pays, for what result, why now, and versus what alternative? | `credible_offer` | Buyer, value, or payment logic becomes unclear |
-| `experiment_validation` | A falsifiable offer or assumption exists | What is the cheapest safe test using real behavior? | `transaction_attempt` | Experiment tests interest, not the key assumption |
+| `experiment_validation` | A falsifiable offer or assumption exists | Which safe test produces the most decision-changing information relative to total downside? | `transaction_attempt` | Experiment tests interest, not the key assumption or income path |
 | `transaction_validation` | At least one real payment exists | Can the payment and delivery be repeated? | `repeat_payment` | First transaction proves exceptional or non-repeatable |
 | `leverage_discovery` | Repeated purchase or repeated valued delivery exists | Which repeated work can become an SOP or reusable asset? | `repeatable_delivery_system` | Automation reduces the value or repeatability disappears |
 | `productization` | Repeatable delivery and a bounded scope exist | What minimum product preserves the proven result? | `repeatable_product_value` | Product users do not repeat or pay; return to business validation |
@@ -20,6 +20,13 @@ consumption hypothesis, followed by observed evidence that the pattern occurs.
 Do not force the pattern into a service problem, and keep its payer and
 monetization bridge `unknown` until evidence supports them.
 
+During Opportunity comparison, first distinguish business or monetization
+structures from their components: tool/capability, topic, format, channel,
+audience, value mechanism, and offer. Normalize Candidates to the decision level
+the user's question requires; do not rank mixed-level components. Preserve an
+explicit user-committed archetype constraint, while treating tentative archetype
+preference as an ASSUMPTION rather than Stage evidence.
+
 ## Stage determination
 
 1. Start from transactions, repeat customers, observed behavior, and linked evidence in `STATE.md`.
@@ -27,11 +34,17 @@ monetization bridge `unknown` until evidence supports them.
 3. Record a transition only when the entry evidence changes.
 4. When evidence invalidates an earlier gate, move backward to the earliest invalidated stage and record why.
 
+An incomplete user report of one or many payments remains useful FACT evidence
+and routes to `transaction_validation` for bounded verification. It does not
+satisfy completed Transaction evidence or the Leverage entry gate until the
+minimum auditable Transaction fields and comparable delivery evidence are
+verified.
+
 Do not infer Stage from directory names and do not create a directory merely because a Project enters that Stage. Stage directories materialize only when a real artifact is written, may be non-contiguous, and may remain after the current Stage moves forward or backward.
 
 ## Market Reality Gate is not a Stage
 
-The Runtime first selects the cheapest safe Reality Evidence capable of changing the immediate decision: reuse fresh evidence, seek the project's own observation/behavior/payment/delivery evidence, or use the Market Reality Gate when current external facts are decision-critical. The Gate checks whether external research is needed and fresh enough; it is not the whole reality loop, a ninth Stage, a Stage transition, or a replacement for `next_gate`. A newly bootstrapped public-market project does not require research by status alone.
+The Runtime first selects safe Reality Evidence by decision-changing information relative to total downside, then prefers the cheapest route among evidence paths capable of changing the immediate decision: reuse fresh evidence, seek the project's own observation/behavior/payment/delivery evidence, or use the Market Reality Gate when current external facts are decision-critical. Founder attention and opportunity cost are part of downside. The Gate checks whether external research is needed and fresh enough; it is not the whole reality loop, a ninth Stage, a Stage transition, or a replacement for `next_gate`. A newly bootstrapped public-market project does not require research by status alone, and existing auditable payment or delivery evidence does not require a new revenue-model landscape unless that structure is the active uncertainty.
 
 Store a resulting `Rxxx` under the `research/` directory of the Stage whose question it informs, and a reusable `Cxxx` under that Stage's `cases/` directory. Those directories remain historical material and do not determine the current Stage. Completing research or finding an exact/adjacent precedent does not advance the project by itself.
 

@@ -105,6 +105,10 @@ Diagnosis → Next Action / Stage rollback or promotion
 
 Opportunity Discovery 先区分两件事：Reality/Opportunity Evidence 回答“现实里为什么值得调查”，Investigation Advantage 回答“为什么你能更快、更便宜地学到答案”。Founder Fit、熟悉度和可达性仍然重要，但不会被加进同一个分数来替代交易、持续消费、现有支出、workaround 或其他市场信号。模型提出的新方向可以做有上限的探索，但会保持 `model-derived`、`unvalidated`，不会因为行动计划具体就变成第一市场方向。
 
+比较方向前，Harness 还会先确认它们是不是同一层：H3 可能是工具或内容题目，漫剧是内容形式，小红书是渠道，带货则可能包含商业或变现机制，不能直接排成一张“赚钱方向”榜。用户问如何赚钱时，Runtime 优先比较现实中可观察的赚钱结构——谁获得什么重复价值、谁为哪个结果付钱、钱通过什么机制进入——再把工具、题目、形式和渠道映射为结构中的部件。用户说“可能适合自媒体”仍是可挑战的假设；只有“未来半年只做内容”这类明确承诺才成为当前约束。
+
+实验也不再以“最容易做”为目标。Runtime 先判断哪个安全实验单位总成本能提供最多的决策信息，再在合格方案中选更小的；Founder attention 和放弃其他机会的成本同样计入。赚钱目标下，数小时、多天、多次正式发布或明显人工交付的 Material Experiment 必须说明成功和失败会改变什么、减少哪个 Money-path unknown，以及为什么比更小替代更有信息价值。30～90 分钟、单次、可逆的 Micro Probe 即使 Monetization Bridge 仍未知也可以执行，但只能支持窄的受众或价值判断。
+
 Harness 也会保留业务原型。Content/Media 不会因为服务更容易报价就自动变成咨询或工具业务；Audience Value、Distribution 和 Money Flow 分开验证。小红书、B站、抖音、YouTube 等平台按当前问题既可能是 Distribution Channel，也可能是 Market Observation Environment，但互动量本身不证明利润或付款。
 
 市场研究能证明别人是否在已知条件下做成过，不能单独证明你一定能做成。最终仍需要一个低成本、有停止条件的复现实验。
@@ -281,9 +285,9 @@ Stage 可以回退。产品上线后无人复购，应回到 `business_validatio
 
 ## Behavior Acceptance Scenarios
 
-[`evals/cases/`](evals/cases/) 保存 41 个核心 Harness Behavior Acceptance Scenarios，用于修改 `AGENTS.md`、Skills、Router、Stage、Market Reality、Human Execution 或 Experiment Diagnosis 规则时做人工行为回归。
+[`evals/cases/`](evals/cases/) 保存 43 个核心 Harness Behavior Acceptance Scenarios，用于修改 `AGENTS.md`、Skills、Router、Stage、Market Reality、Human Execution、Decision Frame 或 Experiment Diagnosis 规则时做人工行为回归。
 
-它们不是自动启动 Codex 的 LLM Evaluation Framework，也不把手工编写的理想答案伪装成真实 Runtime 测试。核心覆盖：Project lifecycle、Stage-first、Reality Evidence 路由、过早开发、交易与 leverage、重大下注、Stage 回退、Workspace lazy growth、市场证据，以及无人看见、错误 Buyer、赞美无付款、友情付款、可执行 sourcing、研究/开发逃避、交付亏损、现实反馈改写方向、样本与 Decision Claim 的匹配、内容 Audience/Payer 分离、内容平台的条件式证据用途，以及执行具体性不抬升假设。
+它们不是自动启动 Codex 的 LLM Evaluation Framework，也不把手工编写的理想答案伪装成真实 Runtime 测试。核心覆盖：Project lifecycle、Stage-first、Reality Evidence 路由、过早开发、交易与 leverage、重大下注、Stage 回退、Workspace lazy growth、市场证据，以及无人看见、错误 Buyer、赞美无付款、友情付款、可执行 sourcing、研究/开发逃避、交付亏损、现实反馈改写方向、样本与 Decision Claim 的匹配、内容 Audience/Payer 分离、内容平台的条件式证据用途、执行具体性不抬升假设、跨层 Candidate 比较、Material Experiment 信息价值，以及用户偏好与明确约束的区别。
 
 [`docs/evaluation-strategy.md`](docs/evaluation-strategy.md) 另定义同模型 `Baseline + Web` 与 `Harness + Web` 的人工 A/B 协议，用 outcome-first 的决策质量、次日可执行性、time-to-evidence/伤害作为主指标，并允许更简单、更聪明的 Baseline 合法获胜。仓库没有伪造任何 A/B 运行结果。
 

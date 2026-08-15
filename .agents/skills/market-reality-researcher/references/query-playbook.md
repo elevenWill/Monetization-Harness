@@ -97,6 +97,12 @@ paths, and operator disclosures. Example query families:
 site:<platform> "<topic>" "付费" OR "会员" OR "赞助" OR "停更"
 ```
 
+When the user is choosing an income direction, build query groups around peer
+money mechanisms rather than comparing a tool, topic, format, and commerce model
+directly. Reconstruct `value actor -> repeated value -> payer -> paid result ->
+money mechanism`, then record where a topic, format, tool, or platform fits. Do
+not let a high-attention query family substitute for missing revenue evidence.
+
 Keep platform observation separate from distribution feasibility and policy.
 Views, likes, followers, comments, visible offers, and sponsored labels support
 only the behavior or claim actually observed; none alone proves profit, accepted

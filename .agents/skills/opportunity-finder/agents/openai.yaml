@@ -1,4 +1,4 @@
 interface:
   display_name: "Opportunity Finder"
   short_description: "Compare reality-grounded opportunity candidates"
-  default_prompt: "Use $opportunity-finder to compare reality-grounded opportunities without confusing founder fit with market evidence."
+  default_prompt: "Use $opportunity-finder to normalize and compare reality-grounded opportunities without confusing founder fit with market evidence."

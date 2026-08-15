@@ -27,9 +27,11 @@
   deserves further investigation. It states what the resulting evidence can and
   cannot establish and avoids making packet detail sound like confidence in the
   upstream hypothesis.
-- Lack of an exact success case does not block exploration. A two-hour or similarly
-  bounded test is acceptable when downside is small, provided hypothesis is not
-  relabeled as evidence and the review can stop, compare, or reroute the candidate.
+- Lack of an exact success case does not block exploration. A 30–90 minute Micro
+  Probe is acceptable when downside is small and its learning claim is explicit.
+  A larger Material Experiment is justified only when its Decision Information
+  Value can change the current decision, reduce the Stage gate, or narrow a named
+  Monetization Bridge unknown; low cash cost alone is not enough.
 
 ## Failure conditions
 
@@ -40,5 +42,7 @@
 - Promotes user agreement into market evidence, omits the candidate's unvalidated
   status, or designs a test that only discovers technical problems while claiming
   to validate content pull or monetization.
+- Treats a multi-hour or multi-day experiment as cheap merely because cash spend
+  is low, without accounting for founder attention or decision-changing value.
 - Refuses to suggest or test any candidate until external proof exists, thereby
   suppressing cheap exploratory learning.

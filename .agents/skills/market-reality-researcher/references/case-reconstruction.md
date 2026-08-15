@@ -51,10 +51,22 @@ Answer with evidence rather than a celebratory summary:
 11. Does the case rely on existing traffic, brand trust, official platform cooperation, supply chain, or heavy manual operations?
 12. Which mechanism most plausibly caused the bought result, and what alternative explanations remain?
 
+For content/media, explicitly separate two partial reconstructions:
+
+```text
+Attention Structure: value actor -> repeated value -> observed audience behavior
+Revenue Structure: payer -> paid result -> monetization mechanism -> money evidence
+```
+
+An Attention Structure may be useful with every Revenue link `unknown`. Do not
+upgrade it into a Revenue Structure from views, followers, engagement, or a
+headline that someone “made money.”
+
 ## Output structures
 
 ```text
 Transaction Structure: payer -> offer -> bought result -> payment/transaction evidence
+Value Structure: value actor -> repeated value -> observed behavior
 Acquisition Structure: channel -> audience -> conversion path -> dependencies
 Delivery Structure: work performed -> automation/manual split -> cost and repeatability
 Trust Structure: brand, person, proof, disclosure, guarantees, or platform endorsement

@@ -6,6 +6,12 @@ Use this workflow for every new or refreshed `Rxxx`.
 
 Write one decision question and the claim whose truth would change the next action. Fix the scope: geography, platform, content type, actor/customer, payer, offer, bought result, and time sensitivity. List scope distinctions that could turn a result into merely adjacent evidence.
 
+For a comparison, first identify the decision role of every supplied item. Do not
+issue head-to-head queries across tools/capabilities, topics, formats, channels,
+audiences, monetization mechanisms, business structures, and offers. If the
+question is how the user can earn, define peer monetization structures and map
+those lower-level components only after their money mechanisms are reconstructed.
+
 If the decision depends on why a buyer acts now, define the candidate purchase-trigger chain and the exact link being tested: event, deadline/time window, consequence of delay, consequence owner, buyer/payer, workaround, purchase window, trust requirement, bought result, or recurrence. Do not treat urgency language as a completed chain.
 
 Check the project for a fresh, scope-matched `Rxxx`. Reuse it if sufficient. Refresh when policy, admission rules, AI disclosure, account requirements, price, competitor state, API/platform capability, traffic, ads, or content rules could have changed enough to alter the decision.
@@ -61,6 +67,10 @@ Keep trigger-event evidence separate too. Classify source quality with the exist
 
 Read [case-reconstruction.md](case-reconstruction.md). Promote a candidate to `Cxxx` only when it is useful for the current decision or future comparison. Assign exactly one case verification status. Do not upgrade adjacent cases because they are numerous.
 
+Separate evidence that only reconstructs audience attention from evidence that
+reconstructs revenue. Unknown payer, paid result, or money signal remains
+`unknown`; an attention case cannot become a monetization pattern by inference.
+
 ## 8. Test transferability
 
 Read [transferability-check.md](transferability-check.md). Classify every mechanism or advantage as `Copyable`, `Context-dependent`, `Non-copyable`, or `Unknown`. Distinguish market existence from the current user's ability to reproduce the result.
@@ -81,7 +91,11 @@ Prefer `insufficient_evidence` over a synthesized yes/no when evidence is weak. 
 
 ## 10. Produce playbook and replication basis
 
-Output the Closest Proven Playbook: actor, payer, bought result, acquisition, delivery, trust, critical conditions, platform constraints, copyable pieces, non-copyable pieces, and user gaps. If exact precedent is absent, explicitly name the nearest adjacent playbook and its decisive mismatch.
+Output the Closest Proven Playbook: value actor, repeated value, observed
+behavior, payer, monetization mechanism, bought result, money signal, acquisition,
+delivery, trust, critical conditions, platform constraints, copyable pieces,
+non-copyable pieces, and user gaps. If exact precedent is absent, explicitly name
+the nearest adjacent playbook and its decisive mismatch.
 
 For a trigger-dependent decision, include the closest evidenced buying situation: trigger, deadline, consequence owner, workaround, purchase window, trust requirement, frequency, and the exact missing link. Do not create a `BSxxx`; pass supported fields and source IDs to the orchestrator, which owns workspace object classification and persistence.
 

@@ -33,6 +33,15 @@ Turn the idea into falsifiable subquestions before issuing queries. Specify:
 - user acceptance, failures, alternatives, prices, and dependencies;
 - the difference between the proposed mode and likely adjacent evidence.
 
+Before a comparative search, normalize each supplied item to its role in the
+decision. Do not run a head-to-head market ranking when one item is a tool or
+capability, another a topic or format, and another a channel, monetization
+mechanism, business structure, or offer. For an income-direction decision,
+reconstruct a bounded set of observed monetization structures first, then map
+lower-level items into those structures as components. If direct payment and
+delivery evidence already defines the current money path, research only the
+specific remaining external claim; do not reopen a generic business-model scan.
+
 For query families and platform selection, read [references/query-playbook.md](references/query-playbook.md) and [references/source-strategy.md](references/source-strategy.md). Never use broad result counts, popularity, likes, followers, GMV, or hiring volume alone as demand, profit, or repeatability evidence.
 
 For content/media decisions, keep the platform's two roles separate. As a
@@ -44,6 +53,11 @@ are reach, policy, account history, algorithm exposure, and concentration risk.
 The same source may inform both, but record the findings separately. Engagement
 does not by itself prove payer intent, profit, a transaction, repeat purchase, or
 transferability to this project.
+
+Keep an Attention Story separate from a Revenue Story. Views, return behavior,
+saves, and subscriber growth can support audience-value claims. A Revenue Story
+requires evidence about the payer, paid result, monetization mechanism, and money
+signal; do not fill missing links with a creator headline or model inference.
 
 When research compares Opportunity Candidates, use roughly comparable claim
 dimensions, search depth, geography, time window, and negative-evidence effort.
@@ -112,7 +126,7 @@ When why-now is decision-critical, additionally seek the event source, buyer-ori
 
 ## Select research depth
 
-- **quick:** Default for a decision-capped go/no-go check or experiment preparation when one current external fact must be resolved. Also use it to compare a small Candidate pool when direction choice otherwise rests mainly on model synthesis: seek only the closest operating or transaction structures, negative/stopped patterns, audience/value evidence, monetization mechanisms, non-transferable resources, and explicit gaps needed to decide which Candidate enters a cheap test. Predeclare the decision, query/time cap, and stop rule; do not turn it into a general market landscape.
+- **quick:** Default for a decision-capped go/no-go check or experiment preparation when one current external fact must be resolved. Also use it to compare a small normalized Candidate pool when direction choice otherwise rests mainly on model synthesis: seek only the closest operating or transaction structures, negative/stopped patterns, audience/value evidence, payer and money mechanisms, non-transferable resources, and explicit gaps needed to decide which Candidate enters a decision-informative test. Predeclare the decision, query/time cap, and stop rule; do not turn it into a general market landscape.
 - **standard:** For an explicit viability landscape, case request, or material direction whose named decision cannot be resolved by a quick check or direct field evidence. Target at least three independent case candidates, ideally one or two exact cases; at least two negative sources; one current official policy source per target platform; acceptance signals from at least two independent channel types; and real price/transaction signals. These are coverage targets, not a license to fill quotas with weak analogies. Stop conclusion escalation when no exact case is found.
 - **deep:** For an explicit deep study, major commitment, or multi-platform entry. Add multilingual and multi-period searches, major competitors, business models, unit economics, acquisition, delivery, policy history, positive and negative feedback, failure modes, transfer conditions, and a minimal replication design. Do not implement scheduled monitoring in V0.
 

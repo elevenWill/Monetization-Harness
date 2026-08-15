@@ -32,14 +32,27 @@ stop_condition: "Stop after five qualified offers or the first payment, then rev
 
 For an `opportunity-finder` review, keep the common fields above rather than
 adding a score or a new schema. Its `finding` and `reasoning_summary` must expose
-the Candidate origin, business archetype, evidence status, commercial bridge,
-and inference scope; separate Opportunity Evidence from Investigation Advantage.
+the Candidate origin, comparison role/decision level, business archetype and
+whether it is committed or hypothetical, evidence status, commercial bridge,
+largest bridge unknown, and inference scope; separate Opportunity Evidence from
+Investigation Advantage. Normalize mixed tool/topic/format/channel/audience/
+monetization/offer components before comparison; do not rank them as if they were
+business directions at one level.
 Founder fit, reachability, test cost, user agreement, and Packet specificity may
 change learning order but cannot raise Market Priority.
 When comparison evidence is weak, asymmetric, or incomparable, the review must
 say `Market Priority: unknown`, omit an ordinal business ranking, and label any
 chosen probe only the `first exploratory test`. A single star account, viral item,
 vendor story, or isolated success is a lead rather than a comparison winner.
+
+For a material income-seeking experiment, the review must also state what success
+and failure change, which Monetization Bridge or money-path unknown the result can
+reduce, the founder-attention/total-downside cap, and why its decision information
+exceeds a smaller safe alternative. A single reversible 30–90 minute probe may
+leave monetization `unknown`, but its finding must remain a narrow audience/value
+inference rather than commercial validation. Existing auditable payment or
+delivery evidence follows the direct Stage route without a ceremonial revenue-
+model scan.
 
 ## Synthesis contract
 

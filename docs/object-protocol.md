@@ -4,7 +4,7 @@
 
 | Type | ID | Meaning | Required evidence/status |
 | --- | --- | --- | --- |
-| Opportunity | `O001` | A candidate worth investigating | Origin, business archetype, Reality signal, investigation advantage, evidence status, commercial bridge, and inference scope |
+| Opportunity | `O001` | A candidate worth investigating | Origin, comparison role, business archetype status, Reality signal, investigation advantage, evidence status, commercial bridge, and inference scope |
 | Fact | `F001` | Something that happened or was directly observed | Source/evidence and observed date |
 | Assumption | `A001` | A belief not yet supported strongly enough | Status and validation plan |
 | Decision | `D001` | A chosen action or constraint | Basis, owner/date, revisit condition |
@@ -28,22 +28,34 @@ commitment. When an `Oxxx` is persisted, retain:
 - **Origin:** direct observation, user-reported concrete behavior, existing
   transaction/spend/workaround, current external market evidence, or an explicit
   model-derived synthesis;
-- **Business archetype:** product/SaaS, service/consulting,
+- **Comparison role / decision level:** whether the Candidate is currently a
+  tool/capability, content topic, content format, distribution channel, audience,
+  value mechanism, business/monetization mechanism, or offer/product. Use a plain
+  project-specific label when none fits; this is a normalization aid, not a new enum;
+- **Business archetype and status:** product/SaaS, service/consulting,
   marketplace/transaction, content/media/creator, commerce/affiliate, or another
-  clearly named structure;
+  clearly named structure, plus whether it is a user-committed Decision/constraint
+  or an uncommitted preference/hypothesis;
 - **Opportunity Evidence:** the observed recurrence, spend, transaction,
   workaround, audience behavior, precedent, or other Reality signal;
 - **Investigation Advantage:** founder familiarity, reachability, speed, cost,
   manual-test ability, or existing assets, kept separate from Opportunity Evidence;
 - **Evidence status and inference scope:** what is observed, what remains an
   ASSUMPTION, and what the source can and cannot establish; and
-- **Commercial bridge:** the current payer and monetization mechanism evidence,
-  or `unknown` when only audience/value behavior is observed.
+- **Commercial bridge:** the value actor and value mechanism; candidate payer and
+  monetization mechanism; observed behavior signal and separately observed money
+  signal; the current path from value/attention to money; and the largest bridge
+  unknown. Preserve unsupported links as `unknown`.
 
 A model-derived Candidate may receive a capped exploratory test, but founder fit,
 user agreement, reachability, or a detailed Execution Packet does not increase
-its Market Evidence. Do not silently change the business archetype; record a
-service, product, affiliate, or other monetization route as a separate hypothesis.
+its Market Evidence. Before comparison, normalize Candidates to the same decision
+level or map mixed components into separate monetization structures. A tool,
+topic, format, channel, or audience is not by itself a business direction;
+audience pull is not a Revenue Bridge. Preserve a user-committed archetype
+Decision or constraint. Treat tentative preference or intuition as an ASSUMPTION,
+and record a Runtime-proposed service, product, affiliate, or other monetization
+route as a separate hypothesis.
 
 ## FACT
 
@@ -80,7 +92,7 @@ Use status `untested`, `testing`, `supported`, `weakened`, or `invalidated`. “
 
 ## DECISION
 
-Draft choices use `DRAFT-D001` only in `STATE.md`; allocate `D001` when the user commits. Record which facts and assumptions support it.
+Draft choices use `DRAFT-D001` only in `STATE.md`; allocate `D001` when the user commits. A tentative preference or intuition remains an ASSUMPTION, not a constraint. Record which facts and assumptions support a committed Decision.
 
 ## EXPERIMENT
 
@@ -104,6 +116,29 @@ delivered | repeated
 
 This vocabulary is diagnostic, not a mandatory full funnel. Do not add irrelevant
 steps or maintain prospect-level rows.
+
+When the user's stated goal is income and an Opportunity experiment is material
+in founder attention, elapsed time, repeated publishing, manual delivery, money,
+reputation, or opportunity cost, also record:
+
+```text
+what this experiment tests
+what success changes
+what failure changes
+which Monetization Bridge or money-path unknown it reduces
+why its decision information exceeds a smaller safe alternative
+founder-attention and total-downside cap
+```
+
+“Material” is contextual, but several hours, multiple days or releases, or
+meaningful manual delivery triggers this check even when cash spend is small. Do
+not approve a material income-seeking experiment whose success only proves that
+someone liked or found content useful while its stated money-path unknown remains
+unchanged. A single reversible 30–90 minute probe may test a narrow audience/value
+claim with monetization still `unknown`; record that limited inference and do not
+present it as commercial validation. Existing auditable payment or delivery
+evidence takes the direct Stage route and does not require a new revenue-model scan
+unless the monetization structure itself is the active uncertainty.
 
 ```markdown
 ### E001 — Replicate paid case-file organization
@@ -286,6 +321,10 @@ transaction counters provisional or `unknown`; do not create a `completed`
 unknown. A user report is provenance for the FACT, not payment evidence for a
 completed Transaction unless it includes an auditable redacted receipt or
 provider record.
+One or many such incomplete reports belong in `transaction_validation` for
+bounded verification, but do not satisfy completed Transaction evidence or the
+Leverage entry gate. Verify individual payments and comparable valued delivery
+before advancing; do not infer repetition by counting unverified mentions.
 
 Allocate exactly one stable `Txxx` per auditable monetary transaction. Never use
 a range or rollup filename such as `T001-T036-...md`; summarize cohorts from

@@ -22,6 +22,13 @@ Derived from the preserved Paul Graham source snapshot. These models are lenses,
 
 ## Candidate comparison
 
+First normalize what is being compared. A capability or tool, topic, format,
+channel, audience, value mechanism, monetization structure, and offer may all be
+useful, but they are not peer directions. If the user's decision is how income
+could enter, compare observed monetization structures and map the lower-level
+items into them as components. One component may support several structures; do
+not silently choose one.
+
 Do not produce one additive score. Keep two groups visible:
 
 | Opportunity Evidence — why Reality makes this worth investigating | Investigation Advantage — why this user can learn cheaply |
@@ -33,10 +40,17 @@ Do not produce one additive score. Keep two groups visible:
 | Contradicting evidence and failure patterns | Ability to interpret results accurately |
 
 First ask whether a Candidate has a Reality basis. Then use Investigation
-Advantage to choose learning order among Candidates that passed that check. A
+Advantage to lower the total downside of a test with enough information to change
+the current decision. A
 weak but cheap model-derived Candidate may receive a capped exploratory probe;
 it does not outrank stronger Opportunity Evidence. Lack of immediate access is an
 acquisition constraint, not proof that the opportunity is unimportant.
+
+Cheap is a constraint, not the objective. Count founder attention and opportunity
+cost with cash and risk. When income is the explicit goal, a material exploratory
+action must reduce a named unknown between repeated value and money; otherwise
+shrink it to one reversible micro probe or choose a more discriminating test.
+Unknown monetization does not prohibit cheap exploration.
 
 ## Source limitations carried forward
 

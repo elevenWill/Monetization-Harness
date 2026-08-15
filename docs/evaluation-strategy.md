@@ -111,14 +111,18 @@ before any aggregate.
 
 ## Seventeen judge dimensions
 
-1. **Corrects the question:** notices when the requested solution or question is
-   not the decision the user currently needs.
+1. **Corrects and normalizes the question:** notices when the requested solution
+   or question is not the decision the user currently needs, and does not compare
+   mixed-level tools, topics, formats, channels, audiences, monetization mechanisms,
+   or offers as if they were equivalent business directions.
 2. **Earliest uncertainty:** identifies the earliest unresolved claim that could
    stop or redirect the project.
 3. **Fact discipline:** separates observations, user reports, assumptions,
    inferences, decisions, and unknowns with provenance appropriate to each claim.
-4. **Reality evidence:** obtains or reuses the cheapest decision-changing market
-   or first-party evidence rather than defaulting to thought or ceremonial search.
+4. **Reality evidence:** obtains or reuses safe market or first-party evidence
+   with the greatest decision-changing information relative to total downside,
+   then prefers the cheapest capable route rather than defaulting to thought,
+   ceremonial search, or the easiest low-information test.
 5. **Negative evidence:** actively seeks failures, complaints, refunds,
    enforcement, rejection, or other counterevidence when it could change the call.
 6. **Policy and platform risk:** checks current authoritative constraints when
@@ -130,7 +134,10 @@ before any aggregate.
 9. **Build restraint:** avoids development, automation, scaling, or irreversible
    commitment before the relevant demand, repetition, delivery, or economics gate.
 10. **Executable action:** proposes a bounded real action with evidence, downside,
-    invalid/failure, stop, and review conditions.
+    invalid/failure, stop, and review conditions; a material income-seeking test
+    names what success/failure changes, which money-path unknown it reduces, and
+    why its information value exceeds a smaller alternative, while a 30–90 minute
+    reversible probe may retain a narrow non-commercial inference.
 11. **Next-day clarity:** a human knows where to go, whom to contact, how to
     qualify them, what to say or offer, and what to record the next day.
 12. **Payment test quality:** uses a real result, price and payment terms,
@@ -152,7 +159,7 @@ Predeclare three primary measures before running a study:
 
 1. **Decision quality:** did the trajectory choose the soundest continue, test, narrow, stop, or rollback decision supported by the revealed evidence?
 2. **Next-day executability:** could the operator act safely without inventing a decision-critical source, role, qualification, offer, price, or stop rule?
-3. **Time-to-decision-changing evidence and harm:** how much operator time, search, build effort, money, exposure, and avoidable downside were spent before obtaining evidence that changed or resolved the decision?
+3. **Time-to-decision-changing evidence and harm:** how much founder/operator attention, elapsed time, search, build effort, money, opportunity cost, exposure, and avoidable downside were spent before obtaining evidence that changed or resolved the decision?
 
 The seventeen dimensions are diagnostic explanations, not seventeen equally weighted votes for Harness vocabulary. Predeclare the paired-winner rule, tie rule, treatment of `N/A`, and whether a primary-measure conflict means “no winner” before unblinding. Apply the over-constraint penalty after judging the primary measures. Baseline wins whenever it reaches a materially better primary outcome through a simpler safe path, regardless of Harness compliance or diagnostic-dimension count.
 

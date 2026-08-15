@@ -52,8 +52,10 @@ instruction as an executable Packet.
 
 ## Reality Evidence First is not Web First
 
-Select evidence by the exact claim that would change the immediate decision,
-its decision value, acquisition cost, safety, and freshness. Use this order:
+Select evidence by the exact claim that would change the immediate decision and
+its information value relative to total downside, including founder attention,
+elapsed time, money, reputation, and opportunity cost. Among evidence paths that
+can resolve the decision safely, prefer the cheapest fresh route. Use this order:
 
 1. Reuse existing project or external evidence when it is fresh, scope-matched,
    and sufficient.
@@ -102,6 +104,27 @@ Candidate was accepted for testing, not that its Market Evidence improved. A
 more concrete Packet improves execution and later attribution; it does not upgrade Candidate credibility, evidence status, business archetype, or Market
 Priority.
 
+### Material income-seeking experiments
+
+When the user's goal is income and the proposed action requires several hours,
+multiple days or releases, meaningful manual delivery, or comparable attention,
+money, reputation, or opportunity cost, verify before producing the Packet:
+
+- the single claim tested and what success changes;
+- what failure changes;
+- the current Monetization Bridge and largest bridge unknown;
+- which money-path unknown the result can reduce; and
+- why this action has more decision information than a smaller safe alternative.
+
+Do not treat low cash spend as low cost when founder attention is material. Do
+not approve a material content experiment whose success criteria only establish
+likes, usefulness, or continued interest while the income decision depends on an
+unchanged payer or monetization link. A single reversible 30–90 minute probe may
+test narrow audience or value behavior with the bridge still `unknown`; cap its
+inference accordingly. This exception permits discovery, not commercial claims.
+When direct payment or delivery evidence already answers the current gate, use it
+instead of inserting a monetization-structure scan.
+
 ## Minimum Execution Packet
 
 The Packet is conditional, not a form to fill completely. Include only fields
@@ -118,6 +141,11 @@ stage:
 candidate_basis_and_evidence_status:
 evidence_population:
 inference_scope:
+decision_change_if_success:
+decision_change_if_failure:
+money_path_unknown_reduced:
+why_higher_information_value_than_smaller_alternatives:
+founder_attention_cap:
 
 action:
 operator:
@@ -168,6 +196,13 @@ claim_evidence_budget:
   into one action. Internally retain the Candidate basis/evidence status,
   claim-qualified Evidence Population, and maximum inference scope; show them
   when selection or proxy bias is material.
+- For a material income-seeking experiment, include
+  `decision_change_if_success`, `decision_change_if_failure`,
+  `money_path_unknown_reduced`,
+  `why_higher_information_value_than_smaller_alternatives`, and
+  `founder_attention_cap`. Omit these fields for a non-material action when they
+  add no decision value; the Micro Packet exception above still requires a narrow
+  inference scope.
 - `action`, `operator`, and `timebox`: the next physical or communicative step,
   who will perform or supervise it, and an executable count or time boundary.
 - `target` and `qualification`: who or what is eligible, the observable inclusion

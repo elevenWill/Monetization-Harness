@@ -13,7 +13,7 @@ workspace persistence:
 3. Inspect both the reply and any workspace changes.
 4. Compare only observable behavior with the expectations and failure conditions.
 
-The forty-one cases cover the V0 and VNext regression surface:
+The forty-three cases cover the V0 and VNext regression surface:
 
 - complete project-lifecycle routing: no project/no write, semantic resume,
   minimal bootstrap with lazy growth, and conflict/no wrong write;
@@ -79,7 +79,7 @@ workspace effects. Named Skill invocation is not itself a pass condition.
 
 ## Evidence Fit and Content-Market Roles
 
-Cases 36–41 freeze six distinct failures observed in real creator-business
+Cases 36–43 freeze eight distinct failures observed in real creator-business
 dogfooding session:
 
 - `36-reachable-sample-is-not-representative.md` — a nearby sample may answer a
@@ -100,12 +100,20 @@ dogfooding session:
 - `41-content-direction-is-not-a-service-offer.md` — content/media remains the
   user-stated archetype; a service or tool is a separate monetization hypothesis
   whose payment evidence cannot silently validate content pull.
+- `42-market-priority-unknown-does-not-justify-easy-material-test.md` — an
+  incomparable direction scan does not justify a material H3 test merely because
+  it is easiest; the test must have decision-changing value or shrink to a Micro
+  Content Probe.
+- `43-user-preference-is-not-archetype-constraint.md` — tentative archetype
+  preference remains challengeable while an explicit user commitment constrains
+  the search without becoming market evidence.
 
 Together they ask whether a real evidence source is qualified to answer the
 current decision claim. They do not require representative population research,
 force platform search, prohibit small exploratory samples, or assume that an
 audience and payer must be different actors. They also do not make founder fit
-irrelevant, reject novel Candidates, or prohibit an explicitly chosen service.
+irrelevant, reject novel Candidates, prohibit an explicitly chosen service, or
+require a known monetization mechanism before every cheap exploratory probe.
 
 ## Project Lifecycle
 

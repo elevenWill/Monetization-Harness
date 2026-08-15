@@ -114,6 +114,8 @@ EXPECTED_EVALS = {
     "39-execution-does-not-validate-candidate.md",
     "40-founder-fit-is-not-market-priority.md",
     "41-content-direction-is-not-a-service-offer.md",
+    "42-market-priority-unknown-does-not-justify-easy-material-test.md",
+    "43-user-preference-is-not-archetype-constraint.md",
 }
 REQUIRED_STATE_HEADINGS = {
     "## 当前目标",
@@ -955,6 +957,37 @@ def validate_evals() -> None:
                     f"{name}: missing Evidence Fit assertion {phrase}"
                 )
 
+    required_decision_frame_contracts = {
+        "42-market-priority-unknown-does-not-justify-easy-material-test.md": (
+            "same Decision Level",
+            "Market Priority: unknown",
+            "Content Topic",
+            "Monetization Mechanism",
+            "Revenue Bridge",
+            "Material Experiment",
+            "Decision Information Value",
+            "Founder attention",
+            "Micro Content Probe",
+        ),
+        "43-user-preference-is-not-archetype-constraint.md": (
+            "Variant A",
+            "Variant B",
+            "Archetype Hypothesis",
+            "User preference",
+            "committed archetype constraint",
+            "FACT",
+            "DECISION",
+            "content-compatible monetization mechanisms",
+        ),
+    }
+    for name, phrases in required_decision_frame_contracts.items():
+        text = (cases_dir / name).read_text(encoding="utf-8")
+        for phrase in phrases:
+            if phrase.casefold() not in text.casefold():
+                raise ValidationFailure(
+                    f"{name}: missing Decision Frame assertion {phrase}"
+                )
+
     required_lifecycle_contracts = {
         "23-no-project-no-write.md": (
             "Naval 和 Taleb",
@@ -1021,9 +1054,9 @@ def validate_evals() -> None:
         "does not run Codex" in eval_readme
         or "not an automated LLM evaluation framework" in eval_readme
     )
-    describes_count = "41" in eval_readme or "forty-one" in eval_readme
+    describes_count = "43" in eval_readme or "forty-three" in eval_readme
     if not describes_non_runtime or not describes_count:
-        raise ValidationFailure("evals README must describe 41 human-auditable, non-runtime scenarios")
+        raise ValidationFailure("evals README must describe 43 human-auditable, non-runtime scenarios")
     for phrase in (
         "Project Lifecycle",
         "New Project Bootstrap",
@@ -1053,9 +1086,11 @@ def validate_vnext_contracts() -> None:
             "Evidence-derived Stage → earliest unresolved uncertainty",
             "Reality Evidence First 不等于 Web First",
             "docs/human-execution-protocol.md",
-            "保存 41 个核心 Harness Behavior Acceptance Scenarios",
+            "保存 43 个核心 Harness Behavior Acceptance Scenarios",
             "Investigation Advantage",
             "Market Observation Environment",
+            "Material Experiment",
+            "可能适合自媒体",
         ),
         REPO_ROOT / "AGENTS.md": (
             "Why-Now Gate",
@@ -1064,6 +1099,9 @@ def validate_vnext_contracts() -> None:
             "implementation_revisit_trigger",
             "Market Priority",
             "business archetype",
+            "Do not rank mixed-level components",
+            "30–90 minute",
+            "money-path unknown",
         ),
         SKILLS_ROOT / "monetization-orchestrator" / "SKILL.md": (
             "The full gate is conditional",
@@ -1073,6 +1111,8 @@ def validate_vnext_contracts() -> None:
             "buying-situations/",
             "Opportunity Candidate comparison",
             "Market Observation Environment",
+            "normalize",
+            "commercial bridge",
         ),
         SKILLS_ROOT / "monetization-orchestrator" / "references" / "routing-rules.md": (
             "## Canonical Stage routes",
@@ -1098,6 +1138,8 @@ def validate_vnext_contracts() -> None:
             "content/media Candidate",
             "Market Priority: unknown",
             "first exploratory test",
+            "Normalize",
+            "material reputation/opportunity cost",
         ),
         SKILLS_ROOT / "market-reality-researcher" / "SKILL.md": (
             "Case First -> Pattern First -> Replication First",
@@ -1106,12 +1148,16 @@ def validate_vnext_contracts() -> None:
             "mainly on model synthesis",
             "insufficient_evidence",
             "Market Priority: unknown",
+            "Attention Story",
+            "observed monetization structures",
         ),
         SKILLS_ROOT / "assumption-challenger" / "SKILL.md": (
             "seller-created urgency",
             "purchase timing is material",
             "reachable sample",
             "Execution Packet",
+            "Decision-Frame leaps",
+            "committed constraint",
         ),
         SKILLS_ROOT / "business-filter" / "SKILL.md": (
             "recurring_non_deadline_purchase",
@@ -1124,6 +1170,8 @@ def validate_vnext_contracts() -> None:
             "demand_failure",
             "implementation_revisit_trigger",
             "claim-level total evidence budget",
+            "Cheap is a denominator",
+            "commercial bridge",
         ),
         REPO_ROOT / "docs" / "purchase-trigger-protocol.md": (
             "hard_external",
@@ -1138,11 +1186,16 @@ def validate_vnext_contracts() -> None:
             "Investigation Advantage",
             "incomplete oral or chat report",
             "exactly one stable `Txxx`",
+            "belong in `transaction_validation`",
+            "Comparison role / decision level",
+            "largest bridge",
+            "founder-attention and total-downside cap",
         ),
         REPO_ROOT / "docs" / "stage-model.md": (
             "repeated value pattern",
             "stable compatibility",
             "Do not force the pattern into a service problem",
+            "routes to `transaction_validation`",
         ),
         REPO_ROOT / "docs" / "workspace-protocol.md": (
             "completed result",
@@ -1158,6 +1211,8 @@ def validate_vnext_contracts() -> None:
             "## Evidence fit before contact",
             "candidate_basis_and_evidence_status",
             "does not upgrade Candidate credibility",
+            "Material income-seeking experiments",
+            "money_path_unknown_reduced",
         ),
         REPO_ROOT / "docs" / "review-protocol.md": (
             "Candidate origin",
@@ -1165,6 +1220,7 @@ def validate_vnext_contracts() -> None:
             "Investigation Advantage",
             "cannot raise Market Priority",
             "first exploratory test",
+            "material income-seeking experiment",
         ),
         REPO_ROOT / "docs" / "evaluation-strategy.md": (
             "Arm A — Baseline",
@@ -1172,10 +1228,13 @@ def validate_vnext_contracts() -> None:
             "Outcome-first decision rule",
             "Over-constraint penalty",
             "Baseline wins",
+            "Corrects and normalizes the question",
+            "founder/operator attention",
         ),
         SKILLS_ROOT / "market-reality-researcher" / "references" / "query-playbook.md": (
             "## Content and creator observation",
             "Market Observation Environments",
+            "money mechanisms rather",
         ),
         SKILLS_ROOT / "market-reality-researcher" / "references" / "source-strategy.md": (
             "Market Observation Environment",
@@ -1194,6 +1253,7 @@ def validate_vnext_contracts() -> None:
             "保存 22 个核心 Harness Behavior Acceptance Scenarios",
             "保存 35 个核心 Harness Behavior Acceptance Scenarios",
             "保存 39 个核心 Harness Behavior Acceptance Scenarios",
+            "保存 41 个核心 Harness Behavior Acceptance Scenarios",
         ),
         REPO_ROOT / "AGENTS.md": (
             "Run `business-filter` for each leading concrete Opportunity",
@@ -1264,7 +1324,7 @@ def main() -> int:
         validate_vnext_contracts()
         print("[PASS] Stage-first, Reality-first Opportunity, Human Execution, and Experiment contracts")
         validate_evals()
-        print("[PASS] 41 human-auditable behavior acceptance scenarios")
+        print("[PASS] 43 human-auditable behavior acceptance scenarios")
         validate_authored_links()
         print("[PASS] authored Markdown links")
     except (ValidationFailure, OSError) as exc:

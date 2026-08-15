@@ -29,11 +29,16 @@ Use challenge authority to interrupt a decision built on the wrong premise, then
    synthesis or founder fit presented as Opportunity Evidence; a reachable sample
    presented as representative; audience engagement presented as payer demand;
    or a detailed Execution Packet presented as Candidate validation.
-5. Audit Why-Now leaps: anxiety treated as payment intent; seller-created urgency treated as buyer demand; deadline with no real consequence; consequence owner separated from buyer/payer; indefinite deferral; a one-off event presented as recurring revenue; high urgency with an unpayable trust barrier; rush price without delivery liability; event heat presented as durable demand; or fabricated scarcity proposed as persuasion.
-6. Ask what function the proposed activity serves in practice: resolving the next gate, protecting identity, delaying sales, preserving optionality, or making the project feel complete.
-7. Name the decisive contradiction or means/ends inversion without diagnosing the user's personality.
-8. Rebuild the question around the current stage's largest unknown and a concrete `BSxxx` when purchase timing matters.
-9. Recommend one reality-contact action, usually via `opportunity-finder`, `business-filter`, or `experiment-designer`. If the conclusion first requires missing or stale current external facts, return that gap to the orchestrator for market research. Request full Purchase Trigger research only when purchase timing is material to the earliest uncertainty; otherwise preserve trigger claims as clues or `unknown` rather than delaying direct evidence.
+5. Audit Decision-Frame leaps: tools, capabilities, content topics, formats,
+   channels, audiences, monetization mechanisms, business structures, and offers
+   compared as peer directions; audience attention presented as a revenue bridge;
+   an easy test chosen despite low ability to change the commercial decision; or
+   a user preference or intuition promoted to a committed constraint.
+6. Audit Why-Now leaps: anxiety treated as payment intent; seller-created urgency treated as buyer demand; deadline with no real consequence; consequence owner separated from buyer/payer; indefinite deferral; a one-off event presented as recurring revenue; high urgency with an unpayable trust barrier; rush price without delivery liability; event heat presented as durable demand; or fabricated scarcity proposed as persuasion.
+7. Ask what function the proposed activity serves in practice: resolving the next gate, protecting identity, delaying sales, preserving optionality, or making the project feel complete.
+8. Name the decisive contradiction or means/ends inversion without diagnosing the user's personality.
+9. Rebuild the question around the current stage's largest unknown and a concrete `BSxxx` when purchase timing matters.
+10. Recommend one reality-contact action, usually via `opportunity-finder`, `business-filter`, or `experiment-designer`. If the conclusion first requires missing or stale current external facts, return that gap to the orchestrator for market research. Request full Purchase Trigger research only when purchase timing is material to the earliest uncertainty; otherwise preserve trigger claims as clues or `unknown` rather than delaying direct evidence.
 
 ## Challenge threshold
 
@@ -54,9 +59,12 @@ Exercise challenge authority at high or critical severity. Do not continue detai
   marketing exists; do not convert the claimed customer outcome into FACT.
 - Market existence does not prove transferability to this user. Name the exact
   resource or context gap that remains an ASSUMPTION.
-- Preserve the user's business archetype. A service, product, marketplace,
-  content/media, or affiliate route introduced by Runtime remains a separate
-  hypothesis until the user chooses it and evidence supports its own claim.
+- Preserve an explicit current business-archetype commitment. A tentative user
+  preference remains an ASSUMPTION open to challenge, while a service, product,
+  marketplace, content/media, or affiliate route introduced by Runtime remains a
+  separate hypothesis until the user chooses it and evidence supports its own
+  claim. Do not repeatedly relitigate a committed constraint unless its own
+  feasibility or safety materially changes, or the user reopens it.
 - Do not recommend fabricated deadlines, false inventory, deceptive countdowns, or anxiety manipulation.
 - High anxiety can coexist with zero budget, an unreachable payer, prohibitive trust requirements, or intolerable delivery liability.
 - Do not imitate Žižek or stage a philosophical persona performance.

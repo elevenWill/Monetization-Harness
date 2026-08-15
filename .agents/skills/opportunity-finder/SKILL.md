@@ -35,65 +35,85 @@ research itself.
 
 ## Workflow
 
-1. Preserve the user's stated goal and business archetype. Treat product/SaaS,
-   service/consulting, marketplace/transaction, content/media/creator, and
-   commerce/affiliate as different hypotheses; never silently convert one into
-   another because another is easier to test or monetize.
-2. Build Candidate inputs from Reality: direct observations; user-reported
+1. Preserve the user's stated goal and an explicit current business-archetype
+   commitment. Treat “maybe,” “I think,” a preference, or an intuition as an
+   ASSUMPTION, not an immutable constraint. Product/SaaS, service/consulting,
+   marketplace/transaction, content/media/creator, and commerce/affiliate remain
+   different hypotheses; never silently convert one into another because another
+   is easier to test or monetize.
+2. Normalize the proposed Candidates before comparison or research. Identify
+   whether each item is acting in this decision as a tool/capability, content
+   topic, format, channel, audience/value mechanism, monetization mechanism,
+   business structure, or offer. These are lightweight role labels, not a
+   universal ontology. If the inputs occupy different levels, do not rank them.
+   Reframe them into peer Candidates at the level of the user's actual decision.
+   For an income-direction question, compare observed monetization structures and
+   map lower-level tools, topics, formats, and channels into them as components.
+3. Build Candidate inputs from Reality: direct observations; user-reported
    concrete behavior; transactions, spend, workarounds, or repeated effort;
    current external behavior and precedents; and negative or failed patterns.
    A model may synthesize another Candidate, but label its origin `model-derived`,
    evidence status `unvalidated`, and inference scope explicitly.
-3. Preserve a minimum provenance record for each Candidate: `candidate_origin`,
-   `business_archetype`, `observed_signal`, `evidence_status`,
-   `commercial_bridge`, `largest_unknown`, and `inference_scope`. User agreement
-   accepts a Candidate for testing; it does not improve its evidence status.
-4. Form the Candidate in the shape appropriate to its archetype. A workflow or
+4. Preserve the canonical Opportunity Decision Frame and commercial bridge from
+   `docs/object-protocol.md`. User agreement accepts a Candidate for testing; it
+   does not improve its evidence status, and an unsupported monetization label is
+   not a money path.
+5. Form the Candidate in the shape appropriate to its archetype. A workflow or
    service Candidate may use `narrow actor + situation + costly repeated problem
    + workaround`. A content/media Candidate instead uses `narrow audience +
    recurring context/value + observable consumption behavior + current media or
    substitute + observable evidence surface`; payer and monetization may remain
    `unknown`. Do not infer a service or tool from audience problems.
-5. Treat a content platform according to the Decision Claim. It can be both a
+6. Treat a content platform according to the Decision Claim. It can be both a
    Distribution Channel and a Market Observation Environment for repeated
    consumption, return/search/save/share behavior, comment themes, persistent
    creator operation, visible monetization paths, and failure or abandonment.
    Engagement alone does not prove profit, payment, repeat purchase, or this
    user's transferability.
-6. Assess two axes separately—never add them into one Opportunity score:
+7. Assess two axes separately—never add them into one Opportunity score:
    - **Opportunity Evidence:** observed recurrence, costly action, spend,
      transaction, persistent workaround, audience pull, sustained operation,
      or transferable precedent.
    - **Investigation Advantage:** founder familiarity, reachability, learning
      speed, test cost, manual-test ability, and existing assets.
    First require a Reality basis worth investigating; then use Investigation
-   Advantage to choose the cheapest discriminating test. Strong access or fit
+   Advantage to reduce the downside of a test that can change the current
+   decision. Strong access or fit
    with weak Reality evidence creates only a capped exploratory Candidate, not
    “the best market” or Market Priority #1.
-7. When the user asks which direction is worth pursuing, direct Reality evidence
+8. When the user asks which direction is worth pursuing, direct Reality evidence
    is weak, Candidates are mainly model-derived, and current external patterns
    could change the comparison, return a decision-capped Reality Scan to the
-   orchestrator before ranking. Ask for only the closest operating/transaction
-   patterns, failures, monetization structures, required resources, and explicit
-   gaps needed by that decision. Reality-first is not Research-first or Web-first.
-8. Perform a light trigger-mechanism scan: note whether an event, recurrence,
+   orchestrator before ranking. For an income goal, ask for only the closest
+   observed value-to-payer-to-money structures, failures, required resources, and
+   explicit gaps needed by that decision—not popularity comparisons among topics
+   or formats. Reality-first is not Research-first or Web-first; direct payments,
+   deliveries, and repeated behavior bypass a generic model scan.
+9. Perform a light trigger-mechanism scan: note whether an event, recurrence,
    persistent cost, convenience, identity/status, entertainment, or long-term
    risk could make the problem more likely to produce buying behavior. Treat each
    as a clue to investigate, not a verified trigger, and do not require the full
    deadline/consequence/payer/purchase-window chain at this Stage.
-9. Keep non-deadline and non-problem businesses in consideration when
+10. Keep non-deadline and non-problem businesses in consideration when
    high-frequency repetition,
    persistent cost, convenience, identity/status, entertainment, long-term risk,
    repeated consumption, or stable repeat purchase supplies the value mechanism.
-10. Return at most three Candidates. For each, show the Reality basis separately
+11. Return at most three Candidates. For each, show the Reality basis separately
     from investigation advantages and do not force a single winner when comparable
     Opportunity Evidence is absent. Prefer one bounded observation, Reality Scan,
-    or behavior/payment probe that can change the ranking over a product spec.
-11. Compare Candidates on the same decision-relevant claim dimensions with roughly
+    or behavior/payment probe that can change the decision over a product spec.
+12. Compare Candidates on the same decision-relevant claim dimensions with roughly
     comparable coverage. A single star account, viral item, vendor story, or isolated
     success is a lead, not an ordinal ranking basis. When evidence is weak,
     asymmetric, or incomparable, write `Market Priority: unknown`, do not call one
     the best or first business direction, and select only the `first exploratory test`.
+13. When the explicit goal is income, challenge an exploratory action that consumes
+    several hours or days, repeated production/publication, meaningful delivery,
+    or material reputation/opportunity cost unless it reduces a named unknown in
+    the commercial bridge. State what success and failure would change and why it
+    carries more decision information than a smaller alternative. Unknown
+    monetization may still justify a single low-cost reversible micro probe; do
+    not mistake permission to probe for selection of a business direction.
 
 ## Guardrails
 
@@ -107,6 +127,11 @@ research itself.
   familiarity, reachability, cheap testing, or user agreement.
 - Do not turn an easier experiment into an ordinal business ranking. Learning order
   and Market Priority are separate outputs.
+- Do not compare a tool, topic, format, channel, monetization mechanism, and offer
+  as peer business directions.
+- Do not protect an uncommitted user preference from challenge or repeatedly
+  relitigate an explicit current constraint unless its own feasibility or safety
+  changes, or the user reopens it.
 - Do not convert content audience interest into a service, tool, sponsor, or
   audience-paid model without keeping that monetization route as a separate
   hypothesis and its payer evidence `unknown`.
@@ -123,8 +148,9 @@ Return one review using `docs/review-protocol.md`. In `finding`, name the strong
 Reality-grounded investigation area, a bounded exploratory Candidate, or why no
 Market Priority is supportable yet. In `reasoning_summary`, keep Opportunity
 Evidence separate from Investigation Advantage and state the inference boundary.
-In `recommended_action`, specify the cheapest claim-matched observation, bounded
-Reality Scan, contact, or probe and the evidence that would change the ranking.
+In `recommended_action`, specify the least-downside claim-matched observation,
+bounded Reality Scan, contact, or probe among actions with enough information to
+change the decision, and name that decision change.
 If comparison evidence is not comparable, label it the `first exploratory test`,
 not the selected or best direction, and state `Market Priority: unknown`.
 

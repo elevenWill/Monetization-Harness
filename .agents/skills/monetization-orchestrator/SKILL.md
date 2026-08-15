@@ -27,16 +27,38 @@ After one project is resolved and its Stage is recomputed, read [references/rout
 2. Classify decision-relevant records under `docs/object-protocol.md`, loading only the sections for object types active in this decision. Load the completed Experiment/Evidence Ledger section only when reviewing a result; do not front-load every schema.
 3. Recompute the stage from `docs/stage-model.md`. Treat the stored stage as a claim to verify and `STATE.md` as the authoritative current-stage location; never infer stage from directories.
 4. Find the earliest unsupported gate and name one largest unknown.
-5. Preserve the user's stated business archetype while deciding whether the explicit question resolves that unknown. A switch among product, service, marketplace, content/media, or commerce/affiliate is a separate Candidate hypothesis, not an implementation detail.
+5. Preserve an explicit current business-archetype commitment while deciding
+   whether the question resolves that unknown. Treat “maybe,” “I think,” a
+   preference, or an intuition as an ASSUMPTION that may be challenged; do not
+   promote it to a constraint. A switch among product, service, marketplace,
+   content/media, or commerce/affiliate remains a separate Candidate hypothesis,
+   not an implementation detail.
 6. Read an active `BSxxx` only when it is relevant to the earliest uncertainty. Run its full trigger, deadline, consequence, owner, purchase-window, reachability, trust, recurrence, and liability assessment only when the conditional Why-Now entry rule below is met.
 
 ## Select Reality Evidence
 
-After Stage assessment, identify the exact claim that could change the immediate decision and choose the cheapest safe evidence capable of resolving it. Reuse fresh scope-matched evidence first. Prefer the project's own observation, workflow, offer, behavior, payment, usage, delivery, and repeat-customer evidence for claims about this project's demand or transferability. Use the Market Reality Gate only for decision-critical current external facts; it is not a Stage and cannot advance a project by itself.
+After Stage assessment, identify the exact claim that could change the immediate
+decision. Choose an evidence path capable of changing that decision, then minimize
+its total downside: founder attention and opportunity cost as well as time, money,
+reputation, and risk. Reuse fresh scope-matched evidence first. Prefer the project's
+own observation, workflow, offer, behavior, payment, usage, delivery, and
+repeat-customer evidence for claims about this project's demand or transferability.
+Use the Market Reality Gate only for decision-critical current external facts; it
+is not a Stage and cannot advance a project by itself.
 
 1. **Mandatory research:** Read and invoke `.agents/skills/market-reality-researcher/SKILL.md` when the answer depends materially on current market existence, exact or adjacent precedents, platform or policy feasibility, current price/competition/supply, acceptance patterns, real trigger/deadline/rush-purchase behavior, Cost of Delay, or a large commitment whose downside depends on those claims. Also invoke it when relevant stored research is absent, stale, or mismatched in market, geography, platform, content type, Buying Situation, or decision scope.
-2. **Opportunity Candidate comparison:** Preserve each Candidate's origin, business archetype, observed signal, evidence status, commercial bridge, and inference scope. Compare Opportunity Evidence separately from Investigation Advantage such as founder familiarity, reachability, speed, cost, manual-test ability, and assets. The latter chooses learning order; it cannot create Market Priority. A model-derived Candidate stays exploratory even when the user accepts it for testing.
-3. **Opportunity quick scan when warranted:** For a newly bootstrapped public-market project, run a bounded scan only when the immediate judgment depends on current market existence, exact/adjacent precedent, platform constraint, visible supply, price, competition, material negative evidence, or a comparison among mainly model-derived directions. Predeclare the decision, scope, time/query cap, and stop rule. Public-market status alone is not a search requirement; strong direct observations, behavior, transactions, or workflows take the direct route without ceremonial research.
+2. **Opportunity Candidate comparison:** Before research or ranking, normalize
+   Candidates to the decision the user is making. Do not compare a tool or
+   capability, content topic, format, channel, audience, monetization mechanism,
+   business structure, and offer as if they were peer directions. When the goal is
+   income, compare observed monetization structures at one level, then map topics,
+   tools, formats, and channels into those structures as components. Preserve each
+   Candidate's canonical Decision Frame and commercial bridge. Compare Opportunity
+   Evidence separately from Investigation Advantage such as founder familiarity,
+   reachability, speed, cost, manual-test ability, and assets. The latter chooses
+   learning order; it cannot create Market Priority. A model-derived Candidate
+   stays exploratory even when the user accepts it for testing.
+3. **Opportunity quick scan when warranted:** For a newly bootstrapped public-market project, run a bounded scan only when the immediate judgment depends on current market existence, exact/adjacent precedent, platform constraint, visible supply, price, competition, material negative evidence, or a comparison among mainly model-derived directions. For an income-direction decision, seek the closest observed payer-to-money structures rather than head-to-head popularity of lower-level components. Predeclare the decision, scope, time/query cap, and stop rule. Public-market status alone is not a search requirement; strong direct observations, behavior, transactions, or workflows take the direct route without ceremonial research or a generic revenue-model scan.
 4. **No-search route:** Skip research for Harness-usage questions, internal workspace/state interpretation, user-reported experiment or transaction results, execution details that do not depend on current external facts, or when a fresh scope-matched `Rxxx` already supports the immediate decision. State the no-search basis internally; do not browse merely for ceremony.
 5. **Coverage and freshness:** Reuse research only when its checked date, primary market, geography, platforms, content type, and decision scope still match. Recheck time-sensitive platform, price, policy, or competition claims. If a required channel is inaccessible, continue with available evidence but record the actual channels checked and the coverage gap; never imply full-market coverage.
 6. **Evidence handoff:** When research runs, classify and persist its material results before routing lenses. Research creates auditable evidence; it does not decide the project stage or replace the project's own behavioral and transaction evidence.
@@ -77,6 +99,20 @@ Never choose all five or routinely use three. A premature-build framing error pl
 1. Collect structured reviews under `docs/review-protocol.md`.
 2. Resolve conflicts using the claim-specific evidence rules in `docs/object-protocol.md`, the earliest gate, the active Buying Situation, and downside. Never vote or average opinions. External market cases prove only the claims their scope supports; they do not substitute for this project's trigger, payment, behavior, usage, or repeatability evidence.
 3. Return one judgment, the decisive facts/assumptions, and one bounded next action with a stop/review condition. In Candidate comparison, require roughly comparable claim dimensions and coverage; a single star account, viral item, vendor story, or isolated success is only a lead. If evidence is weak, asymmetric, or incomparable, state `Market Priority: unknown`, omit an ordinal business ranking, and call the next action only the `first exploratory test`, never the best direction. When that action requires a person to observe, source, contact, offer, collect payment, deliver, or run an operating test, read [`docs/human-execution-protocol.md`](../../../docs/human-execution-protocol.md) and emit its minimum Execution Packet. Match its sample source and evidence population to the Decision Claim, disclose material proxy/selection bias, and bound what the result can and cannot prove. The Packet expands this one action and improves test validity; its detail never upgrades the Candidate's evidence status or market rank. Keep sourcing, role, channel, price, and qualification unknowns explicit rather than inventing them.
+   When the project explicitly seeks income and the action consumes several hours
+   or days, repeated production/publication, meaningful manual delivery, or
+   material reputation/opportunity cost, require it to reduce a named unknown in
+   the commercial bridge. State what success and failure would change and why its
+   decision information exceeds a smaller alternative. If it only measures
+   audience interest while the money path remains unchanged, shrink it to a
+   single low-cost reversible exploratory probe or select a more discriminating
+   action. Unknown monetization does not block such a micro probe. Existing direct
+   payment and delivery evidence bypasses this direction-scan gate and follows the
+   evidence-derived Stage.
+   Multiple incomplete payment reports bypass the generic scan too, but first
+   route to bounded transaction verification; they do not establish the Leverage
+   entry gate until individual auditable Transactions and comparable valued
+   delivery are verified.
 4. Do not list every lens or imitate a Persona. Explain selected lens names only if the user asks or auditability requires it.
 5. When current evidence cannot support a conclusion, say exactly what is unknown and design the next evidence-producing action. For deferred implementation, name the evidence that would unlock the smallest necessary technical artifact. For repeated `invalid` or `inconclusive` tests, enforce the accepted claim-level evidence budget and trigger a pause/pivot review when it is exhausted.
 

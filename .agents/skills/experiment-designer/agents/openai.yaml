@@ -1,4 +1,4 @@
 interface:
   display_name: "Experiment Designer"
   short_description: "Design safe real-window transaction tests"
-  default_prompt: "Use $experiment-designer to design the cheapest safe experiment, including a real deadline window when relevant."
+  default_prompt: "Use $experiment-designer to design a safe experiment with high decision information per total downside, including a real deadline window when relevant."
