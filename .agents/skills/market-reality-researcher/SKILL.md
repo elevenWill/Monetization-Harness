@@ -108,7 +108,7 @@ Never let an adjacent case prove an exact mode. If only adjacent cases exist, st
 
 > 当前只找到了相邻模式，尚未找到足以证明该精确方案已被市场验证的案例。
 
-Reconstruct reusable cases with [references/case-reconstruction.md](references/case-reconstruction.md), then evaluate transferability with [references/transferability-check.md](references/transferability-check.md).
+Reconstruct reusable cases with [references/case-reconstruction.md](references/case-reconstruction.md), then evaluate transferability with [references/transferability-check.md](references/transferability-check.md). The transferability check is a hard precondition whenever the proposed action asks this user to copy the Case or Closest Proven Playbook; market proof alone never authorizes replication.
 
 ## Search against survivorship bias
 
@@ -179,6 +179,15 @@ The full Case schema is in [references/case-reconstruction.md](references/case-r
 ## Produce the Closest Proven Playbook
 
 Do not return a link pile or a feeling-based viability score. Report separately whether anyone has done it, policy allows it, behavior supports it, cases transfer, and the current user has the required conditions.
+
+Before emitting `当前最小复现实验`, classify the mechanism-required user
+conditions under the existing `copyable`, `context_dependent`, `non_copyable`,
+and `unknown` buckets. If one is blocking, emit a claim-matched migration probe:
+no-customer-risk simulation for production/delivery readiness; bounded
+pre-delivery contact for buyer access, trust, or acquisition; bounded manual cost
+model or simulation for economics. Do not expose a customer to untested delivery
+learning. If a critical condition is absent or the core advantage is
+non-copyable, do not label the playbook currently replicable.
 
 When purchase timing materially affects the decision, also report separately: the candidate trigger, deadline type and source, cost and owner of delay, observed buyer behavior, purchase window, payer reachability, trust barrier, recurrence, delivery liability, and every unverified link. A real deadline without buyer behavior is not a purchase trigger; high urgency can still be unbuyable.
 

@@ -49,6 +49,8 @@ research itself.
    Reframe them into peer Candidates at the level of the user's actual decision.
    For an income-direction question, compare observed monetization structures and
    map lower-level tools, topics, formats, and channels into them as components.
+   Then apply only the source-derived operator in `domain-core.md` whose trigger
+   is present; do not restate all operators as another workflow.
 3. Build Candidate inputs from Reality: direct observations; user-reported
    concrete behavior; transactions, spend, workarounds, or repeated effort;
    current external behavior and precedents; and negative or failed patterns.

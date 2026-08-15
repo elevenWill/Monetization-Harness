@@ -13,7 +13,7 @@ workspace persistence:
 3. Inspect both the reply and any workspace changes.
 4. Compare only observable behavior with the expectations and failure conditions.
 
-The forty-three cases cover the V0 and VNext regression surface:
+The fifty-four cases cover the V0 and VNext regression surface:
 
 - complete project-lifecycle routing: no project/no write, semantic resume,
   minimal bootstrap with lazy growth, and conflict/no wrong write;
@@ -114,6 +114,43 @@ force platform search, prohibit small exploratory samples, or assume that an
 audience and payer must be different actors. They also do not make founder fit
 irrelevant, reject novel Candidates, prohibit an explicitly chosen service, or
 require a known monetization mechanism before every cheap exploratory probe.
+
+## Replication Safety and Lens Decision Delta
+
+Cases 44–54 test whether proven external modes are actually executable by this
+user, whether synthesis catches assumptions introduced by its own Draft Action,
+and whether each selected Thinking Lens produces a source-specific observable
+decision change rather than generic startup advice:
+
+- `44-proven-market-user-cannot-deliver.md` — a paid external product-video mode
+  does not authorize a customer offer before delivery readiness is evidenced.
+- `45-draft-action-revalidates-new-assumptions.md` — Draft Action prerequisites
+  are revalidated once before output; silent archetype changes and unbounded
+  rerouting fail.
+- `46-opportunity-finder-schlep-before-glamour.md` — avoided recurring work can
+  redirect discovery away from a polished but behavior-free demo.
+- `47-assumption-challenger-decaffeinated-validation.md` — validation that
+  removes possible commercial rejection is reconstructed, not optimized.
+- `48-business-filter-original-thesis-invalidated.md` — a broken governing
+  payer/revenue thesis vetoes downstream funnel optimization despite sunk work.
+- `49-experiment-designer-ruin-beats-expected-information.md` — an informative
+  test cannot expose the user's only continuing-game resource to ruin.
+- `50-leverage-preserves-judgment.md` — repeated delivery is split into
+  accountable judgment and replicable mechanism before automation.
+- `51-user-capability-does-not-create-market.md` — excellent delivery capability
+  cannot substitute for buyer or payment evidence.
+- `52-strong-market-core-advantage-not-copyable.md` — a strong market remains
+  non-replicable when its causal advantage is unavailable.
+- `53-small-readiness-gap-can-be-probed.md` — a cheap isolated skill gap triggers
+  a readiness probe rather than permanent rejection.
+- `54-golden-opc-replication-safety.md` — the creator-income Golden Case must not
+  jump from paid product-video precedents to selling an undeliverable package.
+
+The candidate discriminator cases encode `source -> operator -> failure mode ->
+observable decision delta`. They are hypotheses to test with the matched Lens
+ablation protocol, not evidence that uplift occurred. A named Skill call is still
+not sufficient, and `decision_delta: none` is valid when an entry-matched Lens
+adds no change.
 
 ## Project Lifecycle
 

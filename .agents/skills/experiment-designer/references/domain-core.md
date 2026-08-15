@@ -1,41 +1,78 @@
-# Experiment design core
+# Experiment designer: signature decision operators
 
-Derived from the preserved Nassim Nicholas Taleb source snapshot. Use these principles as design constraints, not as a voice.
+Source-derived transforms for the geometry of exposure. They do not replace the
+Harness experiment contract. Apply only entry-matched operators.
 
-## Retained models
+## 1. Ruin precedence
 
-- **Ruin/ergodicity check.** A positive average outcome is irrelevant if one failure removes the user's ability to continue.
-- **Asymmetric exposure.** Prefer bounded loss with meaningful learning or upside; avoid small visible gains that hide catastrophic tails.
-- **Convex trial and error.** Run many survivable attempts whose information or upside can exceed their cost.
-- **Barbell.** Protect essential cash flow, health, reputation, and legal safety while allocating a small controlled portion to uncertain upside.
-- **Via negativa.** Remove product scope, dependencies, and commitments before adding validation machinery.
-- **Skin in the game.** Strong evidence involves a cost to the person expressing preference; cash and real behavior outweigh prediction.
-- **Turkey problem.** A history of smooth operation may conceal a tail dependency; stress the assumption that past stability continues.
+- **Trigger:** One outcome can permanently remove the ability to continue.
+- **Ask:** On this user's repeated time path, can an attempt cause loss of
+  essential income, permanent account/legal/reputation damage, or another exit?
+- **Effect:** Survivability precedes expected information or upside; remove or
+  isolate the ruin path, otherwise do not run the test.
+- **Boundary:** Bounded reversible loss uses ordinary information/cost analysis.
+- **Source:** `original-SKILL.md` (ergodicity/asymmetric risk) and
+  `references/塔勒布思想体系调研.md` §§2.1–2.2.
 
-## Experiment quality test
+## 2. Convex exposure
 
-Reject or revise an experiment when any answer is no:
+- **Trigger:** Several experiment shapes can test the same uncertainty.
+- **Ask:** Can exposure become independent survivable attempts with capped
+  failure and retained learning/upside?
+- **Effect:** Prefer sequential or portfolio trials; preserve promising branches
+  and cut losing ones before committing the remainder.
+- **Boundary:** Do not fragment exposure when it breaks validity or a real
+  purchase window.
+- **Source:** `original-SKILL.md` (convex tinkering) and source research §3.
 
-1. Does it test one named assumption?
-2. Would success or failure change a decision?
-3. Is the maximum downside explicit and survivable?
-4. Is the action reversible or staged?
-5. Is the evidence stronger than opinion?
-6. Are success and failure thresholds decided before results?
-7. Is there a deadline and stop condition?
-8. Is evidence captured without deception or avoidable harm?
+## 3. Reserved-core barbell
 
-Select for decision information before cheapness. A useful test distinguishes
-live hypotheses and changes the current decision if it succeeds or fails; only
-then minimize cash, founder attention, time, reputation, opportunity cost, and
-risk. A cheap activity that leaves the same decisive unknown untouched has low
-information value.
+- **Trigger:** The test touches essential cash flow, primary account, customer
+  trust, health, legal standing, or another continuing-game resource.
+- **Ask:** What core is ring-fenced, and what fixed slice may be exposed?
+- **Effect:** Separate protected capacity from speculation with no automatic
+  refill; if separation is impossible, change channel or do not test.
+- **Boundary:** Skip when no core resource has material exposure.
+- **Source:** `original-SKILL.md` (Barbell Strategy) and source research §2.1.
 
-For an explicit income goal, material work must reduce a named commercial-bridge
-unknown. Several hours or days, repeated publication/production, meaningful
-delivery, or material exposure are signs that the gate applies. A single low-cost
-reversible micro probe may still explore behavior with monetization unknown.
+## 4. Subtraction before intervention
 
-## Limitations carried forward
+- **Trigger:** Running the test appears to require new scope, tools,
+  dependencies, contracts, automation, or process layers.
+- **Ask:** What can be removed while preserving decision-changing exposure?
+- **Effect:** Delete dependencies and commitments before adding validation
+  machinery; prefer direct manual reversible exposure when valid.
+- **Boundary:** Keep components required for safety, law, privacy, or validity.
+- **Source:** `original-SKILL.md` (Via Negativa) and source research §§2.1, 3.
 
-The source Persona can overstate certainty, use aggression, and be better at rejecting risks than designing operations. This wrapper requires a concrete safe test and acknowledges domain uncertainty.
+## 5. Hidden-tail stress
+
+- **Trigger:** Smooth repetitions under one platform, supplier, customer,
+  model/API, or correlated regime are treated as safety evidence.
+- **Ask:** What shared condition never varied, and what discontinuous failure
+  invalidates all repetitions at once?
+- **Effect:** Do not merely repeat. Probe dependency removal, alternate channel,
+  load, or failure mode while exposure remains capped.
+- **Boundary:** Do not invent tails in a genuinely bounded domain.
+- **Source:** `original-SKILL.md` (Turkey Problem/Fourth Quadrant) and source
+  research §§2.1–3.
+
+## 6. Consequence symmetry
+
+- **Trigger:** Advice, cheap speech, or proxy behavior supports a claim while
+  someone else bears the downside.
+- **Ask:** Whose costly behavior supports the claim, and who loses if it is wrong?
+- **Effect:** Prefer claim-relevant costly evidence and make the experimenter
+  carry the protocol risk.
+- **Boundary:** Costly behavior is unnecessary when irrelevant to the named
+  claim; a knowingly bounded protected pilot may be valid.
+- **Source:** `original-SKILL.md` (Skin in the Game) and source research §2.1.
+
+## Boundary
+
+One-assumption design, thresholds, raw evidence, deadlines, truthful
+classification, generic cheap tests, and stop rules remain Harness Core. This
+lens changes a test only through ruin, exposure shape, core separation,
+subtraction, hidden tails, or consequence symmetry; otherwise report
+`decision_delta: none`. Do not use tail language to reject ordinary bounded
+uncertainty.

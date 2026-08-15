@@ -4,11 +4,11 @@ This mapping was derived from the local repositories under `/Users/lei/Downloads
 
 | Source persona | Domain Skill | Retained core models | Use in this Harness | Explicitly removed |
 | --- | --- | --- | --- | --- |
-| Paul Graham | `opportunity-finder` | Look for problems, make something people want, iterative discovery, do things that do not scale, founder/domain familiarity | Find reality-grounded problem, transaction, repeated-value, or consumption Candidates; keep founder/access advantages separate | Persona voice, founder worship, assumption that venture-scale software is required |
-| Slavoj Žižek | `assumption-challenger` | Expose presuppositions, desire versus stated goal, contradiction, fantasy/function, rebuild after critique | Detect FACT/ASSUMPTION collapse, wrong questions, research/building as avoidance, and means becoming ends | Roleplay, jargon-heavy performance, critique without a next action |
-| Duan Yongping | `business-filter` | Business model as first filter, right thing before execution, return to origin, circle of competence, validated followership, long horizon | Identify payer, bought result, alternatives, timing, durable revenue logic, repeatability, and reasons not to proceed | Stock-picking advice, persona voice, treating long-term intuition as evidence |
-| Nassim Nicholas Taleb | `experiment-designer` | Ruin/ergodicity, asymmetric and convex exposure, barbell, via negativa, skin in the game, turkey problem | Cap downside, avoid irreversible bets, prefer manual/pre-sale/concierge tests, require behavioral or cash evidence | Aggressive persona voice, unsupported certainty, risk critique without an executable test |
-| Naval Ravikant | `leverage-designer` | Specific knowledge, accountability, permissionless code/media leverage, productize yourself, compounding, judgment | After repeated value, map repetition into SOPs, automation, code/media assets, and lower marginal delivery cost | Premature “build once, sell forever” advice, lifestyle philosophy, persona voice |
+| Paul Graham | `opportunity-finder` | Pre-pitch existence, schlep inversion, love-versus-like, manual-crank discovery, messy precedent transitions | Redirect discovery toward avoided recurring work, intense minority pull, and Reality contact that permits surprise | Persona voice, founder worship, generic evidence bookkeeping, venture-scale software assumptions |
+| Slavoj Žižek | `assumption-challenger` | Presupposition extraction, practical function, decaffeinated outcomes, contradiction-to-exposure reconstruction | Detect when the question or activity preserves the exposure it claims to seek, then reconstruct the decision | Roleplay, jargon, personality diagnosis, generic FACT/Stage checks, critique without action |
+| Duan Yongping | `business-filter` | Origin test, validated-late entry, thesis ledger/immediate correction, long-horizon mechanism invariance | Test whether the intelligible business reason authorizing continuation still survives and deserves durable commitment | Stock advice, persona voice, generic business canvas, transferability/readiness duplicated from Core |
+| Nassim Nicholas Taleb | `experiment-designer` | Ruin precedence, convex exposure, reserved-core barbell, subtraction, hidden tails, consequence symmetry | Change the geometry of evidence exposure when one time-path failure, correlation, or regime break controls survivability | Persona aggression, generic experiment checklist, cheap-test slogans, risk critique without a safe alternative |
+| Naval Ravikant | `leverage-designer` | Value-kernel boundary, judgment-mechanism split, replication-mode choice, compounding residue, accountability loop | Reproduce proven value without erasing consequential judgment or the feedback that improves it | Premature “build once, sell forever,” AI/code-as-leverage, business validation, lifestyle philosophy, persona voice |
 
 ## Applicability boundaries
 
@@ -24,35 +24,47 @@ This mapping was derived from the local repositories under `/Users/lei/Downloads
 
 ### Paul Graham → opportunity-finder
 
-- Source workflow retained: classify whether current facts are needed, investigate users/product/organic pull when needed, then reframe toward a more fundamental value pattern. The wrapper uses traceable Reality inputs → archetype-appropriate Candidate → separate Opportunity Evidence and Investigation Advantage → one claim-matched evidence action.
+- Source moves retained: pre-pitch behavior, schlep blindness, intense narrow pull,
+  hand-cranked discovery, and behavior-forced transitions hidden by clean success
+  stories. Shared evidence classification and Candidate normalization remain in
+  the wrapper/Core rather than the Lens operators.
 - Apply when there is no credible participant/audience plus problem or repeated-value pattern. Avoid after a payer and repeated value are already evidenced unless deliberately discovering a separate opportunity.
 - Source few-shot: `.agents/skills/opportunity-finder/examples/source/demo-conversation-2026-04-07.md`.
 - Source references: six research files under `.agents/skills/opportunity-finder/references/source/references/research/`, including writings, conversations, expression DNA, external critique, decisions, and timeline.
 
 ### Žižek → assumption-challenger
 
-- Source workflow retained: surface claim → presupposition → desire/function → contradiction → more accurate reconstruction. The wrapper adds explicit FACT/ASSUMPTION comparison and requires a reality-contact action.
+- Source moves retained: presupposition extraction, the practical function of
+  behavior after intellectual critique, “X without X,” and contradiction rebuilt
+  into bounded exposure. FACT/ASSUMPTION comparison remains Harness Core.
 - Apply to unsupported certainty, means/ends inversion, and avoidance disguised as building/research. Avoid personality diagnosis, jargon performance, and critique that does not alter a decision.
 - Source few-shot: `.agents/skills/assumption-challenger/examples/source/demo-inputs.md` and `real-use-cases.md`.
 - Source references: `anti-patterns.md`, `concepts.md`, `patterns.md`, and `quotes.md` under the preserved source tree.
 
 ### Duan Yongping → business-filter
 
-- Source workflow retained: business model first → right direction before execution → return to origin → competence boundary → long-horizon/repetition check → correct quickly. The wrapper translates this into payer/result/trigger/alternative/money/repeatability fields.
+- Source moves retained: return to the intelligible origin, use validated late
+  entry to avoid pioneer errors, preserve the dated thesis, correct immediately
+  when it fails, and distinguish temporary opportunity from persistent mechanism.
+  User readiness/transferability is now a Core hard gate, not Lens differentiation.
 - Apply when a problem/offer or first transaction exists. Avoid using the lens as proof about emerging markets, stock advice, or a substitute for payment experiments.
 - Source few-shot: `.agents/skills/business-filter/examples/source/conversations/demo.md`.
 - Source references: six research files covering writings, conversations, expression, criticism, decisions, and timeline.
 
 ### Taleb → experiment-designer
 
-- Source workflow retained: inspect tail/ruin, fragility, historical stability traps, incentive/skin in the game, and asymmetric exposure. The wrapper always ends with a bounded ethical experiment record.
+- Source moves retained: time-path ruin precedence, convex exposure, ring-fenced
+  core, subtraction before intervention, hidden regime tails, and consequence
+  symmetry. Thresholds, evidence capture, and generic cheap tests remain Core.
 - Apply to every major commitment and to evidence acquisition under uncertainty. Avoid aggressive certainty, harmful/deceptive tests, and risk critique without an operational alternative.
 - Source few-shot: `.agents/skills/experiment-designer/examples/source/demo-conversation.md`.
 - Source references: the original research overview plus five Chinese research files on the thought system, conversations, expression, criticism, and major decisions.
 
 ### Naval → leverage-designer
 
-- Source workflow retained: identify leverage type, marginal cost, permission needs, compounding, specific knowledge, and aligned accountability. The wrapper adds a repeat-value entry gate and step-by-step baseline/rollback measurement.
+- Source moves retained: isolate the repeated value kernel, preserve specific
+  judgment, choose the replication mode from the work geometry, require reusable
+  compounding residue, and keep amplified failures accountable.
 - Apply after repeat purchase or stable repeated paid delivery. Avoid using “permissionless leverage” to skip business validation.
 - Source few-shot: `.agents/skills/leverage-designer/examples/source/demo-conversation.md`.
 - Source references: preserved works/system-thinking, conversations, expression DNA, and quality-validation files.

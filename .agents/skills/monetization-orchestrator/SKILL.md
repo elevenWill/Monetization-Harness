@@ -14,7 +14,7 @@ First classify an obvious general-knowledge, Harness-usage, or one-off generic m
 1. **No Project:** For general knowledge, Harness usage, one-off generic discussion, or a passing brainstorm that is not a concrete resumable monetization thread, answer normally without workspace writes.
 2. **Project Matching:** Read `workspace/_index.md`, enumerate actual project roots under `workspace/*/`, then inspect `IDEA.md` and `STATE.md` for plausible candidates. Match semantic continuity in the idea, customer, problem, goal, evidence, and recent conversational context—not keywords alone. Do not assume the registry is complete.
 3. **Project Resume:** When one project clearly matches, read its `IDEA.md` and `STATE.md` completely. Follow only links needed for the current gate; do not load all history.
-4. **Project Bootstrap:** When no project matches and the user has established a concrete direction worth continuing, generate a stable short kebab-case slug and create only `workspace/<slug>/IDEA.md` and `STATE.md`. Record only user-grounded content, mark missing fields `unknown`, update `workspace/_index.md`, and continue the current answer. Do not request a name, slug, command, template, or manual Stage choice.
+4. **Project Bootstrap:** When no project matches and the user has established a concrete direction worth continuing, generate a stable short kebab-case slug and create only `workspace/<slug>/IDEA.md` and `STATE.md`. Use the exact minimum bootstrap keys and headings in `docs/workspace-protocol.md`, including front-matter `updated_at` and `next_gate`; do not improvise synonyms. Record only user-grounded content, mark missing fields `unknown`, update `workspace/_index.md`, and continue the current answer. Do not request a name, slug, command, template, or manual Stage choice.
 5. **Project Conflict:** If multiple projects remain plausible and a mistaken write would matter, give a provisional analysis without writing. Ask for ownership only when persistence or project-specific evidence requires it.
 
 The bootstrap operation never pre-creates stage directories. A stage directory may appear later in the same turn only if that turn contains a separate durable artifact that genuinely belongs there.
@@ -72,6 +72,40 @@ prove payer intent, profit, repeat purchase, or this project's transferability.
 
 The market researcher is an evidence-producing capability, not a Thinking Skill. It never consumes one of the normal one-or-two lens slots, and its findings must be available to the selected lenses rather than appended after their conclusions. It cannot establish this project's willingness to pay, transferability, repeatability, or delivery economics. When a decision-critical trigger claim depends on external facts, include Event-First searches for real events, deadlines, rush purchases, workarounds, delay consequences, and complaints; distinguish buyer-originated signals from seller-created urgency.
 
+## Gate external playbook replication
+
+Whenever the provisional judgment would tell the user to copy a `Cxxx` or a
+Closest Proven Playbook, read the existing
+[`transferability-check.md`](../market-reality-researcher/references/transferability-check.md)
+and treat it as a pre-replication gate, not optional research commentary. Map:
+
+```text
+reference mechanism -> mechanism-required conditions -> current user conditions
+-> material transferability gaps -> replication readiness
+```
+
+Check only prerequisites the case actually relies on: ability to produce the
+bought result, access the buyer or audience, cross the minimum trust barrier,
+execute acquisition, survive delivery liability, perform the minimum manual
+version, sustain plausible manual unit economics, and replace any critical case
+advantage. External proof establishes market existence under the case's
+conditions; it does not establish the user's readiness.
+
+- Required conditions evidenced for the user: a bounded replication probe may
+  be proposed.
+- A blocking condition is `unknown`: test that exact migration condition first.
+  Use a no-customer-risk acceptance/time/cost/rework probe for production or
+  delivery readiness; use bounded pre-delivery Reality Contact for buyer access,
+  trust, or acquisition; and use a bounded manual cost model or simulation for
+  economics. Do not make a live customer absorb untested delivery learning.
+- A critical condition is absent: do not recommend current replication.
+- The core advantage is non-copyable: retain the case as adjacent evidence, not
+  a user-copyable playbook.
+
+Do not require expertise by default. A small capability gap that can be tested
+cheaply without making a customer absorb the learning risk is a valid readiness
+probe.
+
 ## Run the Why-Now Gate
 
 The full gate is conditional. Run it when purchase timing is material to the earliest uncertainty: normally during `business_validation`, or in any Stage when a concrete Buying Situation, trigger/deadline claim, purchase-window qualification, Deadline Replication Experiment, or deadline-shaped SLA/liability decision controls the action. During `opportunity_discovery`, use only a light scan for an event, recurrence, persistent cost, convenience, identity, entertainment, or risk mechanism unless one of those full-gate conditions is already present. The gate is not a Stage, Persona, or separate agent.
@@ -96,9 +130,10 @@ Never choose all five or routinely use three. A premature-build framing error pl
 
 ## Synthesize
 
-1. Collect structured reviews under `docs/review-protocol.md`.
+1. Record the provisional judgment before lenses, then collect structured reviews under `docs/review-protocol.md`. A lens may report `decision_delta: none`; do not manufacture a change. Resolve every `high` or `critical` finding explicitly by changing the judgment/action or rejecting it with stronger named Evidence. Never silently dilute it during synthesis.
 2. Resolve conflicts using the claim-specific evidence rules in `docs/object-protocol.md`, the earliest gate, the active Buying Situation, and downside. Never vote or average opinions. External market cases prove only the claims their scope supports; they do not substitute for this project's trigger, payment, behavior, usage, or repeatability evidence.
-3. Return one judgment, the decisive facts/assumptions, and one bounded next action with a stop/review condition. In Candidate comparison, require roughly comparable claim dimensions and coverage; a single star account, viral item, vendor story, or isolated success is only a lead. If evidence is weak, asymmetric, or incomparable, state `Market Priority: unknown`, omit an ordinal business ranking, and call the next action only the `first exploratory test`, never the best direction. When that action requires a person to observe, source, contact, offer, collect payment, deliver, or run an operating test, read [`docs/human-execution-protocol.md`](../../../docs/human-execution-protocol.md) and emit its minimum Execution Packet. Match its sample source and evidence population to the Decision Claim, disclose material proxy/selection bias, and bound what the result can and cannot prove. The Packet expands this one action and improves test validity; its detail never upgrades the Candidate's evidence status or market rank. Keep sourcing, role, channel, price, and qualification unknowns explicit rather than inventing them.
+3. Draft one bounded next action, then perform one **Action Assumption Revalidation** before output: ask what the new action itself assumes across capability, access, trust, delivery, economics, legal/policy, business archetype, buyer/payer, and critical dependency. Inspect only prerequisites introduced by the Draft Action. If one blocks execution, shrink the action, test the prerequisite, or reroute once. Revalidate the replacement once without opening another loop; if still unresolved, expose the `unknown` and choose the smallest evidence-producing action. Never hide a switch among product, service, marketplace, content/media, or commerce/affiliate inside an “experiment”; an uncommitted switch is a separate Candidate hypothesis.
+4. Return one judgment, the decisive facts/assumptions, and the revalidated action with a stop/review condition. In Candidate comparison, require roughly comparable claim dimensions and coverage; a single star account, viral item, vendor story, or isolated success is only a lead. If evidence is weak, asymmetric, or incomparable, state `Market Priority: unknown`, omit an ordinal business ranking, and call the next action only the `first exploratory test`, never the best direction. When that action requires a person to observe, source, contact, offer, collect payment, deliver, or run an operating test, read [`docs/human-execution-protocol.md`](../../../docs/human-execution-protocol.md) and emit its minimum Execution Packet. Match its sample source and evidence population to the Decision Claim, disclose material proxy/selection bias, and bound what the result can and cannot prove. The Packet expands this one action and improves test validity; its detail never upgrades the Candidate's evidence status or market rank. Keep sourcing, role, channel, price, and qualification unknowns explicit rather than inventing them.
    When the project explicitly seeks income and the action consumes several hours
    or days, repeated production/publication, meaningful manual delivery, or
    material reputation/opportunity cost, require it to reduce a named unknown in
@@ -113,8 +148,8 @@ Never choose all five or routinely use three. A premature-build framing error pl
    route to bounded transaction verification; they do not establish the Leverage
    entry gate until individual auditable Transactions and comparable valued
    delivery are verified.
-4. Do not list every lens or imitate a Persona. Explain selected lens names only if the user asks or auditability requires it.
-5. When current evidence cannot support a conclusion, say exactly what is unknown and design the next evidence-producing action. For deferred implementation, name the evidence that would unlock the smallest necessary technical artifact. For repeated `invalid` or `inconclusive` tests, enforce the accepted claim-level evidence budget and trigger a pause/pivot review when it is exhausted.
+5. Do not list every lens or imitate a Persona. Explain selected lens names only if the user asks or auditability requires it.
+6. When current evidence cannot support a conclusion, say exactly what is unknown and design the next evidence-producing action. For deferred implementation, name the evidence that would unlock the smallest necessary technical artifact. For repeated `invalid` or `inconclusive` tests, enforce the accepted claim-level evidence budget and trigger a pause/pivot review when it is exhausted.
 
 ## Persist only durable change
 

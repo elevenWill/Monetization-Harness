@@ -116,6 +116,17 @@ EXPECTED_EVALS = {
     "41-content-direction-is-not-a-service-offer.md",
     "42-market-priority-unknown-does-not-justify-easy-material-test.md",
     "43-user-preference-is-not-archetype-constraint.md",
+    "44-proven-market-user-cannot-deliver.md",
+    "45-draft-action-revalidates-new-assumptions.md",
+    "46-opportunity-finder-schlep-before-glamour.md",
+    "47-assumption-challenger-decaffeinated-validation.md",
+    "48-business-filter-original-thesis-invalidated.md",
+    "49-experiment-designer-ruin-beats-expected-information.md",
+    "50-leverage-preserves-judgment.md",
+    "51-user-capability-does-not-create-market.md",
+    "52-strong-market-core-advantage-not-copyable.md",
+    "53-small-readiness-gap-can-be-probed.md",
+    "54-golden-opc-replication-safety.md",
 }
 REQUIRED_STATE_HEADINGS = {
     "## 当前目标",
@@ -988,6 +999,77 @@ def validate_evals() -> None:
                     f"{name}: missing Decision Frame assertion {phrase}"
                 )
 
+    required_replication_and_lens_contracts = {
+        "44-proven-market-user-cannot-deliver.md": (
+            "market exists",
+            "user readiness",
+            "no-customer-risk readiness probe",
+        ),
+        "45-draft-action-revalidates-new-assumptions.md": (
+            "Draft Action",
+            "newly introduced",
+            "at most one",
+            "separate Candidate hypothesis",
+            "has not committed to client service",
+        ),
+        "46-opportunity-finder-schlep-before-glamour.md": (
+            "Schlep inversion",
+            "manual-crank discovery",
+            "decision delta",
+            "not project-specific problem evidence",
+        ),
+        "47-assumption-challenger-decaffeinated-validation.md": (
+            "Decaffeinated outcome",
+            "Practical-function inversion",
+            "commercial exposure",
+        ),
+        "48-business-filter-original-thesis-invalidated.md": (
+            "Origin test",
+            "Thesis ledger",
+            "original payer/revenue thesis",
+        ),
+        "49-experiment-designer-ruin-beats-expected-information.md": (
+            "Ruin precedence",
+            "Reserved-core barbell",
+            "ring-fenced",
+        ),
+        "50-leverage-preserves-judgment.md": (
+            "value kernel",
+            "conclusion-changing exceptions",
+            "compounding residue",
+            "accountability loop",
+            "leverage_discovery",
+            "remain in `transaction_validation`",
+        ),
+        "51-user-capability-does-not-create-market.md": (
+            "production readiness",
+            "Market Priority",
+            "market-side claim",
+        ),
+        "52-strong-market-core-advantage-not-copyable.md": (
+            "non_copyable",
+            "adjacent evidence",
+            "Revenue magnitude",
+        ),
+        "53-small-readiness-gap-can-be-probed.md": (
+            "60-minute readiness probe",
+            "Permanently rejects",
+            "repeatability",
+        ),
+        "54-golden-opc-replication-safety.md": (
+            "RMB 399",
+            "blocking `unknown`",
+            "no-customer-risk readiness probe",
+        ),
+    }
+    for name, phrases in required_replication_and_lens_contracts.items():
+        text = (cases_dir / name).read_text(encoding="utf-8")
+        for phrase in phrases:
+            if phrase.casefold() not in text.casefold():
+                raise ValidationFailure(
+                    f"{name}: missing Replication/Lens assertion {phrase}"
+                )
+
     required_lifecycle_contracts = {
         "23-no-project-no-write.md": (
             "Naval 和 Taleb",
@@ -1054,9 +1136,9 @@ def validate_evals() -> None:
         "does not run Codex" in eval_readme
         or "not an automated LLM evaluation framework" in eval_readme
     )
-    describes_count = "43" in eval_readme or "forty-three" in eval_readme
+    describes_count = "54" in eval_readme or "fifty-four" in eval_readme
     if not describes_non_runtime or not describes_count:
-        raise ValidationFailure("evals README must describe 43 human-auditable, non-runtime scenarios")
+        raise ValidationFailure("evals README must describe 54 human-auditable, non-runtime scenarios")
     for phrase in (
         "Project Lifecycle",
         "New Project Bootstrap",
@@ -1086,7 +1168,7 @@ def validate_vnext_contracts() -> None:
             "Evidence-derived Stage → earliest unresolved uncertainty",
             "Reality Evidence First 不等于 Web First",
             "docs/human-execution-protocol.md",
-            "保存 43 个核心 Harness Behavior Acceptance Scenarios",
+            "保存 54 个核心 Harness Behavior Acceptance Scenarios",
             "Investigation Advantage",
             "Market Observation Environment",
             "Material Experiment",
@@ -1102,6 +1184,8 @@ def validate_vnext_contracts() -> None:
             "Do not rank mixed-level components",
             "30–90 minute",
             "money-path unknown",
+            "reference mechanism -> required conditions -> current user conditions",
+            "what new assumptions did this action introduce?",
         ),
         SKILLS_ROOT / "monetization-orchestrator" / "SKILL.md": (
             "The full gate is conditional",
@@ -1113,6 +1197,9 @@ def validate_vnext_contracts() -> None:
             "Market Observation Environment",
             "normalize",
             "commercial bridge",
+            "Gate external playbook replication",
+            "Action Assumption Revalidation",
+            "decision_delta: none",
         ),
         SKILLS_ROOT / "monetization-orchestrator" / "references" / "routing-rules.md": (
             "## Canonical Stage routes",
@@ -1150,6 +1237,8 @@ def validate_vnext_contracts() -> None:
             "Market Priority: unknown",
             "Attention Story",
             "observed monetization structures",
+            "hard precondition",
+            "claim-matched migration probe",
         ),
         SKILLS_ROOT / "assumption-challenger" / "SKILL.md": (
             "seller-created urgency",
@@ -1172,6 +1261,40 @@ def validate_vnext_contracts() -> None:
             "claim-level total evidence budget",
             "Cheap is a denominator",
             "commercial bridge",
+        ),
+        SKILLS_ROOT / "opportunity-finder" / "references" / "domain-core.md": (
+            "Pre-pitch existence",
+            "Schlep inversion",
+            "Love versus like",
+            "Manual-crank discovery",
+            "De-kink the precedent",
+        ),
+        SKILLS_ROOT / "assumption-challenger" / "references" / "domain-core.md": (
+            "Presupposition extraction",
+            "Practical-function inversion",
+            "Decaffeinated outcome",
+            "Contradiction-to-exposure reconstruction",
+        ),
+        SKILLS_ROOT / "business-filter" / "references" / "domain-core.md": (
+            "Origin test",
+            "Validated-late entry",
+            "Thesis ledger and immediate correction",
+            "Long-horizon mechanism invariance",
+        ),
+        SKILLS_ROOT / "experiment-designer" / "references" / "domain-core.md": (
+            "Ruin precedence",
+            "Convex exposure",
+            "Reserved-core barbell",
+            "Subtraction before intervention",
+            "Hidden-tail stress",
+            "Consequence symmetry",
+        ),
+        SKILLS_ROOT / "leverage-designer" / "references" / "domain-core.md": (
+            "Value-kernel boundary",
+            "Judgment-mechanism split",
+            "Replication-mode selector",
+            "Compound-residue test",
+            "Accountability loop",
         ),
         REPO_ROOT / "docs" / "purchase-trigger-protocol.md": (
             "hard_external",
@@ -1221,6 +1344,9 @@ def validate_vnext_contracts() -> None:
             "cannot raise Market Priority",
             "first exploratory test",
             "material income-seeking experiment",
+            "decision_delta",
+            "high` or `critical",
+            "Draft Action",
         ),
         REPO_ROOT / "docs" / "evaluation-strategy.md": (
             "Arm A — Baseline",
@@ -1230,6 +1356,9 @@ def validate_vnext_contracts() -> None:
             "Baseline wins",
             "Corrects and normalizes the question",
             "founder/operator attention",
+            "Thinking Lens ablation",
+            "source -> Signature Decision Operator",
+            "decision_delta: none",
         ),
         SKILLS_ROOT / "market-reality-researcher" / "references" / "query-playbook.md": (
             "## Content and creator observation",
@@ -1324,7 +1453,7 @@ def main() -> int:
         validate_vnext_contracts()
         print("[PASS] Stage-first, Reality-first Opportunity, Human Execution, and Experiment contracts")
         validate_evals()
-        print("[PASS] 43 human-auditable behavior acceptance scenarios")
+        print("[PASS] 54 human-auditable behavior acceptance scenarios")
         validate_authored_links()
         print("[PASS] authored Markdown links")
     except (ValidationFailure, OSError) as exc:

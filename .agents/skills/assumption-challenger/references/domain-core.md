@@ -1,28 +1,63 @@
-# Assumption challenge core
+# Assumption challenger: signature decision operators
 
-Derived from the preserved Žižek Skill. Use the analytical moves without persona roleplay.
+These source-derived operators challenge the frame and practical function of an
+action. They do not create FACTS, select Stage, or replace an action-producing
+lens. Apply at most two, then reconstruct the decision.
 
-## Six moves
+## 1. Presupposition extraction
 
-1. **Surface claim:** What is explicitly requested?
-2. **Presupposition:** What must be silently accepted for the request to make sense?
-3. **Stated goal versus organized desire:** Does the action pursue the outcome, or preserve the identity/story of pursuing it?
-4. **Contradiction:** Which incompatible benefits or claims are being held together?
-5. **Function:** What does the narrative normalize, conceal, legitimize, or postpone in real behavior?
-6. **Reconstruction:** What is the more accurate, testable question after removing the premise?
+- **Trigger:** The request arrives in solution form or makes one answer seem
+  inevitable.
+- **Ask:** What must already be true for this question to deserve a direct
+  answer, and which material premise has its wording hidden?
+- **Effect:** Suspend the downstream choice and restate the decision without the
+  smuggled product, buyer, urgency, capability, or desired conclusion.
+- **Boundary:** Do not challenge ordinary working assumptions that cannot change
+  the action.
+- **Source:** preserved source `SKILL.md`; `references/quotes.md` under
+  `references/source/`.
 
-## Monetization anti-patterns
+## 2. Practical-function inversion
 
-- “AI can do it” becomes “customers need it.”
-- “The market is hot” becomes “I should enter it.”
-- “I found a problem” becomes “I need a system.”
-- “I want to make money” becomes “I must build SaaS.”
-- Product completeness substitutes for a purchase decision.
-- Research substitutes for making an offer.
-- Coding substitutes for speaking to a buyer.
-- Planning to scale preserves the fantasy that value is already proven.
-- Declaring skepticism becomes a way to take no falsifiable action.
+- **Trigger:** The user already accepts that research, building, or planning
+  cannot answer the gate, yet continues it.
+- **Ask:** What does the repeated activity preserve, and what uncomfortable act
+  becomes unavoidable if it disappears?
+- **Effect:** Stop adding explanation. Judge the activity by what it postpones;
+  remove or cap it and make the next decision depend on the avoided behavior.
+- **Boundary:** Check access, safety, and authority before inferring avoidance;
+  describe observable function, not personality or motive.
+- **Source:** `references/quotes.md`, `references/patterns.md`, and preserved
+  source `README.md`/`SKILL.md`.
 
-## Source anti-patterns carried forward
+## 3. Decaffeinated outcome
 
-Avoid pure imitation, terminology fog, single-cause explanations, critique without reconstruction, fake profundity, political overreach, advice drift, and analysis as its own form of enjoyment. Use at most one or two explicit concepts. Concrete evidence comes first.
+- **Trigger:** A plan promises the named benefit while removing the exposure
+  that gives it evidentiary meaning.
+- **Ask:** Is this revenue without payment, validation without possible
+  rejection, entrepreneurship without a buyer, or delivery without liability?
+- **Effect:** Veto the protected substitute metric. Restore the smallest ethical
+  dose of the missing exposure or admit that a different goal is being pursued.
+- **Boundary:** A safe readiness probe is not evasion when it preserves the
+  decisive exposure without transferring learning risk to a buyer.
+- **Source:** `references/quotes.md` and `references/anti-patterns.md`.
+
+## 4. Contradiction-to-exposure reconstruction
+
+- **Trigger:** The plan tries to keep incompatible benefits: proof before contact
+  and no contact before proof, commitment and permanent optionality, or payment
+  evidence and zero rejection risk.
+- **Ask:** Which side does actual behavior protect when both cannot be kept?
+- **Effect:** Replace the false choice with a testable question and one bounded
+  action exposing the protected side; state what success and failure change.
+- **Boundary:** Do not manufacture paradoxes. If both claims coexist under
+  explicit conditions, record those conditions.
+- **Source:** preserved source `SKILL.md` and `references/anti-patterns.md`.
+
+## Boundary
+
+FACT bookkeeping, Stage correction, research, transferability, Why-Now,
+buyer/payer mapping, experiment bounds, and routing remain Harness Core. Use this
+lens only when wording or activity is itself the obstacle. Ordinary unknowns,
+factual research, emotional diagnosis, and critique-as-entertainment are not
+entry conditions.

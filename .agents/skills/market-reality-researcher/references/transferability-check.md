@@ -1,6 +1,6 @@
 # Transferability Check
 
-External evidence proves that a mode may have existed under its original conditions. Test separately whether the current user can reproduce its critical mechanism.
+External evidence proves that a mode may have existed under its original conditions. Test separately whether the current user can reproduce its critical mechanism. This check is mandatory before the orchestrator recommends copying a `Cxxx` or Closest Proven Playbook; it is not satisfied merely because the Case reconstruction lists resources.
 
 ## Contents
 
@@ -32,6 +32,20 @@ delivery capability
 ```
 
 Add any case-specific dependency identified during reconstruction: official partnership, privileged data, exclusive distribution, celebrity/persona trust, licensed likeness, mature team, or subsidized acquisition.
+
+Start from the reference mechanism, not a fixed checklist. For each condition
+that mechanism materially requires, ask whether the current user can:
+
+- produce the bought result to a minimum acceptance standard;
+- access the buyer or audience and execute the acquisition path;
+- cross the minimum trust barrier;
+- perform the minimum manual version;
+- cap or survive delivery and rework liability;
+- sustain plausible unit economics during that manual version; and
+- replace any critical advantage that the reference Case possessed.
+
+Do not require conditions irrelevant to the mechanism, and do not infer a user
+condition from general market evidence.
 
 ## Classify every component
 
@@ -74,6 +88,22 @@ Name the smallest set of missing conditions that could invalidate transfer. Do n
 - behavioral support: target users acted, not merely expressed interest;
 - transferable mechanism: the causal component can be copied;
 - user readiness: the current user has the minimum resources to test it.
+
+Apply the result before choosing an action:
+
+```text
+market exists + user readiness evidenced -> bounded replication probe
+market exists + blocking condition unknown -> claim-matched migration probe first
+market exists + critical condition absent -> do not recommend current replication
+market exists + core advantage non-copyable -> adjacent case only
+```
+
+Match the probe to the gap: production/delivery readiness uses a no-customer-risk
+sample or simulation with explicit acceptance, time, cost, quality, and rework
+bounds; buyer access, trust, or acquisition uses bounded pre-delivery Reality
+Contact; manual economics uses a costed simulation or internal dry run. An
+`unknown` delivery condition is not permission to sell first and learn on the
+customer. A small gap that can be tested cheaply is not a permanent rejection.
 
 ## Define a replication experiment basis
 

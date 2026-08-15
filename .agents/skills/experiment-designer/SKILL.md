@@ -15,7 +15,10 @@ Protect the ability to keep trying while obtaining stronger evidence quickly.
    verification status, transaction mechanism, negative evidence, policy
    constraints, required resources, and transferability analysis.
 4. Read the referenced `BSxxx` when trigger timing is material; preserve its deadline source, cost of delay, purchase window, trust barrier, and delivery liability.
-5. Read [references/domain-core.md](references/domain-core.md).
+5. Read [references/domain-core.md](references/domain-core.md). Apply only the
+   entry-matched Signature Decision Operators; do not run them as a generic
+   checklist. If they do not change the provisional test, record
+   `decision_delta: none`.
 6. Consult [examples/local/monetization-cases.md](examples/local/monetization-cases.md) for standard experiment patterns. Use [SOURCE.md](SOURCE.md) for deeper source context.
 
 ## Workflow
@@ -24,9 +27,13 @@ Protect the ability to keep trying while obtaining stronger evidence quickly.
 2. Define the desired evidence before designing activity. State what success and
    failure would change and how the result distinguishes live hypotheses. Prefer
    cash, costly commitment, observed behavior, or real usage.
-3. Run a ruin check: maximum money/time/reputation/legal/privacy loss,
+3. Apply the entry-matched source-derived operator, then run the ruin check:
+   maximum money/time/reputation/legal/privacy loss,
    irreversibility, concentration, and what happens after failure. Count founder
    attention and foregone alternatives as real costs even when cash spend is low.
+   Ruin precedence overrides expected information or average upside. When the
+   test touches a core resource, ring-fence that core before allocating the
+   speculative exposure.
 4. Prefer a **Replication Experiment** when a sufficiently relevant case exists:
    reproduce the smallest verified transaction or delivery mechanism rather than
    inventing a more complex product. Link the real `Cxxx`; never invent a case ID.
@@ -40,7 +47,10 @@ Protect the ability to keep trying while obtaining stronger evidence quickly.
    reversible smoke test. Cheap is a denominator, not the objective: first require
    enough information to change the current decision, then minimize total downside.
 7. Prefer a **Deadline Replication Experiment** when a real Buying Situation can be observed. Record the referenced `BSxxx`, real Trigger Event, real Deadline, Purchase Window, copied transaction structure, maximum input, maximum delivery liability, and Low-Trust Entry. Make the offer while the trigger is actually present; do not ask only whether the buyer would hypothetically pay.
-8. Preserve upside: choose a test that can reveal unexpected demand or learning while the loss remains capped.
+8. Preserve upside: when valid exposure can be decomposed, prefer independent
+   survivable attempts with capped failure and retained learning or upside over
+   one correlated launch that consumes the evidence budget. Do not fragment a
+   test when doing so would make the evidence invalid.
 9. Predeclare `success`, `demand_failure`, and `invalid` thresholds, plus the deadline, experiment cap, claim-level total evidence budget, maximum repair reviews, and stop criteria. `inconclusive` is the fallback when a validly interpretable result crosses neither success nor demand-failure thresholds. Repeated invalid/inconclusive repairs consume the shared claim budget rather than resetting it. Stop when that budget is exhausted, quality cannot be assured, protected/core access is required, or liability exceeds the cap.
 10. Treat several hours or days, repeated production/publication, meaningful
     manual delivery, or material reputation/opportunity cost as a material action.

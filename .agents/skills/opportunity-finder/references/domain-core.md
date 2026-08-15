@@ -1,57 +1,70 @@
-# Opportunity discovery core
+# Opportunity finder: signature decision operators
 
-Derived from the preserved Paul Graham source snapshot. These models are lenses, not market evidence.
+Source-derived transforms for discovery decisions. They do not create market
+evidence, choose Stage, or prove payment. Apply only an operator whose trigger is
+present.
 
-## Retained models
+## 1. Pre-pitch existence
 
-- **Look for problems, not startup ideas.** For problem-led archetypes, start
-  with friction that exists without the proposed product. Content/media and
-  other non-problem archetypes instead require observable repeated value or
-  consumption; do not force them into a service pain.
-- **Make something people want.** In discovery, translate this into qualified
-  behavior that signals importance; do not claim “want” before observed problem,
-  consumption, use, or payment behavior appropriate to the archetype.
-- **Iterative discovery.** An initial candidate is a direction for contact with reality, not an identity or fixed product thesis.
-- **Do things that do not scale.** Manual observation and delivery can expose the real problem faster than software.
-- **Founder/domain familiarity.** Use close knowledge and access to reduce the
-  cost and improve the quality of investigation; neither proves market importance,
-  representativeness, or willingness to pay.
-- **Organic pull over presentation quality.** A few people taking costly action,
-  or a qualified audience repeatedly returning and consuming, is stronger than
-  many people liking a pitch once. Attention evidence still does not prove payment.
+- **Trigger:** Candidate starts as an idea, technology, trend, or positioning.
+- **Ask:** What problem-solving, repeated consumption, side project, or costly
+  behavior existed before anyone pitched this Candidate?
+- **Effect:** Downgrade a pitch-led Candidate to exploratory until a pre-existing
+  behavior surface is found; prefer behavior already occurring voluntarily.
+- **Boundary:** Founder autobiography is optional; independent behavior is not.
+- **Source:** `research/01-writings.md` (startup ideas) and
+  `research/02-conversations.md` (side-project origins) under `references/source/`.
 
-## Candidate comparison
+## 2. Schlep inversion
 
-First normalize what is being compared. A capability or tool, topic, format,
-channel, audience, value mechanism, monetization structure, and offer may all be
-useful, but they are not peer directions. If the user's decision is how income
-could enter, compare observed monetization structures and map the lower-level
-items into them as components. One component may support several structures; do
-not silently choose one.
+- **Trigger:** Visible technology attracts attention while adjacent manual,
+  tedious, or socially awkward work is avoided.
+- **Ask:** Is the recurring ugly work ignored because it lacks value, or because
+  builders avoid entering it?
+- **Effect:** Add the schlep as a Candidate only when recurrence, workaround,
+  spend, or costly action supplies a Reality lead; observe it from close range.
+- **Boundary:** Difficulty and unpleasantness are not demand evidence.
+- **Source:** `research/01-writings.md` (Schlep Blindness; unscalable early work).
 
-Do not produce one additive score. Keep two groups visible:
+## 3. Love versus like
 
-| Opportunity Evidence — why Reality makes this worth investigating | Investigation Advantage — why this user can learn cheaply |
-| --- | --- |
-| Observed recurrence or repeated consumption | Reachable evidence population or observation surface |
-| Costly action, persistent workaround, or current spend | Founder/domain familiarity |
-| Transaction, repeat use, audience pull, or sustained operation | Fast, low-cost, safe experiment |
-| Exact/adjacent precedent with stated transfer limits | Manual-test ability and existing assets |
-| Contradicting evidence and failure patterns | Ability to interpret results accurately |
+- **Trigger:** Candidates have compliments, views, or survey interest but early
+  pull is ambiguous.
+- **Ask:** Where do a few qualified people return, recruit others, tolerate
+  friction, spend effort, or insist on continued access?
+- **Effect:** Prefer narrow costly repeated behavior over broad polite approval
+  for the next discovery contact; otherwise keep Market Priority unknown.
+- **Boundary:** Intense consumption supports only the observed value or audience
+  claim, not payment, profit, or repeat purchase.
+- **Source:** `research/01-writings.md` and preserved source `SKILL.md`.
 
-First ask whether a Candidate has a Reality basis. Then use Investigation
-Advantage to lower the total downside of a test with enough information to change
-the current decision. A
-weak but cheap model-derived Candidate may receive a capped exploratory probe;
-it does not outrank stronger Opportunity Evidence. Lack of immediate access is an
-acquisition constraint, not proof that the opportunity is unimportant.
+## 4. Manual-crank discovery
 
-Cheap is a constraint, not the objective. Count founder attention and opportunity
-cost with cash and risk. When income is the explicit goal, a material exploratory
-action must reduce a named unknown between repeated value and money; otherwise
-shrink it to one reversible micro probe or choose a more discriminating test.
-Unknown monetization does not prohibit cheap exploration.
+- **Trigger:** Automation, scale, or polish is proposed before the value-producing
+  step is known.
+- **Ask:** What smallest manual act puts the maker beside the real friction or
+  consumption behavior and permits a surprising correction?
+- **Effect:** Veto the scalable artifact for now; prefer one manual recruit,
+  observation, concierge delivery, installation, or content probe.
+- **Boundary:** The act must expose a named uncertainty and cannot silently
+  switch business archetype; manual work is not validation by itself.
+- **Source:** `research/01-writings.md` and preserved source `SKILL.md`.
 
-## Source limitations carried forward
+## 5. De-kink the precedent
 
-The source framework is startup- and Silicon-Valley-centered, can overvalue founder intuition, and contains roleplay/style instructions irrelevant to this Harness. Counter these limits with explicit evidence labels, small local tests, and willingness to pursue non-venture-scale product, service, commerce, or content opportunities.
+- **Trigger:** A successful case is narrated as an obvious idea or clean path.
+- **Ask:** What failed first, and which observed reaction forced the decisive
+  change?
+- **Effect:** Use the Case as a source of discovery surfaces and pivots, not as a
+  ready-made playbook; lower inference scope when transition evidence is absent.
+- **Boundary:** Transferability remains a Harness-level gate.
+- **Source:** `research/02-conversations.md` and `research/05-decisions.md`.
+
+## Boundary
+
+FACT/ASSUMPTION labels, Stage, research freshness, Candidate normalization,
+payer separation, comparison coverage, experiment caps, and stop rules remain
+Harness Core. This lens uniquely redirects discovery toward pre-pitch behavior,
+avoided work, intense minority pull, manual surprise, and messy case transitions.
+The startup-centered source can overvalue founder intuition and exceptional
+cases, so every operator remains bounded by observable behavior.

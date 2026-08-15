@@ -36,7 +36,9 @@ Create `IDEA.md` with only:
 - currently believed participant, audience, or customer;
 - decision-relevant initial assumptions.
 
-Create `STATE.md` with discoverable:
+Create `STATE.md` with the exact minimum template in
+`docs/workspace-protocol.md`; its front matter must use `updated_at` and
+`next_gate` rather than synonymous fields. It must contain:
 
 - project, evidence-derived stage, active status, and updated date;
 - total transactions and repeat customers (`0` only when supported; otherwise `unknown`);

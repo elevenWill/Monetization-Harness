@@ -22,6 +22,9 @@ Use challenge authority to interrupt a decision built on the wrong premise, then
 1. State what the user is explicitly asking.
 2. List what must already be true for the request to be worth doing.
 3. Compare each premise to evidence in `STATE.md`; classify it as FACT, ASSUMPTION, or contradiction.
+   Then apply at most two triggered operators from `domain-core.md`. The operator
+   must change the frame, veto, or next evidence action; otherwise record no
+   lens-specific change instead of manufacturing one.
 4. Audit market-evidence leaps explicitly: adjacent case presented as exact;
    vendor marketing presented as an independently verified outcome; one success
    generalized into a rule; unique traffic, brand, supply, capital, partnership,

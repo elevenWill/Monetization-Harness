@@ -16,7 +16,10 @@ Answer “is this actually a business worth further investigation?” before opt
    constraints, source verification, and transferability limits. Do not silently
    substitute an adjacent case for the target model.
 4. Read the active `BSxxx` and `docs/purchase-trigger-protocol.md` when a concrete Buying Situation exists. Missing fields remain `unknown`; do not complete them from intuition.
-5. Read [references/domain-core.md](references/domain-core.md).
+5. Read [references/domain-core.md](references/domain-core.md). Apply only the
+   entry-matched Signature Decision Operators; do not run them as a generic
+   checklist. If they do not change the provisional judgment, record
+   `decision_delta: none`.
 6. Use [examples/local/monetization-cases.md](examples/local/monetization-cases.md) for first-payment and pseudo-demand patterns. Consult the source snapshot through [SOURCE.md](SOURCE.md) only when deeper provenance is useful.
 
 If the verdict depends on current market, price, competitor, or policy facts and
@@ -32,7 +35,12 @@ the orchestrator for the Market Reality Gate. Do not fill it with model knowledg
    audience value/attention flow separately from the payer, paid result, and money
    flow, and allow entertainment, identity, information, education, or decision
    support without rewriting it as a service problem.
-3. Audit Trigger Event, Deadline Reality and source, Cost of Delay and certainty, Purchase Window, Budget Path, Trust Barrier, Low-Trust Entry, Reachability, Frequency, and Delivery Liability. A preferred date, anxiety, or a seller countdown is insufficient.
+3. Apply the entry-matched source-derived operator before completing the business
+   audit. Then audit Trigger Event, Deadline Reality and source, Cost of Delay and
+   certainty, Purchase Window, Budget Path, Trust Barrier, Low-Trust Entry,
+   Reachability, Frequency, and Delivery Liability. A preferred date, anxiety,
+   or a seller countdown is insufficient. Pre-replication transferability and
+   readiness remain an orchestrator hard gate rather than a Lens contribution.
 4. Compare current alternatives using project and external evidence: internal
    labor, spreadsheet, agency, incumbent software, delay, or no action. Include
    observed price and switching cost while retaining source freshness and scope.

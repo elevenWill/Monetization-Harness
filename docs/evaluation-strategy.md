@@ -182,6 +182,30 @@ finds a simpler, safer, more creative route and Harness misses it because of its
 rules, Harness loses that paired comparison even if its acceptance compliance is
 higher.
 
+## Thinking Lens ablation
+
+To test whether a selected Thinking Lens adds more than Core Harness knowledge,
+run a narrower matched pair:
+
+- **Arm A — Core only:** same strong model, Stage, Core rules, Reality Evidence,
+  project facts, unknowns, and budgets; remove only the target Lens and its
+  examples/operators.
+- **Arm B — Core plus Lens:** identical inputs plus the one Stage-selected Lens.
+
+Derive each scenario in the order `source -> Signature Decision Operator ->
+failure mode -> discriminator case`; do not write the case first and retrofit a
+source story. Use at least three high-value cases per audit and include negative
+controls. Judge only whether the Lens finds an important missed error, changes
+the Candidate, largest unknown, veto, stop condition, or next action, avoids a
+real risk, or rejects a wrong direction earlier. Style, length, persona names,
+and whether a Skill was invoked do not count.
+
+Record `decision_delta: none` when the arms make the same material decision. A
+single `none` is not failure; repeated `none` on the Lens's own discriminator
+cases requires diagnosing whether the source lacks unique behavior, distillation
+failed, or Core already absorbed the capability. Do not weaken Arm A, reveal the
+rubric, or change Reality Evidence to make the Lens look useful.
+
 ## Analysis and stopping recommendations
 
 Keep primary outcomes, raw dimension scores, penalties, judge rationales, tool/access incidents, and trajectory notes separable. Do not invent an aggregate after seeing results or claim a general Harness benefit from a single total. Report the predeclared paired winner or no-winner result, then which scenario families improve, regress, or remain uncertain; inspect regressions for rule-loading cost or lost creativity.

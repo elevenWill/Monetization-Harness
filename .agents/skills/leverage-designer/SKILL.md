@@ -30,18 +30,14 @@ If none exists, return a high-severity stage mismatch and route to `business-fil
 
 ## Workflow
 
-1. Separate the proven customer outcome from the current delivery method.
-2. Map each delivery step: input, operator judgment, time/cost, variance, failure modes, deadline, acceptance standard, and customer-visible value.
-3. Reconstruct external cases skeptically: separate demonstrated leverage from
-   hidden human operations, manual review, sales work, content work, subsidy, and
-   undisclosed cost. Identify dependencies on platform distribution, brand trust,
-   proprietary supply, privileged partnerships, capital, or existing audience.
-4. Identify specific knowledge: the judgment that differentiates the result and should be captured or protected rather than blindly automated.
-5. Classify steps as `keep_human`, `standardize`, `template`, `delegate`, `ai_assist`, `automate_with_code`, or `publish_as_media`.
-6. Sequence leverage: manual service → documented process → SOP/template → assisted execution → tested automation → bounded product.
-7. Estimate the effect on marginal cost, quality, cycle time, learning, dependency, and customer outcome.
-8. For deadline-shaped work, test whether triggers are predictable or synchronized; whether the service becomes constant firefighting or 24-hour response; whether customers can pre-book; whether tiered SLA and rush pricing are feasible; whether inputs and acceptance can be standardized; which steps need human review; and what delay, refund, or consequential-loss exposure exists.
-9. Automate one bottleneck at a time and compare against a pre-automation baseline. Check whether automation amplifies late or incorrect delivery and keep a rollback path.
+1. Name the single leverage decision that is unclear: value boundary, judgment
+   boundary, replication mode, compounding claim, or accountability.
+2. Apply only the operator in `domain-core.md` whose trigger matches that
+   decision. Use a second only when the first exposes a dependent material
+   uncertainty; do not run all five as a lens-specific workflow.
+3. Choose one smallest asset and inherit relevant capacity, SLA, liability,
+   platform, and API constraints from upstream reviews. Reopen an upstream gate
+   only when the proposed asset exposes a contradiction.
 
 ## Guardrails
 
@@ -49,15 +45,15 @@ If none exists, return a high-severity stage mismatch and route to `business-fil
 - Do not optimize volume before quality and economics are visible.
 - Do not erase high-value judgment merely because it is hard to encode.
 - Do not introduce brittle single-platform/API dependency without a fallback.
-- Do not infer code leverage merely because an external case uses AI. Treat
-  undisclosed labor and costs as unknown, not zero.
-- Do not copy a case's leverage system until this project has independently
-  reproduced the customer value and the required resources are transferable.
+- Do not infer code leverage merely because an external case uses AI.
 - Do not infer scalable demand from high rush prices. Synchronized deadlines can create a capacity and liability trap.
-- Do not imitate Naval or turn the answer into general lifestyle philosophy.
+- Do not imitate the source persona or turn the answer into general lifestyle philosophy.
 
 ## Output
 
-Return one review using `docs/review-protocol.md`. Name the first leverageable bottleneck, the asset to create, the baseline metric, and the review/rollback condition. Prefer one asset-building step over a full product roadmap.
+Return one review using `docs/review-protocol.md`. Report the applied operator
+and only the fields it changes, plus the smallest asset and review evidence.
+Prefer one asset-building step over a full product roadmap; use
+`decision_delta: none` when no operator changes the provisional decision.
 
 Pair with `business-filter` if repeatability or unit economics remain doubtful. Productization follows proven SOPs; it is not the starting point.

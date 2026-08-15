@@ -15,6 +15,7 @@ facts:
 assumptions:
   - "A007: A management dashboard is necessary before a customer can buy."
 reasoning_summary: "The build request addresses product completeness while the current gate is first payment."
+decision_delta: "Replaces a dashboard build with a qualified manual offer against the first-payment gate."
 recommended_action: "Offer the result manually to five qualified buyers before specifying a dashboard."
 stop_condition: "Stop after five qualified offers or the first payment, then review evidence."
 ```
@@ -27,6 +28,7 @@ stop_condition: "Stop after five qualified offers or the first payment, then rev
 - `facts`: Only evidence-backed facts, preferably stable IDs. An external FACT must cite its `Rxxx`, `Cxxx`, or local source ID and stay within that evidence's scope. Use `[]` when none exist.
 - `assumptions`: Named unsupported claims, preferably stable IDs or `PROVISIONAL-A...` when not yet persisted.
 - `reasoning_summary`: One to three auditable sentences; never hidden chain-of-thought.
+- `decision_delta`: What changed from the orchestrator's pre-lens provisional judgment. Use `none` when the lens confirms it; never invent a difference to justify the Skill.
 - `recommended_action`: One bounded action that addresses the finding.
 - `stop_condition`: Observable point at which to stop or re-evaluate.
 
@@ -56,7 +58,16 @@ model scan.
 
 ## Synthesis contract
 
-The orchestrator resolves conflicts using the claim-specific evidence rules in `docs/object-protocol.md`, Stage relevance, the active Buying Situation, and downside—not by voting or by treating all source types as one ladder. The project's own payment, behavior, and usage evidence controls Stage and transferability judgments; external research establishes only the market facts, precedents, constraints, purchase-trigger signals, or analogies its recorded scope supports.
+The orchestrator records a provisional judgment before requesting a lens, then resolves conflicts using the claim-specific evidence rules in `docs/object-protocol.md`, Stage relevance, the active Buying Situation, and downside—not by voting or by treating all source types as one ladder. The project's own payment, behavior, and usage evidence controls Stage and transferability judgments; external research establishes only the market facts, precedents, constraints, purchase-trigger signals, or analogies its recorded scope supports. Every `high` or `critical` lens finding must be explicitly accepted in the final judgment/action or rejected with stronger named Evidence; synthesis must not silently dilute it.
+
+Before output, treat the candidate next action as a Draft Action and revalidate
+the prerequisites it newly introduces: capability, access, trust, delivery,
+economics, legal/policy, business archetype, buyer/payer, and critical
+dependencies. If a new blocking assumption appears, shrink the action, test that
+assumption, or reroute once. Revalidate the replacement once; if uncertainty
+remains, expose it and choose the smallest evidence action. A Draft Action cannot
+silently switch business archetypes or make a customer absorb an untested
+delivery-learning risk.
 
 The final user response normally contains:
 

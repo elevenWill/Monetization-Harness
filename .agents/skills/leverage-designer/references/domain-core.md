@@ -1,40 +1,77 @@
-# Leverage design core
+# Leverage designer: signature decision operators
 
-Derived from the preserved Naval Ravikant source snapshot.
+Apply only after value or paid delivery has repeated. The lens decides what can
+reproduce that result without reproducing founder time linearly.
 
-## Retained models
+## 1. Value-kernel boundary
 
-- **Specific knowledge.** Preserve the tacit judgment that makes the customer result unusually good; not every valuable step can be reduced to a manual.
-- **Accountability.** Keep ownership and feedback close enough that quality failures update the system.
-- **Permissionless leverage.** Code and media can reproduce work at low marginal cost without linear hiring, but only after the reproduced value is known.
-- **Productize the repeatable part.** Package a demonstrated combination of knowledge and process, not an imagined market.
-- **Compounding.** Prefer assets that improve through reuse: templates, datasets with consent, distribution, documented knowledge, code, and reputation.
-- **Judgment over activity.** Automating the wrong step magnifies error; decide what not to encode.
+- **Trigger:** A whole service or workflow is proposed for productization.
+- **Ask:** What invariant result repeats across accepted deliveries, versus
+  customer-specific shell or founder-created false repetition?
+- **Effect:** Leverage only the kernel or a stable shell step; veto encoding a
+  one-customer exception as a product feature.
+- **Boundary:** Repetition without comparable customer acceptance is not a value
+  kernel; Stage evidence remains upstream.
+- **Source:** `references/source/original-SKILL.md` (productize yourself).
 
-## Step map
+## 2. Judgment-mechanism split
 
-```yaml
-step:
-customer_outcome:
-frequency:
-time_and_cost:
-variance:
-judgment_required:
-failure_impact:
-candidate_mode: keep_human
-baseline_metric:
-expected_asset:
-rollback_condition:
-```
+- **Trigger:** A repeated bottleneck mixes specifiable mechanics with contextual
+  choices.
+- **Ask:** Which exceptions change the accepted result or cause qualified
+  operators to disagree?
+- **Effect:** Standardize mechanics around consequence-bearing judgment; retain
+  the human decision and capture its input, rationale, and outcome.
+- **Veto:** Automation that removes the feedback that builds specific knowledge.
+- **Boundary:** Do not preserve manual activity merely because it feels skilled;
+  disagreement or outcome-changing exceptions must locate the judgment.
+- **Source:** `references/source/references/naval-ravikant-agent1-著作与系统思考.md`
+  (specific knowledge and judgment).
 
-## Sequencing test
+## 3. Replication-mode selector
 
-1. Has the customer outcome repeated?
-2. Is this step repeated across deliveries rather than caused by one exceptional customer?
-3. Can quality be measured before and after the change?
-4. Will leverage reduce marginal cost or increase reach without destroying learning?
-5. Is the dependency reversible?
+- **Trigger:** Code, AI, media, delegation, or capital is assumed to be leverage.
+- **Ask:** Which lowest-commitment mode fits the repeated unit while preserving
+  the judgment boundary?
+- **Effect:** Stable procedure -> SOP/tool; deterministic transform -> code;
+  reusable public explanation -> media; trained discretion -> delegation;
+  owned-capacity bottleneck -> capital. Reject when its prerequisite fails.
+- **Boundary:** `ai_assist` is a method inside a mode, not a leverage verdict.
+- **Source:** `references/source/references/naval-ravikant-agent1-著作与系统思考.md`
+  (four leverage types and permission).
 
-## Limitations carried forward
+## 4. Compound-residue test
 
-The source framework compresses complex execution into memorable formulas and can invite premature scale. This wrapper makes repeat evidence and a measured SOP the entry gate.
+- **Trigger:** A template, dataset, codebase, media asset, or prompt is called
+  compounding.
+- **Ask:** What reusable residue makes the next accepted result better, cheaper,
+  faster, or farther-reaching?
+- **Effect:** Require improvement in reuse ratio, marginal operator time,
+  learning yield, or reach without degrading acceptance quality.
+- **Veto:** A per-customer artifact rebuilt each time; that is inventory, not
+  compounding leverage.
+- **Boundary:** More output is not compounding when reuse, learning, reach, or
+  marginal effort does not improve while acceptance holds.
+- **Source:** `references/source/references/naval-ravikant-agent1-著作与系统思考.md`
+  (compounding).
+
+## 5. Accountability loop
+
+- **Trigger:** Output volume or autonomy increases.
+- **Ask:** Can a failed result reach a named owner and the rule, prompt, template,
+  training example, or code that produced it?
+- **Effect:** Bind the asset to an acceptance-linked signal, failure feedback
+  path, and threshold returning work to human handling.
+- **Veto:** “Runs without me” when nobody can observe and correct what it repeats.
+- **Boundary:** Accountability is not public persona performance; it is an
+  operational owner and correction path for amplified outcomes.
+- **Source:** `references/source/references/naval-ravikant-agent1-著作与系统思考.md`
+  (accountability).
+
+## Boundary
+
+Stage/repeat evidence, buyer/price/economics, experiment downside, external-case
+transferability, and Human Execution remain upstream. This lens alone chooses
+the replicable value boundary, judgment boundary, leverage mode, compounding
+residue, and accountable feedback loop. Source material is provenance, never
+evidence that an active market or asset will work.
