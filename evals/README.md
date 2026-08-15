@@ -13,7 +13,7 @@ workspace persistence:
 3. Inspect both the reply and any workspace changes.
 4. Compare only observable behavior with the expectations and failure conditions.
 
-The thirty-five cases cover the V0 and VNext regression surface:
+The thirty-nine cases cover the V0 and VNext regression surface:
 
 - complete project-lifecycle routing: no project/no write, semantic resume,
   minimal bootstrap with lazy growth, and conflict/no wrong write;
@@ -40,7 +40,10 @@ The thirty-five cases cover the V0 and VNext regression surface:
   the first broken selected step to shape the next test;
 - reality-feedback corrections for relationship-biased payment, negative delivery
   economics, research or development avoidance, and buyer evidence that changes
-  the original hypothesis.
+  the original hypothesis;
+- evidence-fit checks that separate reachability from decision relevance,
+  content audience from payer, content platforms from distribution-only framing,
+  and execution quality from hypothesis quality.
 
 ## Human Execution and Experiment Diagnosis
 
@@ -70,6 +73,29 @@ loop:
 
 These cases score observable replies, evidence classification, next actions, and
 workspace effects. Named Skill invocation is not itself a pass condition.
+
+## Evidence Fit and Content-Market Roles
+
+Cases 36–39 freeze four distinct failures observed in a real creator-business
+dogfooding session:
+
+- `36-reachable-sample-is-not-representative.md` — a nearby sample may answer a
+  narrow problem-discovery question without representing content demand or
+  monetization.
+- `37-content-audience-is-not-automatically-payer.md` — audience pull does not
+  identify the customer, buyer, payer, sponsor, platform, or bought result unless
+  evidence links those roles.
+- `38-content-platform-can-be-market-evidence.md` — a content platform may be a
+  conditional observation environment for content pull and creator patterns, not
+  only a future distribution channel and not a mandatory Web First route.
+- `39-execution-does-not-validate-candidate.md` — founder fit, user agreement, and
+  a concrete Execution Packet do not upgrade a model-derived candidate from
+  hypothesis to market evidence, while cheap exploration remains allowed.
+
+Together they ask whether a real evidence source is qualified to answer the
+current decision claim. They do not require representative population research,
+force platform search, prohibit small exploratory samples, or assume that an
+audience and payer must be different actors.
 
 ## Project Lifecycle
 

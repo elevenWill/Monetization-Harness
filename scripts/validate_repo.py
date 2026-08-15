@@ -108,6 +108,10 @@ EXPECTED_EVALS = {
     "33-building-will-not-test-payment.md",
     "34-payment-with-negative-delivery-economics.md",
     "35-buyer-feedback-reroutes-the-hypothesis.md",
+    "36-reachable-sample-is-not-representative.md",
+    "37-content-audience-is-not-automatically-payer.md",
+    "38-content-platform-can-be-market-evidence.md",
+    "39-execution-does-not-validate-candidate.md",
 }
 REQUIRED_STATE_HEADINGS = {
     "## 当前目标",
@@ -888,6 +892,40 @@ def validate_evals() -> None:
             if phrase not in text:
                 raise ValidationFailure(f"{name}: missing Market Reality assertion {phrase}")
 
+    required_evidence_fit_contracts = {
+        "36-reachable-sample-is-not-representative.md": (
+            "reachability",
+            "decision relevance",
+            "selection bias",
+            "small samples",
+        ),
+        "37-content-audience-is-not-automatically-payer.md": (
+            "audience",
+            "payer",
+            "`unknown`",
+            "same actor",
+        ),
+        "38-content-platform-can-be-market-evidence.md": (
+            "market observation",
+            "Reality Evidence",
+            "web-first",
+            "platform popularity metrics",
+        ),
+        "39-execution-does-not-validate-candidate.md": (
+            "model-derived hypothesis",
+            "founder/domain fit",
+            "`market validated: false`",
+            "exploratory test",
+        ),
+    }
+    for name, phrases in required_evidence_fit_contracts.items():
+        text = (cases_dir / name).read_text(encoding="utf-8")
+        for phrase in phrases:
+            if phrase.casefold() not in text.casefold():
+                raise ValidationFailure(
+                    f"{name}: missing Evidence Fit assertion {phrase}"
+                )
+
     required_lifecycle_contracts = {
         "23-no-project-no-write.md": (
             "Naval 和 Taleb",
@@ -954,9 +992,9 @@ def validate_evals() -> None:
         "does not run Codex" in eval_readme
         or "not an automated LLM evaluation framework" in eval_readme
     )
-    describes_count = "35" in eval_readme or "thirty-five" in eval_readme
+    describes_count = "39" in eval_readme or "thirty-nine" in eval_readme
     if not describes_non_runtime or not describes_count:
-        raise ValidationFailure("evals README must describe 35 human-auditable, non-runtime scenarios")
+        raise ValidationFailure("evals README must describe 39 human-auditable, non-runtime scenarios")
     for phrase in (
         "Project Lifecycle",
         "New Project Bootstrap",
@@ -974,6 +1012,7 @@ def validate_evals() -> None:
         "inconclusive",
         "demand failure",
         "evaluation-strategy.md",
+        "Evidence Fit and Content-Market Roles",
     ):
         if phrase.casefold() not in eval_readme.casefold():
             raise ValidationFailure(f"evals README missing VNext behavior category: {phrase}")
@@ -985,7 +1024,7 @@ def validate_vnext_contracts() -> None:
             "Evidence-derived Stage → earliest unresolved uncertainty",
             "Reality Evidence First 不等于 Web First",
             "docs/human-execution-protocol.md",
-            "保存 35 个核心 Harness Behavior Acceptance Scenarios",
+            "保存 39 个核心 Harness Behavior Acceptance Scenarios",
         ),
         REPO_ROOT / "AGENTS.md": (
             "Why-Now Gate",
@@ -1064,6 +1103,7 @@ def validate_vnext_contracts() -> None:
         REPO_ROOT / "README.md": (
             "business-filter（计入总共 1～2 个 Lens）+",
             "保存 22 个核心 Harness Behavior Acceptance Scenarios",
+            "保存 35 个核心 Harness Behavior Acceptance Scenarios",
         ),
         REPO_ROOT / "AGENTS.md": (
             "Run `business-filter` for each leading concrete Opportunity",
@@ -1134,7 +1174,7 @@ def main() -> int:
         validate_vnext_contracts()
         print("[PASS] Stage-first, conditional Why-Now, Human Execution, and Experiment contracts")
         validate_evals()
-        print("[PASS] 35 human-auditable behavior acceptance scenarios")
+        print("[PASS] 39 human-auditable behavior acceptance scenarios")
         validate_authored_links()
         print("[PASS] authored Markdown links")
     except (ValidationFailure, OSError) as exc:

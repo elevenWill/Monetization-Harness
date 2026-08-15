@@ -277,9 +277,9 @@ Stage 可以回退。产品上线后无人复购，应回到 `business_validatio
 
 ## Behavior Acceptance Scenarios
 
-[`evals/cases/`](evals/cases/) 保存 35 个核心 Harness Behavior Acceptance Scenarios，用于修改 `AGENTS.md`、Skills、Router、Stage、Market Reality、Human Execution 或 Experiment Diagnosis 规则时做人工行为回归。
+[`evals/cases/`](evals/cases/) 保存 39 个核心 Harness Behavior Acceptance Scenarios，用于修改 `AGENTS.md`、Skills、Router、Stage、Market Reality、Human Execution 或 Experiment Diagnosis 规则时做人工行为回归。
 
-它们不是自动启动 Codex 的 LLM Evaluation Framework，也不把手工编写的理想答案伪装成真实 Runtime 测试。核心覆盖：Project lifecycle、Stage-first、Reality Evidence 路由、过早开发、交易与 leverage、重大下注、Stage 回退、Workspace lazy growth、市场证据，以及无人看见、错误 Buyer、赞美无付款、友情付款、可执行 sourcing、研究/开发逃避、交付亏损和现实反馈改写方向。
+它们不是自动启动 Codex 的 LLM Evaluation Framework，也不把手工编写的理想答案伪装成真实 Runtime 测试。核心覆盖：Project lifecycle、Stage-first、Reality Evidence 路由、过早开发、交易与 leverage、重大下注、Stage 回退、Workspace lazy growth、市场证据，以及无人看见、错误 Buyer、赞美无付款、友情付款、可执行 sourcing、研究/开发逃避、交付亏损、现实反馈改写方向、样本与 Decision Claim 的匹配、内容 Audience/Payer 分离、内容平台的条件式证据用途，以及执行具体性不抬升假设。
 
 [`docs/evaluation-strategy.md`](docs/evaluation-strategy.md) 另定义同模型 `Baseline + Web` 与 `Harness + Web` 的人工 A/B 协议，用 outcome-first 的决策质量、次日可执行性、time-to-evidence/伤害作为主指标，并允许更简单、更聪明的 Baseline 合法获胜。仓库没有伪造任何 A/B 运行结果。
 
