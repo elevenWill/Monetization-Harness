@@ -109,19 +109,10 @@ research itself.
     success is a lead, not an ordinal ranking basis. When evidence is weak,
     asymmetric, or incomparable, write `Market Priority: unknown`, do not call one
     the best or first business direction, and select only the `first exploratory test`.
-13. When the user asks which direction to choose, what you would do, or for a
-    direction, give a **Recommended Bet** even if `Market Priority: unknown`. Keep
-    the two judgments separate: the bet is what this user should try first, not a
-    claim that its market is superior. Make one explicit choice; cite at least
-    three concrete user circumstances; explain why the main alternative is not
-    preferred now; state the time box, confidence, and result that would change
-    the recommendation. The basis may include Reality evidence, founder
-    capability and constraints, reversibility, time and cash cost, opportunity
-    cost, and relevant cases. Do not label it a FACT, market validation, or the
-    validated best market, and do not persist it as a Workspace Decision before
-    user acceptance. Ask at most one question that would materially change the
-    bet; give a provisional bet first whenever possible.
-14. When the explicit goal is income, challenge an exploratory action that consumes
+    Without a named evidence or Investigation Advantage basis for testing one
+    Candidate, make that test comparative or target a shared blocker rather than
+    inventing an ordinal learning order.
+13. When the explicit goal is income, challenge an exploratory action that consumes
     several hours or days, repeated production/publication, meaningful delivery,
     or material reputation/opportunity cost unless it reduces a named unknown in
     the commercial bridge. State what success and failure would change and why it
@@ -154,8 +145,6 @@ research itself.
 - Do not reject observable pull solely because no exact precedent or stable workaround exists. Lower confidence, keep `market validated: false`, and prefer one capped exploratory behavior or paid probe when direct access and downside permit it.
 - Do not recommend quitting, large builds, or automation.
 - Do not require a venture-scale outcome; a manual paid service may be the correct discovery vehicle.
-- Do not imitate any public figure or claim personal experience; a recommendation
-  may instead cite relevant cases and recurring experience patterns.
 - Do not mimic Paul Graham or name him in the user-facing answer.
 
 ## Output
@@ -169,8 +158,8 @@ bounded Reality Scan, contact, or probe among actions with enough information to
 change the decision, and name that decision change.
 If comparison evidence is not comparable, label it the `first exploratory test`,
 not the selected or best direction, and state `Market Priority: unknown`.
-For a direction-seeking request, additionally return a Recommended Bet that obeys
-Workflow step 13. Founder fit, reversibility, and cost may select that user-specific
-bet while remaining explicitly insufficient to establish Market Priority.
+Do not select a Candidate merely because the user asks “which one” or because its
+generic route to revenue appears shorter; the orchestrator owns the narrow
+explicit forced-choice exception.
 
 Coordinate normally with `assumption-challenger` when a technology, trend, identity, or preferred solution is constraining the search.

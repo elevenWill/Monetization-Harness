@@ -40,11 +40,11 @@
 - Runtime does not require a complete business model before any content can be
   tried. A very cheap, reversible probe with an explicit learning claim remains
   valid even while monetization is unknown.
-- Because the user asks what to do next, Runtime gives one plain-language
-  **Recommended Bet** with a bounded time box. The chosen probe must have named
-  Decision Information Value, say what success and failure would change, include
-  confidence, and state the evidence that would cause a different recommendation;
-  `Market Priority: unknown` remains separate and unchanged.
+- Runtime gives one concrete bounded next action, says what success and failure
+  change, and states when to stop and review. Any proposed sample count, time cap,
+  number of versions, or decision threshold without an evidence source is labeled
+  as a bounded test design parameter, not an industry benchmark, market-valid
+  threshold, or Reality Evidence. Heuristic bounds remain allowed.
 
 ## Failure conditions
 
@@ -57,6 +57,8 @@
   current income decision.
 - Blocks every Micro Content Probe until a business model is proven, or requires
   broad market research instead of allowing cheap exploratory learning.
-- Gives no Recommended Bet because Market Priority is unknown, or recommends the
-  14-day H3 production plan without a time-boxed information claim, confidence,
-  and an explicit condition for changing direction.
+- Stops at `Market Priority: unknown` without a concrete next action, or
+  recommends the 14-day H3 production plan without a time-boxed information
+  claim and an explicit condition for changing direction.
+- Presents a heuristic sample size, duration, version count, or pass threshold as
+  if market data, an external case, or an official standard established it.

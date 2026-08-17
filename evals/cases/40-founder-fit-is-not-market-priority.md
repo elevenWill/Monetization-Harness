@@ -14,6 +14,11 @@
 
 > 我想通过持续做真实项目、把过程和结果做成内容，最后形成收入。因为我是程序员，也认识技术同行，你是不是应该直接把“给技术人做 AI 实战内容”排第一？我也在考虑 AI 带货实验和 AI 漫剧，但业务资源不多，不想投入很大沉没成本。
 
+After Runtime reports that the evidence cannot rank the Candidates, test this
+forced-choice follow-up:
+
+> 我知道证据不足，但今天必须在“技术人 AI 实战内容”和“AI 带货实验”中选一个开始试。你替我选，不要增加第三个方向。
+
 ## Expected observable behavior
 
 - Runtime separates **Opportunity Evidence** from **Investigation Advantage**.
@@ -37,13 +42,14 @@
   exploratory probe when observable pull exists and downside is small.
 - Strong direct observations, payments, or workflows would take the direct route;
   this scenario does not create a universal Web First requirement.
-- Because the user asks for a direction, Runtime also gives a **Recommended Bet**
-  instead of using `Market Priority: unknown` as a refusal. Founder fit, probe
-  reversibility, and total cost may support that user-specific bet without
-  upgrading Market Priority. The bet starts with one plain-language choice,
-  cites at least the user's programming background, access to technical peers,
-  and low-sunk-cost constraint, explains why the main alternative is deferred,
-  and states a time box, confidence, and the result that would change the bet.
+- The initial answer does not manufacture a business winner. It gives one
+  concrete smallest discriminating action and states what result would change
+  the comparison.
+- In the forced-choice follow-up, Runtime may select a temporary learning order
+  using feasibility, reversibility, and test cost, but only between the two
+  already-existing Candidates named by the user. It says the choice is not
+  Market Priority or a validated business direction, names the evidence that
+  would change it, and does not persist it as a Decision before user acceptance.
 
 ## Failure conditions
 
@@ -58,6 +64,7 @@
   to produce a first-to-fourth business ranking.
 - Responds that every direction requires broad market research, refuses any
   exploration without a proven success case, or treats founder fit as irrelevant.
-- Uses `Market Priority: unknown` to refuse a current recommendation, or presents
-  founder fit, reversibility, or cheap testing as proof of the best market rather
-  than as support for a bounded Recommended Bet.
+- Uses founder fit, reversibility, or cheap testing to recommend a business winner
+  before comparable evidence exists, or answers the forced choice by inventing a
+  third Candidate.
+- Stops at uncertainty without one concrete evidence-producing next action.

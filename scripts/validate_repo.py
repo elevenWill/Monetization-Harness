@@ -2,7 +2,7 @@
 """Deterministically validate the Stage-first Reality and Human Execution V0.
 
 This optional development tool checks repository contracts, provenance, and
-workspace_bak shape. It does not access the web, run Codex, or claim to evaluate
+workspace shape. It does not access the web, run Codex, or claim to evaluate
 LLM behavior or market-research quality.
 """
 
@@ -16,7 +16,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_ROOT = REPO_ROOT / ".agents" / "skills"
-WORKSPACE = REPO_ROOT / "workspace_bak"
+WORKSPACE = REPO_ROOT / "workspace"
 EVALS = REPO_ROOT / "evals"
 
 THINKING_SKILLS = {
@@ -45,7 +45,7 @@ REQUIRED_DOCS = {
     Path("stage-model.md"),
     Path("object-protocol.md"),
     Path("review-protocol.md"),
-    Path("workspace_bak-protocol.md"),
+    Path("workspace-protocol.md"),
     Path("source-mapping.md"),
     Path("integrations/agent-reach.md"),
     Path("purchase-trigger-protocol.md"),
@@ -665,15 +665,15 @@ def validate_experiment(path: Path) -> None:
 
 def validate_workspace() -> None:
     if not (WORKSPACE / "_index.md").is_file():
-        raise ValidationFailure("workspace_bak/_index.md missing")
+        raise ValidationFailure("workspace/_index.md missing")
     if (WORKSPACE / "_templates").exists():
-        raise ValidationFailure("workspace_bak/_templates must not exist in Conversation-First V0")
+        raise ValidationFailure("workspace/_templates must not exist in Conversation-First V0")
 
     unexpected_root_files = {
         path.name for path in WORKSPACE.iterdir() if path.is_file() and path.name != "_index.md"
     }
     if unexpected_root_files:
-        raise ValidationFailure(f"unexpected workspace_bak root files: {sorted(unexpected_root_files)}")
+        raise ValidationFailure(f"unexpected workspace root files: {sorted(unexpected_root_files)}")
 
     for project in WORKSPACE.iterdir():
         if not project.is_dir() or project.name.startswith("_"):
@@ -707,7 +707,7 @@ def validate_workspace() -> None:
 
         for directory in (path for path in project.rglob("*") if path.is_dir()):
             if not any(path.is_file() for path in directory.rglob("*")):
-                raise ValidationFailure(f"empty workspace_bak directory is forbidden: {directory}")
+                raise ValidationFailure(f"empty workspace directory is forbidden: {directory}")
 
         research_files = sorted(project.glob("**/research/R[0-9][0-9][0-9]-*.md"))
         case_files = sorted(project.glob("**/cases/C[0-9][0-9][0-9]-*.md"))
@@ -1076,28 +1076,28 @@ def validate_evals() -> None:
             "SaaS",
             "Deadline",
             "No Project",
-            "workspace_bak/_index.md",
+            "workspace/_index.md",
             "long-term project memory",
             "chat log",
-            "workspace_bak/naval-taleb/",
-            "workspace_bak/saas-pricing/",
-            "workspace_bak/deadline-business/",
+            "workspace/naval-taleb/",
+            "workspace/saas-pricing/",
+            "workspace/deadline-business/",
         ),
         "24-existing-project-resume.md": (
-            "workspace_bak/ai-commerce-short-video/",
+            "workspace/ai-commerce-short-video/",
             "IDEA.md",
             "STATE.md",
             "resumes that stable project",
             "semantic",
             "BS001",
-            "workspace_bak/sku-video/",
-            "workspace_bak/batch-video/",
-            "workspace_bak/commerce-video-2/",
-            "workspace_bak/ai-video-new/",
+            "workspace/sku-video/",
+            "workspace/batch-video/",
+            "workspace/commerce-video-2/",
+            "workspace/ai-video-new/",
         ),
         "25-project-conflict-no-wrong-write.md": (
-            "workspace_bak/ai-commerce-short-video/",
-            "workspace_bak/ai-ad-creative/",
+            "workspace/ai-commerce-short-video/",
+            "workspace/ai-ad-creative/",
             "Project Conflict",
             "temporary no-write",
             "FACT",
@@ -1106,7 +1106,7 @@ def validate_evals() -> None:
             "RESEARCH",
             "STATE",
             "stage artifact",
-            "workspace_bak/deadline-material/",
+            "workspace/deadline-material/",
         ),
     }
     for name, phrases in required_lifecycle_contracts.items():
@@ -1320,7 +1320,7 @@ def validate_vnext_contracts() -> None:
             "Do not force the pattern into a service problem",
             "routes to `transaction_validation`",
         ),
-        REPO_ROOT / "docs" / "workspace_bak-protocol.md": (
+        REPO_ROOT / "docs" / "workspace-protocol.md": (
             "completed result",
             "aggregate Evidence Ledger",
             "plan-only experiments require no migration",

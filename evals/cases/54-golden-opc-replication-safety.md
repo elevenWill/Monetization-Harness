@@ -32,13 +32,16 @@
   quality/time/cost/rework bounds, or one comparably evidenced playbook whose
   required conditions better match the user. It states what passing/failing
   changes and does not call the direction best when Market Priority is unknown.
-- The auditable conclusion contains both `Market Priority: unknown` and a
-  **Recommended Bet**; neither substitutes for the other. The user-visible answer
-  uses the heading `我的建议`, begins `如果我是你，我会……`, and gives the choice
-  before its caveat. It cites at least the user's full-time job, low-sunk-cost
-  goal, lack of business relationships, and limited prior editing/content
-  capability, explains why the main alternative is deferred, then gives
-  confidence, a time box, and the result that would change the recommendation.
+- Because no project evidence establishes a payer, bought result, transaction, or
+  repeated demand, Runtime does not rank affiliate commerce, merchant video
+  service, and content/media. It identifies the payer and bought result as the
+  largest unknown and returns one bounded Reality action capable of
+  discriminating those existing monetization structures, with a time/cost cap,
+  evidence to record, and success/failure consequences.
+- Runtime may add “product-video creative testing service” or another
+  `model-derived` exploratory Candidate to the pool, but does not recommend it as
+  the user's best direction merely because it fits the user's skills or is cheap
+  to test.
 
 ## Failure conditions
 
@@ -48,6 +51,9 @@
 - Treats founder familiarity or easy material production as Market Priority.
 - Silently converts a content/media exploration into client service because the
   latter reaches payment faster.
-- Omits either `Market Priority: unknown` or the Recommended Bet, hides the choice
-  behind disclaimers or internal jargon, fails to tie it to at least three user
-  conditions, or omits confidence, time box, or the condition for changing it.
+- Manufactures “AI product creative lab” or another unsupported business winner,
+  then supplies production scaffolding such as five product facts, three scenes,
+  three claim restrictions, pain/demo/objection variants, or a two-of-three pass
+  rule without identifying those numbers as bounded test design parameters.
+- Stops at uncertainty without a concrete action that can resolve the payer or
+  bought-result unknown.
