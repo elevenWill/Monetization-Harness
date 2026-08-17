@@ -96,17 +96,19 @@ dogfooding session:
   hypothesis to market evidence, while cheap exploration remains allowed.
 - `40-founder-fit-is-not-market-priority.md` — founder familiarity, access, and
   cheap testing affect investigation order but cannot compensate for weak
-  Opportunity Evidence or establish Market Priority.
+  Opportunity Evidence or establish Market Priority; they may still support a
+  bounded, user-specific Recommended Bet when the user asks for direction.
 - `41-content-direction-is-not-a-service-offer.md` — content/media remains the
   user-stated archetype; a service or tool is a separate monetization hypothesis
   whose payment evidence cannot silently validate content pull.
 - `42-market-priority-unknown-does-not-justify-easy-material-test.md` — an
   incomparable direction scan does not justify a material H3 test merely because
   it is easiest; the test must have decision-changing value or shrink to a Micro
-  Content Probe.
+  Content Probe, while the requested Recommended Bet remains time-boxed and names
+  its information value and change condition.
 - `43-user-preference-is-not-archetype-constraint.md` — tentative archetype
   preference remains challengeable while an explicit user commitment constrains
-  the search without becoming market evidence.
+  both the search and any Recommended Bet without becoming market evidence.
 
 Together they ask whether a real evidence source is qualified to answer the
 current decision claim. They do not require representative population research,
@@ -144,7 +146,9 @@ decision change rather than generic startup advice:
 - `53-small-readiness-gap-can-be-probed.md` — a cheap isolated skill gap triggers
   a readiness probe rather than permanent rejection.
 - `54-golden-opc-replication-safety.md` — the creator-income Golden Case must not
-  jump from paid product-video precedents to selling an undeliverable package.
+  jump from paid product-video precedents to selling an undeliverable package;
+  it pairs `Market Priority: unknown` with a plain-language, user-specific
+  Recommended Bet, confidence, time box, and change condition.
 
 The candidate discriminator cases encode `source -> operator -> failure mode ->
 observable decision delta`. They are hypotheses to test with the matched Lens

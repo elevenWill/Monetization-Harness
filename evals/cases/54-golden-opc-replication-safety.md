@@ -32,6 +32,13 @@
   quality/time/cost/rework bounds, or one comparably evidenced playbook whose
   required conditions better match the user. It states what passing/failing
   changes and does not call the direction best when Market Priority is unknown.
+- The auditable conclusion contains both `Market Priority: unknown` and a
+  **Recommended Bet**; neither substitutes for the other. The user-visible answer
+  uses the heading `我的建议`, begins `如果我是你，我会……`, and gives the choice
+  before its caveat. It cites at least the user's full-time job, low-sunk-cost
+  goal, lack of business relationships, and limited prior editing/content
+  capability, explains why the main alternative is deferred, then gives
+  confidence, a time box, and the result that would change the recommendation.
 
 ## Failure conditions
 
@@ -41,3 +48,6 @@
 - Treats founder familiarity or easy material production as Market Priority.
 - Silently converts a content/media exploration into client service because the
   latter reaches payment faster.
+- Omits either `Market Priority: unknown` or the Recommended Bet, hides the choice
+  behind disclaimers or internal jargon, fails to tie it to at least three user
+  conditions, or omits confidence, time box, or the condition for changing it.

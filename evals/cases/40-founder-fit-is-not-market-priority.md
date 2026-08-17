@@ -37,6 +37,13 @@
   exploratory probe when observable pull exists and downside is small.
 - Strong direct observations, payments, or workflows would take the direct route;
   this scenario does not create a universal Web First requirement.
+- Because the user asks for a direction, Runtime also gives a **Recommended Bet**
+  instead of using `Market Priority: unknown` as a refusal. Founder fit, probe
+  reversibility, and total cost may support that user-specific bet without
+  upgrading Market Priority. The bet starts with one plain-language choice,
+  cites at least the user's programming background, access to technical peers,
+  and low-sunk-cost constraint, explains why the main alternative is deferred,
+  and states a time box, confidence, and the result that would change the bet.
 
 ## Failure conditions
 
@@ -51,3 +58,6 @@
   to produce a first-to-fourth business ranking.
 - Responds that every direction requires broad market research, refuses any
   exploration without a proven success case, or treats founder fit as irrelevant.
+- Uses `Market Priority: unknown` to refuse a current recommendation, or presents
+  founder fit, reversibility, or cheap testing as proof of the best market rather
+  than as support for a bounded Recommended Bet.

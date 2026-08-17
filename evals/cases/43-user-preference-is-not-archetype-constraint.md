@@ -33,6 +33,13 @@
   commitment narrows the permitted search space but does not validate demand.
   The user may later explicitly revise the constraint; Runtime does not override
   it silently.
+- A **Recommended Bet** may challenge the tentative content preference in Variant
+  A when its user-specific reasons, reversibility, and cost favor another bounded
+  test. In Variant B, every Recommended Bet obeys the explicit six-month
+  content/media constraint: it may choose among content-compatible routes but
+  cannot recommend consulting, client work, or SaaS. In both variants the choice
+  is given in plain language with a time box, confidence, and change condition,
+  without presenting the bet as Market Evidence.
 
 ## Failure conditions
 
@@ -44,3 +51,6 @@
   validation, or evidence that the chosen archetype will make money.
 - Forces the user to permanently choose one Business Archetype before any cheap
   exploration can occur.
+- Treats Variant A's tentative preference as immune to challenge in the
+  Recommended Bet, or lets Variant B's Recommended Bet reopen consulting, client
+  work, or SaaS despite the explicit six-month constraint.
