@@ -9,6 +9,13 @@ Produce evidence before judgment. Treat this as an **Evidence-Producing Skill**,
 
 Apply **Case First -> Pattern First -> Replication First**: determine what happened in the market, reconstruct the closest proven transaction and any event that triggered it, test whether its mechanism transfers, then give Thinking Skills an evidence base.
 
+For a transaction-led Opportunity request—the user explicitly wants a proven or
+copyable income path and lacks direct domain evidence—answer how the business
+actually happens before handing discovery to the user. Trace public transaction
+surfaces into buyer/seller cases, price or paid signals, acquisition, trust,
+delivery, acceptance, continuation, failure, and economics. A demand post alone
+is a Lead, not a transaction-bearing Case.
+
 ## Route the work
 
 1. Let the orchestrator discover, resume, or bootstrap the project and read `IDEA.md` plus `STATE.md`.
@@ -130,6 +137,15 @@ When why-now is decision-critical, additionally seek the event source, buyer-ori
 - **standard:** For an explicit viability landscape, case request, or material direction whose named decision cannot be resolved by a quick check or direct field evidence. Target at least three independent case candidates, ideally one or two exact cases; at least two negative sources; one current official policy source per target platform; acceptance signals from at least two independent channel types; and real price/transaction signals. These are coverage targets, not a license to fill quotas with weak analogies. Stop conclusion escalation when no exact case is found.
 - **deep:** For an explicit deep study, major commitment, or multi-platform entry. Add multilingual and multi-period searches, major competitors, business models, unit economics, acquisition, delivery, policy history, positive and negative feedback, failure modes, transfer conditions, and a minimal replication design. Do not implement scheduled monitoring in V0.
 
+For transaction-led work, the declared query/time/channel budget stops only at
+one of two outcomes: at least one transaction-bearing Case exposes payer, bought
+result, a credible money/transaction signal, and delivery well enough to run the
+transferability check; or the budget is exhausted and the finding says
+`playbook evidence blocked`, naming the missing fields. Do not stop at a Buyer
+Lead merely because it can support a first exploratory test. Before Human
+Contact, use the public source most likely to fill the decisive gap; contact may
+target that field only after reasonable public routes are exhausted.
+
 ## Record auditable objects
 
 Use stable project IDs `R001`, `R002`, ... for a decision-scoped RESEARCH object and `C001`, `C002`, ... only for cases with durable reuse value. Use local source IDs `R001-S01`, `R001-S02`, ... inside a research record. Do not create a Case per page.
@@ -151,6 +167,9 @@ id; title; url; publisher; platform; source_type; published_at; accessed_at;
 market; claim; supports; contradicts; authority; verification; freshness;
 scope_match; direction; notes
 ```
+
+Emit every source label literally, using `unknown` or `none` when necessary; a
+Markdown heading does not replace the `title` field.
 
 Use only these source-quality classifications:
 
@@ -188,6 +207,11 @@ pre-delivery contact for buyer access, trust, or acquisition; bounded manual cos
 model or simulation for economics. Do not expose a customer to untested delivery
 learning. If a critical condition is absent or the core advantage is
 non-copyable, do not label the playbook currently replicable.
+
+If production or delivery readiness is `unknown`, prefer a no-customer-risk
+shadow delivery against a real public brief and record time, cost, rework,
+quality, and capability gaps. Do not interview or quote a live buyer merely to
+learn whether the user can deliver.
 
 When purchase timing materially affects the decision, also report separately: the candidate trigger, deadline type and source, cost and owner of delay, observed buyer behavior, purchase window, payer reachability, trust barrier, recurrence, delivery liability, and every unverified link. A real deadline without buyer behavior is not a purchase trigger; high urgency can still be unbuyable.
 

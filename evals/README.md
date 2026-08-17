@@ -65,8 +65,9 @@ loop:
   recorded while independent-market transfer remains confounded.
 - `31-executable-customer-sourcing.md` — the next-day action specifies where,
   whom, how, qualification, funnel counts, evidence, limits, and review.
-- `32-more-research-will-not-test-payment.md` — fresh sufficient research gives
-  way to bounded reality contact when payment is the unknown.
+- `32-more-research-will-not-test-payment.md` — a real buyer inquiry and budget
+  route to Buying Situation and delivery readiness rather than another playbook
+  scan.
 - `33-building-will-not-test-payment.md` — an executable manual offer replaces
   architecture work that cannot observe willingness to pay.
 - `34-payment-with-negative-delivery-economics.md` — a transaction can coexist
@@ -145,10 +146,10 @@ decision change rather than generic startup advice:
   non-replicable when its causal advantage is unavailable.
 - `53-small-readiness-gap-can-be-probed.md` — a cheap isolated skill gap triggers
   a readiness probe rather than permanent rejection.
-- `54-golden-opc-replication-safety.md` — the creator-income Golden Case must not
-  jump from paid product-video precedents to selling an undeliverable package or
-  manufacture a new business winner when the monetization structures remain
-  incomparable.
+- `54-golden-opc-replication-safety.md` — the creator-income Golden Case follows
+  Transaction Surface -> Case Reconstruction -> Transferability; a Buyer Lead
+  cannot default to three cold merchant interviews, and any later delivery gap
+  uses a no-customer-risk probe.
 
 The candidate discriminator cases encode `source -> operator -> failure mode ->
 observable decision delta`. They are hypotheses to test with the matched Lens

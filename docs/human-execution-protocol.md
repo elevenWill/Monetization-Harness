@@ -18,6 +18,14 @@ Generate one minimum Execution Packet when all of these are true:
    `unknown` can be resolved by a smaller acquisition step; and
 4. the action has a review point and can change a named assumption or decision.
 
+For a transaction-led proven-path request, add a handoff gate: bounded public
+research must have produced a transaction-bearing playbook or explicitly ended
+`playbook evidence blocked`. If blocked, Human Contact may resolve only one named
+decision-critical missing playbook field after public transaction surfaces,
+buyer/seller cases, offers/prices, delivery artifacts, and reviews have been
+reasonably exhausted. Do not turn an incomplete playbook into generic cold
+customer discovery.
+
 This can occur in any Stage. Typical uses are:
 
 - `opportunity_discovery`: find and observe reachable people or workflows;
@@ -78,6 +86,7 @@ can resolve the decision safely, prefer the cheapest fresh route. Use this order
 | Whether the result can be delivered safely and acceptably | One bounded manual or assisted delivery |
 | Whether payment and delivery repeat | Comparable offers, payments, and deliveries with independent or repeat buyers |
 | Whether a content theme has repeated audience pull | Bounded observation of qualified audience behavior on relevant platforms or direct usage contexts |
+| How a proven/copyable external income path actually transacts | Public transaction surfaces and buyer/seller Case reconstruction before targeted Human Contact |
 
 Web evidence can establish external conditions and precedents. It cannot by
 itself establish transferability, this project's willingness to pay, delivery
@@ -92,6 +101,8 @@ Evidence Population qualified to answer it; the Sample Source; what observations
 from that source can prove; and what they cannot prove given material selection
 or proxy bias. Reachability is an evidence-acquisition advantage. It is not
 representativeness, market importance, commercial value, or willingness to pay.
+It may break a tie among equally decision-useful evidence paths, but cannot alone
+justify substantial founder attention to a weak transaction hypothesis.
 
 For example, nearby technical creators may reveal their own recurring production
 problems and workarounds. They cannot by themselves establish platform-wide
@@ -313,6 +324,13 @@ and workaround evidence; or place a real bounded offer when only behavior can
 answer. The acquisition step must itself be capped. If it fails, retain the field
 as `unknown`, record the access or coverage gap, and change the sourcing route or
 decision—do not fill the blank with model inference.
+
+On a transaction-led route, the question must name the single missing playbook
+field—for example acceptance criteria after price and delivery are already
+evidenced. Do not ask a broad bundle of customer-discovery questions. If the
+field can still be checked through a public brief, seller package, quote,
+portfolio, review, modification/refund record, or repeated purchase/request,
+continue bounded research instead of producing a Packet.
 
 ## Evidence, stop, and review
 

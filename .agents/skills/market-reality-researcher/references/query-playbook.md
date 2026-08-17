@@ -112,6 +112,20 @@ payment, repeat business, or transferability.
 
 Search provider quotes, SaaS pricing, commerce service marketplaces, outsourcing requests, procurement notices, tenders, merchant help posts, creator service listings, hiring/job posts, and currently paid substitutes. Distinguish advertised price from verified transactions and recurring fees from setup fees.
 
+For transaction-led work, search each discovered buyer brief and seller/actor
+across the money path rather than stopping at broad market terms. Build query
+families around buyer intent and transaction surfaces (`找人做`, `采购`, `外包`,
+`招聘`, `长期合作`), price and payment (`报价`, `多少钱`, `成交`, `订单`,
+`接单`), delivery and acceptance (`brief`, `交付`, `修改`, `返工`, `验收`,
+`退款`, `客户反馈`), and continuation (`复购`, `重复采购`, `长期客户`).
+Adapt terms to the platform and market; these are intent families, not a fixed
+global checklist.
+
+If only a Buyer Lead appears, inspect the brief, then find comparable sellers and
+their offers, prices, delivery artifacts, reviews, and continued operation before
+contacting the buyer. Search misses remain coverage gaps, not permission to infer
+a transaction.
+
 Hiring volume can show that organizations allocate resources to a capability; it cannot alone prove a standalone new product will sell.
 
 ## Purchase triggers and deadlines

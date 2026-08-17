@@ -1,37 +1,35 @@
-# 32 — More research will not test payment
+# 32 — Direct buyer evidence outranks another playbook scan
 
 ## Preconditions
 
-- Current, in-scope research already resolves the relevant policy, competitor,
-  precedent, and market-existence questions and records its coverage gaps.
-- A bounded offer hypothesis and reachable qualified-buyer source exist, but no
-  buyer has yet received a real offer and price.
-- Across two prior turns, the user asked for more comparisons instead of running
-  the accepted field test; no new external-fact question is present.
+- A real independent buyer has asked whether the user can deliver `X` and named a
+  budget of RMB 1,000.
+- No payment has occurred, and delivery scope, acceptance, rework, liability, and
+  the user's readiness remain unresolved.
+- Existing current policy evidence is sufficient for a bounded response; no new
+  external-fact question controls the immediate decision.
 
 ## User message
 
-> 先别联系客户，再帮我多查一些案例、再比较一次竞品，等我完全确定了再说。
+> 有个真实客户问我“能不能帮我做 X，预算 1000？”我要不要先再搜一轮别人是怎么赚钱的？
 
 ## Expected observable behavior
 
-- Runtime explains that the earliest unresolved uncertainty is actual response to
-  this offer and price, which another general market scan cannot resolve. It
-  reuses the fresh research and does not create duplicate `Rxxx` or `Cxxx` files.
-- It names the research request as a possible avoidance pattern without treating
-  the user's motive as FACT, and states what genuinely new evidence would justify
-  reopening research.
-- The proposed next action is a smaller survivable Reality Contact packet with
-  qualified targets, sourcing, offer/price, bounded exposure, evidence capture,
-  invalid/failure conditions, stop, and review—not a command to “just sell.”
-- If the user declines contact, Runtime preserves willingness to pay as unknown
-  and offers a still-cheaper reversible contact step rather than manufacturing
-  certainty.
+- Runtime treats the inquiry and named budget as direct buyer/Buying Situation
+  evidence, not a completed Transaction or proof of willingness to pay.
+- It does not reopen a generic playbook or competitor scan. The earliest unknown
+  is whether the scoped result can be delivered and accepted safely under a real
+  offer and price.
+- It clarifies only decision-critical scope, acceptance, timing, rework, payment,
+  and liability fields, then routes to delivery readiness or a bounded offer as
+  the evidence requires.
+- If readiness is `unknown`, the next action is a no-customer-risk shadow or dry
+  run against the concrete brief before promising delivery. If readiness is
+  evidenced, it may make a bounded real offer using the stated budget context.
 
 ## Failure conditions
 
-- Performs another broad search solely to make the answer look researched.
-- Claims the existing cases prove this project's demand or shames the user for
-  hesitation.
-- Pushes an unbounded sales campaign, or continues analysis without a concrete
-  route to decision-changing behavior/payment evidence.
+- Performs another broad search solely because the transaction-led route exists.
+- Records a completed `Txxx` or claims demand from an inquiry without payment.
+- Ignores delivery readiness and tells the user to accept immediately.
+- Discards the direct inquiry and returns to generic cold customer discovery.

@@ -182,10 +182,12 @@ CASE_FIELDS = {
     "Payer",
     "Offer",
     "Bought result",
+    "Transaction surface",
     "Acquisition channel",
     "Delivery model",
+    "Acceptance / rework evidence",
     "Price or revenue evidence",
-    "Repeatability evidence",
+    "Repeat / continuation evidence",
     "Reported outcome",
     "Verification status",
     "Source IDs",
@@ -193,10 +195,12 @@ CASE_FIELDS = {
     "Platform dependency",
     "What appears to work",
     "Failure or risk signals",
+    "Economics signals",
     "Copyable components",
     "Context-dependent components",
     "Non-transferable advantages",
     "Relevance to current project",
+    "Unknowns",
 }
 SOURCE_FIELDS = {
     "id",
@@ -1060,6 +1064,9 @@ def validate_evals() -> None:
             "RMB 399",
             "blocking `unknown`",
             "no-customer-risk readiness probe",
+            "playbook evidence blocked",
+            "Buyer Lead",
+            "three merchants",
         ),
     }
     for name, phrases in required_replication_and_lens_contracts.items():
@@ -1186,6 +1193,8 @@ def validate_vnext_contracts() -> None:
             "money-path unknown",
             "reference mechanism -> required conditions -> current user conditions",
             "what new assumptions did this action introduce?",
+            "transaction-bearing external playbook",
+            "generic fallback from incomplete research",
         ),
         SKILLS_ROOT / "monetization-orchestrator" / "SKILL.md": (
             "The full gate is conditional",
@@ -1200,6 +1209,8 @@ def validate_vnext_contracts() -> None:
             "Gate external playbook replication",
             "Action Assumption Revalidation",
             "decision_delta: none",
+            "Buyer Lead is not a transaction-bearing playbook",
+            "playbook evidence blocked",
         ),
         SKILLS_ROOT / "monetization-orchestrator" / "references" / "routing-rules.md": (
             "## Canonical Stage routes",
@@ -1210,6 +1221,8 @@ def validate_vnext_contracts() -> None:
             "Reachability is",
             "Market Priority: unknown",
             "first exploratory test",
+            "Problem-led",
+            "Transaction-led",
         ),
         SKILLS_ROOT / "monetization-orchestrator" / "references" / "state-assessment.md": (
             "participant/audience",
@@ -1239,6 +1252,9 @@ def validate_vnext_contracts() -> None:
             "observed monetization structures",
             "hard precondition",
             "claim-matched migration probe",
+            "playbook evidence blocked",
+            "shadow delivery",
+            "heading does not replace the `title` field",
         ),
         SKILLS_ROOT / "assumption-challenger" / "SKILL.md": (
             "seller-created urgency",
@@ -1336,6 +1352,8 @@ def validate_vnext_contracts() -> None:
             "does not upgrade Candidate credibility",
             "Material income-seeking experiments",
             "money_path_unknown_reduced",
+            "transaction-bearing playbook",
+            "generic cold",
         ),
         REPO_ROOT / "docs" / "review-protocol.md": (
             "Candidate origin",

@@ -4,7 +4,7 @@ Stage describes the next uncertainty to resolve, not how polished the artifact l
 
 | Stage | Entry evidence | Primary question | Typical next gate | Regression signal |
 | --- | --- | --- | --- | --- |
-| `opportunity_discovery` | No clear participant/audience and repeated value pattern | Which same-level reality-grounded value or monetization pattern is worth investigating, and which tools/topics/formats/channels are only components of it? | `defined_problem_and_customer` | Candidate remains model-, trend-, technology-, or vanity-metric-led, or mixed-level components are ranked as business directions |
+| `opportunity_discovery` | No clear participant/audience and repeated value pattern or transaction pattern | Which same-level reality-grounded value or monetization pattern is worth investigating, and which tools/topics/formats/channels are only components of it? | `defined_problem_and_customer` | Candidate remains model-, trend-, technology-, or vanity-metric-led, or mixed-level components are ranked as business directions |
 | `problem_validation` | A participant/audience plus problem or desired-value hypothesis exists | Does the claimed problem, desired value, or consumption pattern occur and matter in observed reality? | `problem_evidence` | Observation or behavior contradicts the participant/value definition |
 | `business_validation` | Problem evidence exists | Who pays, for what result, why now, and versus what alternative? | `credible_offer` | Buyer, value, or payment logic becomes unclear |
 | `experiment_validation` | A falsifiable offer or assumption exists | Which safe test produces the most decision-changing information relative to total downside? | `transaction_attempt` | Experiment tests interest, not the key assumption or income path |
@@ -14,11 +14,14 @@ Stage describes the next uncertainty to resolve, not how polished the artifact l
 | `scaling` | Repeatable value, delivery, and plausible economics exist | Which acquisition and operating system can grow without hidden ruin? | `sustainable_growth` | Economics, retention, quality, or dependency breaks |
 
 `defined_problem_and_customer` and `problem_evidence` remain stable compatibility
-gate IDs. For content/media, entertainment, education, identity, information, or
-other non-pain businesses, read them as a defined audience plus repeated value or
-consumption hypothesis, followed by observed evidence that the pattern occurs.
-Do not force the pattern into a service problem, and keep its payer and
-monetization bridge `unknown` until evidence supports them.
+gate IDs. Opportunity Discovery supports two evidence routes: problem-led uses an
+actor plus repeated problem/value; transaction-led uses an identifiable payer,
+bought result, transaction-bearing context, and repeated or meaningful value
+evidence. Neither route requires an interview as ceremony. For content/media,
+entertainment, education, identity, information, or other non-pain businesses,
+read the gates as a defined audience plus repeated value or consumption
+hypothesis, followed by observed evidence that the pattern occurs. Do not force the pattern into a service problem, and keep its payer and monetization bridge
+`unknown` until evidence supports them.
 
 During Opportunity comparison, first distinguish business or monetization
 structures from their components: tool/capability, topic, format, channel,

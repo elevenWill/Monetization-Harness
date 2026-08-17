@@ -15,10 +15,12 @@ Target customer
 Payer
 Offer
 Bought result
+Transaction surface
 Acquisition channel
 Delivery model
+Acceptance / rework evidence
 Price or revenue evidence
-Repeatability evidence
+Repeat / continuation evidence
 Reported outcome
 Verification status
 Source IDs
@@ -26,10 +28,12 @@ Required resources
 Platform dependency
 What appears to work
 Failure or risk signals
+Economics signals
 Copyable components
 Context-dependent components
 Non-transferable advantages
 Relevance to current project
+Unknowns
 ```
 
 Set Case `Scope match` to `exact`, `adjacent`, or `weak_analogy`. Do not create an `irrelevant` Case; leave irrelevant sources in the Research record instead.
@@ -50,6 +54,8 @@ Answer with evidence rather than a celebratory summary:
 10. What costs, refunds, churn, complaints, or losses are visible?
 11. Does the case rely on existing traffic, brand trust, official platform cooperation, supply chain, or heavy manual operations?
 12. Which mechanism most plausibly caused the bought result, and what alternative explanations remain?
+13. What acceptance, revision, refund, or rework evidence is visible?
+14. Is continuation visible through repeat purchase, repeated requests, retained clients, or sustained seller operation?
 
 For content/media, explicitly separate two partial reconstructions:
 
@@ -61,6 +67,20 @@ Revenue Structure: payer -> paid result -> monetization mechanism -> money evide
 An Attention Structure may be useful with every Revenue link `unknown`. Do not
 upgrade it into a Revenue Structure from views, followers, engagement, or a
 headline that someone “made money.”
+
+For transaction-led use, distinguish three plain evidence levels without adding
+statuses or a numeric score:
+
+- **Lead:** a buyer request, seller offer, or other demand/supply signal without a
+  visible transaction skeleton.
+- **Transaction-bearing Case:** payer, bought result, transaction mechanism,
+  credible money/paid signal, and delivery are visible.
+- **Replication-grade Playbook:** the Case also exposes enough acquisition,
+  trust, acceptance, repeat/economics, required-resource, and transferability
+  conditions to design a minimum replication action.
+
+Missing fields may remain `unknown`. The label controls the next evidence action;
+it does not replace `Verification status` or prove transferability.
 
 ## Output structures
 

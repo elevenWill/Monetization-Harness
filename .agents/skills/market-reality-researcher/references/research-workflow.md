@@ -24,7 +24,7 @@ Record `research_depth` as exactly `quick`, `standard`, or `deep`, including for
 - `standard`: viability, precedent, experiment, or material commitment decision.
 - `deep`: explicit depth, major commitment, or multi-platform entry.
 
-Record a maximum reasonable search scope. Stop when the evidence can distinguish exact precedent, adjacency, contradiction, policy constraint, and remaining unknowns. Do not keep searching to manufacture certainty. If critical platforms cannot be accessed, use `research_blocked` when the gap prevents a decision; otherwise report the bounded verdict and gap.
+Record a maximum reasonable search scope. Normally stop when the evidence can distinguish exact precedent, adjacency, contradiction, policy constraint, and remaining unknowns. For a transaction-led proven-path request, stop only when at least one transaction-bearing Case exposes payer, bought result, credible transaction/money signal, and delivery well enough for transferability, or when the declared query/time/channel budget is exhausted. In the latter case state `playbook evidence blocked`, list the missing fields, and do not default to cold discovery. Do not keep searching to manufacture certainty. If critical platforms cannot be accessed, use `research_blocked` when the gap prevents a decision; otherwise report the bounded verdict and gap.
 
 ## 3. Build the query plan
 
@@ -71,6 +71,12 @@ Separate evidence that only reconstructs audience attention from evidence that
 reconstructs revenue. Unknown payer, paid result, or money signal remains
 `unknown`; an attention case cannot become a monetization pattern by inference.
 
+Use plain working labels without changing the Case status enum: a **Lead** shows
+only demand/supply interest; a **Transaction-bearing Case** exposes payer,
+bought result, transaction mechanism, credible paid signal, and delivery; a
+**Replication-grade Playbook** additionally contains enough conditions and gaps
+to design a transferability-checked action. Unknown fields remain explicit.
+
 ## 8. Test transferability
 
 Read [transferability-check.md](transferability-check.md). Classify every mechanism or advantage as `Copyable`, `Context-dependent`, `Non-copyable`, or `Unknown`. Distinguish market existence from the current user's ability to reproduce the result.
@@ -100,6 +106,13 @@ the nearest adjacent playbook and its decisive mismatch.
 For a trigger-dependent decision, include the closest evidenced buying situation: trigger, deadline, consequence owner, workaround, purchase window, trust requirement, frequency, and the exact missing link. Do not create a `BSxxx`; pass supported fields and source IDs to the orchestrator, which owns workspace object classification and persistence.
 
 Hand the evidence to the orchestrator before Thinking Skills run. Give `experiment-designer` a replication basis naming the relevant `Cxxx`, copied mechanism, omitted advantages, migration assumption, maximum exposure, success criterion, failure criterion, and stop condition.
+
+If transaction-led research ends blocked, map each decision-critical missing
+field to the cheapest remaining evidence source. Prefer public transaction
+surfaces, buyer briefs, seller offers/packages, quotes, portfolios, delivery
+descriptions, reviews, modification/refund records, repeat postings, or continued
+buyer/seller operation before Human Contact. If public evidence is reasonably
+exhausted, hand off one exact field and question—not generic market discovery.
 
 ## 11. Persist only when authorized
 

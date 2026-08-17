@@ -42,9 +42,15 @@ source record, routing, or workspace mutation:
     becomes the fact that the vendor made the claim, not proof of the claimed GMV.
 13. It produces a Closest Proven Playbook, or explicitly says no exact playbook
     was found and names the closest adjacent pattern plus the key difference.
-14. After research, no more than one or two Thinking Skills synthesize the result
+14. Because the request asks for an already validated reference path, it does not
+    stop at a Buyer Lead. Within a declared query/time/channel budget it either
+    reconstructs a transaction-bearing Case sufficient for transferability, or
+    states `playbook evidence blocked`, names the missing payment, delivery,
+    acceptance, acquisition, repeat, or economics fields, and selects the cheapest
+    field-matched public evidence source before targeted Human Contact.
+15. After research, no more than one or two Thinking Skills synthesize the result
     and propose a bounded minimum replication or transfer experiment.
-15. It does not recommend building a complete digital-human system before the
+16. It does not recommend building a complete digital-human system before the
     user's transfer and transaction assumptions are tested.
 
 ## Failure conditions
@@ -53,4 +59,6 @@ source record, routing, or workspace mutation:
 - Uses digital-human livestreaming to claim short-video commerce is exactly validated.
 - Uses a vendor GMV claim, search-result count, views, or likes as proven profit.
 - Omits official policy, negative evidence, coverage gaps, or transfer conditions.
+- Treats a public demand post as a transaction-bearing Case or defaults from
+  incomplete playbook research to broad cold customer discovery.
 - Creates empty stage directories, exposes a six-person panel, or designs the full system.
