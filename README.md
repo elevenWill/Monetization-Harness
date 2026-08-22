@@ -80,7 +80,7 @@ workspace/ai-commerce-short-video/
 
 Harness 不再只依赖用户描述和思维模型。当判断涉及“是否有人做成、平台是否允许、当前价格、用户是否接受、竞品和失败案例、是否值得大额投入”等当前外部事实时，Runtime 才进入 Market Reality Gate。Reality Evidence First 不等于 Web First：能由真实工作流、报价、付款、交付或复购直接回答的问题，不用网页研究代替。
 
-你不需要说“请使用 Agent Reach”。当你问“这个想法是否可行”“有没有人做成”“平台是否允许”“用户是否接受”或“应该参考谁”时，Harness 会判断是否需要联网，并自动选择 Agent Reach 或当前可用的 Web 工具。
+你不需要指定搜索工具。当你问“这个想法是否可行”“有没有人做成”“平台是否允许”“用户是否接受”或“应该参考谁”时，Harness 会判断是否需要联网，并按证据所在位置选择 Agent Reach、AnySearch、两者组合或当前可用的 Runtime Web 工具。
 
 ```text
 Conversation → Resolve Project
@@ -119,11 +119,13 @@ Harness 也会保留业务原型。Content/Media 不会因为服务更容易报�
 
 Market Reality Gate 不会为了展示能力反复搜索。只恢复项目、处理已有实验结果、确认执行细节，或已有研究仍新鲜且范围一致时，可以直接复用证据。新公开市场项目不会仅因“新”或“公开市场”就自动搜索；只有当前市场、政策、价格、案例等外部事实会改变下一步时，才做有决策、时间和停止条件的 bounded check。
 
-### Agent Reach 与覆盖缺口
+### Agent Reach、AnySearch 与覆盖缺口
 
-联网时优先检查 Agent Reach，并用 `agent-reach doctor --json` 的当次结果选择可用 backend；不可用的平台回退到 Codex 的 Web Search、网页读取或 Browser 能力。Agent Reach 是可选的获取层，不是研究方法，也不是结论来源；报告引用打开并核验的原始网页。
+平台原生帖子、评论、feed、字幕、GitHub 历史和授权登录态优先走 Agent Reach，并用 `agent-reach doctor --json` 的当次结果选择 backend。广域实时 Web、官方页面、批量查询、结构化垂直领域和公开网页抽取优先走 AnySearch；垂直检索先动态发现 sub-domain。政策加平台行为、交易 playbook 或跨平台接受度等问题才按独立证据角色组合两者，不为展示能力重复搜索。
 
-登录态平台只使用用户已经授权的会话。Harness 不自动安装、登录、读取或导出 Cookie，也不把 Cookie、Token 或凭据写入仓库。访问不到的平台会记录为 `coverage_gap`，不会声称做过“全网调查”。详细规则见 [`docs/integrations/agent-reach.md`](docs/integrations/agent-reach.md)。
+两者都是可选获取层，不是研究方法或结论来源。报告只引用打开并核验的原始网页或平台条目，并记录实际 capability、channel/backend 与覆盖缺口；同一新闻稿被两种工具找到仍是一条证据 lineage。
+
+登录态平台只使用用户已经授权的会话。Harness 不自动安装、登录、读取或导出 Cookie，也不把 Cookie、Token 或凭据写入仓库；发送给 AnySearch 的查询也不得包含私密项目事实、个人数据或商业秘密。任一能力不可用时会按 claim-fit 回退，并把仍访问不到的 evidence surface 记录为 `coverage_gap`，不会声称做过“全网调查”。详细规则见 [`docs/integrations/agent-reach.md`](docs/integrations/agent-reach.md)。
 
 原始网页和批量工具输出只临时放在 `/tmp`。Workspace 保存结构化的研究问题、来源 URL、日期、支持与反对证据、案例验证状态、结论和覆盖缺口，不保存整页 HTML、整篇文章或评论墙。
 

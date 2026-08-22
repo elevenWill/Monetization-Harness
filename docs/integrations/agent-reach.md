@@ -1,80 +1,125 @@
-# Agent Reach Integration
+# Market Search Capability Routing
 
-Agent Reach is an optional, preferred internet capability layer for Market Reality Research. It can help the Runtime reach supported platforms and collect original content. It is not the research method, does not determine evidence quality, and is not itself a source to cite.
+Agent Reach and AnySearch are optional acquisition capabilities for Market
+Reality Research. Neither is the research method, an evidence-quality label, or
+a source to cite. The `market-reality-researcher` owns question decomposition,
+claim-to-source fit, contradiction search, exact-versus-adjacent classification,
+case reconstruction, and transferability. Cite the original page or platform
+item that was opened and checked, never the acquisition capability.
 
-The `market-reality-researcher` owns question decomposition, claim-specific source selection, exact-versus-adjacent classification, contradiction search, case reconstruction, and transferability. Agent Reach only supplies available access paths.
+## Route by evidence surface
 
-## Dynamic use
+Choose the minimum capable route for the claim. Do not call both capabilities
+ceremonially or treat one as a universal primary and the other as a fallback.
 
-When current external evidence is required:
+| Evidence need | Default capability | Why / boundary |
+| --- | --- | --- |
+| Login-dependent or platform-native posts, comments, feeds, profiles, subtitles, and community behavior on supported platforms | **Agent Reach** | It can use platform-specific CLIs, APIs, or an authorized user-controlled browser session. Search-engine snippets cannot substitute for reading the item or comments. |
+| GitHub repositories, issues, PRs, commits, and code context | **Agent Reach** | Prefer `gh` or the active code-search backend for repository-native fields and history. |
+| Broad current Web discovery, news, official pages, public cases, competitors, or several independent queries | **AnySearch** | Use general search or `batch_search`; it is suited to real-time public-Web discovery and parallel query families. |
+| Finance, academic, health, legal, security, code, business, social-media, or another supported structured domain | **AnySearch vertical** | Run `get_sub_domains` first, then supply every required parameter. Vertical results are leads until the original source is opened. |
+| A known public HTML, JSON, text, or Markdown URL | **AnySearch `extract`** | Use for full-page extraction when supported. It does not handle PDF, DOC/DOCX, images, audio/video, archives, or streaming media; use the relevant Runtime reader instead. |
+| RSS, video/audio transcripts, or a platform item whose metadata/comments matter | **Agent Reach** | Use the channel-native reader or transcript path rather than flattening the item into generic Web text. |
+| Policy plus observed enforcement/acceptance | **Combine** | AnySearch can discover and open the current official rule; Agent Reach can inspect relevant platform-native behavior or enforcement reports. Keep policy and behavior claims separate. |
+| Transaction-bearing playbook or multi-platform acceptance study | **Combine when roles are independent** | Use AnySearch for broad transaction surfaces, official sources, prices, and public cases; use Agent Reach for platform-native offers, operator continuity, comments, and community behavior. Partition query families instead of duplicating every query. |
 
-1. Check whether the `agent-reach` command/capability is available in the current Runtime.
-2. If available, run:
+AnySearch's `social_media` or other vertical search can discover public indexed
+leads, but it does not prove that a login-dependent post, full thread, or comment
+set was read. Agent Reach platform data can expose behavior, but it does not
+replace broad Web, official, structured-domain, or cross-publisher coverage.
 
-   ```bash
-   agent-reach doctor --json
-   ```
+## Dynamic selection
 
-3. Parse the current result rather than assuming any backend is installed, configured, authenticated, or healthy.
-4. Select only an active backend appropriate to the target platform and decision question.
-5. Use Agent Reach-supported channels for original content.
-6. For unsupported or inactive channels, fall back to available Codex Web Search, webpage reading, or browser capability.
-7. Open and cite the original webpage or platform item. Do not cite Agent Reach or its diagnostic output as evidence for a market claim.
+When current external evidence is decision-critical:
 
-Do not hard-code the set of supported platforms or backend behavior. Installation, authentication, platform access, and service behavior can change.
+1. Reuse fresh, scope-matched research when it already answers the claim.
+2. Name the claim and the evidence surface qualified to answer it.
+3. If the surface is Agent Reach-native, check whether `agent-reach` is available,
+   run `agent-reach doctor --json`, and use only the reported active backend.
+4. If the surface is AnySearch-suitable, use its configured runtime directly.
+   For a vertical or overlapping domain, run `get_sub_domains` before search and
+   provide every required parameter. Use hybrid `batch_search` when the query
+   genuinely spans general Web and structured vertical intents.
+5. Use one capability when it can answer the claim with adequate coverage. Use
+   both only when they cover independent evidence roles, a decision-critical
+   corroboration gap, or public-Web discovery followed by platform-native
+   verification.
+6. Open the original sources, record their source lineage, and do not double-count the
+   same press release or syndicated claim returned by two capabilities.
+
+Record the actual acquisition path in the existing query log:
+
+```text
+query text; date run; capability; channel/backend; scope intent;
+useful source IDs; result limitation or coverage gap
+```
+
+Capability choice affects access and coverage, not `authority`, `verification`,
+`freshness`, `scope_match`, or `direction`.
+
+## Combination patterns
+
+- **Official policy:** AnySearch general/vertical search -> open the current
+  official page -> Agent Reach only if platform-native enforcement or user
+  behavior is a separate material claim.
+- **User acceptance:** AnySearch maps public actors and reports -> Agent Reach
+  reads claim-relevant posts/comments on the target platform -> preserve sample
+  and login coverage limits.
+- **Closest Proven Playbook:** AnySearch finds buyer briefs, price pages,
+  procurement, reporting, and operator cases -> Agent Reach verifies repository,
+  social, video, or community traces needed to reconstruct acquisition,
+  delivery, acceptance, continuation, or failure.
+- **Negative evidence:** split failure queries across broad Web/reporting and the
+  platform-native communities where complaints, abandonment, refunds, or
+  enforcement are observable; do not equate two retrieval paths with two
+  independent evidence lineages.
 
 ## Unavailable or partial coverage
 
-Agent Reach unavailability must not fail the whole study. Use Runtime fallbacks and record:
+- If Agent Reach is unavailable, continue with AnySearch and other Runtime
+  Web/page/browser tools for public indexed evidence. Preserve login-only posts,
+  comments, feeds, and platform metadata as coverage gaps.
+- If AnySearch is unavailable, continue with Agent Reach for supported surfaces
+  and its available Web/code/readers. Preserve unsupported structured-domain,
+  broad-Web, or extraction coverage as gaps rather than issuing invented
+  AnySearch commands.
+- If both are unavailable or blocked, use available Runtime Web Search, page
+  reading, PDF/document readers, or authorized browser access.
+- If a decision-critical surface remains inaccessible, narrow the verdict or use
+  `research_blocked`; capability failure must not be disguised as negative market
+  evidence.
 
-```yaml
-channels_actually_accessed:
-  - <channel and access method>
-coverage_gaps:
-  - channel: <relevant but inaccessible platform>
-    reason: <not installed, inactive backend, authentication unavailable, access denied, or unsupported>
-    decision_impact: <what evidence is missing>
-```
+Never claim a full-Web or all-platform investigation. A provider outage, quota
+limit, authentication failure, unsupported file type, or unvisited relevant
+channel belongs in `coverage_gaps` with its decision impact.
 
-Never claim a full-web or all-platform investigation. A search-engine snippet may identify a lead but does not prove that a login-dependent post, full thread, or comments were read.
+## Authorization, privacy, and credentials
 
-## Authorized login state
+For login-dependent platforms, use only a session the user explicitly authorized
+and controls. Do not obtain, inspect, export, copy, or persist browser cookies;
+log in for the user; bypass access controls; install system software; or change
+system configuration without explicit authority.
 
-For Xiaohongshu, Reddit, X, and other login-dependent platforms:
-
-- use only a session the user explicitly authorized and controls;
-- do not obtain, inspect, export, copy, or persist browser cookies;
-- do not ask tools to reveal tokens or credentials;
-- do not log into an account for the user or bypass access controls;
-- do not install system software or change system configuration without explicit user authorization;
-- record an inaccessible platform as a coverage gap.
-
-Never write Cookie, Token, credentials, payment privacy, or sensitive personal data to this repository.
+AnySearch sends search queries, extracted URLs, and any configured API key to its
+service. Do not send passwords, personal data, trade secrets, private project
+facts, or other sensitive material. Anonymous access may be used when available.
+Never save a newly issued key without explicit user approval, and never write
+Cookie, Token, credentials, payment privacy, or sensitive personal data to this
+repository.
 
 ## Temporary and durable data
 
-Place raw command output, fetched pages, exports, and intermediate search results under `/tmp`. Treat them as temporary working material.
-
-Persist only compact, auditable research records:
-
-- original URL and title;
-- publisher/platform and source type;
-- publication date when available;
-- access/check date;
-- narrow claim and brief necessary excerpt or faithful paraphrase;
-- the FACT/ASSUMPTION supported or contradicted;
-- authority, verification, freshness, scope match, and direction;
-- accessed channels and coverage gaps.
-
-Do not persist whole HTML pages, full articles, long comment walls, or bulk result dumps. Respect platform terms, access controls, copyright, and quotation limits.
-
-## Failure behavior
-
-- If a backend fails, try an in-scope Runtime fallback and record the gap.
-- If an official rule cannot be opened, do not promote a snippet or vendor interpretation to policy FACT.
-- If a critical login-only channel is inaccessible, narrow the verdict or use `research_blocked` when the gap prevents the decision.
-- If current research is still fresh and scope-matched, reuse it; do not run Agent Reach to display capability.
+Place raw command output, fetched pages, exports, and intermediate search results
+under `/tmp`. Persist only compact source metadata, narrow claims, necessary
+excerpts or faithful paraphrases, evidence classifications, actual access paths,
+and coverage gaps. Do not persist whole HTML pages, full articles, long comment
+walls, or bulk result dumps.
 
 ## Audit snapshot
 
-On 2026-08-14, the locally inspected Agent Reach distribution reported version `v1.5.0`, the upstream repository [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach), and an MIT license. This is an audit snapshot, not a pinned dependency or a guarantee that the same version, backends, commands, authentication state, or platform coverage will exist at runtime. Always perform the dynamic availability and doctor checks above.
+On 2026-08-22, local inspection found Agent Reach with active platform-specific
+backends reported dynamically by `agent-reach doctor --json`, and AnySearch Skill
+version `3.1.0` with a configured Python CLI. These are audit snapshots, not
+pinned dependencies or guarantees about future availability, authentication,
+commands, supported domains, quotas, or backend behavior. Always select from the
+capabilities actually available at runtime.

@@ -25,7 +25,8 @@ The fifty-four cases cover the V0 and VNext regression surface:
 - required research before market-dependent judgment;
 - exact-versus-adjacent precedent discipline;
 - vendor-claim and policy-freshness handling;
-- transferability checks and Agent Reach fallback;
+- transferability checks and claim-fitted Agent Reach / AnySearch routing,
+  combination, and fallback;
 - deliberate reuse of fresh research without unnecessary search;
 - proven-pattern-first replication instead of invented complexity;
 - real versus weak, one-off, recurring, seller-created, or fabricated deadlines;

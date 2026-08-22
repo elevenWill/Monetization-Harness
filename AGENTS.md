@@ -112,7 +112,7 @@ For an Opportunity Candidate, preserve its origin, business archetype, observed 
 - Project lifecycle, workspace mutation, and resumption: `docs/workspace-protocol.md`
 - Skill output contract: `docs/review-protocol.md`
 - Persona-to-domain provenance: `docs/source-mapping.md`
-- Market Reality research and Agent Reach integration: `docs/integrations/agent-reach.md`
+- Market Reality research and Agent Reach / AnySearch capability routing: `docs/integrations/agent-reach.md`
 - Purchase Trigger, Cost of Delay, Buying Situation, and Why-Now rules: `docs/purchase-trigger-protocol.md`
 - Human Reality Contact and minimum Execution Packet: `docs/human-execution-protocol.md`
 - Harness-vs-Baseline evaluation design: `docs/evaluation-strategy.md`

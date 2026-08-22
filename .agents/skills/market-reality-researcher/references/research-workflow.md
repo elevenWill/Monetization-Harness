@@ -43,7 +43,7 @@ For trigger-dependent work, also read [trigger-event-search.md](trigger-event-se
 
 ## 4. Choose sources and channels
 
-Read [source-strategy.md](source-strategy.md). Match source authority to each claim. For deadline research, use the claim-specific source table in [deadline-signal-search.md](deadline-signal-search.md); an official calendar can verify a date but not willingness to pay. Inspect Agent Reach dynamically and use Runtime web/browser fallbacks as documented in `docs/integrations/agent-reach.md`. Record `channels actually accessed` and every relevant inaccessible channel as a `coverage_gap`.
+Read [source-strategy.md](source-strategy.md). Match source authority to each claim. For deadline research, use the claim-specific source table in [deadline-signal-search.md](deadline-signal-search.md); an official calendar can verify a date but not willingness to pay. Route Agent Reach, AnySearch, their combination, and Runtime fallbacks by evidence surface as documented in `docs/integrations/agent-reach.md`. Record the capability plus channel/backend actually used and every relevant inaccessible surface as a `coverage_gap`.
 
 Do not treat snippets as read pages. Open the original source, capture its URL, publisher, publication date when available, access date, and the narrow claim it can support.
 

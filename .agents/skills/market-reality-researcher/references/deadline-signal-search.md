@@ -46,7 +46,7 @@ Match the source to the claimed deadline:
 | Rush demand and price | Buyer-originated urgent order, accepted quote, marketplace transaction | Provider rush offer or advertised surcharge | Offered urgency and price are not buyer acceptance |
 | Consequence of delay | Penalty schedule, lost-order record, SLA breach, complaint, refund, documented extra labor | Operator retrospective | Hypothetical harm may be marketing copy |
 
-Also inspect creator and merchant communities, app reviews, customer complaints, temporary job posts, service marketplaces, and public help requests when they are relevant and accessible. Follow the Skill's Agent Reach and safe-acquisition rules; inaccessible or login-only sources remain coverage gaps.
+Also inspect creator and merchant communities, app reviews, customer complaints, temporary job posts, service marketplaces, and public help requests when they are relevant and accessible. Follow the Skill's Agent Reach / AnySearch capability routing and safe-acquisition rules; inaccessible or login-only sources remain coverage gaps.
 
 ## Verify the causal chain
 

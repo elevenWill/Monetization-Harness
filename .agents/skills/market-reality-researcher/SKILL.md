@@ -77,7 +77,7 @@ When the claim depends on why someone buys now, also define the proposed `trigge
 
 ## Acquire evidence safely
 
-Prefer Agent Reach when available, but treat it only as a capability layer. Follow [`docs/integrations/agent-reach.md`](../../../docs/integrations/agent-reach.md): dynamically inspect availability, run `agent-reach doctor --json` when available, use active backends, and fall back to Runtime web search, page reading, or authorized browser access. Cite original pages, not Agent Reach.
+Route acquisition by claim and evidence surface using [`docs/integrations/agent-reach.md`](../../../docs/integrations/agent-reach.md). Use Agent Reach for supported platform-native, login-state, repository, comment, feed, and transcript evidence; use AnySearch for broad real-time Web discovery, parallel query families, supported vertical domains, and public-page extraction. Use both only for independent evidence roles or decision-critical corroboration, not ceremonially. Inspect Agent Reach backends dynamically; discover AnySearch vertical sub-domains before vertical search; preserve provider, access, quota, authentication, and unsupported-format gaps. Cite original pages or platform items, never either capability.
 
 Use only public material or a login session the user explicitly authorized and controls. Do not install system software, change system configuration, obtain/export cookies, bypass access controls, log in for the user, or store credentials. Put raw temporary output in `/tmp`; never put raw HTML, whole articles, comment walls, or bulk search dumps in the workspace. Record every unvisited relevant channel as a `coverage_gap` and never claim an all-web survey.
 

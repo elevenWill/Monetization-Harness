@@ -157,6 +157,7 @@ For every `Rxxx`, retain:
 ```text
 query text
 date run
+capability
 channel/backend
 scope intent
 useful source IDs
