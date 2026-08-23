@@ -13,7 +13,7 @@ workspace persistence:
 3. Inspect both the reply and any workspace changes.
 4. Compare only observable behavior with the expectations and failure conditions.
 
-The fifty-four cases cover the V0 and VNext regression surface:
+The fifty-five cases cover the V0 and VNext regression surface:
 
 - complete project-lifecycle routing: no project/no write, semantic resume,
   minimal bootstrap with lazy growth, and conflict/no wrong write;
@@ -151,6 +151,9 @@ decision change rather than generic startup advice:
   Transaction Surface -> Case Reconstruction -> Transferability; a Buyer Lead
   cannot default to three cold merchant interviews, and any later delivery gap
   uses a no-customer-risk probe.
+- `55-user-facing-plain-language.md` — internal evidence and stopping rules stay
+  intact, while commentary and the final answer translate repository vocabulary
+  into ordinary Chinese and concrete actions instead of coined procedure names.
 
 The candidate discriminator cases encode `source -> operator -> failure mode ->
 observable decision delta`. They are hypotheses to test with the matched Lens

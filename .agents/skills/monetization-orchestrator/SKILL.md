@@ -192,7 +192,7 @@ Do not silently rewrite `IDEA.md`; record major direction changes and their reas
 
 ## Final response shape
 
-Use compact prose, normally:
+Translate the completed internal judgment into ordinary Chinese before output. The template below describes information order, not mandatory user-visible labels:
 
 ```markdown
 当前判断：
@@ -204,12 +204,16 @@ Use compact prose, normally:
 下一步：
 <one bounded action and review condition>
 
-Workspace 更新：
+项目记录：
 <project created or files/objects changed, only when writes occurred>
 ```
 
+Do not expose internal framework language merely because it was useful during reasoning or persistence. In commentary and final answers, normally omit Skill and lens names, Stage/gate labels, object-type names, `Market Priority`, `Reality Evidence`, `Buying Situation`, `Execution Packet`, `Draft Action`, and coined Chinese procedure names. Say what they mean in this case instead. For example, replace “双平台门槛审计” with the exact platforms, screens, checks, limits, and stop condition. Replace “进入交易验证阶段” with “已经有人付过一次钱，下一步要确认陌生客户是否也会付”.
+
+When a technical term is necessary, introduce the ordinary Chinese meaning first and explain the term once. Prefer “这能说明 / 还不能说明” over evidence taxonomy in user-visible prose, and “去哪里 / 找谁 / 做什么 / 做多少 / 何时停” over naming an action packet. Preserve every substantive evidence boundary, safety limit, and review condition; this is a translation pass, not a relaxation of the Runtime contract.
+
 When market research materially affected the answer, also state the closest verified precedent or constraint, what remains unverified, and the main coverage/freshness limitation. Do not claim “the market” was searched when only a subset of channels was accessible.
 
-The final answer must remain understandable if internal Skill reviews are hidden.
+The final answer must remain understandable if internal Skill reviews and all Harness documentation are hidden.
 
-When a Human Execution Packet is required, keep its user-visible core concrete even if the surrounding prose is compact: decision claim; qualified target; verified sourcing/query/channel; exact action/message or offer/price; sample/time/cost cap; evidence; stop/review. Do not compress it back to “contact potential users.”
+When a Human Execution Packet is required internally, keep its user-visible core concrete even if the surrounding prose is compact: what the action is meant to find out; who qualifies; where to find them; exact action/message or offer/price; sample/time/cost cap; what to record; when to stop and review. Do not call it an “Execution Packet” or compress it back to “contact potential users.”

@@ -8,6 +8,21 @@ Do not optimize for answering every request literally. If the request targets th
 
 This repository uses Codex as the runtime. Do not build or simulate a separate agent loop, persona meeting, vote, or debate.
 
+## Plain-language user communication
+
+Keep the internal model precise, but translate it before speaking to the user. The user should not need to learn this repository's vocabulary in order to act on its advice.
+
+- Apply this rule to commentary as well as the final answer. Do not narrate Skill names, routing, gates, lenses, object types, or protocol names unless the user asks how the Runtime reached its answer or the name is needed to locate a durable record.
+- Prefer ordinary Chinese that names the real situation and physical action. Do not invent a procedure name such as “双平台门槛审计”, “事实扫描”, or “最小复现实验” when “打开两个平台后台检查带货权限” or “先做一条样片看看耗时和质量” says what to do.
+- Treat `Stage`, gate, Candidate, Reality Evidence, Market Priority, Buying Situation, Execution Packet, Draft Action, Monetization Bridge, Thinking Skill, and their Chinese translations as internal vocabulary by default. Preserve them in Workspace records when required; replace them in the user response with the concrete meaning in the current case.
+- If an internal or specialist term is genuinely necessary, explain it immediately in one short sentence or parenthesis, then continue with ordinary words. Do not stack several unfamiliar labels in one sentence.
+- Use Chinese before an English abbreviation: for example, “投入产出比（ROI）” on first use and “投入产出比” afterward. Common terms already used by the user need not be over-explained.
+- State evidence boundaries as “这能说明什么 / 还不能说明什么”, and state actions as “去哪里 / 做什么 / 做多少 / 何时停”. Keep exact limits, evidence distinctions, and stop conditions; remove only the framework packaging.
+- Headings should answer the user's questions rather than expose the repository's structure. A long answer may still be detailed when the user asked several questions, but the conclusion and immediate action must be easy to find.
+- Before sending, scan the user-visible text once: replace coined labels with concrete verbs, remove unneeded English and internal provenance, and verify that a reader unfamiliar with the Harness can follow the next action without asking what a term means.
+
+For example, do not end with “做一次 75 分钟、0 元的双平台门槛审计.” Say: “先花 75 分钟打开抖音和小红书的创作者后台，看看你的账号有没有带货权限；再从你用过的一类商品里最多检查 5 个。找不到有实物或明确授权、并能看到结算规则的商品，就先停，不买粉、不买课、不做视频。” The decision logic is unchanged; only its presentation differs.
+
 ## Conversation-first project lifecycle
 
 For every substantive monetization message, classify the conversation before routing it:

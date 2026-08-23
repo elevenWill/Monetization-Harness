@@ -127,6 +127,7 @@ EXPECTED_EVALS = {
     "52-strong-market-core-advantage-not-copyable.md",
     "53-small-readiness-gap-can-be-probed.md",
     "54-golden-opc-replication-safety.md",
+    "55-user-facing-plain-language.md",
 }
 REQUIRED_STATE_HEADINGS = {
     "## 当前目标",
@@ -1076,6 +1077,13 @@ def validate_evals() -> None:
             "Buyer Lead",
             "three merchants",
         ),
+        "55-user-facing-plain-language.md": (
+            "双平台门槛审计",
+            "打开抖音和小红书",
+            "does not change",
+            "commentary",
+            "internal vocabulary",
+        ),
     }
     for name, phrases in required_replication_and_lens_contracts.items():
         text = (cases_dir / name).read_text(encoding="utf-8")
@@ -1151,9 +1159,9 @@ def validate_evals() -> None:
         "does not run Codex" in eval_readme
         or "not an automated LLM evaluation framework" in eval_readme
     )
-    describes_count = "54" in eval_readme or "fifty-four" in eval_readme
+    describes_count = "55" in eval_readme or "fifty-five" in eval_readme
     if not describes_non_runtime or not describes_count:
-        raise ValidationFailure("evals README must describe 54 human-auditable, non-runtime scenarios")
+        raise ValidationFailure("evals README must describe 55 human-auditable, non-runtime scenarios")
     for phrase in (
         "Project Lifecycle",
         "New Project Bootstrap",
@@ -1183,7 +1191,7 @@ def validate_vnext_contracts() -> None:
             "Evidence-derived Stage → earliest unresolved uncertainty",
             "Reality Evidence First 不等于 Web First",
             "docs/human-execution-protocol.md",
-            "保存 54 个核心 Harness Behavior Acceptance Scenarios",
+            "保存 55 个核心 Harness Behavior Acceptance Scenarios",
             "Investigation Advantage",
             "Market Observation Environment",
             "Material Experiment",
@@ -1494,7 +1502,7 @@ def main() -> int:
         validate_vnext_contracts()
         print("[PASS] Stage-first, Reality-first Opportunity, Human Execution, and Experiment contracts")
         validate_evals()
-        print("[PASS] 54 human-auditable behavior acceptance scenarios")
+        print("[PASS] 55 human-auditable behavior acceptance scenarios")
         validate_authored_links()
         print("[PASS] authored Markdown links")
     except (ValidationFailure, OSError) as exc:

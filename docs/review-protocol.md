@@ -69,12 +69,14 @@ remains, expose it and choose the smallest evidence action. A Draft Action canno
 silently switch business archetypes or make a customer absorb an untested
 delivery-learning risk.
 
-The final user response normally contains:
+The final user response normally contains the following information, but these are information slots rather than required labels:
 
 1. `当前判断` — one conclusion.
 2. `依据` — the few decisive facts and assumptions.
 3. `下一步` — one bounded action with a stop/review condition.
-4. `Workspace 更新` — only if durable state changed.
+4. `项目记录` — only if durable state changed.
+
+Translate internal review language before output. The user-facing answer should name the concrete situation and action rather than Stage, gate, Candidate, Reality Evidence, Market Priority, Buying Situation, Execution Packet, Draft Action, lens, or a newly coined Chinese procedure name. Keep the underlying distinction by saying what the available information can and cannot show. Keep the full action contract by saying where to act, what to do, how much to do, what to record, and when to stop. If a specialist term is necessary, explain it once in ordinary Chinese. This applies to commentary as well as the final answer and does not alter evidence, routing, safety, persistence, or review requirements.
 
 Mention lens names only when the user asks for provenance or it materially improves auditability.
 
